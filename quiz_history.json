@@ -1,0 +1,286 @@
+[
+    {
+        "Date/Time": "2026-06-01 00:34:12",
+        "Score": "1 / 3",
+        "Percentage (%)": "33.33%",
+        "Duration": "4m 48s (Timeout)"
+    },
+    {
+        "Date/Time": "2026-06-01 00:35:28",
+        "Score": "5 / 5",
+        "Percentage (%)": "100.00%",
+        "Duration": "1m 5s"
+    },
+    {
+        "Date/Time": "2026-06-01 00:40:10",
+        "Score": "3 / 3",
+        "Percentage (%)": "100.00%",
+        "Duration": "0m 44s"
+    },
+    {
+        "Date/Time": "2026-06-01 12:46:09",
+        "Score": "5 / 5",
+        "Percentage (%)": "100.00%",
+        "Duration": "3m 45s"
+    },
+    {
+        "exam_id": "20260601_224916",
+        "Date/Time": "2026-06-01 22:49:16",
+        "Score": "4 / 5",
+        "Percentage (%)": "80.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q2",
+                "question": "Which document officially authorizes the existence of a project and provides the project manager with authority?",
+                "options": [
+                    "A. Project Management Plan",
+                    "B. Project Charter",
+                    "C. Business Case",
+                    "D. Stakeholder Register"
+                ],
+                "correct": "B. Project Charter",
+                "explanation": "The Project Charter formally establishes the project and gives the Project Manager the organizational authority to apply resources to project activities.",
+                "source": "PMBOK® Guide 7th Edition - Chapter 2: Project Performance Domains",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "B. Project Charter"
+            },
+            {
+                "id": "Q72",
+                "question": "What is the Agile Manifesto's stance on responding to change vs. following a plan?",
+                "options": [
+                    "A. Following a plan is more important",
+                    "B. Responding to change is valued over following a plan",
+                    "C. Both are equally important",
+                    "D. Change should be avoided after planning is complete"
+                ],
+                "correct": "B. Responding to change is valued over following a plan",
+                "explanation": "One of the four values of the Agile Manifesto is: 'Responding to change over following a plan.' While planning has value, Agile teams prioritize the ability to adapt to new information and changing requirements to deliver better outcomes.",
+                "source": "Agile Manifesto (agilemanifesto.org)",
+                "certification": "CAPM",
+                "domain": "Agile Frameworks / Methodologies",
+                "user_answer": "B. Responding to change is valued over following a plan"
+            },
+            {
+                "id": "Q5",
+                "question": "Your project has a Cost Performance Index (CPI) of 0.85. What does this indicate?",
+                "options": [
+                    "A. The project is under budget",
+                    "B. The project is ahead of schedule",
+                    "C. The project is over budget — getting $0.85 worth of work for every $1 spent",
+                    "D. The project will finish early"
+                ],
+                "correct": "C. The project is over budget — getting $0.85 worth of work for every $1 spent",
+                "explanation": "CPI = EV / AC. A CPI less than 1.0 means the project is over budget: for every dollar spent, only $0.85 of value is being earned. A CPI greater than 1.0 means under budget.",
+                "source": "PMBOK® Guide 7th Edition - Measurement Performance Domain",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "C. The project is over budget — getting $0.85 worth of work for every $1 spent"
+            },
+            {
+                "id": "Q90",
+                "question": "What is the difference between product scope and project scope?",
+                "options": [
+                    "A. They are the same thing",
+                    "B. Product scope describes the features of the product; project scope describes the work required to deliver it",
+                    "C. Project scope is defined by the customer; product scope by the PM",
+                    "D. Product scope applies to Agile; project scope to waterfall"
+                ],
+                "correct": "B. Product scope describes the features of the product; project scope describes the work required to deliver it",
+                "explanation": "Product scope refers to the features and functions that characterize a product or service. Project scope refers to the work that needs to be accomplished to deliver a product, service, or result with the specified features and functions.",
+                "source": "PMBOK® Guide 7th Edition - Planning Performance Domain",
+                "certification": "CAPM",
+                "domain": "Business Analysis Frameworks",
+                "user_answer": "C. Project scope is defined by the customer; product scope by the PM"
+            },
+            {
+                "id": "Q16",
+                "question": "Which of the following BEST describes a project's business case?",
+                "options": [
+                    "A. A detailed project schedule",
+                    "B. A document that justifies the project's necessity and expected benefits",
+                    "C. A list of project deliverables",
+                    "D. A risk management plan"
+                ],
+                "correct": "B. A document that justifies the project's necessity and expected benefits",
+                "explanation": "The business case provides the justification for undertaking a project. It describes the business need, expected benefits, costs, risks, and alternatives considered. It is used by decision-makers to authorize the project.",
+                "source": "PMBOK® Guide 7th Edition - Business Environment",
+                "certification": "PMP",
+                "domain": "Business Environment",
+                "user_answer": "B. A document that justifies the project's necessity and expected benefits"
+            }
+        ]
+    },
+    {
+        "exam_id": "20260601_224924",
+        "Date/Time": "2026-06-01 22:49:24",
+        "Score": "4 / 5",
+        "Percentage (%)": "80.00%",
+        "Duration": "1m",
+        "details": [
+            {
+                "id": "Q2",
+                "question": "Which document officially authorizes the existence of a project and provides the project manager with authority?",
+                "options": [
+                    "A. Project Management Plan",
+                    "B. Project Charter",
+                    "C. Business Case",
+                    "D. Stakeholder Register"
+                ],
+                "correct": "B. Project Charter",
+                "explanation": "The Project Charter formally establishes the project and gives the Project Manager the organizational authority to apply resources to project activities.",
+                "source": "PMBOK® Guide 7th Edition - Chapter 2: Project Performance Domains",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "B. Project Charter"
+            },
+            {
+                "id": "Q72",
+                "question": "What is the Agile Manifesto's stance on responding to change vs. following a plan?",
+                "options": [
+                    "A. Following a plan is more important",
+                    "B. Responding to change is valued over following a plan",
+                    "C. Both are equally important",
+                    "D. Change should be avoided after planning is complete"
+                ],
+                "correct": "B. Responding to change is valued over following a plan",
+                "explanation": "One of the four values of the Agile Manifesto is: 'Responding to change over following a plan.' While planning has value, Agile teams prioritize the ability to adapt to new information and changing requirements to deliver better outcomes.",
+                "source": "Agile Manifesto (agilemanifesto.org)",
+                "certification": "CAPM",
+                "domain": "Agile Frameworks / Methodologies",
+                "user_answer": "B. Responding to change is valued over following a plan"
+            },
+            {
+                "id": "Q5",
+                "question": "Your project has a Cost Performance Index (CPI) of 0.85. What does this indicate?",
+                "options": [
+                    "A. The project is under budget",
+                    "B. The project is ahead of schedule",
+                    "C. The project is over budget — getting $0.85 worth of work for every $1 spent",
+                    "D. The project will finish early"
+                ],
+                "correct": "C. The project is over budget — getting $0.85 worth of work for every $1 spent",
+                "explanation": "CPI = EV / AC. A CPI less than 1.0 means the project is over budget: for every dollar spent, only $0.85 of value is being earned. A CPI greater than 1.0 means under budget.",
+                "source": "PMBOK® Guide 7th Edition - Measurement Performance Domain",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "C. The project is over budget — getting $0.85 worth of work for every $1 spent"
+            },
+            {
+                "id": "Q90",
+                "question": "What is the difference between product scope and project scope?",
+                "options": [
+                    "A. They are the same thing",
+                    "B. Product scope describes the features of the product; project scope describes the work required to deliver it",
+                    "C. Project scope is defined by the customer; product scope by the PM",
+                    "D. Product scope applies to Agile; project scope to waterfall"
+                ],
+                "correct": "B. Product scope describes the features of the product; project scope describes the work required to deliver it",
+                "explanation": "Product scope refers to the features and functions that characterize a product or service. Project scope refers to the work that needs to be accomplished to deliver a product, service, or result with the specified features and functions.",
+                "source": "PMBOK® Guide 7th Edition - Planning Performance Domain",
+                "certification": "CAPM",
+                "domain": "Business Analysis Frameworks",
+                "user_answer": "C. Project scope is defined by the customer; product scope by the PM"
+            },
+            {
+                "id": "Q16",
+                "question": "Which of the following BEST describes a project's business case?",
+                "options": [
+                    "A. A detailed project schedule",
+                    "B. A document that justifies the project's necessity and expected benefits",
+                    "C. A list of project deliverables",
+                    "D. A risk management plan"
+                ],
+                "correct": "B. A document that justifies the project's necessity and expected benefits",
+                "explanation": "The business case provides the justification for undertaking a project. It describes the business need, expected benefits, costs, risks, and alternatives considered. It is used by decision-makers to authorize the project.",
+                "source": "PMBOK® Guide 7th Edition - Business Environment",
+                "certification": "PMP",
+                "domain": "Business Environment",
+                "user_answer": "B. A document that justifies the project's necessity and expected benefits"
+            }
+        ]
+    },
+    {
+        "exam_id": "20260601_231031",
+        "Date/Time": "2026-06-01 23:10:31",
+        "Score": "1 / 2",
+        "Percentage (%)": "50.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q77",
+                "question": "In Kanban, what is the purpose of a WIP (Work-In-Progress) limit?",
+                "options": [
+                    "A. To limit the number of team members on the project",
+                    "B. To cap the budget spent on each task",
+                    "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
+                    "D. To set the maximum number of sprints in a release"
+                ],
+                "correct": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
+                "explanation": "WIP limits in Kanban restrict the maximum number of items in progress at any given stage. This prevents overloading team members, exposes bottlenecks, improves flow efficiency, and reduces cycle time by encouraging finishing work before starting new tasks.",
+                "source": "PMI Agile Practice Guide - Kanban",
+                "certification": "CAPM",
+                "domain": "Agile Frameworks / Methodologies",
+                "user_answer": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks"
+            },
+            {
+                "id": "Q100",
+                "question": "Which process identifies who needs what information, when they need it, and in what format?",
+                "options": [
+                    "A. Manage Stakeholder Engagement",
+                    "B. Plan Communications Management",
+                    "C. Monitor Communications",
+                    "D. Identify Stakeholders"
+                ],
+                "correct": "B. Plan Communications Management",
+                "explanation": "Plan Communications Management is the process of developing an appropriate approach and plan for project communications based on stakeholder needs. It determines who gets what information, how, when, and in what format.",
+                "source": "PMBOK® Guide 7th Edition - Stakeholder Performance Domain",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "A. Manage Stakeholder Engagement"
+            }
+        ]
+    },
+    {
+        "exam_id": "20260601_231034",
+        "Date/Time": "2026-06-01 23:10:34",
+        "Score": "1 / 2",
+        "Percentage (%)": "50.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q77",
+                "question": "In Kanban, what is the purpose of a WIP (Work-In-Progress) limit?",
+                "options": [
+                    "A. To limit the number of team members on the project",
+                    "B. To cap the budget spent on each task",
+                    "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
+                    "D. To set the maximum number of sprints in a release"
+                ],
+                "correct": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
+                "explanation": "WIP limits in Kanban restrict the maximum number of items in progress at any given stage. This prevents overloading team members, exposes bottlenecks, improves flow efficiency, and reduces cycle time by encouraging finishing work before starting new tasks.",
+                "source": "PMI Agile Practice Guide - Kanban",
+                "certification": "CAPM",
+                "domain": "Agile Frameworks / Methodologies",
+                "user_answer": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks"
+            },
+            {
+                "id": "Q100",
+                "question": "Which process identifies who needs what information, when they need it, and in what format?",
+                "options": [
+                    "A. Manage Stakeholder Engagement",
+                    "B. Plan Communications Management",
+                    "C. Monitor Communications",
+                    "D. Identify Stakeholders"
+                ],
+                "correct": "B. Plan Communications Management",
+                "explanation": "Plan Communications Management is the process of developing an appropriate approach and plan for project communications based on stakeholder needs. It determines who gets what information, how, when, and in what format.",
+                "source": "PMBOK® Guide 7th Edition - Stakeholder Performance Domain",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "A. Manage Stakeholder Engagement"
+            }
+        ]
+    }
+]

@@ -1,0 +1,1485 @@
+[
+  {
+    "id": "PMP-P-T1",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 1,
+    "task": "Manage conflict",
+    "enablers": [
+      "Interpret the source and stage of the conflict",
+      "Analyze the context for the conflict",
+      "Evaluate/recommend/reconcile the appropriate conflict resolution solution"
+    ],
+    "summary": "Project managers must identify the root cause and stage of conflicts (e.g., interpersonal, technical, resource-based) and apply the most suitable resolution technique. PMI's preferred approach is Collaborating/Problem Solving (win-win), though other techniques (Smoothing, Compromising, Forcing, Withdrawing) may be appropriate by context.",
+    "key_concepts": [
+      "Conflict resolution techniques: Collaborating, Smoothing, Compromising, Forcing, Withdrawing",
+      "Sources of conflict: schedules, resources, technical opinions, priorities, cost, personality",
+      "Conflict stages: Latent, Perceived, Felt, Manifest, Aftermath",
+      "Win-win vs win-lose outcomes",
+      "Conflict as natural in project teams — not inherently negative"
+    ],
+    "related_tools": ["Team charter", "Ground rules", "Direct communication", "RACI matrix"],
+    "approach": "both",
+    "exam_tips": "PMI almost always prefers Collaborating/Problem Solving (confronting) as the BEST conflict resolution technique. Withdrawing is generally the least effective. Forcing may be appropriate in emergencies but damages relationships.",
+    "related_question_ids": ["Q4", "Q30"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 1"
+  },
+  {
+    "id": "PMP-P-T2",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 2,
+    "task": "Lead a team",
+    "enablers": [
+      "Set a clear vision and mission",
+      "Support the team's varied experiences and perceptions",
+      "Value servant leadership",
+      "Determine an appropriate leadership style (directive, collaborative)",
+      "Inspire, motivate, and influence team members/stakeholders",
+      "Analyze team members and stakeholders' influence",
+      "Distinguish various options to lead various team members and stakeholders"
+    ],
+    "summary": "Effective leadership requires adapting style to the situation and team maturity. PMI emphasizes servant leadership — where the leader exists to serve the team's needs — as the preferred style in Agile and hybrid environments. Leadership style should be situational: directive for new teams, delegating for high-performers.",
+    "key_concepts": [
+      "Servant leadership: prioritizing team needs, removing impediments",
+      "Situational leadership: adapting style to team experience and task complexity",
+      "Leadership vs management: leadership = doing the right things; management = doing things right",
+      "Tuckman's team development stages: Forming, Storming, Norming, Performing, Adjourning",
+      "Social contract and team charter",
+      "Intrinsic vs extrinsic motivation"
+    ],
+    "related_tools": ["Team charter", "Social contract", "Reward system", "Leadership style matrix"],
+    "approach": "both",
+    "exam_tips": "For Agile and hybrid projects, servant leadership is the preferred style. For predictive projects with clear deliverables, a more directive style may be appropriate. The exam tests situational judgment — match the leadership style to the scenario context.",
+    "related_question_ids": ["Q7", "Q18", "Q55", "Q109"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 2"
+  },
+  {
+    "id": "PMP-P-T3",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 3,
+    "task": "Support team performance",
+    "enablers": [
+      "Appraise team member performance against key performance indicators",
+      "Support and recognize team member growth and development",
+      "Determine appropriate feedback approach",
+      "Verify performance improvements"
+    ],
+    "summary": "Supporting performance means establishing clear KPIs, providing timely and constructive feedback, recognizing achievements, and facilitating continuous improvement. Performance issues should be addressed proactively and collaboratively, not punitively.",
+    "key_concepts": [
+      "Key Performance Indicators (KPIs) for team members",
+      "Feedback models: SBI (Situation-Behavior-Impact), 360-degree feedback",
+      "Recognition and reward systems",
+      "Performance improvement plans",
+      "McGregor's Theory X and Theory Y",
+      "Herzberg's Two-Factor Theory: hygiene factors vs motivators"
+    ],
+    "related_tools": ["Performance appraisals", "Team meetings", "Recognition programs", "Feedback sessions"],
+    "approach": "both",
+    "exam_tips": "Motivation theories are frequently tested. Herzberg: hygiene factors prevent dissatisfaction but don't motivate; motivators (achievement, recognition, growth) drive motivation. McGregor Theory X = people dislike work; Theory Y = people are self-motivated. PMI favors Theory Y assumptions.",
+    "related_question_ids": ["Q12", "Q26"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 3"
+  },
+  {
+    "id": "PMP-P-T4",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 4,
+    "task": "Empower team members and stakeholders",
+    "enablers": [
+      "Organize around team strengths",
+      "Support team task accountability",
+      "Evaluate demonstration of task accountability",
+      "Determine and bestow level(s) of decision-making authority"
+    ],
+    "summary": "Empowerment means delegating appropriate decision-making authority to team members, building on individual strengths, and fostering ownership and accountability. In Agile, self-organizing teams are empowered to determine how to accomplish the work within the sprint.",
+    "key_concepts": [
+      "Delegation: assigning authority along with responsibility",
+      "Self-organizing teams in Agile",
+      "Decision-making authority levels",
+      "Accountability vs responsibility",
+      "Strengths-based team organization",
+      "RACI: Responsible vs Accountable distinction"
+    ],
+    "related_tools": ["RACI matrix", "Decision log", "Delegation matrix", "Team charter"],
+    "approach": "both",
+    "exam_tips": "Empowerment is a key Agile principle. The PM/Scrum Master empowers the team to self-organize and make decisions about HOW the work is done, while the Product Owner decides WHAT is built. The PM retains accountability for the overall project outcome.",
+    "related_question_ids": ["Q34"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 4"
+  },
+  {
+    "id": "PMP-P-T5",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 5,
+    "task": "Ensure team members/stakeholders are adequately trained",
+    "enablers": [
+      "Determine required competencies and elements of training",
+      "Determine training options based on training needs",
+      "Allocate resources for training",
+      "Measure training outcomes"
+    ],
+    "summary": "The PM must proactively identify skill gaps and arrange appropriate training before they impact the project. Training is an investment in team capability and risk mitigation. Outcomes should be measured to confirm competency gains.",
+    "key_concepts": [
+      "Training needs analysis",
+      "Competency frameworks",
+      "On-the-job training vs formal training",
+      "Knowledge transfer planning",
+      "Skill gap analysis"
+    ],
+    "related_tools": ["Resource management plan", "Training plan", "Competency assessments"],
+    "approach": "both",
+    "exam_tips": "If a team member lacks a skill required for the project, the PM's first action is usually to arrange training — not to replace them. The PM is responsible for ensuring the team has the skills needed to deliver.",
+    "related_question_ids": ["Q117"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 5"
+  },
+  {
+    "id": "PMP-P-T6",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 6,
+    "task": "Build a team",
+    "enablers": [
+      "Appraise stakeholder skills",
+      "Deduce project resource requirements",
+      "Continuously assess and refresh team skills to meet project needs",
+      "Maintain team and knowledge transfer"
+    ],
+    "summary": "Team building involves identifying needed competencies, acquiring the right people, and continuously developing team cohesion and skills. It covers the full arc from team formation through knowledge preservation and handover.",
+    "key_concepts": [
+      "Tuckman's stages: Forming, Storming, Norming, Performing, Adjourning",
+      "Resource acquisition: internal vs external",
+      "Virtual team challenges",
+      "Team building activities",
+      "Knowledge retention and transfer",
+      "Colocation vs distributed teams"
+    ],
+    "related_tools": ["Resource management plan", "Team charter", "Responsibility Assignment Matrix", "Knowledge base"],
+    "approach": "both",
+    "exam_tips": "Team building is ongoing throughout the project, not a one-time event. In Storming, conflict is normal — the PM should facilitate resolution rather than suppress it. High-performing teams (Performing stage) should be given more autonomy.",
+    "related_question_ids": ["Q18", "Q112"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 6"
+  },
+  {
+    "id": "PMP-P-T7",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 7,
+    "task": "Address and remove impediments, obstacles, and blockers for the team",
+    "enablers": [
+      "Determine critical impediments, obstacles, and blockers for the team",
+      "Prioritize critical impediments, obstacles, and blockers for the team",
+      "Use network to implement solutions to remove impediments, obstacles, and blockers",
+      "Re-assess continually to ensure impediments are being addressed"
+    ],
+    "summary": "A core Agile PM/Scrum Master responsibility. Impediments are anything blocking team progress — resource shortages, unclear requirements, external dependencies, organizational politics. They must be identified, prioritized, and removed quickly to maintain flow.",
+    "key_concepts": [
+      "Scrum Master's impediment removal role",
+      "Impediment log / issue log",
+      "Escalation path and thresholds",
+      "Dependencies and blockers in Kanban",
+      "Daily Standup: surfacing impediments"
+    ],
+    "related_tools": ["Impediment log", "Daily Scrum", "Kanban board", "Escalation matrix"],
+    "approach": "agile",
+    "exam_tips": "In Agile, the Scrum Master removes impediments the team cannot resolve themselves. In predictive projects, the PM uses the issue log and escalation path. If a blocker is beyond the PM's control, escalation to the sponsor or PMO is appropriate.",
+    "related_question_ids": ["Q45", "Q85"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 7"
+  },
+  {
+    "id": "PMP-P-T8",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 8,
+    "task": "Negotiate project agreements",
+    "enablers": [
+      "Analyze the bounds of the negotiations for agreement",
+      "Assess priorities and determine ultimate objective(s)",
+      "Verify objective(s) of the project agreement is met",
+      "Participate in agreement negotiations",
+      "Determine a negotiation strategy"
+    ],
+    "summary": "PMs negotiate resources, timelines, contracts, scope, and priorities with stakeholders, sponsors, vendors, and functional managers. Effective negotiation requires preparation, understanding both parties' interests, and aiming for mutually beneficial outcomes.",
+    "key_concepts": [
+      "Negotiation strategies: win-win, win-lose, compromise",
+      "BATNA (Best Alternative to a Negotiated Agreement)",
+      "Interest-based vs position-based negotiation",
+      "Contract types and negotiation (FFP, CPFF, T&M)",
+      "Resource negotiation with functional managers in matrix organizations"
+    ],
+    "related_tools": ["Contract", "Memorandum of Understanding (MOU)", "Agreements log"],
+    "approach": "both",
+    "exam_tips": "PMI prefers win-win negotiation outcomes. In a matrix organization, the PM must negotiate with functional managers for resources. BATNA helps a negotiator know when to walk away. Always document negotiated agreements.",
+    "related_question_ids": [],
+    "source": "PMP ECO January 2021 — Domain I People, Task 8"
+  },
+  {
+    "id": "PMP-P-T9",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 9,
+    "task": "Collaborate with stakeholders",
+    "enablers": [
+      "Evaluate engagement needs for stakeholders",
+      "Optimize alignment between stakeholder needs, expectations, and project objectives",
+      "Build trust and influence stakeholders to accomplish project objectives"
+    ],
+    "summary": "Stakeholder collaboration goes beyond communication — it means actively engaging stakeholders, building trust, managing expectations, and aligning interests with project goals. Stakeholders with high influence need careful ongoing engagement.",
+    "key_concepts": [
+      "Stakeholder engagement levels: Unaware, Resistant, Neutral, Supportive, Leading",
+      "Power/Interest Grid",
+      "Stakeholder engagement plan",
+      "Trust-building strategies",
+      "Influence without authority"
+    ],
+    "related_tools": ["Stakeholder register", "Stakeholder engagement assessment matrix", "Communications management plan"],
+    "approach": "both",
+    "exam_tips": "The Stakeholder Engagement Assessment Matrix maps current vs desired engagement. The goal is to move stakeholders from Resistant/Neutral to Supportive/Leading. A resistant high-power stakeholder is a major risk and needs a proactive engagement strategy.",
+    "related_question_ids": ["Q14", "Q39"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 9"
+  },
+  {
+    "id": "PMP-P-T10",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 10,
+    "task": "Build shared understanding",
+    "enablers": [
+      "Break down situation to identify the root cause of a misunderstanding",
+      "Survey all necessary parties to reach consensus",
+      "Support outcome of parties' agreement",
+      "Investigate potential misunderstandings"
+    ],
+    "summary": "Misunderstandings between stakeholders, team members, or sponsors can derail a project. The PM must identify the root cause, facilitate dialogue, and ensure all parties reach a genuine shared understanding — not just surface agreement.",
+    "key_concepts": [
+      "Active listening techniques",
+      "Root cause analysis for misunderstandings",
+      "Consensus-building techniques",
+      "Communication channels formula: n(n-1)/2",
+      "Cultural and language barriers"
+    ],
+    "related_tools": ["Kick-off meetings", "Requirements workshops", "Facilitation techniques", "Mind mapping"],
+    "approach": "both",
+    "exam_tips": "The number of communication channels grows exponentially with team size: n(n-1)/2 channels. A team of 5 has 10 channels; a team of 10 has 45. This is why large teams need structured communication plans. Misunderstandings often stem from unstated assumptions.",
+    "related_question_ids": [],
+    "source": "PMP ECO January 2021 — Domain I People, Task 10"
+  },
+  {
+    "id": "PMP-P-T11",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 11,
+    "task": "Engage and support virtual teams",
+    "enablers": [
+      "Examine virtual team member needs (environment, geography, culture, global)",
+      "Investigate alternatives for virtual team member engagement",
+      "Implement options for virtual team member engagement",
+      "Continually evaluate effectiveness of virtual team member engagement"
+    ],
+    "summary": "Virtual teams face unique challenges: time zone differences, cultural diversity, communication barriers, and reduced social cohesion. PMs must proactively design engagement strategies, choose appropriate collaboration tools, and ensure no team member is isolated.",
+    "key_concepts": [
+      "Virtual team challenges: isolation, communication lag, cultural differences",
+      "Collaboration tools: video conferencing, chat, shared workspaces",
+      "Time zone management and rotating meeting schedules",
+      "Building trust in virtual environments",
+      "Cultural intelligence (CQ)"
+    ],
+    "related_tools": ["Video conferencing", "Shared project management platforms", "Team agreements", "Async communication tools"],
+    "approach": "both",
+    "exam_tips": "For virtual teams, direct and frequent communication is even more important than for co-located teams. The PM should establish team norms early (response time expectations, meeting schedules) and use technology to replicate the benefits of co-location.",
+    "related_question_ids": ["Q32", "Q46"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 11"
+  },
+  {
+    "id": "PMP-P-T12",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 12,
+    "task": "Define team ground rules",
+    "enablers": [
+      "Communicate organizational principles with team and external stakeholders",
+      "Establish an environment that fosters adherence to the ground rules",
+      "Manage and rectify ground rule violations"
+    ],
+    "summary": "Ground rules are explicit agreements about team behavior, communication, and working practices. They reduce ambiguity and conflict by establishing shared expectations from the start. Ground rule violations must be addressed promptly to maintain team culture.",
+    "key_concepts": [
+      "Team charter components: values, norms, communication protocols",
+      "Working agreements in Agile",
+      "Definition of Ready and Definition of Done as team agreements",
+      "Ground rule enforcement — consistent and fair",
+      "Psychological safety as a precondition"
+    ],
+    "related_tools": ["Team charter", "Working agreements", "Team retrospectives"],
+    "approach": "both",
+    "exam_tips": "Ground rules are established at the START of the project, not reactively after problems arise. In Agile, working agreements serve the same purpose. Ground rules apply to everyone equally — including senior team members.",
+    "related_question_ids": ["Q120"],
+    "source": "PMP ECO January 2021 — Domain I People, Task 12"
+  },
+  {
+    "id": "PMP-P-T13",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 13,
+    "task": "Mentor relevant stakeholders",
+    "enablers": [
+      "Allocate the time to mentoring",
+      "Recognize and act on mentoring opportunities"
+    ],
+    "summary": "Mentoring is the deliberate knowledge-sharing and guidance provided by experienced practitioners to help others develop. PMs mentor team members and stakeholders in project management practices, technical skills, and professional development.",
+    "key_concepts": [
+      "Mentoring vs coaching: mentoring = sharing experience; coaching = facilitating self-discovery",
+      "Knowledge transfer through mentoring",
+      "Formal vs informal mentoring",
+      "Succession planning"
+    ],
+    "related_tools": ["One-on-one sessions", "Peer learning", "Knowledge base", "Lessons learned"],
+    "approach": "both",
+    "exam_tips": "Mentoring and coaching are different: mentors share expertise and advice (directive); coaches ask questions to help the mentee find their own solutions (non-directive). The PMI exam may test this distinction.",
+    "related_question_ids": [],
+    "source": "PMP ECO January 2021 — Domain I People, Task 13"
+  },
+  {
+    "id": "PMP-P-T14",
+    "certification": "PMP",
+    "domain": "People",
+    "domain_weight": "42%",
+    "task_number": 14,
+    "task": "Promote team performance through the application of emotional intelligence",
+    "enablers": [
+      "Assess behavior through the use of personality indicators",
+      "Analyze personality indicators and adjust to the emotional needs of key project stakeholders"
+    ],
+    "summary": "Emotional Intelligence (EQ) is the ability to recognize, understand, and manage one's own emotions and those of others. High EQ enables better conflict resolution, stakeholder management, and team motivation. Personality assessments help PMs adapt their communication style.",
+    "key_concepts": [
+      "EQ components: Self-awareness, Self-regulation, Motivation, Empathy, Social skills (Goleman)",
+      "Personality indicators: MBTI, DISC",
+      "Empathy in leadership",
+      "Adapting communication style to individual preferences",
+      "Emotional triggers and de-escalation"
+    ],
+    "related_tools": ["MBTI assessment", "DISC profile", "360-degree feedback", "Emotional check-ins"],
+    "approach": "both",
+    "exam_tips": "EQ is increasingly tested in the PMP exam. A PM with high EQ notices when a team member is struggling and addresses it proactively. Empathy — understanding others' perspectives — is a core EQ competency that improves stakeholder relationships.",
+    "related_question_ids": [],
+    "source": "PMP ECO January 2021 — Domain I People, Task 14"
+  },
+  {
+    "id": "PMP-PR-T1",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 1,
+    "task": "Execute project with the urgency required to deliver business value",
+    "enablers": [
+      "Assess opportunities to deliver value incrementally",
+      "Examine the business value throughout the project",
+      "Support the team to subdivide project tasks to find the minimum viable product"
+    ],
+    "summary": "Projects must deliver value continuously, not just at the end. This task reflects Agile thinking: release early, release often, and ensure every sprint delivers working product. In predictive projects, interim milestones and phased delivery serve the same purpose.",
+    "key_concepts": [
+      "Minimum Viable Product (MVP)",
+      "Incremental delivery and continuous value",
+      "Value delivery spectrum (predictive to adaptive)",
+      "Business value assessment throughout the lifecycle",
+      "Prioritization by business value (MoSCoW, Kano, weighted scoring)"
+    ],
+    "related_tools": ["Product backlog", "Release plan", "Roadmap", "Value stream mapping"],
+    "approach": "both",
+    "exam_tips": "The PMP exam heavily tests Agile/hybrid thinking. When asked about delivering value, think incrementally. 'What should the team do first?' answers often favor delivering the highest-value feature earliest (not the easiest or most complete).",
+    "related_question_ids": ["Q15", "Q40"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 1"
+  },
+  {
+    "id": "PMP-PR-T2",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 2,
+    "task": "Manage communications",
+    "enablers": [
+      "Analyze communication needs of all stakeholders",
+      "Determine communication methods, channels, frequency, and level of detail",
+      "Communicate project information and updates effectively",
+      "Confirm communication is understood and feedback is received"
+    ],
+    "summary": "Effective communication is the PM's most critical skill — PMI estimates 90% of a PM's time is spent communicating. The Communications Management Plan defines who gets what information, when, how, and in what format. Communication must be two-way, confirmed, and culturally appropriate.",
+    "key_concepts": [
+      "Communication channels formula: n(n-1)/2",
+      "Push vs pull vs interactive communication",
+      "Formal vs informal communication",
+      "Communication blockers: noise, filters, cultural differences",
+      "Active listening",
+      "Status reports, dashboards, project meetings"
+    ],
+    "related_tools": ["Communications management plan", "Status reports", "Dashboards", "Meeting minutes", "Project kickoff"],
+    "approach": "both",
+    "exam_tips": "PMI's formula for communication channels: n(n-1)/2 where n = number of stakeholders. If a stakeholder is added, the number of channels increases significantly. The PM should tailor communication style and content to each stakeholder's needs and preferences.",
+    "related_question_ids": ["Q80"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 2"
+  },
+  {
+    "id": "PMP-PR-T3",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 3,
+    "task": "Assess and manage risks",
+    "enablers": [
+      "Determine risk management options",
+      "Iteratively assess and prioritize risks"
+    ],
+    "summary": "Risk management is a continuous process throughout the project lifecycle. Risks are uncertain events that may impact objectives positively (opportunities) or negatively (threats). They must be identified, analyzed (qualitatively and quantitatively), and responded to proactively.",
+    "key_concepts": [
+      "Risk identification techniques: brainstorming, interviews, SWOT, checklist",
+      "Qualitative analysis: Probability/Impact matrix",
+      "Quantitative analysis: EMV, Monte Carlo simulation, Decision trees",
+      "Threat responses: Avoid, Transfer, Mitigate, Accept",
+      "Opportunity responses: Exploit, Share, Enhance, Accept",
+      "Risk owner and risk triggers",
+      "Residual risks and secondary risks",
+      "Contingency reserves vs management reserves"
+    ],
+    "related_tools": ["Risk register", "Risk breakdown structure (RBS)", "Probability/impact matrix", "Monte Carlo simulation", "Decision tree"],
+    "approach": "both",
+    "exam_tips": "Risks are uncertain FUTURE events; issues have already occurred. EMV = Probability × Impact. Contingency reserves cover known risks (in cost baseline); management reserves cover unknown risks (outside cost baseline, approved by sponsor).",
+    "related_question_ids": ["Q8", "Q19", "Q49", "Q51", "Q89", "Q112"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 3"
+  },
+  {
+    "id": "PMP-PR-T4",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 4,
+    "task": "Engage stakeholders",
+    "enablers": [
+      "Analyze stakeholders (power interest grid, influence, impact)",
+      "Categorize stakeholders",
+      "Engage stakeholders by category",
+      "Develop, execute, and validate a strategy for stakeholder engagement"
+    ],
+    "summary": "Stakeholder engagement is more active than communication — it involves understanding interests, building coalitions, managing resistance, and continuously adjusting the engagement strategy. Stakeholder identification should begin at project initiation and continue throughout.",
+    "key_concepts": [
+      "Power/Interest Grid: Keep Satisfied, Manage Closely, Monitor, Keep Informed",
+      "Stakeholder salience model: Power, Legitimacy, Urgency",
+      "Engagement levels: Unaware, Resistant, Neutral, Supportive, Leading",
+      "Stakeholder engagement assessment matrix",
+      "Identifying hidden stakeholders"
+    ],
+    "related_tools": ["Stakeholder register", "Stakeholder engagement assessment matrix", "Power/interest grid", "Salience model"],
+    "approach": "both",
+    "exam_tips": "High Power + High Interest = Manage Closely. High Power + Low Interest = Keep Satisfied. Low Power + High Interest = Keep Informed. Low Power + Low Interest = Monitor. A resistant high-power stakeholder is a critical risk that needs an immediate engagement strategy.",
+    "related_question_ids": ["Q14", "Q39", "Q53"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 4"
+  },
+  {
+    "id": "PMP-PR-T5",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 5,
+    "task": "Plan and manage budget and resources",
+    "enablers": [
+      "Estimate budgetary needs based on the scope of the project and lessons learned",
+      "Anticipate future budget challenges",
+      "Monitor budget variations and work with governance process to adjust",
+      "Plan and manage resources"
+    ],
+    "summary": "Budget planning involves estimating costs using bottom-up, analogous, or parametric techniques, then developing a cost baseline for performance measurement. Earned Value Management (EVM) provides the key metrics (CPI, SPI, EAC, ETC) to monitor and control budget performance.",
+    "key_concepts": [
+      "Estimating techniques: Analogous, Parametric, Bottom-Up, Three-Point (PERT)",
+      "Cost baseline vs project budget (includes management reserves)",
+      "Earned Value Management: PV, EV, AC, BAC, EAC, ETC, TCPI",
+      "CPI = EV/AC; SPI = EV/PV",
+      "Cost variance (CV) = EV - AC; Schedule variance (SV) = EV - PV",
+      "EAC formulas: EAC = BAC/CPI (most common); EAC = AC + (BAC-EV)",
+      "Funding limit reconciliation"
+    ],
+    "related_tools": ["Cost baseline", "Budget at completion (BAC)", "EVM metrics", "Cost management plan", "Resource calendar"],
+    "approach": "predictive",
+    "exam_tips": "CPI > 1 = under budget; CPI < 1 = over budget. SPI > 1 = ahead of schedule; SPI < 1 = behind schedule. The most common EAC formula when current CPI is expected to continue: EAC = BAC / CPI. TCPI = (BAC - EV) / (BAC - AC).",
+    "related_question_ids": ["Q5", "Q11", "Q31", "Q56", "Q91", "Q101", "Q110", "Q118"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 5"
+  },
+  {
+    "id": "PMP-PR-T6",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 6,
+    "task": "Plan and manage schedule",
+    "enablers": [
+      "Estimate project tasks (milestones, dependencies, story points)",
+      "Utilize benchmarks and historical data",
+      "Prepare schedule based on methodology",
+      "Measure ongoing progress based on methodology",
+      "Modify schedule, as needed, based on methodology",
+      "Coordinate with other projects and other operations"
+    ],
+    "summary": "Schedule management covers estimating activity durations, sequencing activities, identifying the critical path, and controlling schedule performance. In Agile, velocity and burndown charts replace the Gantt chart for tracking progress.",
+    "key_concepts": [
+      "Critical Path Method (CPM): longest path, zero float",
+      "Float/Slack: free float vs total float",
+      "Schedule compression: Fast Tracking vs Crashing",
+      "Dependency types: FS, SS, FF, SF",
+      "Schedule baseline",
+      "Gantt chart for predictive; Burndown chart for Agile",
+      "Velocity and story points in Agile",
+      "Leads and lags"
+    ],
+    "related_tools": ["Gantt chart", "Network diagram", "Critical path analysis", "Burndown chart", "Velocity chart", "Schedule management plan"],
+    "approach": "both",
+    "exam_tips": "Fast Tracking = overlapping activities (adds risk, no cost increase). Crashing = adding resources (adds cost, reduces risk). Critical path has ZERO float. Activities off the critical path have positive float. Free float = delay without affecting successors; total float = delay without affecting project end.",
+    "related_question_ids": ["Q25", "Q33", "Q41", "Q47", "Q53", "Q81", "Q106", "Q113"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 6"
+  },
+  {
+    "id": "PMP-PR-T7",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 7,
+    "task": "Plan and manage quality of products/deliverables",
+    "enablers": [
+      "Determine quality standard required for project deliverables",
+      "Recommend options for improvement based on quality gaps",
+      "Continually survey project deliverable quality"
+    ],
+    "summary": "Quality must be planned, not inspected in. Quality assurance (QA) is proactive — auditing processes to prevent defects. Quality control (QC) is reactive — inspecting outputs to find defects. PMI emphasizes the cost of quality: prevention costs < appraisal costs < failure costs.",
+    "key_concepts": [
+      "Quality Assurance (QA) vs Quality Control (QC)",
+      "Cost of Quality: Prevention, Appraisal, Internal failure, External failure",
+      "Seven basic quality tools: Ishikawa, Pareto, Control chart, Histogram, Scatter diagram, Flowchart, Checklist",
+      "Acceptance criteria and Definition of Done",
+      "Continuous improvement: Kaizen, PDCA cycle",
+      "Gold plating vs scope creep",
+      "Fitness for use vs conformance to requirements"
+    ],
+    "related_tools": ["Quality management plan", "Ishikawa (Fishbone) diagram", "Pareto chart", "Control charts", "Test plans", "Checklists"],
+    "approach": "both",
+    "exam_tips": "Gold plating (adding unauthorized extras) is bad practice — it consumes resources and may not meet customer needs. QA is process-focused (prevent); QC is product-focused (find/fix). The Pareto Principle: 80% of problems come from 20% of causes.",
+    "related_question_ids": ["Q27", "Q42", "Q70", "Q82", "Q92", "Q104"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 7"
+  },
+  {
+    "id": "PMP-PR-T8",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 8,
+    "task": "Plan and manage scope",
+    "enablers": [
+      "Determine and prioritize requirements",
+      "Break down scope (WBS, backlog)",
+      "Monitor and validate scope"
+    ],
+    "summary": "Scope management ensures the project includes all the work required — and only that work — to deliver the intended product. In predictive projects, scope is fixed via WBS and scope baseline. In Agile, scope is managed through the product backlog, with scope emerging over time.",
+    "key_concepts": [
+      "Scope baseline: Scope statement + WBS + WBS Dictionary",
+      "Work Breakdown Structure (WBS): 100% rule, work packages",
+      "Product scope vs project scope",
+      "Validate Scope: formal acceptance of deliverables by stakeholders",
+      "Control Scope: monitoring for scope changes",
+      "Scope creep vs gold plating",
+      "Product backlog in Agile",
+      "Requirements documentation and traceability"
+    ],
+    "related_tools": ["WBS", "Scope statement", "Requirements documentation", "Product backlog", "Requirements traceability matrix"],
+    "approach": "both",
+    "exam_tips": "WBS contains deliverables, not activities. The lowest level of WBS is the work package. Validate Scope = customer acceptance; Control Quality = internal inspection. Scope baseline consists of scope statement + WBS + WBS Dictionary. Scope creep is uncontrolled change; gold plating is PM/team adding unrequested extras.",
+    "related_question_ids": ["Q17", "Q47", "Q68", "Q87", "Q90"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 8"
+  },
+  {
+    "id": "PMP-PR-T9",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 9,
+    "task": "Integrate project planning activities",
+    "enablers": [
+      "Consolidate the project/phase plans",
+      "Assess consolidated project plans for dependencies, gaps, and continued business value",
+      "Analyze the data collected",
+      "Collect and analyze data to make informed project decisions",
+      "Determine critical information requirements"
+    ],
+    "summary": "Integration management coordinates all project management knowledge areas into a coherent whole. The Project Management Plan integrates all subsidiary plans. Changes to one area (scope, cost, schedule) must be evaluated for impact on all others through integrated change control.",
+    "key_concepts": [
+      "Project Management Plan and subsidiary plans",
+      "Project Charter as the authorizing document",
+      "Perform Integrated Change Control",
+      "Change Control Board (CCB)",
+      "Configuration management system",
+      "Project information system (PMIS)",
+      "Lessons learned throughout lifecycle"
+    ],
+    "related_tools": ["Project management plan", "Project charter", "Change request", "Change control board", "PMIS"],
+    "approach": "both",
+    "exam_tips": "The Project Management Plan is developed progressively and approved by the sponsor. All changes to baselines must go through Perform Integrated Change Control — the PM cannot approve all changes alone. Configuration management tracks versions of all project artifacts.",
+    "related_question_ids": ["Q2", "Q6", "Q35", "Q96", "Q111"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 9"
+  },
+  {
+    "id": "PMP-PR-T10",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 10,
+    "task": "Manage project changes",
+    "enablers": [
+      "Anticipate and embrace the need for change (follow change management practices)",
+      "Determine strategy to handle change",
+      "Execute change management strategy according to the methodology",
+      "Determine a change response to move the project forward"
+    ],
+    "summary": "Change is inevitable in all projects. In predictive projects, change is controlled through formal change requests and CCB approval. In Agile, change is welcomed — the product backlog is continuously refined and prioritized. The PM must balance flexibility with control.",
+    "key_concepts": [
+      "Change request process: initiate → assess impact → CCB approval → implement → update documents",
+      "Types of change requests: corrective action, preventive action, defect repair",
+      "Change control board (CCB)",
+      "Configuration management",
+      "Agile: change through backlog refinement",
+      "Cost of change curve: earlier changes are cheaper"
+    ],
+    "related_tools": ["Change request form", "Change log", "Change control board", "Product backlog"],
+    "approach": "both",
+    "exam_tips": "NEVER implement a change before it's approved (even if the sponsor verbally agrees — get it in writing and through the formal process). In Agile, changes are welcomed and handled through backlog refinement, not formal change requests. The cost of change increases exponentially as the project progresses.",
+    "related_question_ids": ["Q6", "Q47", "Q111", "Q119"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 10"
+  },
+  {
+    "id": "PMP-PR-T11",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 11,
+    "task": "Plan and manage procurement",
+    "enablers": [
+      "Define resource requirements and needs",
+      "Communicate resource requirements",
+      "Manage suppliers/contracts",
+      "Plan and manage procurement strategy",
+      "Develop a delivery solution"
+    ],
+    "summary": "Procurement management covers make-or-buy decisions, contract selection, vendor management, and contract closure. Contract type determines who bears cost risk: Fixed Price (seller bears risk), Cost Plus (buyer bears risk), Time & Material (shared/hybrid).",
+    "key_concepts": [
+      "Contract types: FFP (Firm Fixed Price), FP-EPA, CPFF, CPIF, CPAF, T&M",
+      "Make-or-buy analysis",
+      "Procurement documents: RFP, IFB, RFQ",
+      "Source selection criteria",
+      "Contract administration",
+      "Contract closure"
+    ],
+    "related_tools": ["Procurement management plan", "Contract", "RFP/RFQ/IFB", "Source selection matrix", "Procurement audit"],
+    "approach": "predictive",
+    "exam_tips": "FFP = lowest risk for buyer, highest for seller. Cost Plus = highest risk for buyer, lowest for seller. T&M is used for small efforts or when scope is unclear. Incentive contracts (FPIF, CPIF) share risk and reward. Always close contracts formally, even when terminated early.",
+    "related_question_ids": [],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 11"
+  },
+  {
+    "id": "PMP-PR-T12",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 12,
+    "task": "Manage project artifacts",
+    "enablers": [
+      "Determine requirements for managing project artifacts (what, when, where, who)",
+      "Validate that project information is kept up to date (version control) and accessible",
+      "Continually assess the effectiveness of the management of project artifacts"
+    ],
+    "summary": "Project artifacts include plans, baselines, reports, registers, and deliverables. They must be version-controlled, stored accessibly, and kept current. Configuration management ensures all stakeholders work with the correct version of every artifact.",
+    "key_concepts": [
+      "Version control systems",
+      "Configuration management system",
+      "Document management",
+      "Artifact types: plans, registers, reports, baselines, deliverables",
+      "Information radiators in Agile (big visible charts, Kanban board)"
+    ],
+    "related_tools": ["Configuration management system", "Document repository", "Version control tools", "PMIS"],
+    "approach": "both",
+    "exam_tips": "All project artifacts must have version control. Outdated documents lead to rework and miscommunication. In Agile, information radiators (Kanban boards, burndown charts) make project status transparent to all stakeholders without formal reporting.",
+    "related_question_ids": ["Q96"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 12"
+  },
+  {
+    "id": "PMP-PR-T13",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 13,
+    "task": "Determine appropriate project methodology/methods and practices",
+    "enablers": [
+      "Assess project needs, complexity, and magnitude",
+      "Recommend project execution strategy",
+      "Recommend a project methodology/approach (predictive, agile, hybrid)",
+      "Use iterative, incremental practices throughout the project life cycle"
+    ],
+    "summary": "Selecting the right approach depends on project complexity, stakeholder involvement, requirements stability, and organizational culture. Predictive suits well-defined, stable projects. Agile suits complex, rapidly changing projects. Hybrid combines both based on work characteristics.",
+    "key_concepts": [
+      "Agile suitability factors: uncertain requirements, high complexity, rapid change, small team",
+      "Predictive suitability factors: stable requirements, regulatory constraints, low complexity",
+      "Hybrid approach: mix predictive and adaptive",
+      "Tailoring the methodology to context",
+      "Agile manifesto values and 12 principles"
+    ],
+    "related_tools": ["Agile suitability filter", "Project complexity model", "Methodology comparison", "SAFe", "Scrum", "Kanban"],
+    "approach": "both",
+    "exam_tips": "About 50% of the PMP exam is Agile/hybrid content. Key Agile vs Predictive difference: Agile welcomes change at any point; Predictive controls change formally. Tailoring means adapting the methodology to the specific project context — there is no one-size-fits-all approach.",
+    "related_question_ids": ["Q15", "Q40", "Q108", "Q114"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 13"
+  },
+  {
+    "id": "PMP-PR-T14",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 14,
+    "task": "Establish project governance structure",
+    "enablers": [
+      "Determine appropriate governance for a project",
+      "Define escalation paths and thresholds"
+    ],
+    "summary": "Governance defines decision-making authority, accountability, and oversight mechanisms for the project. It includes the CCB, steering committees, PMO oversight, and escalation paths. Good governance enables fast decisions while maintaining control.",
+    "key_concepts": [
+      "Project governance vs organizational governance",
+      "Steering committee and sponsor roles",
+      "PMO types: Supportive, Controlling, Directive",
+      "Escalation thresholds",
+      "Decision rights matrix",
+      "Organizational structures and PM authority (Functional, Matrix, Projectized)"
+    ],
+    "related_tools": ["Change Control Board", "Governance framework", "Escalation matrix", "RACI"],
+    "approach": "both",
+    "exam_tips": "In a Functional organization, the PM has least authority. In a Projectized organization, the PM has most authority. Matrix organizations are in between (Weak/Balanced/Strong). The PMO provides governance, standards, and oversight — not day-to-day project management.",
+    "related_question_ids": ["Q10", "Q37"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 14"
+  },
+  {
+    "id": "PMP-PR-T15",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 15,
+    "task": "Manage project issues",
+    "enablers": [
+      "Recognize when a risk becomes an issue",
+      "Attack the issue with the optimal action to achieve project success",
+      "Collaborate with relevant stakeholders on the approach to resolve the issues"
+    ],
+    "summary": "Issues are risks that have materialized — they are current problems requiring immediate resolution. The PM must distinguish issues from risks, log them in the issue log, assign owners, and resolve them collaboratively. Unresolved issues escalate to risks or blockers.",
+    "key_concepts": [
+      "Risk vs issue distinction",
+      "Issue log components: ID, description, owner, priority, status, resolution",
+      "Issue escalation process",
+      "Root cause analysis for issues",
+      "Corrective action vs workaround"
+    ],
+    "related_tools": ["Issue log", "Risk register", "Corrective action", "Escalation path"],
+    "approach": "both",
+    "exam_tips": "A risk is uncertain (future); an issue is certain (now). When a risk occurs, it becomes an issue. Workarounds are unplanned responses to issues that were not previously identified as risks. Issues should be logged and assigned to an owner immediately.",
+    "related_question_ids": ["Q73", "Q93"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 15"
+  },
+  {
+    "id": "PMP-PR-T16",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 16,
+    "task": "Ensure knowledge transfer for project continuity",
+    "enablers": [
+      "Discuss project responsibilities within team",
+      "Outline expectations for working environment",
+      "Confirm approach for knowledge transfers"
+    ],
+    "summary": "Knowledge management ensures that project knowledge is captured, shared, and preserved — both during the project and at closure. This includes tacit knowledge (know-how) and explicit knowledge (documented). Knowledge loss when a key team member leaves is a major project risk.",
+    "key_concepts": [
+      "Tacit vs explicit knowledge",
+      "Lessons learned register",
+      "Knowledge management systems",
+      "Onboarding new team members",
+      "Succession planning",
+      "Communities of practice"
+    ],
+    "related_tools": ["Lessons learned register", "Knowledge repository", "Wiki", "Onboarding documentation"],
+    "approach": "both",
+    "exam_tips": "When a key team member announces departure, the FIRST thing the PM should do is initiate knowledge transfer — not immediately hire a replacement. Lessons learned should be captured throughout the project, not just at the end.",
+    "related_question_ids": ["Q82", "Q112"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 16"
+  },
+  {
+    "id": "PMP-PR-T17",
+    "certification": "PMP",
+    "domain": "Process",
+    "domain_weight": "50%",
+    "task_number": 17,
+    "task": "Plan and manage project/phase closure or transitions",
+    "enablers": [
+      "Determine criteria to successfully close the project or phase",
+      "Validate readiness for transition",
+      "Conclude activities to close out project or phase (lessons learned, retrospective, procurement, financials, resources)"
+    ],
+    "summary": "Project closure is the formal process of completing all activities, releasing resources, archiving documents, and handing over deliverables. It includes final lessons learned, contract closure, financial reconciliation, and stakeholder sign-off. Phase closure enables go/no-go decisions.",
+    "key_concepts": [
+      "Closure activities: final report, lessons learned, resource release, contract closure, archive",
+      "Formal acceptance of deliverables",
+      "Benefits realization and handover",
+      "Project vs phase closure",
+      "Administrative closure vs contract closure",
+      "Project phase gate reviews (go/no-go)"
+    ],
+    "related_tools": ["Final project report", "Lessons learned register", "Procurement audit", "Closeout checklist"],
+    "approach": "both",
+    "exam_tips": "Proper order of closure: obtain formal acceptance → conduct lessons learned → release resources → archive documents. A project can be closed early if it's no longer viable — this is a legitimate closure, not a failure. Always close contracts formally even if terminated early.",
+    "related_question_ids": ["Q59", "Q69", "Q77", "Q89", "Q97", "Q114"],
+    "source": "PMP ECO January 2021 — Domain II Process, Task 17"
+  },
+  {
+    "id": "PMP-BE-T1",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "domain_weight": "8%",
+    "task_number": 1,
+    "task": "Plan and manage project compliance",
+    "enablers": [
+      "Confirm project compliance requirements (security, health and safety, regulatory compliance)",
+      "Classify compliance categories",
+      "Determine potential threats to compliance",
+      "Use methods to support compliance",
+      "Analyze the consequences of noncompliance",
+      "Determine necessary approach and action to address compliance needs (risk, legal)",
+      "Measure the extent to which the project is in compliance"
+    ],
+    "summary": "Compliance requirements are non-negotiable constraints that must be identified early and incorporated into the project approach. They include legal regulations, industry standards, safety requirements, and organizational policies. Non-compliance can result in legal liability, project cancellation, or reputational damage.",
+    "key_concepts": [
+      "Types of compliance: regulatory, legal, health & safety, data privacy (GDPR), financial",
+      "Compliance risk assessment",
+      "Audit trails and documentation requirements",
+      "Compliance monitoring mechanisms",
+      "PMI Code of Ethics and Professional Conduct"
+    ],
+    "related_tools": ["Compliance register", "Risk register", "Audit reports", "Regulatory checklists"],
+    "approach": "both",
+    "exam_tips": "In a regulated industry, compliance requirements must be understood BEFORE selecting the project approach. Non-compliance is not an option — it's a constraint. If a new regulation is enacted mid-project, the PM must assess impact and raise a change request.",
+    "related_question_ids": ["Q57", "Q107", "Q119"],
+    "source": "PMP ECO January 2021 — Domain III Business Environment, Task 1"
+  },
+  {
+    "id": "PMP-BE-T2",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "domain_weight": "8%",
+    "task_number": 2,
+    "task": "Evaluate and deliver project benefits and value",
+    "enablers": [
+      "Investigate that benefits are identified",
+      "Document agreement on ownership for ongoing benefit realization",
+      "Verify measurement system is in place to track benefits",
+      "Evaluate delivery options to demonstrate value",
+      "Appraise stakeholders of value gain progress"
+    ],
+    "summary": "Projects exist to deliver business value. The PM must ensure benefits are defined, measurable, and tracked — not just at project completion but throughout and beyond the project lifecycle. The benefits realization plan describes how and when benefits will be achieved.",
+    "key_concepts": [
+      "Business case and benefits",
+      "Benefits realization plan",
+      "OKRs (Objectives and Key Results) and KPIs",
+      "Net Present Value (NPV), Return on Investment (ROI), Internal Rate of Return (IRR)",
+      "Value delivery system (PMBOK 7)",
+      "Benefits owner post-project"
+    ],
+    "related_tools": ["Business case", "Benefits realization plan", "Benefits register", "Value scorecard"],
+    "approach": "both",
+    "exam_tips": "NPV: select the project with the HIGHEST positive NPV. A negative NPV project destroys value. If asked which project to choose and one has higher NPV — choose it regardless of other factors unless specifically told otherwise. The benefits realization plan extends BEYOND project closure.",
+    "related_question_ids": ["Q16", "Q20", "Q28", "Q79", "Q115"],
+    "source": "PMP ECO January 2021 — Domain III Business Environment, Task 2"
+  },
+  {
+    "id": "PMP-BE-T3",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "domain_weight": "8%",
+    "task_number": 3,
+    "task": "Evaluate and address external business environment changes for impact on scope",
+    "enablers": [
+      "Survey changes to external business environment (regulations, technology, geopolitical, market)",
+      "Assess and prioritize impact on project scope/backlog",
+      "Recommend options for scope/backlog changes (schedule, cost changes)",
+      "Continually review external business environment for impacts"
+    ],
+    "summary": "External environment changes — new regulations, market shifts, technology disruptions, or geopolitical events — can invalidate project assumptions and require scope changes. PMs must monitor the environment continuously and be ready to adapt the project or recommend termination.",
+    "key_concepts": [
+      "Enterprise Environmental Factors (EEFs) vs Organizational Process Assets (OPAs)",
+      "PESTLE analysis: Political, Economic, Social, Technological, Legal, Environmental",
+      "SWOT analysis",
+      "Assumption log review",
+      "Project termination when business case no longer valid"
+    ],
+    "related_tools": ["Assumption log", "PESTLE analysis", "Risk register", "Change request"],
+    "approach": "both",
+    "exam_tips": "EEFs are external to the PM and constrain the project (market conditions, government regulations, industry standards). OPAs are internal organizational assets (lessons learned, templates, policies). If a project no longer aligns with strategy due to external changes, the PM should escalate to the sponsor for re-evaluation.",
+    "related_question_ids": ["Q24", "Q44", "Q84", "Q119"],
+    "source": "PMP ECO January 2021 — Domain III Business Environment, Task 3"
+  },
+  {
+    "id": "PMP-BE-T4",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "domain_weight": "8%",
+    "task_number": 4,
+    "task": "Support organizational change",
+    "enablers": [
+      "Assess organizational culture",
+      "Evaluate impact of organizational change to project and determine required actions",
+      "Evaluate impact of the project to the organization and determine required actions"
+    ],
+    "summary": "Projects drive organizational change. PMs must understand the organization's culture and readiness for change, manage resistance, and ensure the project's outcomes are adopted by the organization. Change management frameworks (ADKAR, Kotter) guide this process.",
+    "key_concepts": [
+      "Organizational change management",
+      "ADKAR model: Awareness, Desire, Knowledge, Ability, Reinforcement",
+      "Kotter's 8-Step Change Model",
+      "Organizational culture and its impact on project approach",
+      "Change resistance and adoption strategies",
+      "Organizational structures: Functional, Matrix, Projectized"
+    ],
+    "related_tools": ["Change management plan", "Stakeholder engagement plan", "Organizational culture assessment", "Communication plan"],
+    "approach": "both",
+    "exam_tips": "Projects are vehicles for organizational change. The PM must consider the change impact on the organization (people, processes, systems) alongside delivering the project deliverables. Stakeholder resistance is a normal response to change — manage it proactively.",
+    "related_question_ids": ["Q10", "Q32", "Q103"],
+    "source": "PMP ECO January 2021 — Domain III Business Environment, Task 4"
+  },
+  {
+    "id": "CAPM-F-T1",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "domain_weight": "36%",
+    "task_number": 1,
+    "task": "Demonstrate an understanding of the various project life cycles and processes",
+    "enablers": [
+      "Distinguish between a project, program, and a portfolio",
+      "Distinguish between a project and operations",
+      "Distinguish between predictive and adaptive approaches",
+      "Distinguish between issues, risks, assumptions, and constraints",
+      "Review/critique project scope",
+      "Apply the project management code of ethics to scenarios",
+      "Explain how a project can be a vehicle for change"
+    ],
+    "summary": "A project is a temporary, unique endeavor. Programs group related projects for strategic benefit. Portfolios align all projects/programs with organizational strategy. Operations are ongoing. Understanding the project lifecycle — initiation, planning, execution, monitoring, closure — is foundational to all PM practice.",
+    "key_concepts": [
+      "Project: temporary, unique, creates value",
+      "Program: related projects managed together for strategic benefit",
+      "Portfolio: strategic alignment of all projects and programs",
+      "Operations: ongoing, repetitive work",
+      "Predictive (waterfall) vs adaptive (Agile) lifecycle",
+      "Risk: uncertain future event; Issue: materialized problem; Assumption: unverified fact; Constraint: limiting factor",
+      "PMI Code of Ethics: Responsibility, Respect, Fairness, Honesty"
+    ],
+    "related_tools": ["Project charter", "Project life cycle framework", "PMI Code of Ethics"],
+    "approach": "both",
+    "exam_tips": "CAPM tests foundational understanding. Key distinction: projects are TEMPORARY and UNIQUE; operations are ONGOING and REPETITIVE. Assumptions introduce risk — document them and monitor. Constraints restrict planning options (budget, time, resources). The Code of Ethics pillars: Responsibility, Respect, Fairness, Honesty.",
+    "related_question_ids": ["Q61", "Q62", "Q73", "Q92", "Q93", "Q100", "Q102", "Q106"],
+    "source": "CAPM ECO 2023 — Domain 1 Fundamentals, Task 1"
+  },
+  {
+    "id": "CAPM-F-T2",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "domain_weight": "36%",
+    "task_number": 2,
+    "task": "Demonstrate an understanding of project management planning",
+    "enablers": [
+      "Describe the purpose and importance of cost, quality, risk, schedule",
+      "Distinguish between project management plan vs product management plan",
+      "Distinguish differences between a milestone and a task duration",
+      "Determine the number and type of resources in a project",
+      "Use a risk register in a given situation",
+      "Use a stakeholder register in a given situation",
+      "Explain project closure and transitions"
+    ],
+    "summary": "Project planning involves developing the roadmap for all project activities. The Project Management Plan integrates subsidiary plans for scope, schedule, cost, quality, risk, communications, procurement, and stakeholder management. Planning is iterative — progressive elaboration refines plans as more information becomes available.",
+    "key_concepts": [
+      "Project Management Plan vs product plan",
+      "Subsidiary plans: scope, schedule, cost, quality, risk, communications, procurement, stakeholder",
+      "Milestone: zero-duration significant event",
+      "Task duration vs effort",
+      "Progressive elaboration",
+      "Risk register and stakeholder register as key project documents",
+      "Project closure criteria"
+    ],
+    "related_tools": ["Project management plan", "Milestone list", "Risk register", "Stakeholder register", "Resource management plan"],
+    "approach": "predictive",
+    "exam_tips": "A milestone marks a significant point in time (zero duration). It is different from a deliverable (which has content) or a task (which has duration and effort). Progressive elaboration means plans get more detailed as the project advances — this is normal and expected.",
+    "related_question_ids": ["Q68", "Q74", "Q96", "Q110"],
+    "source": "CAPM ECO 2023 — Domain 1 Fundamentals, Task 2"
+  },
+  {
+    "id": "CAPM-F-T3",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "domain_weight": "36%",
+    "task_number": 3,
+    "task": "Demonstrate an understanding of project roles and responsibilities",
+    "enablers": [
+      "Compare and contrast PM and sponsor roles",
+      "Compare and contrast project team and sponsor roles",
+      "Explain the importance of the PM role (initiator, negotiator, listener, coach, facilitator)",
+      "Explain the differences between leadership and management",
+      "Explain emotional intelligence (EQ) and its impact on project management"
+    ],
+    "summary": "Clear role definition prevents gaps and overlaps in accountability. The sponsor authorizes and funds the project; the PM leads and manages day-to-day; the team executes the work. EQ enables PMs to build high-performing teams and navigate complex stakeholder relationships.",
+    "key_concepts": [
+      "Sponsor: authorizes project, funds it, resolves high-level issues",
+      "PM: leads, manages, is accountable for outcomes",
+      "Team: executes the work",
+      "RACI: Responsible vs Accountable distinction",
+      "Leadership (right direction) vs Management (correct execution)",
+      "Emotional Intelligence: Self-awareness, Self-regulation, Empathy, Motivation, Social skills"
+    ],
+    "related_tools": ["RACI matrix", "Responsibility assignment matrix", "Organizational chart", "Team charter"],
+    "approach": "both",
+    "exam_tips": "The sponsor is NOT the PM — the sponsor holds the charter and budget; the PM holds day-to-day accountability. Leadership = doing the right things (effectiveness); Management = doing things right (efficiency). EQ: empathy is about understanding others' feelings, not just being nice.",
+    "related_question_ids": ["Q51", "Q71"],
+    "source": "CAPM ECO 2023 — Domain 1 Fundamentals, Task 3"
+  },
+  {
+    "id": "CAPM-F-T4",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "domain_weight": "36%",
+    "task_number": 4,
+    "task": "Determine how to follow and execute planned strategies or frameworks",
+    "enablers": [
+      "Give examples of how it is appropriate to respond to a planned strategy or framework",
+      "Explain project initiation and benefit planning"
+    ],
+    "summary": "Once a strategy or framework is established, the team must execute it consistently while remaining adaptive to change. Project initiation translates a business need into an authorized project via the Project Charter. Benefits planning ensures the expected value is defined, measurable, and tracked.",
+    "key_concepts": [
+      "Project Charter as the initiating document",
+      "Business case and benefits definition",
+      "Process groups: Initiating, Planning, Executing, Monitoring & Controlling, Closing",
+      "Responding to planned risk strategies",
+      "Executing the communications plan"
+    ],
+    "related_tools": ["Project charter", "Business case", "Communications management plan", "Risk response plan"],
+    "approach": "both",
+    "exam_tips": "The Project Charter authorizes the project and grants the PM authority. It is created BEFORE detailed planning begins. Project initiation occurs when the sponsoring organization formally decides to proceed with the project. Benefits should be defined in the business case and tracked via the benefits realization plan.",
+    "related_question_ids": ["Q61", "Q64", "Q96"],
+    "source": "CAPM ECO 2023 — Domain 1 Fundamentals, Task 4"
+  },
+  {
+    "id": "CAPM-F-T5",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "domain_weight": "36%",
+    "task_number": 5,
+    "task": "Demonstrate an understanding of common problem-solving tools and techniques",
+    "enablers": [
+      "Evaluate the effectiveness of a meeting",
+      "Explain the purpose of focus groups, standup meetings, brainstorming"
+    ],
+    "summary": "Problem-solving in project management uses structured tools: brainstorming surfaces ideas, fishbone diagrams identify root causes, the 5 Whys drills down to root causes, retrospectives improve processes, and standups surface daily impediments.",
+    "key_concepts": [
+      "Brainstorming: divergent thinking, no judgment",
+      "Focus groups: facilitated discussions for requirements or feedback",
+      "Daily standup: 15-minute synchronization",
+      "5 Whys: root cause analysis",
+      "Ishikawa/Fishbone diagram: cause-and-effect",
+      "Retrospective: team process improvement",
+      "Effective meeting practices: agenda, time-boxing, minutes, action items"
+    ],
+    "related_tools": ["Fishbone diagram", "5 Whys", "Retrospective", "Brainstorming session", "Daily standup"],
+    "approach": "both",
+    "exam_tips": "Effective meetings have: a clear agenda distributed in advance, a facilitator, defined objectives, action items with owners and dates, and minutes distributed afterwards. The Daily Scrum (standup) is time-boxed to 15 minutes — it is NOT a status report to the PM but a team synchronization event.",
+    "related_question_ids": ["Q71", "Q91", "Q103"],
+    "source": "CAPM ECO 2023 — Domain 1 Fundamentals, Task 5"
+  },
+  {
+    "id": "CAPM-P-T1",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "domain_weight": "17%",
+    "task_number": 1,
+    "task": "Explain when it is appropriate to use a predictive, plan-based approach",
+    "enablers": [
+      "Identify the suitability of a predictive approach for the organizational structure",
+      "Determine the activities within each process",
+      "Give examples of typical activities within each process",
+      "Distinguish the differences between various project components"
+    ],
+    "summary": "Predictive (waterfall) is best when requirements are well-defined and stable, the technology is known, risk is low, and regulatory compliance requires detailed documentation. It progresses sequentially through phases with formal gates between each.",
+    "key_concepts": [
+      "Predictive suitability: stable requirements, known technology, regulatory environment",
+      "Sequential phases: Initiation → Planning → Execution → Monitoring → Closing",
+      "Process groups and knowledge areas",
+      "Phase gate reviews (go/no-go decisions)",
+      "Deliverable-driven approach",
+      "Baseline establishment and change control"
+    ],
+    "related_tools": ["Gantt chart", "WBS", "Project management plan", "Phase gate checklists"],
+    "approach": "predictive",
+    "exam_tips": "Use predictive when the question describes: stable requirements, regulatory constraints, hardware/construction projects, or when the customer requires a fixed price and defined scope. If requirements are unclear or the environment is rapidly changing, Agile or hybrid is more appropriate.",
+    "related_question_ids": ["Q64", "Q67"],
+    "source": "CAPM ECO 2023 — Domain 2 Predictive, Task 1"
+  },
+  {
+    "id": "CAPM-P-T2",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "domain_weight": "17%",
+    "task_number": 2,
+    "task": "Demonstrate an understanding of a project management plan schedule",
+    "enablers": [
+      "Apply critical path methods",
+      "Calculate schedule variance",
+      "Explain work breakdown structures (WBS)",
+      "Explain work packages",
+      "Apply a quality management plan",
+      "Apply an integration management plan"
+    ],
+    "summary": "The schedule management plan and WBS are core predictive artifacts. CPM identifies the critical path (longest path = minimum project duration). Schedule variance (SV = EV - PV) measures whether work is ahead or behind plan. The WBS decomposes scope into manageable work packages.",
+    "key_concepts": [
+      "WBS: 100% rule, work packages are the lowest level, deliverable-based",
+      "Critical Path: longest path through the network, zero float",
+      "Float: total float vs free float",
+      "Schedule variance (SV = EV - PV)",
+      "Schedule Performance Index (SPI = EV / PV)",
+      "Milestones: zero-duration, significant events",
+      "Quality management plan: quality standards, QA and QC activities"
+    ],
+    "related_tools": ["WBS", "Network diagram", "Gantt chart", "CPM analysis", "Schedule baseline"],
+    "approach": "predictive",
+    "exam_tips": "CPM: float = Late Start - Early Start (or Late Finish - Early Finish). Activities on the critical path have ZERO float. SV negative = behind schedule. SPI less than 1 = behind schedule. WBS contains deliverables, not activities — activities come from the schedule.",
+    "related_question_ids": ["Q25", "Q33", "Q47", "Q67", "Q91", "Q101"],
+    "source": "CAPM ECO 2023 — Domain 2 Predictive, Task 2"
+  },
+  {
+    "id": "CAPM-P-T3",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "domain_weight": "17%",
+    "task_number": 3,
+    "task": "Determine how to document project controls of predictive, plan-based projects",
+    "enablers": [
+      "Identify artifacts that are used in predictive, plan-based projects",
+      "Calculate cost and schedule variances"
+    ],
+    "summary": "Predictive project control uses baselines (scope, schedule, cost) as reference points. Variances are calculated using EVM: CV = EV - AC, SV = EV - PV. Key artifacts include status reports, the change log, issue log, and risk register. All deviations from baselines trigger the change control process.",
+    "key_concepts": [
+      "Cost variance (CV = EV - AC)",
+      "Schedule variance (SV = EV - PV)",
+      "Cost Performance Index (CPI = EV / AC)",
+      "Schedule Performance Index (SPI = EV / PV)",
+      "EAC = BAC / CPI (most common)",
+      "Status reports and dashboards",
+      "Change log, Issue log, Risk register as control artifacts"
+    ],
+    "related_tools": ["EVM dashboard", "Status report", "Change log", "Issue log", "Cost baseline", "Schedule baseline"],
+    "approach": "predictive",
+    "exam_tips": "Key EVM formula summary: CV = EV - AC (positive = under budget); SV = EV - PV (positive = ahead of schedule); CPI = EV/AC; SPI = EV/PV. EAC = BAC/CPI when current CPI continues. TCPI = (BAC-EV)/(BAC-AC) tells you the efficiency needed to finish on budget.",
+    "related_question_ids": ["Q5", "Q11", "Q31", "Q56", "Q86", "Q98", "Q101", "Q108", "Q110"],
+    "source": "CAPM ECO 2023 — Domain 2 Predictive, Task 3"
+  },
+  {
+    "id": "CAPM-A-T1",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "domain_weight": "20%",
+    "task_number": 1,
+    "task": "Explain when it is appropriate to use an adaptive approach",
+    "enablers": [
+      "Compare the pros and cons of adaptive and predictive projects",
+      "Identify the suitability of adaptive approaches for the organizational structure",
+      "Identify organizational process assets and enterprise environmental factors that facilitate adaptive approaches"
+    ],
+    "summary": "Adaptive (Agile) approaches suit projects with high complexity, unclear or evolving requirements, and where rapid value delivery is important. Agile relies on iterative cycles, customer collaboration, and team empowerment. It is less suited to regulatory-heavy, hardware, or fixed-price contracts.",
+    "key_concepts": [
+      "Agile Manifesto 4 values and 12 principles",
+      "Adaptive suitability: complex, innovative, requirements emerge over time",
+      "Agile frameworks: Scrum, Kanban, XP, SAFe",
+      "Self-organizing teams and servant leadership",
+      "Customer collaboration over contract negotiation",
+      "Responding to change over following a plan"
+    ],
+    "related_tools": ["Product backlog", "Sprint planning", "Retrospective", "Kanban board", "Burndown chart"],
+    "approach": "agile",
+    "exam_tips": "The 4 Agile Manifesto values: Individuals and interactions > processes and tools; Working software > comprehensive documentation; Customer collaboration > contract negotiation; Responding to change > following a plan. The right side has value — but Agile values the LEFT side more.",
+    "related_question_ids": ["Q52", "Q66", "Q72", "Q95", "Q99"],
+    "source": "CAPM ECO 2023 — Domain 3 Agile, Task 1"
+  },
+  {
+    "id": "CAPM-A-T2",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "domain_weight": "20%",
+    "task_number": 2,
+    "task": "Determine how to plan project iterations",
+    "enablers": [
+      "Distinguish the logical units of iterations",
+      "Interpret the pros and cons of the iteration",
+      "Translate WBS to an adaptive iteration",
+      "Determine inputs for scope",
+      "Explain the importance of adaptive project tracking vs predictive tracking"
+    ],
+    "summary": "In Agile, a Sprint (Scrum) or iteration (general Agile) is a time-boxed period (1-4 weeks) during which a potentially shippable increment is delivered. Sprint Planning defines the Sprint Goal and the work to be done. Burndown charts and velocity track progress in Agile.",
+    "key_concepts": [
+      "Sprint/iteration length: 1-4 weeks (Scrum max = 1 month)",
+      "Sprint Goal: the objective for the sprint",
+      "Sprint backlog: subset of product backlog pulled into sprint",
+      "Velocity: average story points completed per sprint",
+      "Burndown chart: remaining work over time",
+      "Definition of Ready: criteria for pulling a story into a sprint",
+      "Definition of Done: criteria for completing a story"
+    ],
+    "related_tools": ["Sprint planning meeting", "Product backlog", "Sprint backlog", "Burndown chart", "Velocity chart"],
+    "approach": "agile",
+    "exam_tips": "Velocity is used to FORECAST future sprint capacity — it's an average, not a commitment. Burndown ideally reaches zero by Sprint end. Sprint Goal is set during Sprint Planning and should not change during the sprint. Stories must meet Definition of Ready before entering a sprint.",
+    "related_question_ids": ["Q9", "Q21", "Q23", "Q29", "Q36", "Q52", "Q66", "Q91", "Q97", "Q107"],
+    "source": "CAPM ECO 2023 — Domain 3 Agile, Task 2"
+  },
+  {
+    "id": "CAPM-A-T3",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "domain_weight": "20%",
+    "task_number": 3,
+    "task": "Determine how to document project controls for an adaptive project",
+    "enablers": [
+      "Identify artifacts that are used in adaptive projects"
+    ],
+    "summary": "Agile projects use lightweight, visible artifacts: the Product Backlog (ordered list of all work), Sprint Backlog (work selected for the current sprint), increment (working product at sprint end), burndown charts, velocity charts, and the Kanban board. Transparency is built in through information radiators.",
+    "key_concepts": [
+      "Product Backlog: ordered list of all features and requirements",
+      "Sprint Backlog: items selected for the current sprint",
+      "Increment: cumulative working product after each sprint",
+      "Burndown chart: tracks remaining work",
+      "Burnup chart: tracks completed work",
+      "Kanban board: visualizes workflow with WIP limits",
+      "Information radiators: big visible charts"
+    ],
+    "related_tools": ["Product backlog", "Sprint backlog", "Kanban board", "Burndown chart", "Velocity chart", "Information radiator"],
+    "approach": "agile",
+    "exam_tips": "In Agile, transparency replaces formal reporting. The Product Backlog is ALWAYS owned by the Product Owner. The Sprint Backlog is owned by the Development Team. The increment must meet the Definition of Done. Burndown goes DOWN (remaining work); burnup goes UP (completed work).",
+    "related_question_ids": ["Q29", "Q57", "Q77", "Q97", "Q107"],
+    "source": "CAPM ECO 2023 — Domain 3 Agile, Task 3"
+  },
+  {
+    "id": "CAPM-A-T4",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "domain_weight": "20%",
+    "task_number": 4,
+    "task": "Explain the components of an adaptive plan",
+    "enablers": [
+      "Distinguish between the components of different adaptive methodologies (Scrum, XP, SAFe, Kanban)"
+    ],
+    "summary": "Different Agile frameworks suit different contexts. Scrum is the most widely used — structured around sprints, roles (PO, SM, Dev Team), and ceremonies. Kanban focuses on flow and WIP limits without fixed iterations. XP emphasizes technical practices (TDD, pair programming). SAFe scales Agile across large organizations.",
+    "key_concepts": [
+      "Scrum: roles (PO/SM/Dev Team), events (Sprint Planning/Daily Scrum/Sprint Review/Sprint Retrospective), artifacts (Product Backlog/Sprint Backlog/Increment)",
+      "Kanban: visualize workflow, limit WIP, manage flow, make policies explicit",
+      "Extreme Programming (XP): TDD, pair programming, continuous integration, refactoring",
+      "SAFe: Agile Release Trains, Program Increments (PIs), portfolio alignment",
+      "Lean principles: eliminate waste, amplify learning, defer commitment"
+    ],
+    "related_tools": ["Scrum board", "Kanban board", "Product roadmap", "SAFe PI planning board"],
+    "approach": "agile",
+    "exam_tips": "Scrum Sprint max = 1 month. Daily Scrum = 15 minutes. Sprint Review = inspect increment. Sprint Retrospective = inspect team process. Kanban has NO fixed iterations — work is pulled continuously. SAFe organizes multiple Scrum teams into Agile Release Trains (ARTs) that deliver a Program Increment (PI) every 8-12 weeks.",
+    "related_question_ids": ["Q1", "Q9", "Q21", "Q23", "Q29", "Q36", "Q57", "Q63", "Q66", "Q83", "Q87", "Q91", "Q103"],
+    "source": "CAPM ECO 2023 — Domain 3 Agile, Task 4"
+  },
+  {
+    "id": "CAPM-A-T5",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "domain_weight": "20%",
+    "task_number": 5,
+    "task": "Determine how to prepare and execute task management steps",
+    "enablers": [
+      "Interpret success criteria of an adaptive project management task",
+      "Prioritize tasks in adaptive project management"
+    ],
+    "summary": "In Agile, task management is driven by the Sprint Goal and prioritized Product Backlog. User stories describe features from the user's perspective and include acceptance criteria. Stories are estimated in story points (relative complexity), prioritized by business value, and pulled into sprints when they meet the Definition of Ready.",
+    "key_concepts": [
+      "User story format: As a [user], I want [goal] so that [reason]",
+      "Acceptance criteria: SMART, testable conditions for story completion",
+      "Story points: relative estimation (not hours)",
+      "Backlog prioritization: MoSCoW, Weighted Shortest Job First (WSJF), Kano",
+      "Definition of Ready vs Definition of Done",
+      "Task board and daily updates"
+    ],
+    "related_tools": ["Product backlog", "User stories", "Story point estimation", "Planning poker", "Task board"],
+    "approach": "agile",
+    "exam_tips": "Story points measure RELATIVE complexity and effort, not absolute time. A team's velocity (average points per sprint) allows forecasting. Planning Poker is a consensus-based estimation technique using Fibonacci numbers (1, 2, 3, 5, 8, 13...). Acceptance criteria must be defined BEFORE development starts.",
+    "related_question_ids": ["Q36", "Q85", "Q87", "Q95", "Q116"],
+    "source": "CAPM ECO 2023 — Domain 3 Agile, Task 5"
+  },
+  {
+    "id": "CAPM-BA-T1",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 1,
+    "task": "Demonstrate an understanding of business analysis (BA) roles and responsibilities",
+    "enablers": [
+      "Distinguish between stakeholder roles (process owner, product manager, product owner)",
+      "Outline the need for roles and responsibilities",
+      "Differentiate between internal and external roles"
+    ],
+    "summary": "Business analysts bridge the gap between business needs and technical solutions. They elicit, analyze, document, and validate requirements. In Agile, the Product Owner plays a BA-like role, managing the backlog and representing user needs. Clear role definition prevents requirement gaps.",
+    "key_concepts": [
+      "Business Analyst (BA): requirements elicitation, analysis, documentation, validation",
+      "Product Owner (Agile): backlog owner, prioritization, acceptance",
+      "Process Owner: responsible for a business process",
+      "Product Manager: strategy and market positioning",
+      "Internal stakeholders: team, sponsor, PMO",
+      "External stakeholders: customers, regulators, suppliers"
+    ],
+    "related_tools": ["RACI matrix", "Stakeholder register", "Requirements documentation", "Product backlog"],
+    "approach": "both",
+    "exam_tips": "In Agile, the Product Owner performs many traditional BA functions (requirements, prioritization, acceptance). In predictive projects, a dedicated BA is common. The key BA competency is requirements elicitation — understanding what stakeholders NEED (not just what they ASK FOR).",
+    "related_question_ids": ["Q51", "Q71"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 1"
+  },
+  {
+    "id": "CAPM-BA-T2",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 2,
+    "task": "Determine how to conduct stakeholder communication",
+    "enablers": [
+      "Recommend the most appropriate communication channel/tool",
+      "Demonstrate why communication is important for a business analyst"
+    ],
+    "summary": "BA communication involves presenting requirements findings to diverse audiences — technical teams, business sponsors, and end users — in appropriate formats. Requirements must be communicated clearly, concisely, and in the language of the audience.",
+    "key_concepts": [
+      "Communication channels: formal/informal, written/verbal, push/pull/interactive",
+      "Requirements presentation formats: user stories, use cases, process flows, prototypes",
+      "Stakeholder communication matrix",
+      "Facilitation skills for workshops",
+      "Active listening and clarifying questions"
+    ],
+    "related_tools": ["Communications management plan", "Requirements documentation", "Presentation tools", "Workshop facilitation"],
+    "approach": "both",
+    "exam_tips": "The right communication method depends on the audience. Executives want summaries and business impact. Technical teams want detailed specifications. End users want prototypes and user stories. Always confirm that communication has been understood — don't assume.",
+    "related_question_ids": ["Q80"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 2"
+  },
+  {
+    "id": "CAPM-BA-T3",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 3,
+    "task": "Determine how to gather requirements",
+    "enablers": [
+      "Match tools to scenarios (user stories, use cases)",
+      "Identify the requirements gathering approach (interviews, surveys, workshops, lessons learned)",
+      "Explain a requirements traceability matrix/product backlog"
+    ],
+    "summary": "Requirements elicitation uses multiple techniques to uncover stakeholder needs. Each technique suits different contexts: interviews for in-depth needs, surveys for broad input, workshops for consensus, observation for unstated needs, prototypes for visual validation.",
+    "key_concepts": [
+      "Elicitation techniques: interviews, surveys, focus groups, observation, workshops, prototyping, document analysis, brainstorming",
+      "Functional vs non-functional requirements",
+      "User stories vs use cases",
+      "Requirements Traceability Matrix (RTM): links requirements to source and deliverables",
+      "Product backlog as living requirements document",
+      "INVEST criteria for user stories: Independent, Negotiable, Valuable, Estimable, Small, Testable"
+    ],
+    "related_tools": ["Requirements traceability matrix", "Interview guide", "Survey", "Prototype", "Observation notes", "Workshop facilitation"],
+    "approach": "both",
+    "exam_tips": "Requirements elicitation ≠ requirements documentation. Elicitation is the active process of drawing out requirements; documentation is recording them. RTM ensures every requirement is traceable to a business need and tested. INVEST criteria help evaluate user story quality.",
+    "related_question_ids": ["Q69", "Q75", "Q80", "Q99", "Q105"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 3"
+  },
+  {
+    "id": "CAPM-BA-T4",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 4,
+    "task": "Demonstrate an understanding of product roadmaps",
+    "enablers": [
+      "Explain the application of a product roadmap",
+      "Determine which components go to which releases"
+    ],
+    "summary": "A product roadmap is a high-level strategic plan that maps product features and milestones over time. It communicates the product vision and direction to stakeholders while remaining flexible enough to adapt as priorities change. In Agile, the roadmap connects the product vision to the release plan to the sprint backlog.",
+    "key_concepts": [
+      "Product roadmap: vision → release plan → sprint plan",
+      "Release planning: grouping features into releases",
+      "Themes and Epics → Features → User Stories → Tasks",
+      "Now/Next/Later roadmap format",
+      "Roadmap vs project schedule",
+      "Rolling wave planning"
+    ],
+    "related_tools": ["Product roadmap", "Release plan", "Product backlog", "Milestone plan"],
+    "approach": "agile",
+    "exam_tips": "A roadmap is a STRATEGIC communication tool, not a detailed schedule. It shows WHAT is planned and roughly WHEN, without the granularity of a Gantt chart. In Agile, the roadmap is regularly reviewed and updated — it is not locked in like a predictive baseline.",
+    "related_question_ids": ["Q15"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 4"
+  },
+  {
+    "id": "CAPM-BA-T5",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 5,
+    "task": "Determine how project methodologies influence business analysis processes",
+    "enablers": [
+      "Determine the role of a business analyst in adaptive and/or predictive approaches"
+    ],
+    "summary": "The BA's role changes based on project methodology. In predictive projects, the BA defines requirements comprehensively upfront. In Agile, requirements emerge iteratively; the Product Owner performs BA activities with the team. In hybrid projects, both approaches are combined.",
+    "key_concepts": [
+      "BA in predictive: requirements specification, sign-off, change control",
+      "BA in Agile: Product Owner role, story writing, backlog refinement",
+      "BA in hybrid: upfront high-level requirements + iterative detailing",
+      "Just-in-time (JIT) requirements in Agile",
+      "Definition of Ready as BA gate for Agile"
+    ],
+    "related_tools": ["Requirements specification", "Product backlog", "User story mapping", "Prototype"],
+    "approach": "both",
+    "exam_tips": "In predictive: requirements are comprehensive and baseline-controlled. In Agile: requirements are user stories in the backlog, refined just before work begins (JIT). The key BA skill in Agile is collaboration — working with the team in real-time, not writing documents in advance.",
+    "related_question_ids": ["Q40", "Q95"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 5"
+  },
+  {
+    "id": "CAPM-BA-T6",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "domain_weight": "27%",
+    "task_number": 6,
+    "task": "Validate requirements through product delivery",
+    "enablers": [
+      "Define acceptance criteria (the action of defining changes based on the situation)",
+      "Determine if a project/product is ready for delivery based on a requirements traceability matrix/product backlog"
+    ],
+    "summary": "Validation ensures the product meets stakeholder needs; verification ensures it was built correctly. Acceptance criteria must be defined before development begins. The RTM or product backlog confirms all requirements are met before delivery. User Acceptance Testing (UAT) is the final validation gate.",
+    "key_concepts": [
+      "Validation vs verification: Are we building the RIGHT thing? vs Are we building it RIGHT?",
+      "Acceptance criteria: conditions a deliverable must meet for stakeholder acceptance",
+      "User Acceptance Testing (UAT)",
+      "Definition of Done in Agile",
+      "Requirements Traceability Matrix as validation checklist",
+      "Scope validation (formal acceptance)"
+    ],
+    "related_tools": ["RTM", "UAT test plan", "Acceptance criteria checklist", "Sprint review meeting", "Definition of Done"],
+    "approach": "both",
+    "exam_tips": "Validation = right thing (customer needs met). Verification = right way (built to specification). Acceptance criteria must be TESTABLE and defined BEFORE development. DoD in Agile serves as built-in acceptance criteria for each user story. Formal acceptance = Validate Scope process in PMBOK.",
+    "related_question_ids": ["Q23", "Q68", "Q80", "Q88", "Q95"],
+    "source": "CAPM ECO 2023 — Domain 4 Business Analysis, Task 6"
+  }
+]
