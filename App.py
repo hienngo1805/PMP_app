@@ -21,29 +21,10 @@ st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", l
 # ==========================================
 st.markdown("""
     <style>
-    /* HIDE SYSTEM UI - CHỈ GIỮ LẠI NÚT 3 CHẤM CỦA STREAMLIT                      */
-   
-    /* 1. KHÔNG ẩn toàn bộ header nữa để giữ lại không gian cho nút 3 chấm */
-    header {
-        visibility: visible !important;
-        background-color: transparent !important;
-    }
-
-    /* 2. Ẩn các nút dạng đường link (Logo GitHub, nút hình cây bút Edit) */
-    header a {
-        display: none !important;
-    }
-
-    /* 3. Ẩn các nút bấm khác (Share, Star) nhưng CHỪA LẠI nút 3 chấm hệ thống */
-    header button:not([data-testid="stMainMenu"]) {
-        display: none !important;
-    }
-    
     /* 4. Ẩn dòng chữ Made with Streamlit ở dưới chân trang */
     footer {
         visibility: hidden !important;
-    }
-                
+    }         
     /* ========================================================================= */
     /*  0. KHUNG CHUNG
    ========================================================================= */
@@ -245,9 +226,6 @@ elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
 st.sidebar.markdown("---")
 with st.sidebar:
     st.markdown("---")
-    # Tạo một ô nhập mật khẩu ẩn (dạng password)
-    admin_password = st.text_input("🔑 Quyền Admin (Chỉ cho chủ sở hữu)", type="password", help="Nhập mật khẩu để mở khóa các tính năng quản trị.")
-    is_admin = (admin_password == "Dim1859@")
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 
 # ==========================================
