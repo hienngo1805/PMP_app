@@ -449,8 +449,7 @@ elif menu_choice == "⏱️ Exam Simulator":
                         st.markdown(f"**Question:** {q['question']}")
                         st.markdown(f"🔹 **Your Choice:** `{q.get('user_answer')}` | 🎯 **Correct:** `{q.get('correct')}`")
                         st.markdown(f"📌 **Mapping:** `{q.get('certification', 'N/A')}` ➔ `{q.get('domain', 'N/A')}`")
-                        st.write(f"💡 **AI Explanation:** {q['explanation']}")
-                        st.caption(f"Source: {q['source']} | AI: {q['ai_engine']}")
+                        st.write(f"💡 **AI Explanation:** {q.get['explanation']}")
             else: 
                 st.info("👈 Please select and click any row from the 'Exam History Table' to review.")
 
