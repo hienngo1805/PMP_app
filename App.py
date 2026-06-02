@@ -16,7 +16,7 @@ except ImportError:
 
 # Cấu hình giao diện rộng (wide) - Bắt buộc phải nằm ở đầu file Streamlit
 st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", layout="wide")
-
+# =========================================================================
 # 🎨 TOÀN CỤC: ĐỒNG NHẤT MÀU SIDEBAR (TONE XANH) CHO CẢ LIGHT & DARK MODE
 # ==========================================
 st.markdown("""
@@ -53,7 +53,7 @@ st.markdown("""
 .st-emotion-cache-light [data-testid="stSidebar"],
 
 body[class*="light"] [data-testid="stSidebar"] {
-    background-color: #E3F2FD !important;
+    background-color: #78C8E8 !important;
 }
 
 [data-theme="light"] [data-testid="stSidebar"] *,
@@ -80,14 +80,13 @@ body[class*="light"] [data-testid="stSidebar"] * {
 
 body[class*="dark"] [data-testid="stSidebar"] {
 
-    background-color: #1E293B !important;
+    background-color: #104960 !important;
 }
 [data-theme="dark"] [data-testid="stSidebar"] *,
 
 body[class*="dark"] [data-testid="stSidebar"] * {
 
     color: #F8FAFC !important;
-
 }
 
 [data-theme="dark"] .task-card {
@@ -160,7 +159,7 @@ def load_knowledge_from_json():
 # Nạp ngân hàng câu hỏi gốc
 questions_bank = load_questions_from_json()
 # ==========================================
-# 📑 KHỔI TẠO CÁC BIẾN BỘ NHỚ (SESSION STATE)
+# 📑 KHỞI TẠO CÁC BIẾN BỘ NHỚ (SESSION STATE)
 # ==========================================
 if "bank_current_idx" not in st.session_state:
     st.session_state.bank_current_idx = 0
@@ -222,7 +221,7 @@ elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
     if chosen_test_idx != st.session_state.test_current_idx:
         st.session_state.test_current_idx = chosen_test_idx
         st.rerun()
-        
+
 with st.sidebar:
     st.markdown("---")
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
