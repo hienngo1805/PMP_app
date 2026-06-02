@@ -20,58 +20,60 @@ st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", l
 # 🎨 TOÀN CỤC: ĐỒNG NHẤT MÀU SIDEBAR (TONE XANH) CHO CẢ LIGHT & DARK MODE
 # ==========================================
 st.markdown("""
-    <style>
-    /* 1. CHẾ ĐỘ LIGHT MODE (MẶC ĐỊNH): Tone Xanh Pastel dịu mát */
-    [data-testid="stSidebar"] {
-        background-color: #9FD6EF !important; 
-    }
-    /* Ép tất cả các thành phần chữ, tiêu đề, nút chọn trong sidebar về màu Navy đậm tương phản */
-    [data-testid="stSidebar"] h1, 
-    [data-testid="stSidebar"] h2, 
-    [data-testid="stSidebar"] h3, 
-    [data-testid="stSidebar"] p, 
-    [data-testid="stSidebar"] label,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] div {
-        color: #0F172A !important; 
-    }
+<style>
+/* =========================================================================
+   0. KHUNG CHUNG
+   ========================================================================= */
+.task-card {
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
 
-    /* Định nghĩa lớp task-card chuẩn (Mặc định cho Light Mode) */
-    .task-card {
-        background-color: #FBFBFB;
-        color: #333333;
-        border: 1px solid #D1D9E0;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+/* =========================================================================
+   I. LIGHT MODE
+   ========================================================================= */
+[data-theme="light"] [data-testid="stSidebar"],
+[data-theme="light"] [data-testid="stSidebar"] > div:first-child,
+.st-emotion-cache-light [data-testid="stSidebar"],
+body[class*="light"] [data-testid="stSidebar"] {
+    background-color: #E3F2FD !important;
+}
 
-    /* 2. CHẾ ĐỘ DARK MODE: Tự động chuyển đổi thông minh dựa vào cài đặt hệ thống/trình duyệt */
-    @media (prefers-color-scheme: dark) {
-        [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
-            background-color: #1E293B !important; /* Màu xanh đá Slate tối sang trọng */
-        }
-        /* Ép chữ, icon và tiêu đề sang màu trắng tuyết sắc nét trên nền tối */
-        [data-testid="stSidebar"] h1, 
-        [data-testid="stSidebar"] h2, 
-        [data-testid="stSidebar"] h3, 
-        [data-testid="stSidebar"] p, 
-        [data-testid="stSidebar"] label,
-        [data-testid="stSidebar"] span,
-        [data-testid="stSidebar"] div,
-        [data-testid="stSidebar"] .st-emotion-cache-ffffff {
-            color: #F8FAFC !important; 
-        }
-        
-        /* Cấu hình màu sắc của task-card khi người dùng bật Dark Mode */
-        .task-card {
-            background-color: #1E1E24 !important;
-            color: #F8FAFC !important;
-            border: 1px solid #374151 !important;
-        }
-    }
-    </style>
+[data-theme="light"] [data-testid="stSidebar"] *,
+body[class*="light"] [data-testid="stSidebar"] * {
+    color: #0F172A !important;
+}
+
+[data-theme="light"] .task-card {
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border: 1px solid #D1D9E0 !important;
+}
+
+/* =========================================================================
+   II. DARK MODE
+   ========================================================================= */
+[data-theme="dark"] [data-testid="stSidebar"],
+[data-theme="dark"] [data-testid="stSidebar"] > div:first-child,
+.st-emotion-cache-dark [data-testid="stSidebar"],
+body[class*="dark"] [data-testid="stSidebar"] {
+    background-color: #1E293B !important;
+}
+
+[data-theme="dark"] [data-testid="stSidebar"] *,
+body[class*="dark"] [data-testid="stSidebar"] * {
+    color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .task-card {
+    background-color: #04328E !important;
+    color: #FBFBFB !important;
+    border: 1px solid #1E40AF !important;
+}
+</style>
 """, unsafe_allow_html=True)
 
 # ==========================================

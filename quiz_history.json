@@ -1,29 +1,5 @@
 [
     {
-        "Date/Time": "2026-06-01 00:34:12",
-        "Score": "1 / 3",
-        "Percentage (%)": "33.33%",
-        "Duration": "4m 48s (Timeout)"
-    },
-    {
-        "Date/Time": "2026-06-01 00:35:28",
-        "Score": "5 / 5",
-        "Percentage (%)": "100.00%",
-        "Duration": "1m 5s"
-    },
-    {
-        "Date/Time": "2026-06-01 00:40:10",
-        "Score": "3 / 3",
-        "Percentage (%)": "100.00%",
-        "Duration": "0m 44s"
-    },
-    {
-        "Date/Time": "2026-06-01 12:46:09",
-        "Score": "5 / 5",
-        "Percentage (%)": "100.00%",
-        "Duration": "3m 45s"
-    },
-    {
         "exam_id": "20260601_224916",
         "Date/Time": "2026-06-01 22:49:16",
         "Score": "4 / 5",
@@ -198,88 +174,6 @@
                 "certification": "PMP",
                 "domain": "Business Environment",
                 "user_answer": "B. A document that justifies the project's necessity and expected benefits"
-            }
-        ]
-    },
-    {
-        "exam_id": "20260601_231031",
-        "Date/Time": "2026-06-01 23:10:31",
-        "Score": "1 / 2",
-        "Percentage (%)": "50.00%",
-        "Duration": "0m",
-        "details": [
-            {
-                "id": "Q77",
-                "question": "In Kanban, what is the purpose of a WIP (Work-In-Progress) limit?",
-                "options": [
-                    "A. To limit the number of team members on the project",
-                    "B. To cap the budget spent on each task",
-                    "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
-                    "D. To set the maximum number of sprints in a release"
-                ],
-                "correct": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
-                "explanation": "WIP limits in Kanban restrict the maximum number of items in progress at any given stage. This prevents overloading team members, exposes bottlenecks, improves flow efficiency, and reduces cycle time by encouraging finishing work before starting new tasks.",
-                "source": "PMI Agile Practice Guide - Kanban",
-                "certification": "CAPM",
-                "domain": "Agile Frameworks / Methodologies",
-                "user_answer": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks"
-            },
-            {
-                "id": "Q100",
-                "question": "Which process identifies who needs what information, when they need it, and in what format?",
-                "options": [
-                    "A. Manage Stakeholder Engagement",
-                    "B. Plan Communications Management",
-                    "C. Monitor Communications",
-                    "D. Identify Stakeholders"
-                ],
-                "correct": "B. Plan Communications Management",
-                "explanation": "Plan Communications Management is the process of developing an appropriate approach and plan for project communications based on stakeholder needs. It determines who gets what information, how, when, and in what format.",
-                "source": "PMBOK® Guide 7th Edition - Stakeholder Performance Domain",
-                "certification": "CAPM",
-                "domain": "Predictive, Plan-Based Methodologies",
-                "user_answer": "A. Manage Stakeholder Engagement"
-            }
-        ]
-    },
-    {
-        "exam_id": "20260601_231034",
-        "Date/Time": "2026-06-01 23:10:34",
-        "Score": "1 / 2",
-        "Percentage (%)": "50.00%",
-        "Duration": "0m",
-        "details": [
-            {
-                "id": "Q77",
-                "question": "In Kanban, what is the purpose of a WIP (Work-In-Progress) limit?",
-                "options": [
-                    "A. To limit the number of team members on the project",
-                    "B. To cap the budget spent on each task",
-                    "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
-                    "D. To set the maximum number of sprints in a release"
-                ],
-                "correct": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks",
-                "explanation": "WIP limits in Kanban restrict the maximum number of items in progress at any given stage. This prevents overloading team members, exposes bottlenecks, improves flow efficiency, and reduces cycle time by encouraging finishing work before starting new tasks.",
-                "source": "PMI Agile Practice Guide - Kanban",
-                "certification": "CAPM",
-                "domain": "Agile Frameworks / Methodologies",
-                "user_answer": "C. To limit the amount of work in any stage to improve flow and reduce bottlenecks"
-            },
-            {
-                "id": "Q100",
-                "question": "Which process identifies who needs what information, when they need it, and in what format?",
-                "options": [
-                    "A. Manage Stakeholder Engagement",
-                    "B. Plan Communications Management",
-                    "C. Monitor Communications",
-                    "D. Identify Stakeholders"
-                ],
-                "correct": "B. Plan Communications Management",
-                "explanation": "Plan Communications Management is the process of developing an appropriate approach and plan for project communications based on stakeholder needs. It determines who gets what information, how, when, and in what format.",
-                "source": "PMBOK® Guide 7th Edition - Stakeholder Performance Domain",
-                "certification": "CAPM",
-                "domain": "Predictive, Plan-Based Methodologies",
-                "user_answer": "A. Manage Stakeholder Engagement"
             }
         ]
     }
