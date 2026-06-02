@@ -20,61 +20,98 @@ st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", l
 # 🎨 TOÀN CỤC: ĐỒNG NHẤT MÀU SIDEBAR (TONE XANH) CHO CẢ LIGHT & DARK MODE
 # ==========================================
 st.markdown("""
-<style>
-/* =========================================================================
-   0. KHUNG CHUNG
+    <style>
+    /* ========================================================================= */
+    /* HIDE SYSTEM UI - ẨN CÁC GIAO DIỆN HỆ THỐNG CỦA STREAMLIT                  */
+    /* ========================================================================= */
+    /* Ẩn nút Deploy góc trên bên phải */
+    .stAppDeployButton {
+        display: none !important;
+    }
+
+    /* Ẩn dòng chữ Made with Streamlit ở dưới chân trang */
+    footer {
+        visibility: hidden !important;
+    }
+                
+    /* ========================================================================= */
+    /*  0. KHUNG CHUNG
    ========================================================================= */
+
 .task-card {
+
     border-radius: 12px;
+
     padding: 20px;
+
     margin-bottom: 20px;
+
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
     transition: all 0.3s ease;
+
 }
 
 /* =========================================================================
    I. LIGHT MODE
    ========================================================================= */
 [data-theme="light"] [data-testid="stSidebar"],
+
 [data-theme="light"] [data-testid="stSidebar"] > div:first-child,
+
 .st-emotion-cache-light [data-testid="stSidebar"],
+
 body[class*="light"] [data-testid="stSidebar"] {
     background-color: #E3F2FD !important;
 }
 
 [data-theme="light"] [data-testid="stSidebar"] *,
+
 body[class*="light"] [data-testid="stSidebar"] * {
+
     color: #0F172A !important;
 }
-
 [data-theme="light"] .task-card {
+
     background-color: #FFFFFF !important;
     color: #333333 !important;
     border: 1px solid #D1D9E0 !important;
 }
-
 /* =========================================================================
    II. DARK MODE
    ========================================================================= */
+
 [data-theme="dark"] [data-testid="stSidebar"],
+
 [data-theme="dark"] [data-testid="stSidebar"] > div:first-child,
+
 .st-emotion-cache-dark [data-testid="stSidebar"],
+
 body[class*="dark"] [data-testid="stSidebar"] {
+
     background-color: #1E293B !important;
 }
-
 [data-theme="dark"] [data-testid="stSidebar"] *,
+
 body[class*="dark"] [data-testid="stSidebar"] * {
+
     color: #F8FAFC !important;
+
 }
 
 [data-theme="dark"] .task-card {
+
     background-color: #04328E !important;
+
     color: #FBFBFB !important;
+
     border: 1px solid #1E40AF !important;
 }
 </style>
-""", unsafe_allow_html=True)
+
+""", unsafe_allow_html=True) 
+
+
 
 # ==========================================
 # 🔌 ĐỌC/GHI DỮ LIỆU TỪ FILE JSON NGOÀI
@@ -174,7 +211,6 @@ menu_choice = st.sidebar.radio(
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🔑 Live AI Engine Settings")
-# 🌟 Đã bổ sung Anthropic Claude vào danh sách lựa chọn
 api_provider = st.sidebar.selectbox("AI Provider:", ["Google Gemini", "OpenAI", "Anthropic Claude"])
 api_key = st.sidebar.text_input("Enter your API Key:", type="password", help="Key chỉ lưu tạm trong RAM phiên làm việc của trình duyệt.")
 
@@ -197,6 +233,11 @@ elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
         st.rerun()
 
 st.sidebar.markdown("---")
+with st.sidebar:
+    st.markdown("---")
+    # Tạo một ô nhập mật khẩu ẩn (dạng password)
+    admin_password = st.text_input("🔑 Quyền Admin (Chỉ cho chủ sở hữu)", type="password", help="Nhập mật khẩu để mở khóa các tính năng quản trị.")
+    is_admin = (admin_password == "Dim1859@")
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 
 # ==========================================
