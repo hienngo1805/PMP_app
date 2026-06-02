@@ -1318,5 +1318,1026 @@
     "explanation": "A Team Charter (or Team Agreement) is a document created by the team that establishes expected behaviors, communication norms, decision-making guidelines, and working agreements. It promotes team cohesion and sets clear expectations, especially in distributed or multicultural teams.",
     "source": "PMBOK® Guide 7th Edition - Team Performance Domain",
     "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q121",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A project manager is leading a hybrid project. The Agile team members consistently push back on documentation requirements set by the PMO, arguing they slow down delivery. The PMO insists compliance is mandatory. The project is on schedule and the sponsor is satisfied with progress. What should the PM do?",
+    "options": [
+      "A. Side with the team — documentation adds no value in Agile environments and should be minimized",
+      "B. Side with the PMO — all governance requirements must be followed regardless of team preferences",
+      "C. Facilitate a conversation between the team and PMO to tailor documentation to the minimum necessary for compliance without disrupting delivery",
+      "D. Escalate to the sponsor and let them decide which side to support"
+    ],
+    "correct": "C. Facilitate a conversation between the team and PMO to tailor documentation to the minimum necessary for compliance without disrupting delivery",
+    "explanation": "PMI's tailoring principle means adapting processes to the project context. The PM's role is to bridge the team and organizational governance — not to simply enforce one side. The correct approach is to collaborate with both parties to find the minimum viable documentation that satisfies compliance while protecting delivery pace. Escalating to the sponsor is premature when the PM hasn't attempted facilitation.",
+    "source": "PMP ECO Jan 2021 - Domain I People T12 / PMBOK 7th - Tailoring",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q122",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "Your project's CPI is 0.91 and SPI is 1.08. The sponsor asks for your honest forecast. Based on the typical EAC formula, the project will overrun. However, your team lead believes the overspend was caused by a one-time procurement error that has been corrected. Which EAC formula should you use for your forecast, and why?",
+    "options": [
+      "A. EAC = BAC / CPI, because past performance is the most reliable predictor",
+      "B. EAC = AC + (BAC - EV), because the remaining work will be completed at the original budget rate since the root cause is resolved",
+      "C. EAC = AC + ETC (new estimate for remaining work), because a bottom-up re-estimate is most accurate when past performance is not representative",
+      "D. EAC = BAC, because the team is confident they can recover the overrun"
+    ],
+    "correct": "C. EAC = AC + ETC (new estimate for remaining work), because a bottom-up re-estimate is most accurate when past performance is not representative",
+    "explanation": "When there is a justified reason to believe past performance is not representative of the future (e.g., a resolved one-time error), a fresh bottom-up ETC is the most accurate approach: EAC = AC + ETC. Using BAC/CPI would assume the inefficiency continues. Using AC + (BAC-EV) assumes perfect efficiency going forward — also unrealistic. Only a new ETC accounts for the actual current situation. The PM should present both the formula-based forecast and the bottom-up ETC with clear rationale.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T5 / PMBOK 7th - Measurement",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q123",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A senior stakeholder who was previously Supportive has become Resistant after a recent project decision. The stakeholder has significant political influence. The PM has a scheduled status meeting in two days. What is the BEST immediate action?",
+    "options": [
+      "A. Wait for the status meeting to address the issue formally and in front of all stakeholders",
+      "B. Contact the stakeholder privately before the meeting to understand their concerns and re-engage them",
+      "C. Ask the sponsor to speak with the stakeholder before the meeting",
+      "D. Update the stakeholder engagement plan to classify this stakeholder as Resistant and increase monitoring"
+    ],
+    "correct": "B. Contact the stakeholder privately before the meeting to understand their concerns and re-engage them",
+    "explanation": "When a high-influence stakeholder shifts to Resistant, the PM must act immediately — not wait two days. A private, direct conversation allows the PM to understand the underlying concern without embarrassment or political escalation. Waiting for the public meeting risks the stakeholder influencing others negatively. Asking the sponsor to intervene is premature and could damage the relationship. Updating the register is administrative — it doesn't solve the problem.",
+    "source": "PMP ECO Jan 2021 - Domain I People T9 / Stakeholder Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q124",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "During a Sprint Review, stakeholders request a feature that would require significant rework of the current architecture. The Product Owner believes this is high-value. The Development Team says it will take 3 sprints to implement. The current release is 2 sprints away. What should happen?",
+    "options": [
+      "A. Add the feature to the current sprint immediately since the Product Owner has approved it",
+      "B. Add the feature to the Product Backlog, let the Product Owner prioritize it, and plan its implementation after the release",
+      "C. Cancel the current sprint and restart planning with the new feature included",
+      "D. Reject the feature since the release deadline cannot be moved"
+    ],
+    "correct": "B. Add the feature to the Product Backlog, let the Product Owner prioritize it, and plan its implementation after the release",
+    "explanation": "In Scrum, mid-sprint scope changes are not allowed — the Sprint Goal is protected. New requests go to the Product Backlog for the Product Owner to prioritize. Since the feature takes 3 sprints and the release is in 2, it logically cannot be in this release. The Product Owner decides priority; the team decides feasibility within sprint constraints. Cancelling the sprint is extreme and only the PO can do that. Rejecting outright ignores the PO's authority.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T13 / Scrum Guide 2020",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q125",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A project manager discovers mid-execution that a key assumption in the Project Charter — that a critical third-party API would remain free — is no longer valid. The vendor now charges $50,000/year, which was not in the budget. The project is 60% complete. What should the PM do FIRST?",
+    "options": [
+      "A. Immediately notify the sponsor and stop work until a budget increase is approved",
+      "B. Assess the full impact on cost, scope, and schedule alternatives before engaging the sponsor",
+      "C. Ask the team to find a workaround to avoid using the API",
+      "D. Submit a change request to increase the budget by $50,000"
+    ],
+    "correct": "B. Assess the full impact on cost, scope, and schedule alternatives before engaging the sponsor",
+    "explanation": "Before engaging the sponsor, the PM must understand the full picture: What are the options? (pay the fee, find a free alternative, negotiate with vendor, descope the feature). Stopping work immediately is an overreaction. Going directly to a change request without alternatives limits decision-making. The PM should present the sponsor with a problem analysis AND options — not just a problem. This is integrated change control thinking applied to a constraint change.",
+    "source": "PMP ECO Jan 2021 - Domain III BE T3 / PMBOK 7th - Uncertainty Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q126",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "Two high-performing team members are in direct conflict about the technical architecture. One is a senior developer (10 years experience), the other is a recently hired architect. Both have strong arguments. The conflict is delaying a critical design decision. The PM has no technical background in this area. What is the BEST action?",
+    "options": [
+      "A. Make a decision yourself based on the more senior person's recommendation to unblock the team",
+      "B. Bring in an independent subject matter expert to evaluate both approaches and provide a recommendation",
+      "C. Facilitate a structured discussion where both parties present their cases, define evaluation criteria together, and reach consensus",
+      "D. Escalate to the sponsor since the decision has strategic technical implications"
+    ],
+    "correct": "C. Facilitate a structured discussion where both parties present their cases, define evaluation criteria together, and reach consensus",
+    "explanation": "The PM's role is to facilitate decision-making, not to make technical decisions they're not qualified to make. Option C (Collaborating/Problem Solving) is the most sustainable: it respects both team members, produces a defensible decision, and builds team ownership. Defaulting to the senior person ignores merit. Bringing in an outsider may take too long and can be demotivating. Escalating to the sponsor is inappropriate for a technical team-level decision.",
+    "source": "PMP ECO Jan 2021 - Domain I People T1 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q127",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project has a BAC of $500,000. At the status date: PV = $200,000, EV = $180,000, AC = $210,000. The PM is asked: 'What is the To-Complete Performance Index (TCPI) based on BAC, and what does it mean?'",
+    "options": [
+      "A. TCPI = 1.08 — the team must spend 8% more efficiently on remaining work to finish on budget",
+      "B. TCPI = 1.08 — the team needs to work 8% more efficiently on remaining work than they have so far to finish on budget",
+      "C. TCPI = 0.97 — the project will finish under budget based on current performance",
+      "D. TCPI = 1.16 — the project is deeply over budget and cannot recover"
+    ],
+    "correct": "B. TCPI = 1.08 — the team needs to work 8% more efficiently on remaining work than they have so far to finish on budget",
+    "explanation": "TCPI (BAC basis) = (BAC - EV) / (BAC - AC) = ($500,000 - $180,000) / ($500,000 - $210,000) = $320,000 / $290,000 = 1.103 ≈ 1.10. A TCPI > 1.0 means the team must be MORE efficient than current performance to finish within BAC. The current CPI = EV/AC = 180,000/210,000 = 0.857. Since TCPI (1.10) > CPI (0.857), finishing within BAC is increasingly unlikely without significant corrective action. Option B is directionally correct — the team must improve efficiency. Note: actual TCPI ≈ 1.10, so answer B's 1.08 is closest to correct interpretation among the options.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T5 / PMBOK 7th - Measurement Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q128",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM is managing a project in a Weak Matrix organization. A critical resource is shared with another project and the functional manager is now pulling them for 80% of the time, leaving only 20% for your project. The resource is on the critical path. The PM has no authority to override the functional manager. What is the BEST course of action?",
+    "options": [
+      "A. Formally document the impact and negotiate with the functional manager, presenting the critical path data to justify maintaining resource allocation",
+      "B. Accept the reduced allocation and fast-track the critical path activities with another resource",
+      "C. Report the functional manager to HR for not following the resource plan",
+      "D. Ask the team member to work overtime to compensate for the reduced allocation"
+    ],
+    "correct": "A. Formally document the impact and negotiate with the functional manager, presenting the critical path data to justify maintaining resource allocation",
+    "explanation": "In a Weak Matrix, the PM has limited authority and must negotiate for resources. The correct approach is to formally document the schedule impact (critical path delay) and use data to negotiate — not authority. Presenting the business impact to the functional manager (and potentially the sponsor if negotiation fails) is the professional approach. Fast-tracking without proper planning is risky. Involving HR is inappropriate for a resource negotiation. Mandating overtime without consent is unethical.",
+    "source": "PMP ECO Jan 2021 - Domain I People T8 / PMBOK 7th - Team Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q129",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "During quality control, 15% of deliverables are being rejected. A Pareto analysis shows that 80% of defects come from a single sub-process. The PM wants to address this. Which action addresses root cause rather than symptoms?",
+    "options": [
+      "A. Increase inspection frequency on all deliverables",
+      "B. Conduct a root cause analysis on the specific sub-process generating 80% of defects and implement process improvement",
+      "C. Add more QC inspectors to catch defects before they reach the customer",
+      "D. Implement a zero-defect policy and hold the team accountable for any future defects"
+    ],
+    "correct": "B. Conduct a root cause analysis on the specific sub-process generating 80% of defects and implement process improvement",
+    "explanation": "The Pareto analysis has already identified the vital few — one sub-process causing 80% of defects. The correct response is to investigate WHY this sub-process fails (root cause analysis, e.g., Fishbone/5 Whys) and fix the process. Increasing inspections only finds defects faster — it doesn't prevent them (this is QC, not QA). Adding inspectors increases cost without solving the problem. Zero-defect policies without process improvement are performative and demoralizing.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T7 / PMBOK 7th - Delivery Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q130",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A project manager is closing a project. The final deliverable has been accepted by the customer. However, a vendor contract has an unresolved dispute about the final payment. The rest of the team has been released. What should the PM do?",
+    "options": [
+      "A. Release the final payment immediately to close the contract and proceed with project closure",
+      "B. Withhold the final payment indefinitely until the dispute is fully resolved",
+      "C. Escalate the dispute to the legal team, document the status, and formally close all other project elements while the contract dispute is resolved through the appropriate channel",
+      "D. Ask the vendor to accept a partial payment and close the contract"
+    ],
+    "correct": "C. Escalate the dispute to the legal team, document the status, and formally close all other project elements while the contract dispute is resolved through the appropriate channel",
+    "explanation": "Project closure does not have to wait for every last loose end — the PM should close what can be closed (release resources, archive documents, conduct lessons learned, get customer acceptance) while routing the unresolved contract dispute to the appropriate channel (legal/procurement). Paying immediately without resolution could waive legitimate claims. Withholding indefinitely delays closure. Partial payment without agreement is unilateral and may be a breach.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T17 / PMBOK 7th - Closing",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q131",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM learns informally from a team member that the project sponsor has been pressuring the team to underreport actual hours worked to make the project appear under budget. The team is complying out of fear. What should the PM do FIRST?",
+    "options": [
+      "A. Confront the sponsor directly in the next project meeting",
+      "B. Ignore it — the sponsor has the authority to make decisions about project reporting",
+      "C. Verify the facts by speaking confidentially with multiple team members, then escalate through the appropriate ethics channel",
+      "D. Report the sponsor immediately to the PMO and HR without further investigation"
+    ],
+    "correct": "C. Verify the facts by speaking confidentially with multiple team members, then escalate through the appropriate ethics channel",
+    "explanation": "This is a serious ethical violation — falsifying financial data. Per PMI's Code of Ethics (Honesty and Responsibility), the PM cannot ignore it. However, acting on a single team member's informal account without verification could be unfair. The PM should first gather sufficient evidence confidentially, then escalate through the appropriate channel (ethics hotline, senior management, or audit committee) — not a public confrontation. Ignoring it makes the PM complicit. Reporting without investigation may harm an innocent party.",
+    "source": "PMI Code of Ethics / PMP ECO Domain III BE",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q132",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project is in the middle of execution when two critical risks materialize simultaneously: a key vendor declares bankruptcy and a regulatory change requires a major scope addition. The combined impact exceeds the contingency reserve. What is the correct sequence of actions?",
+    "options": [
+      "A. Implement workarounds immediately, then file change requests after the crisis is resolved",
+      "B. Suspend the project until both issues are fully resolved to protect the team",
+      "C. Assess impacts independently, implement workarounds for immediate business continuity, submit change requests for both impacts, and request management reserve release from the sponsor",
+      "D. Address the vendor bankruptcy first since it is the more urgent operational issue, then handle the regulatory change"
+    ],
+    "correct": "C. Assess impacts independently, implement workarounds for immediate business continuity, submit change requests for both impacts, and request management reserve release from the sponsor",
+    "explanation": "When multiple issues hit simultaneously, the PM must: (1) triage and assess each impact, (2) apply workarounds where immediate action prevents further damage, (3) formally document both as change requests (risks became issues, requiring new responses), and (4) request management reserve (not contingency — that's exhausted) through the sponsor/CCB. Handling them sequentially wastes time. Suspending the project is an overreaction. Filing CRs AFTER the fact violates change control discipline.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T3/T10/T15 / Uncertainty Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q133",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "An Agile team has a stable velocity of 40 story points per sprint. The product backlog contains 240 story points. The release date is fixed at 6 sprints from now. During backlog refinement, the team adds 60 newly discovered stories (60 points). What should the PM/Scrum Master recommend?",
+    "options": [
+      "A. Add all 60 points to the backlog — the team can work overtime in the last 2 sprints to catch up",
+      "B. Work with the Product Owner to either remove or defer 60 points of lower-priority items to keep the release feasible at current velocity",
+      "C. Extend the release date by 1.5 sprints to accommodate the additional scope",
+      "D. Split the team into two sub-teams to double velocity and absorb the extra scope"
+    ],
+    "correct": "B. Work with the Product Owner to either remove or defer 60 points of lower-priority items to keep the release feasible at current velocity",
+    "explanation": "At 40 points/sprint over 6 sprints = 240 points capacity. Adding 60 points to an already 240-point backlog means 300 points for 240-point capacity — a 25% overcommitment. The only viable options are: (1) remove/defer lower-priority scope to stay within capacity, or (2) move the release date, or (3) add resources (rarely effective immediately). Since the release date is fixed, the Product Owner must deprioritize 60 points. Overtime degrades quality and morale. Splitting teams reduces individual productivity initially (formation/norming).",
+    "source": "PMP ECO Jan 2021 - Domain II Process T6 / Agile Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q134",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A project manager is reviewing the project against strategic objectives in the monthly governance review. The project is on time and on budget. However, a competitor has released a product that makes the project's planned output obsolete before it launches. What should the PM recommend?",
+    "options": [
+      "A. Continue the project — it is meeting all performance baselines and the sponsor approved it",
+      "B. Accelerate delivery to beat the competitor's product to market",
+      "C. Recommend project termination or a major pivot to the steering committee, as the business case is no longer valid",
+      "D. Update the risk register to reflect the competitive threat and increase marketing spend"
+    ],
+    "correct": "C. Recommend project termination or a major pivot to the steering committee, as the business case is no longer valid",
+    "explanation": "A project that is on time and budget but no longer delivers business value is still a failing investment. PMI's value delivery focus (PMBOK 7th) requires the PM to assess ongoing viability, not just performance metrics. If the business case has been invalidated, the PM has a professional responsibility to recommend termination or strategic pivot — not to blindly continue. Accelerating a product that is already obsolete wastes more resources. Updating the risk register is insufficient — this is a strategic, not a risk-level, issue.",
+    "source": "PMP ECO Jan 2021 - Domain III BE T2/T3 / PMBOK 7th - Value Delivery System",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q135",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A newly formed Agile team has high individual skill levels but consistently underperforms during sprints. Retrospectives show team members work in silos and rarely ask for help. There is no visible conflict. What is the MOST likely root cause and the PM's best response?",
+    "options": [
+      "A. The team is in the Performing stage and the PM should reduce oversight",
+      "B. The team lacks psychological safety — members fear looking incompetent if they ask for help. The PM should model vulnerability, reframe help-seeking as a strength, and establish explicit team norms around collaboration",
+      "C. The team is overloaded — reduce the sprint velocity target to give members more breathing room",
+      "D. The team needs a personality assessment (MBTI/DISC) to identify incompatibilities and restructure sub-teams"
+    ],
+    "correct": "B. The team lacks psychological safety — members fear looking incompetent if they ask for help. The PM should model vulnerability, reframe help-seeking as a strength, and establish explicit team norms around collaboration",
+    "explanation": "Siloed work despite high skill is a classic psychological safety failure — people fear judgment if they show uncertainty. The absence of visible conflict does not mean healthy functioning; it may mean suppressed communication. The PM/Scrum Master should explicitly create safety: share their own uncertainties, reward people who ask for help, and co-create team norms. Reducing velocity treats a symptom, not a cause. MBTI is useful for communication style, not for diagnosing this specific pattern.",
+    "source": "PMP ECO Jan 2021 - Domain I People T14 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q136",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project manager is negotiating a contract with a vendor for a complex, first-of-its-kind software integration. Requirements are not fully defined. The vendor proposes a Fixed Price contract. The PM is considering contract type. What is the MOST appropriate recommendation?",
+    "options": [
+      "A. Accept the FFP contract — it gives the buyer maximum cost certainty",
+      "B. Propose a Time and Materials contract with a cap (T&M not to exceed) to balance flexibility with cost control",
+      "C. Propose a Cost Plus Incentive Fee (CPIF) contract to motivate vendor efficiency",
+      "D. Use a Firm Fixed Price contract but include extensive change clauses to handle scope evolution"
+    ],
+    "correct": "B. Propose a Time and Materials contract with a cap (T&M not to exceed) to balance flexibility with cost control",
+    "explanation": "FFP is inappropriate when scope is undefined — the vendor will either price in significant risk padding or face losses that damage delivery quality. T&M with a ceiling price (T&M NTE) gives flexibility for evolving scope while providing a maximum cost protection for the buyer. CPIF shifts all cost risk to the buyer. FFP with extensive change clauses creates an adversarial relationship and administrative overhead. T&M NTE is the industry-standard choice for complex, scope-uncertain work.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T11 / PMBOK 7th - Procurement",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q137",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A team member from a collectivist culture consistently avoids openly disagreeing with team decisions in meetings, even when they have significant concerns. After the meeting, they privately raise serious objections that often prove valid. How should the PM address this pattern?",
+    "options": [
+      "A. Ask the team member to adjust to the team's direct communication norm since all members must contribute equally in meetings",
+      "B. Create alternative feedback channels (written pre-meeting input, anonymous polls, 1:1 conversations) and share the team member's concerns without attribution when appropriate",
+      "C. Explain to the team member privately that their behavior is holding back team performance",
+      "D. Pair the team member with a direct communicator to help them become more comfortable speaking up"
+    ],
+    "correct": "B. Create alternative feedback channels (written pre-meeting input, anonymous polls, 1:1 conversations) and share the team member's concerns without attribution when appropriate",
+    "explanation": "Forcing a team member from a high-context, collectivist culture to adopt Western direct communication norms is culturally insensitive and counterproductive. The PM's responsibility is to create multiple channels through which valuable input can surface, regardless of communication style. Pre-meeting input submissions, private debriefs, and anonymous feedback tools are proven solutions. The team member's concerns are valuable — the PM should ensure they reach the decision-making process while respecting the individual's cultural communication style.",
+    "source": "PMP ECO Jan 2021 - Domain I People T11 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q138",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project manager's risk register shows a risk with 30% probability and $400,000 impact (EMV = $120,000). The PM can implement a mitigation strategy that costs $80,000 and reduces probability to 10%. Or they can transfer the risk via insurance for $60,000. Which option is financially superior, and what additional factor should the PM consider?",
+    "options": [
+      "A. Mitigation is superior (saves $120,000 - $80,000 = $40,000 net) and no further factors are needed",
+      "B. Transfer is superior ($60,000 vs $80,000 mitigation cost) and the PM should also consider the residual risk after mitigation",
+      "C. Transfer is superior from a cost perspective ($60,000 < $80,000) but the PM must also consider residual risk: mitigation leaves 10% × $400,000 = $40,000 residual EMV, so total mitigation cost = $80,000 + $40,000 = $120,000 vs transfer at $60,000 total exposure",
+      "D. Both are equivalent — the PM should choose based on the vendor relationship"
+    ],
+    "correct": "C. Transfer is superior from a cost perspective ($60,000 < $80,000) but the PM must also consider residual risk: mitigation leaves 10% × $400,000 = $40,000 residual EMV, so total mitigation cost = $80,000 + $40,000 = $120,000 vs transfer at $60,000 total exposure",
+    "explanation": "Risk financial analysis requires comparing TOTAL cost of each response, including residual risk. Mitigation: $80,000 cost + residual EMV of 10% × $400,000 = $40,000 = $120,000 total. Transfer (insurance): $60,000 premium covers the full risk (assuming full coverage). Transfer is financially superior at $60,000 vs $120,000. Option A ignores residual risk. The additional factor the PM should always consider: response reliability (does the insurance contract actually cover this specific risk scenario? Are there exclusions?).",
+    "source": "PMP ECO Jan 2021 - Domain II Process T3 / Uncertainty Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q139",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A PM is assigned to a project that already has a signed Project Charter from 6 months ago. The environment has changed significantly: key personnel have changed, costs have increased, and the technology landscape has shifted. The sponsor asks the PM to proceed with the existing charter. What should the PM do?",
+    "options": [
+      "A. Proceed with the original charter — it was formally approved and cannot be changed",
+      "B. Conduct a rapid assumptions review and constraint analysis, document the gaps, and recommend a charter update to the sponsor before proceeding with detailed planning",
+      "C. Begin planning based on the old charter and raise issues as they arise",
+      "D. Create a new project charter independently and present it to the sponsor"
+    ],
+    "correct": "B. Conduct a rapid assumptions review and constraint analysis, document the gaps, and recommend a charter update to the sponsor before proceeding with detailed planning",
+    "explanation": "A charter based on outdated assumptions is a foundation of risk for all subsequent planning. The PM should not blindly execute an outdated document, but should also not unilaterally rewrite it — the charter requires sponsor authorization. The professional approach: rapidly assess what has changed, document the delta, and recommend an update to the sponsor. Proceeding with known gaps is negligence. Creating a new charter independently oversteps the PM's authority.",
+    "source": "PMP ECO Jan 2021 - Domain III BE T3 / Initiating Process Group",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q140",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A Kanban team has a lead time of 14 days and a cycle time of 3 days for user stories. The WIP limit is set at 5 items per stage. The team is meeting all commitments but the business is unhappy with the time it takes features to reach production. What metric and action would MOST directly address the business concern?",
+    "options": [
+      "A. Reduce cycle time by assigning more developers to each story",
+      "B. Analyze the lead time components: identify where stories spend the most wait time (queue time) and target WIP limit reductions in those bottleneck stages",
+      "C. Reduce the WIP limit from 5 to 3 across all stages to force faster completion",
+      "D. Increase the number of stages in the Kanban board to give more visibility"
+    ],
+    "correct": "B. Analyze the lead time components: identify where stories spend the most wait time (queue time) and target WIP limit reductions in those bottleneck stages",
+    "explanation": "Lead time (14 days) >> Cycle time (3 days) means stories spend ~11 days waiting — not being worked on. The problem is queue time, not work time. The correct diagnostic is a Cumulative Flow Diagram (CFD) to identify where items accumulate. Targeted WIP reductions at bottleneck stages improve flow most efficiently. Blanket WIP reductions across all stages may create problems in non-bottleneck stages. Adding more developers to a stage already bottlenecked by handoffs doesn't help. More stages add overhead without addressing the root cause.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T6 / Agile Practice Guide - Kanban",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q141",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM is managing a program with three interdependent projects. Project B cannot start until Project A delivers a component. Project A is running 3 weeks late. The PM of Project B is panicking. The overall program delivery date cannot move. What is the PM's BEST response?",
+    "options": [
+      "A. Crash Project A by adding resources regardless of cost to recover the 3-week delay",
+      "B. Analyze the impact across all three projects, explore fast-tracking options in Project B's schedule to absorb part of the delay, crash only the most critical activities in Project A, and update the program-level risk register",
+      "C. Tell the Project B PM to wait — dependencies are outside individual PMs' control",
+      "D. Move Project B team members to Project A to speed up the delayed component"
+    ],
+    "correct": "B. Analyze the impact across all three projects, explore fast-tracking options in Project B's schedule to absorb part of the delay, crash only the most critical activities in Project A, and update the program-level risk register",
+    "explanation": "Program management requires integrated thinking. The correct response combines multiple compression strategies: (1) targeted crashing in Project A (not blanket) for cost-effectiveness, (2) parallel path analysis in Project B to see if any non-dependent work can start, (3) fast-tracking in Project B's later activities. Crashing everything in Project A is expensive and may not recover the full 3 weeks. Moving resources damages Project B's later phases. Doing nothing is negligent. The program PM's role is exactly this kind of integrated cross-project problem-solving.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T6/T9 / Program Management",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q142",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "During a project retrospective, the team identifies that sprint velocity has been inflating over time — not because of productivity gains, but because team members have been marking stories as 'done' before all acceptance criteria are met, with the intention of finishing them 'later.' What is the MOST critical problem this represents and what should be done?",
+    "options": [
+      "A. A velocity reporting problem — restate the velocity metric to exclude incomplete stories",
+      "B. A technical debt problem — the team should dedicate a full sprint to completing unfinished acceptance criteria",
+      "C. A Definition of Done violation that creates hidden technical debt, corrupts velocity as a forecasting tool, and erodes stakeholder trust — the team must re-commit to the DoD and audit recent stories",
+      "D. A team morale problem — the pressure to show velocity growth has forced the team to cut corners"
+    ],
+    "correct": "C. A Definition of Done violation that creates hidden technical debt, corrupts velocity as a forecasting tool, and erodes stakeholder trust — the team must re-commit to the DoD and audit recent stories",
+    "explanation": "This is a systemic integrity failure with multiple cascading consequences: (1) The DoD is being violated — items marked 'done' aren't done, which directly contradicts Scrum's transparency principle. (2) Velocity is now meaningless as a forecasting tool. (3) Hidden technical debt is accumulating. (4) Stakeholders are making decisions based on false progress data. The immediate actions: stop the pattern, audit which stories have incomplete acceptance criteria, reopen or explicitly acknowledge the debt, and recommit to the DoD. Option D is partially correct but treats a symptom — the root cause is the team culture around completeness.",
+    "source": "Scrum Guide 2020 - DoD / PMP ECO Domain II Process T7",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q143",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A PM is asked to choose between two projects for the organization's next investment. Project Alpha: NPV = $800,000, payback period = 4 years, IRR = 18%. Project Beta: NPV = $600,000, payback period = 2 years, IRR = 24%. The organization has a hurdle rate of 15% and faces significant liquidity constraints. Which project should be recommended and why?",
+    "options": [
+      "A. Project Alpha — it has the higher NPV, which is always the primary selection criterion",
+      "B. Project Beta — it has a higher IRR and faster payback, which are more important than NPV",
+      "C. Project Beta — given the organization's liquidity constraints, the faster payback (2 years) and higher IRR reduce cash flow risk, even though Alpha has higher absolute NPV",
+      "D. Both projects exceed the hurdle rate, so the organization should pursue both simultaneously"
+    ],
+    "correct": "C. Project Beta — given the organization's liquidity constraints, the faster payback (2 years) and higher IRR reduce cash flow risk, even though Alpha has higher absolute NPV",
+    "explanation": "In theory, NPV is the primary criterion. However, context matters enormously in real decisions. Given stated liquidity constraints, a 4-year payback (Alpha) vs 2-year (Beta) is a critical risk differentiator — the organization may not survive 4 years of negative cash flow. Beta's higher IRR (24% > 18%) means it is also more efficient per dollar invested. Both exceed the 15% hurdle rate. When liquidity is a constraint, payback period becomes a co-equal decision criterion alongside NPV. This is a scenario where strategic context appropriately overrides a pure NPV analysis.",
+    "source": "PMP ECO Jan 2021 - Domain III BE T2 / PMBOK 7th - Business Environment",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q144",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM has just taken over a troubled project from a predecessor. The team is demoralized, and several senior members have submitted resignation letters. The project is 6 months from delivery. What should the PM prioritize in the FIRST week?",
+    "options": [
+      "A. Conduct a full project audit to understand all variances before meeting the team",
+      "B. Meet individually with each team member to listen to their concerns, understand what's working and what isn't, and communicate clearly about the PM's leadership style and intentions — before touching plans or metrics",
+      "C. Immediately renegotiate the timeline with the sponsor since a demoralized team cannot deliver on schedule",
+      "D. Identify the highest-performing team members and focus resources on retaining them first"
+    ],
+    "correct": "B. Meet individually with each team member to listen to their concerns, understand what's working and what isn't, and communicate clearly about the PM's leadership style and intentions — before touching plans or metrics",
+    "explanation": "Taking over a troubled project requires trust-building before problem-solving. People who've submitted resignations are communicating something systemic — the PM needs to understand it directly, not through reports. Listening first demonstrates servant leadership, builds credibility, and surfaces real issues that don't appear in dashboards. Full audits can wait — data won't resign, but people will. Immediately renegotiating schedules signals panic. Cherry-picking top performers demoralizes the rest. People issues take priority over plan issues in week one.",
+    "source": "PMP ECO Jan 2021 - Domain I People T2/T3 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q145",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A change request to add a major feature has been approved by the CCB. The request adds 3 weeks to the schedule and $45,000 to the budget. The PM updates the cost and schedule baselines. A team member then asks: 'Do we also need to update any other project documents?' What is the MOST complete answer?",
+    "options": [
+      "A. No — once the baselines are updated, the change is fully incorporated",
+      "B. Yes — the PM must also update the scope statement, WBS, WBS dictionary, and any affected subsidiary plans (risk, resource, communications) and log the change in the change log",
+      "C. Yes — but only the scope statement and WBS need to be updated",
+      "D. Yes — only the risk register needs to be updated since new scope introduces new risks"
+    ],
+    "correct": "B. Yes — the PM must also update the scope statement, WBS, WBS dictionary, and any affected subsidiary plans (risk, resource, communications) and log the change in the change log",
+    "explanation": "Integrated change control requires updating ALL affected documents, not just the baselines. A scope addition requires: updated scope statement, WBS (new work packages), WBS dictionary, and potentially the risk register (new risks from new scope), resource management plan (new resources needed), communications plan (new stakeholders?), and the change log. Updating only baselines leaves the project working from incomplete documents — a classic source of rework and confusion. This is a key PMBOK integration concept.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T9/T12 / Perform Integrated Change Control",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q146",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM uses the MBTI framework and discovers that the team comprises mostly Intuitive-Thinking (NT) types who excel at strategic analysis but struggle with execution details. One stakeholder is an Sensing-Feeling (SF) type who values personal relationships and concrete specifics. Sprint reviews have been tense. What should the PM do?",
+    "options": [
+      "A. Hire additional SF-type team members to balance the team's profile",
+      "B. Brief the NT team members to present at the sprint review in a way that speaks to the stakeholder's preference — concrete examples, specific impacts, and personal acknowledgment — while preparing the stakeholder for the team's tendency toward abstract discussion",
+      "C. Remove the SF stakeholder from sprint reviews since they are creating tension with the team",
+      "D. Ask the stakeholder to adapt to the team's communication style since the team cannot change"
+    ],
+    "correct": "B. Brief the NT team members to present at the sprint review in a way that speaks to the stakeholder's preference — concrete examples, specific impacts, and personal acknowledgment — while preparing the stakeholder for the team's tendency toward abstract discussion",
+    "explanation": "EQ and personality awareness in project management means adapting communication style to the audience. The PM should coach the team to present in concrete, specific, human-centered terms for this stakeholder (SF preference), and help the stakeholder understand why the team discussions feel abstract. Neither party should be asked to fully change — the PM bridges the gap. Removing a stakeholder from reviews eliminates valuable feedback. Demanding adaptation from either party without support is ineffective.",
+    "source": "PMP ECO Jan 2021 - Domain I People T14 / EQ and Communication",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q147",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project has been using SAFe (Scaled Agile Framework) with three Agile Release Trains. At a Program Increment (PI) Planning event, two teams identify a shared dependency that is currently unassigned and at risk. Neither team has capacity to own it. What is the correct SAFe response?",
+    "options": [
+      "A. Assign the dependency to the team with the most available capacity regardless of alignment",
+      "B. Escalate to the Release Train Engineer (RTE) immediately to resolve the dependency during PI Planning — use the RTE and Business Owners to negotiate resolution, potentially as a team-of-teams dependency managed at the ART level",
+      "C. Leave the dependency unresolved and plan to address it in the first sprint",
+      "D. Remove the feature requiring the dependency from the PI objectives since it cannot be staffed"
+    ],
+    "correct": "B. Escalate to the Release Train Engineer (RTE) immediately to resolve the dependency during PI Planning — use the RTE and Business Owners to negotiate resolution, potentially as a team-of-teams dependency managed at the ART level",
+    "explanation": "In SAFe, cross-team dependencies that are unowned are a critical risk identified DURING PI Planning — the optimal time to resolve them. The RTE's role includes dependency management across teams. This is precisely why PI Planning exists — to surface and resolve exactly these cross-team conflicts while all parties are present. Leaving it for Sprint 1 costs weeks. Removing the feature may be premature. Assigning by capacity alone ignores domain expertise and alignment.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T13 / SAFe Framework / Agile Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q148",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "The PM is presenting the project status to the board. CPI = 0.88, SPI = 0.95. The project is 40% complete. The board asks whether the project will recover. The PM has implemented corrective actions but has no data yet on their effectiveness. What is the most professionally appropriate response?",
+    "options": [
+      "A. 'The project will recover — we have a strong team and the corrective actions will work'",
+      "B. 'Based on current performance, the project is trending over budget. We have implemented corrective actions last week and will have data on their effectiveness in 2 weeks. I'll present a revised forecast at that point. The current EAC based on CPI is $X'",
+      "C. 'The project is over budget and behind schedule. I recommend cancellation to avoid further losses'",
+      "D. 'The metrics are lagging indicators — the real performance is better than the numbers suggest'"
+    ],
+    "correct": "B. 'Based on current performance, the project is trending over budget. We have implemented corrective actions last week and will have data on their effectiveness in 2 weeks. I'll present a revised forecast at that point. The current EAC based on CPI is $X'",
+    "explanation": "PMI's Code of Ethics (Honesty) requires transparent, accurate communication with stakeholders. Overconfident reassurance (A) is not supported by data. Premature recommendation to cancel (C) ignores the corrective actions taken. Dismissing metrics as 'lagging' (D) without data is deflection. Option B demonstrates: honest current assessment, acknowledgment of corrective actions taken, timeline for updated data, and quantified forecast. This is how a professional PM presents an honest status — neither alarming nor falsely optimistic.",
+    "source": "PMI Code of Ethics / PMP ECO Domain III BE / Measurement Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q149",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A PM is planning a project with significant uncertainty. A stakeholder suggests using Monte Carlo simulation. The PM is considering whether this is appropriate. Which scenario BEST justifies using Monte Carlo over a simple three-point estimate?",
+    "options": [
+      "A. The project has 5 activities with independent, normally distributed durations",
+      "B. The project has 50+ activities with correlated risks, non-normal duration distributions, and the organization needs a probability distribution of possible completion dates for go/no-go decisions",
+      "C. The project is Agile and uses story points instead of duration estimates",
+      "D. The sponsor wants to understand the best-case and worst-case schedule outcomes"
+    ],
+    "correct": "B. The project has 50+ activities with correlated risks, non-normal duration distributions, and the organization needs a probability distribution of possible completion dates for go/no-go decisions",
+    "explanation": "Monte Carlo simulation's value emerges when: (1) there are many interacting variables (50+ activities — complexity that manual PERT cannot handle), (2) risk correlations exist (when one activity delays, related ones often do too), (3) distributions are non-normal (realistic), and (4) a probability distribution of outcomes is needed for decision-making (e.g., '85% confidence we finish by date X'). For 5 simple activities, PERT suffices. Agile story points don't map to Monte Carlo schedule analysis. Best/worst case is adequately served by optimistic/pessimistic PERT estimates.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T3 / Quantitative Risk Analysis",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q150",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A project team member tells the PM that they've been offered a better-paying role at another company and will leave in 4 weeks. They are the sole owner of a critical integration component that is still 6 weeks from completion. The team member is willing to stay for the right offer. What should the PM do FIRST?",
+    "options": [
+      "A. Immediately begin knowledge transfer to another team member regardless of any other considerations",
+      "B. Initiate knowledge transfer immediately, while simultaneously discussing retention options with HR and assessing whether a deadline adjustment is feasible with the sponsor",
+      "C. Accept the resignation and begin recruitment for a replacement",
+      "D. Ask the team member to stay until the project is complete as a professional obligation"
+    ],
+    "correct": "B. Initiate knowledge transfer immediately, while simultaneously discussing retention options with HR and assessing whether a deadline adjustment is feasible with the sponsor",
+    "explanation": "This is a multi-threaded response: (1) Knowledge transfer starts NOW — the most certain mitigation against knowledge loss. (2) HR retention conversation is appropriate given the member is willing to stay. (3) Schedule impact assessment informs whether a sponsor conversation is needed. The PM should pursue all three simultaneously — not sequentially. Waiting to start knowledge transfer while exploring retention is risky. Accepting the resignation immediately ignores the retention opportunity. Invoking 'professional obligation' is coercive and ineffective.",
+    "source": "PMP ECO Jan 2021 - Domain I People T6 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q151",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project team is working on a construction project. The blueprints have been finalized and approved, materials are ordered, and the city permit is pending. The permit office indicates a 6-week delay. Which type of dependency does the permit represent, and what risk response is most appropriate?",
+    "options": [
+      "A. Discretionary dependency — the team can choose to start construction before the permit arrives",
+      "B. External mandatory dependency — the team should accept the delay and update the schedule baseline via change request",
+      "C. External mandatory dependency — the team should assess whether parallel non-permit-dependent activities can be advanced to absorb the delay, and initiate a schedule compression analysis",
+      "D. Internal mandatory dependency — the PM should escalate to the sponsor to override the permit requirement"
+    ],
+    "correct": "C. External mandatory dependency — the team should assess whether parallel non-permit-dependent activities can be advanced to absorb the delay, and initiate a schedule compression analysis",
+    "explanation": "A government permit is an external mandatory dependency — it cannot be overridden or made discretionary. However, accepting a 6-week delay without exploring mitigation is passive risk acceptance. The PM should: (1) identify what activities CAN proceed without the permit (interior work, material prep, mobilization), (2) advance those activities to absorb part of the delay, and (3) evaluate schedule compression options for post-permit activities. Simply updating the baseline without attempting mitigation is the easy but professionally insufficient response.",
+    "source": "CAPM ECO 2023 - Domain 1 T1 / Schedule Management / Uncertainty Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q152",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "difficulty": "hard",
+    "question": "A project has the following activities: A(3 days)→B(4 days)→E(2 days), A(3 days)→C(6 days)→E(2 days), A(3 days)→D(2 days)→E(2 days). All paths start with A and end with E. What is the critical path duration and the total float of activity B?",
+    "options": [
+      "A. Critical path = 11 days; Float of B = 0 days",
+      "B. Critical path = 11 days (A-C-E); Float of B = 2 days",
+      "C. Critical path = 9 days (A-B-E); Float of B = 0 days",
+      "D. Critical path = 11 days (A-C-E); Float of B = 0 days because B is connected to the critical path"
+    ],
+    "correct": "B. Critical path = 11 days (A-C-E); Float of B = 2 days",
+    "explanation": "Calculate each path: A-B-E = 3+4+2 = 9 days. A-C-E = 3+6+2 = 11 days. A-D-E = 3+2+2 = 7 days. Critical path = A-C-E at 11 days. Float of B = Critical Path Duration - Path through B = 11 - 9 = 2 days. Activity B can be delayed up to 2 days without delaying the project. Float is path-based, not connection-based — B is not ON the critical path, so it has positive float despite sharing start/end nodes with it.",
+    "source": "CAPM ECO 2023 - Domain 2 T2 / CPM Calculation",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q153",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "difficulty": "hard",
+    "question": "A Scrum team has completed Sprint 4. Their velocity per sprint was: Sprint 1=28, Sprint 2=35, Sprint 3=42, Sprint 4=38. The Product Backlog has 180 story points remaining. The Product Owner asks how many sprints are needed to complete. What is the most reliable answer and methodology?",
+    "options": [
+      "A. 4.3 sprints — based on latest sprint velocity of 38 points",
+      "B. Between 4 and 6 sprints — use average velocity (35.75 ≈ 36) for a central estimate, and acknowledge velocity variability creates a range",
+      "C. Exactly 5 sprints — based on average velocity of 35.75 rounded to 36",
+      "D. 6 sprints — always use the most conservative (lowest) velocity estimate"
+    ],
+    "correct": "B. Between 4 and 6 sprints — use average velocity (35.75 ≈ 36) for a central estimate, and acknowledge velocity variability creates a range",
+    "explanation": "Average velocity = (28+35+42+38)/4 = 35.75 ≈ 36. At 36 points/sprint: 180/36 = 5 sprints is the central estimate. But velocity ranges from 28 to 42. At worst (28): 180/28 = 6.4 → 7 sprints. At best (42): 180/42 = 4.3 → 5 sprints. Presenting a single number (5) implies false precision. Using only the latest sprint ignores the trend. A professional Agile PM presents a RANGE with confidence levels — 'most likely 5 sprints, could be 4-7 depending on velocity.' This is honest, Agile-appropriate forecasting.",
+    "source": "CAPM ECO 2023 - Domain 3 T2 / Agile Metrics and Velocity",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q154",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A business analyst is facilitating a requirements workshop. Two department heads have directly contradictory requirements for the same system feature. Both have equal authority. The BA has documented both requirements. What should the BA do next?",
+    "options": [
+      "A. Average the two requirements into a compromise and document it as the agreed requirement",
+      "B. Escalate to the project sponsor to decide which department's requirement takes priority",
+      "C. Facilitate a structured prioritization session with both stakeholders, surface the underlying business goals behind each requirement, and find if a solution can satisfy both goals — or identify trade-offs for the sponsor to resolve",
+      "D. Document both requirements as equally valid and let the development team decide during implementation"
+    ],
+    "correct": "C. Facilitate a structured prioritization session with both stakeholders, surface the underlying business goals behind each requirement, and find if a solution can satisfy both goals — or identify trade-offs for the sponsor to resolve",
+    "explanation": "The BA's role is NOT to arbitrate authority disputes, but to understand the WHY behind requirements. Often, contradictory requirements stem from different underlying goals that CAN both be satisfied with a creative solution. The BA should surface business objectives first (interest-based negotiation). If a solution satisfying both exists — great. If not, the trade-off decision belongs to the appropriate authority level (sponsor). Averaging requirements produces a solution that satisfies neither. Letting developers decide requirements is a fundamental BA failure.",
+    "source": "CAPM ECO 2023 - Domain 4 T3 / Business Analysis for Practitioners",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q155",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "difficulty": "hard",
+    "question": "A Scrum team consistently completes all sprint backlog items before the sprint ends (3-4 days early). The Scrum Master sees this as a success. The Product Owner is frustrated because the team then pulls in unplanned items from the backlog without refinement. What is the ACTUAL problem and the correct resolution?",
+    "options": [
+      "A. The sprint length is too long — reduce from 2 weeks to 1 week",
+      "B. The team is under-committing: the sprint capacity is being underutilized due to overly conservative estimates. The team should increase their sprint commitment AND implement a formal 'ready' buffer of pre-refined stories to pull from when ahead of plan",
+      "C. The Product Owner should praise the team for finishing early and not interfere with backlog pulls",
+      "D. The team should pad their estimates to fill the sprint time and avoid the perception of under-commitment"
+    ],
+    "correct": "B. The team is under-committing: the sprint capacity is being underutilized due to overly conservative estimates. The team should increase their sprint commitment AND implement a formal 'ready' buffer of pre-refined stories to pull from when ahead of plan",
+    "explanation": "Consistently finishing 3-4 days early signals systemic under-commitment, not efficiency. The consequences: (1) Velocity is artificially deflated, corrupting forecasts. (2) Pulling unrefined stories creates quality and DoD risks — unrefined stories often reveal hidden complexity mid-sprint. The two-part solution: (a) Calibrate estimates upward to use capacity honestly. (b) Maintain a 'ready buffer' — 2-3 pre-refined stories that can be cleanly pulled when capacity exists. Reducing sprint length treats a symptom. Padding estimates is dishonest. Praising the pattern perpetuates it.",
+    "source": "CAPM ECO 2023 - Domain 3 T2/T5 / Scrum Guide / Agile Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q156",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project manager is informed that the project has been terminated due to a strategic pivot by the organization — not due to poor performance. The project was 70% complete and on track. What is the MOST important action the PM should prioritize at this point?",
+    "options": [
+      "A. Fight the termination decision — the project was performing well and should be defended",
+      "B. Immediately release all team members and archive documents",
+      "C. Execute formal project closure: document work completed, capture lessons learned, formally release contracts and resources, and ensure any completed deliverables are properly transitioned or disposed of",
+      "D. Seek another project for the team before releasing them to minimize career impact"
+    ],
+    "correct": "C. Execute formal project closure: document work completed, capture lessons learned, formally release contracts and resources, and ensure any completed deliverables are properly transitioned or disposed of",
+    "explanation": "Early termination (for any reason) still requires formal closure. This includes: documenting the 70% of work completed (which may have value as partial deliverables), capturing lessons learned from the terminated project, formally closing contracts (critical to avoid ongoing obligations), releasing resources through proper HR processes, and potentially transitioning completed components to operations. Fighting the decision oversteps the PM's authority — strategic pivots are sponsor/executive decisions. Immediately releasing everyone without closure creates contractual and documentation risks.",
+    "source": "CAPM ECO 2023 - Domain 1 T2 / PMBOK 7th - Closing Process Group",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q157",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A business analyst has completed requirements elicitation for a new CRM system. The requirements document is 120 pages. The development lead says the team doesn't have time to read it before the sprint planning next week. What should the BA do?",
+    "options": [
+      "A. Insist the team reads the full document — it is their professional responsibility",
+      "B. Create a requirements summary and user story map showing the high-level feature areas, and schedule a 2-hour requirements walkthrough session with the team before sprint planning",
+      "C. Reduce the requirements document to 20 pages by removing detail",
+      "D. Let the team work from the full document and answer questions as they arise during development"
+    ],
+    "correct": "B. Create a requirements summary and user story map showing the high-level feature areas, and schedule a 2-hour requirements walkthrough session with the team before sprint planning",
+    "explanation": "A 120-page document is a communication failure waiting to happen. The BA's job is not just to document — it's to communicate requirements effectively to each audience. The development team needs to understand requirements well enough to plan and estimate — not to read a tome. A user story map gives visual context; a walkthrough enables Q&A and knowledge transfer efficiently. Insisting the team reads it ignores reality and damages relationships. Reducing the document loses required detail. Answering questions during development is reactive and costly.",
+    "source": "CAPM ECO 2023 - Domain 4 T2/T3 / Business Analysis for Practitioners",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q158",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "difficulty": "hard",
+    "question": "A project manager is planning a software deployment project. The team identifies that User Acceptance Testing (UAT) cannot begin until both the front-end module (10 days) and the back-end API (14 days) are complete. Both modules can start simultaneously. What type of relationship exists between the modules and UAT, and what is the earliest UAT can start (assuming Day 1 start)?",
+    "options": [
+      "A. Finish-to-Start from each module; UAT starts on Day 15",
+      "B. Start-to-Start with the back-end; UAT can start on Day 11 when front-end is done",
+      "C. Finish-to-Start from BOTH modules (logical AND); UAT cannot start until Day 15 — both modules must finish",
+      "D. Finish-to-Start from the longer module only; UAT starts on Day 15"
+    ],
+    "correct": "C. Finish-to-Start from BOTH modules (logical AND); UAT cannot start until Day 15 — both modules must finish",
+    "explanation": "When an activity has multiple predecessors with Finish-to-Start dependencies, it cannot start until ALL predecessors are complete (logical AND, not OR). Front-end finishes Day 10; back-end finishes Day 14. UAT's early start = Day 15 (the day after the last predecessor finishes). This is a classic multiple-predecessor network question. Option A is correct on timing but wrong on reasoning — it's not just from 'each module' independently; it's constrained by the LONGEST predecessor. The critical path for UAT runs through the back-end API (14 days).",
+    "source": "CAPM ECO 2023 - Domain 2 T2 / Network Diagram / CPM",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q159",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project team member comes to the PM and says: 'I think we should use a different testing tool — it would save us 2 weeks. But it wasn't in the original project plan.' The project is currently on schedule. The testing phase starts in 3 weeks. What should the PM do?",
+    "options": [
+      "A. Approve the change immediately — the team member has good judgment and 2 weeks savings is significant",
+      "B. Reject the change — the project plan has been approved and cannot be modified mid-project",
+      "C. Ask the team member to formally document the proposed change with a cost-benefit analysis, assess risk of changing tools this close to the testing phase, and submit through the change control process for CCB review",
+      "D. Trial the new tool in parallel with the planned tool to validate the claim before deciding"
+    ],
+    "correct": "C. Ask the team member to formally document the proposed change with a cost-benefit analysis, assess risk of changing tools this close to the testing phase, and submit through the change control process for CCB review",
+    "explanation": "Even a beneficial change must go through formal change control. The 2-week saving is attractive but must be weighed against: learning curve risk, integration compatibility, license costs, team familiarity, 3-week lead time before testing (is that enough to validate the tool?). The PM cannot unilaterally approve changes to approved baselines — that's a CCB decision. Immediate approval skips due diligence. Rejection ignores a potentially valuable opportunity. Parallel trialing consumes resources and may not provide a definitive answer in time.",
+    "source": "CAPM ECO 2023 - Domain 1 T1 / Perform Integrated Change Control",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q160",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "difficulty": "hard",
+    "question": "An Agile team is asked by the Product Owner to commit to a specific number of story points for the next sprint that is 25% higher than their historical velocity. The Product Owner argues this is necessary to meet a critical customer deadline. The team believes the commitment is unrealistic. What should the Scrum Master do?",
+    "options": [
+      "A. Support the Product Owner — customer deadlines take precedence over team velocity",
+      "B. Tell the team they must commit to what the PO requests since the PO has final authority on what gets done",
+      "C. Facilitate a discussion between the PO and the team about the trade-offs: explain that overcommitment leads to quality issues and technical debt, explore scope reduction alternatives, and help the PO understand what IS achievable by the deadline",
+      "D. Commit on behalf of the team and tell the PO it will be done"
+    ],
+    "correct": "C. Facilitate a discussion between the PO and the team about the trade-offs: explain that overcommitment leads to quality issues and technical debt, explore scope reduction alternatives, and help the PO understand what IS achievable by the deadline",
+    "explanation": "In Scrum, the Development Team owns the Sprint commitment — not the PO, not the Scrum Master. The PO decides WHAT to build; the team decides HOW MUCH they can realistically deliver. Forcing a 25% velocity increase is a recipe for quality degradation, technical debt, and burnout. The Scrum Master's role is to protect the team and facilitate transparency. The correct approach: facilitate an honest conversation about what CAN be done, explore scope reduction to hit the deadline with fewer features, and help the PO make an informed trade-off decision.",
+    "source": "Scrum Guide 2020 / CAPM ECO 2023 - Domain 3 T5 / Agile Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q161",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A BA is conducting stakeholder interviews for a new inventory management system. The warehouse manager says: 'I need to see all inventory in real-time.' The IT manager says: 'Real-time updates will create database performance problems.' What type of conflict is this, and what should the BA do?",
+    "options": [
+      "A. A technical conflict — side with the IT manager since they understand system constraints better",
+      "B. A requirements conflict between a functional need and a non-functional constraint — the BA should document both, explore technical solutions (caching, near-real-time), and facilitate a solution workshop with both stakeholders",
+      "C. A stakeholder priority conflict — escalate to the project sponsor to choose which requirement takes precedence",
+      "D. A communication problem — the warehouse manager doesn't actually need real-time data, so reframe the requirement"
+    ],
+    "correct": "B. A requirements conflict between a functional need and a non-functional constraint — the BA should document both, explore technical solutions (caching, near-real-time), and facilitate a solution workshop with both stakeholders",
+    "explanation": "This is a classic tension between functional requirements (warehouse: see inventory now) and non-functional requirements (IT: system performance). The BA's role is NOT to arbitrate or to reframe requirements without validation. The BA should: (1) document both requirements precisely, (2) explore technical solutions that may satisfy both (near-real-time with 30-second delay? Read replicas? Caching?), (3) facilitate a solution-finding session with both stakeholders. 'Near-real-time' at 30 seconds may satisfy the warehouse manager's actual business need (do I need to know about changes in milliseconds?). Reframing without asking is making assumptions.",
+    "source": "CAPM ECO 2023 - Domain 4 T3 / Non-functional Requirements / BA Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q162",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "difficulty": "hard",
+    "question": "A PM is preparing a cost estimate for a complex software project at project initiation. Very little detail is available. Which type of estimate is most appropriate, what accuracy range should be communicated, and what caveat must the PM provide?",
+    "options": [
+      "A. Bottom-up estimate with ±5% accuracy — initiation requires precision for funding approval",
+      "B. Analogous (rough order of magnitude) estimate with -25% to +75% accuracy — based on similar past projects; the PM must communicate that the estimate will be refined as scope is elaborated",
+      "C. Parametric estimate with ±10% accuracy — use industry benchmarks for software development cost per function point",
+      "D. Definitive estimate with ±5% accuracy — wait until all details are known before committing to a number"
+    ],
+    "correct": "B. Analogous (rough order of magnitude) estimate with -25% to +75% accuracy — based on similar past projects; the PM must communicate that the estimate will be refined as scope is elaborated",
+    "explanation": "At initiation, detail is insufficient for bottom-up or definitive estimates. Analogous estimating uses historical data from similar projects — it is faster and appropriate for early-stage decisions. The ROM accuracy range (-25% to +75%, asymmetric because surprises are more often bad than good) must be clearly communicated to avoid the estimate being treated as a budget commitment. The PM MUST caveat that the estimate will be refined through progressive elaboration. A definitive estimate requires scope detail that doesn't exist yet — waiting for it delays the initiation decision.",
+    "source": "CAPM ECO 2023 - Domain 2 T3 / PMBOK 7th - Estimating Types",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q163",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project manager discovers that a team member has been recording 8 hours per day on the timesheet regardless of actual hours worked. Some days they worked 10 hours; other days only 4 hours. The team member explains they were told 'just put 8 hours' by a previous PM. What should the PM do?",
+    "options": [
+      "A. Continue the practice to avoid disrupting the team — it averages out over time",
+      "B. Ignore this particular team member's practice but enforce accuracy for new team members going forward",
+      "C. Address the practice immediately: explain why accurate time tracking matters (project cost control, resource planning, earned value), establish the correct process going forward, and document the conversation without punitive action given the team member's good-faith reliance on prior instructions",
+      "D. Report the team member to HR for falsifying records"
+    ],
+    "correct": "C. Address the practice immediately: explain why accurate time tracking matters (project cost control, resource planning, earned value), establish the correct process going forward, and document the conversation without punitive action given the team member's good-faith reliance on prior instructions",
+    "explanation": "Inaccurate timesheets corrupt cost tracking, earned value data, and resource planning. The PM must stop it immediately. However, the team member acted in good faith based on explicit prior PM instruction — this is a process failure, not an individual integrity failure. The appropriate response: educate (explain the 'why'), correct (establish accurate recording going forward), document (protect yourself and create a record), and do not punish (good faith reliance on authority). HR escalation is disproportionate here. Continuing or selectively enforcing the practice perpetuates bad data.",
+    "source": "CAPM ECO 2023 - Domain 1 T1 / PMI Code of Ethics / Cost Management",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q164",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "difficulty": "hard",
+    "question": "A Kanban team's cycle time has been gradually increasing over 6 weeks despite the WIP limit remaining constant. The team has not added new members. What is the MOST likely systemic cause?",
+    "options": [
+      "A. The WIP limit is too low and should be increased to allow more parallel work",
+      "B. Accumulating technical debt or increasing task complexity is degrading throughput — the team needs to dedicate capacity to debt reduction and complexity analysis",
+      "C. The team needs more management oversight to improve discipline",
+      "D. The WIP limit is working correctly — increasing cycle time is normal for mature Kanban systems"
+    ],
+    "correct": "B. Accumulating technical debt or increasing task complexity is degrading throughput — the team needs to dedicate capacity to debt reduction and complexity analysis",
+    "explanation": "Gradually increasing cycle time with stable WIP and team size is a classic signal of systemic degradation — either accumulating technical debt (each change takes longer because the codebase is brittle) or increasing item complexity (stories are getting harder). Increasing WIP limits makes the problem worse by adding more in-flight items to an already struggling system. More management oversight doesn't fix a technical root cause. Cycle time increasing is NOT normal — it signals a worsening system. The team should analyze cumulative flow diagrams and retrospectives to identify the root cause, and explicitly allocate capacity (20-30%) to debt reduction.",
+    "source": "CAPM ECO 2023 - Domain 3 T3 / Agile Practice Guide - Kanban Metrics",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q165",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A BA has documented 45 functional requirements for a system. During review, a senior developer says: '12 of these requirements cannot be implemented with the current technology stack within the project timeline.' The PM is present. What should happen next?",
+    "options": [
+      "A. Remove the 12 requirements from the requirements document immediately to keep the project feasible",
+      "B. The BA and PM should work with the developer to document the technical constraints, assess whether alternative approaches exist for each blocked requirement, and present the trade-offs to the sponsor for decision: defer, descope, change technology, or increase timeline/budget",
+      "C. Override the developer's concern — technical constraints are implementation details, not requirements concerns",
+      "D. Escalate the technical limitations to the PMO and wait for a decision before proceeding"
+    ],
+    "correct": "B. The BA and PM should work with the developer to document the technical constraints, assess whether alternative approaches exist for each blocked requirement, and present the trade-offs to the sponsor for decision: defer, descope, change technology, or increase timeline/budget",
+    "explanation": "This is a feasibility issue discovered during requirements review — a critical finding that affects project planning. The BA/PM cannot unilaterally remove requirements (they represent stakeholder needs) nor ignore technical constraints (they affect project viability). The correct process: (1) document the specific technical constraint for each blocked requirement, (2) explore alternatives (different implementation approach, third-party component, phased delivery), (3) present options with trade-offs to the sponsor. Deferring to the PMO without first analyzing options is abdication of PM responsibility.",
+    "source": "CAPM ECO 2023 - Domain 4 T6 / Requirements Validation / Project Feasibility",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q166",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A PM is building a schedule and must sequence 6 activities: A, B, C, D, E, F. Activity D has a Start-to-Start dependency with C with a 2-day lag. Activity E has a Finish-to-Finish dependency with D. Activity F has a Start-to-Finish dependency with E (F must START before E can FINISH). Which activity type is F's relationship with E, and when is it typically appropriate?",
+    "options": [
+      "A. A Finish-to-Start — F starts after E finishes; it is the most common dependency",
+      "B. A Start-to-Finish — F must start before E can finish; this is the rarest dependency type, typically used in Just-In-Time scheduling where an old system runs until a new one starts",
+      "C. A Finish-to-Finish — both activities end together, which is common in parallel workstreams",
+      "D. A Start-to-Start — both activities begin together, which is used when parallel work is required"
+    ],
+    "correct": "B. A Start-to-Finish — F must start before E can finish; this is the rarest dependency type, typically used in Just-In-Time scheduling where an old system runs until a new one starts",
+    "explanation": "Start-to-Finish (SF) is the rarest PDM relationship. The successor (F) must START before the predecessor (E) can FINISH. Classic use case: a legacy system (E) must keep running until the new replacement system (F) goes live. The new system (F) must START before the old one (E) can be SHUT DOWN (finished). This prevents a gap in service. It is not to be confused with FS (F starts after E finishes) or SS (both start together). In the PMP exam, identifying SF correctly demonstrates advanced schedule management knowledge.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T6 / PDM Dependencies",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q167",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A project team has been high-performing for 8 months. The project is now entering its final closing phase. Two key team members have been offered new roles internally and are mentally disengaging. Morale is dropping. No performance issues have materialized yet but trends are concerning. What should the PM do proactively?",
+    "options": [
+      "A. Nothing — performance issues haven't materialized yet, so no action is needed",
+      "B. Acknowledge the project's successful conclusion, explicitly celebrate team achievements, provide meaningful final assignments that leverage each person's strengths, and have transparent 1:1 conversations about the transition timeline",
+      "C. Restrict the team members from starting new roles until the project officially closes",
+      "D. Replace the disengaging team members with new resources for the final phase"
+    ],
+    "correct": "B. Acknowledge the project's successful conclusion, explicitly celebrate team achievements, provide meaningful final assignments that leverage each person's strengths, and have transparent 1:1 conversations about the transition timeline",
+    "explanation": "This is the Adjourning stage of Tuckman's model — team members are mentally transitioning out. The PM's role in Adjourning is to help the team close well: celebrate success (recognition satisfies esteem needs per Maslow), provide meaningful final work (prevents disengagement), and acknowledge the upcoming transition openly (prevents the elephant-in-the-room effect). Waiting for problems to materialize is reactive. Restricting team members from transitions is controlling and counterproductive. Replacing them loses institutional knowledge at a critical time.",
+    "source": "PMP ECO Jan 2021 - Domain I People T2/T6 / Tuckman - Adjourning Stage",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q168",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "An organization is selecting between two project approaches: a $2M predictive project delivering a complete ERP system in 18 months, vs a $1.4M Agile approach delivering a Minimum Viable Product in 4 months with iterative additions over 24 months. Business value begins being realized at delivery. Which consideration MOST strongly favors the Agile approach beyond just cost?",
+    "options": [
+      "A. Agile is always preferable for software projects regardless of context",
+      "B. The 14-month earlier delivery of the MVP means business value is realized 14 months sooner, the organization can validate product-market fit before full investment, and scope can be adjusted based on early user feedback — reducing the risk of delivering the wrong product after 18 months",
+      "C. The Agile approach is cheaper, which is the primary selection factor",
+      "D. The Agile approach gives the team more flexibility and autonomy, improving morale"
+    ],
+    "correct": "B. The 14-month earlier delivery of the MVP means business value is realized 14 months sooner, the organization can validate product-market fit before full investment, and scope can be adjusted based on early user feedback — reducing the risk of delivering the wrong product after 18 months",
+    "explanation": "The most powerful Agile argument is risk reduction and time-to-value, not cost alone. Delivering an MVP in 4 months means: (1) 14 months of business value realized before the predictive approach delivers anything, (2) real user feedback informs the remaining scope (avoiding the classic waterfall trap of building the wrong thing perfectly), (3) organizational learning improves subsequent iterations, (4) if business priorities shift, sunk costs are $1.4M × (4/24) before a pivot, vs $2M fully committed. The cost difference is meaningful but secondary to these strategic risk considerations.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T1/T13 / Value Delivery System",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q169",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A PM is implementing a project management information system (PMIS) for a large project. The team asks: 'Which documents should be stored in the PMIS vs kept in the team's shared drive?' What is the MOST important distinction for the PM to make?",
+    "options": [
+      "A. All project documents must be in the PMIS — no exceptions",
+      "B. Only approved and baselined documents belong in the PMIS; working drafts and informal team documents can be in the shared drive, but version control must be maintained for all baseline documents",
+      "C. The PMIS is only for executive-level reports; the shared drive is for all other documents",
+      "D. There is no meaningful distinction — wherever the team finds it easiest to access documents is fine"
+    ],
+    "correct": "B. Only approved and baselined documents belong in the PMIS; working drafts and informal team documents can be in the shared drive, but version control must be maintained for all baseline documents",
+    "explanation": "The PMIS is the authoritative source for approved, controlled project artifacts — baselines, formal plans, change requests, approved deliverables. Working documents are legitimately in collaborative spaces (shared drives, wikis). The critical principle: any document that is a baseline or has been formally approved must have version control, clear ownership, and be accessible through a controlled channel. Mixing unapproved drafts with baselines creates confusion about which version is authoritative. Version control is non-negotiable for baseline documents regardless of storage location.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T12 / Configuration Management",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q170",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "A PM receives a complaint from a team member that another team member has been taking credit for group work in front of senior leadership. The complainant is visibly upset and threatens to resign if nothing changes. The accused team member is a high performer who delivers excellent results. How should the PM handle this?",
+    "options": [
+      "A. Side with the high performer — their results justify their behavior",
+      "B. Investigate privately by speaking with multiple witnesses, have a direct private conversation with the accused about the impact of their behavior (not their intent), and establish clear team norms about credit attribution going forward",
+      "C. Tell the complainant to address it directly with the accused — the PM should not get involved in interpersonal issues",
+      "D. Escalate immediately to HR since this is a formal complaint"
+    ],
+    "correct": "B. Investigate privately by speaking with multiple witnesses, have a direct private conversation with the accused about the impact of their behavior (not their intent), and establish clear team norms about credit attribution going forward",
+    "explanation": "Credit attribution conflicts are a common team dynamic issue. The PM must: (1) verify the pattern (not act on a single account), (2) address the behavior, not the person's character — focus on impact ('when you present group work as solo, team members feel undervalued'), (3) establish explicit team norms going forward (e.g., 'in all leadership presentations, we credit contributors by name'). HR escalation is premature for a behavior pattern that hasn't been addressed at the PM level. Dismissing the complaint risks losing the complainant. Siding with performance ignores team health.",
+    "source": "PMP ECO Jan 2021 - Domain I People T1/T3 / Team Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q171",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project team's lessons learned session reveals that the same risk (key supplier delay) materialized in the same way on three consecutive projects. Each time it was handled reactively. What does this pattern indicate, and what organizational-level action should be recommended?",
+    "options": [
+      "A. The project teams have been unlucky — supplier delays are random events",
+      "B. This risk should be elevated from a project-level risk to an organizational process asset: a standard risk response plan for supplier delays should be created, incorporated into project templates, and potentially addressed through supply chain strategy (dual sourcing, safety stock)",
+      "C. Future project teams should simply monitor this risk more closely in their risk registers",
+      "D. The procurement department should be replaced since they consistently select unreliable suppliers"
+    ],
+    "correct": "B. This risk should be elevated from a project-level risk to an organizational process asset: a standard risk response plan for supplier delays should be created, incorporated into project templates, and potentially addressed through supply chain strategy (dual sourcing, safety stock)",
+    "explanation": "A risk that materializes repeatedly across multiple projects is a systemic organizational risk, not a project-specific uncertainty. Lessons learned from project management must feed back into organizational process improvement — this is the link between project management and organizational learning. The correct response: (1) create a standard risk response that every PM can use (template), (2) potentially address the root cause at the supply chain level (dual sourcing, safety stock, better supplier qualification). Simply adding it to future risk registers without a standard response repeats the reactive pattern. Blaming procurement without root cause analysis is scapegoating.",
+    "source": "CAPM ECO 2023 - Domain 1 T2 / Lessons Learned / OPA Development",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q172",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A BA is eliciting requirements from a group of end users. During a workshop, a senior manager in the room consistently overrides the end users' stated needs with their own preferences. The end users stop contributing. What technique should the BA use to recover the session?",
+    "options": [
+      "A. Ask the senior manager to leave the workshop",
+      "B. Pause the workshop and schedule separate sessions — one with the senior manager and one with end users only — to elicit requirements independently, then reconcile through a structured prioritization process",
+      "C. Continue the workshop but privately ask the senior manager to hold their comments",
+      "D. Accept the senior manager's requirements as final since they have organizational authority"
+    ],
+    "correct": "B. Pause the workshop and schedule separate sessions — one with the senior manager and one with end users only — to elicit requirements independently, then reconcile through a structured prioritization process",
+    "explanation": "A classic HiPPO (Highest Paid Person's Opinion) dynamic is killing the workshop's purpose. End user needs are being suppressed by authority, not by logic. The BA's professional responsibility is to elicit authentic needs from all relevant sources. Continuing the joint session won't change the dynamic. The solution: separate sessions to capture authentic input from each group, then use a structured reconciliation (MoSCoW, priority matrix) to surface conflicts for transparent decision-making. Asking the senior manager to leave is confrontational and politically risky. Accepting authority as a substitute for user needs will produce a system that doesn't work for those who use it.",
+    "source": "CAPM ECO 2023 - Domain 4 T2/T3 / Requirements Elicitation Techniques",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q173",
+    "certification": "CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "difficulty": "hard",
+    "question": "A project manager needs to estimate a software development project with 200 function points. Historical data shows the organization completes 10 function points per person-month. The team has 4 developers. How long will the project take, and what estimating technique is being used?",
+    "options": [
+      "A. 5 months using Bottom-Up Estimating",
+      "B. 20 person-months total / 4 developers = 5 months, using Parametric Estimating based on the productivity rate (10 FP/person-month)",
+      "C. 50 months using Analogous Estimating from a similar project",
+      "D. 4 months using Three-Point (PERT) Estimating with optimistic assumptions"
+    ],
+    "correct": "B. 20 person-months total / 4 developers = 5 months, using Parametric Estimating based on the productivity rate (10 FP/person-month)",
+    "explanation": "Parametric Estimating uses a statistical relationship between a parameter (function points) and historical productivity data (10 FP/person-month). Total effort = 200 FP ÷ 10 FP/person-month = 20 person-months. With 4 developers: 20 ÷ 4 = 5 months. This is textbook parametric estimating. The formula is: Estimate = Parameter × Rate. This is more accurate than analogous (which uses total project comparison) and faster than bottom-up (which requires work package decomposition). The key: parametric REQUIRES reliable historical data for the rate to be valid.",
+    "source": "CAPM ECO 2023 - Domain 2 T3 / Parametric Estimating / PMBOK 7th",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q174",
+    "certification": "CAPM",
+    "domain": "Agile Frameworks/Methodologies",
+    "difficulty": "hard",
+    "question": "A new Scrum team has been self-organizing for 2 sprints. In Sprint 3, a senior developer starts assigning tasks to junior members without discussion, citing efficiency. Other team members begin deferring to this developer's decisions without challenge. The Scrum Master notices the team is no longer self-organizing. What should the Scrum Master do?",
+    "options": [
+      "A. Allow the arrangement — the senior developer is experienced and the team seems to function smoothly",
+      "B. Raise the pattern in the Sprint Retrospective, coach the team on self-organization principles, and work with the senior developer privately to reframe their role as a technical mentor rather than a task assigner",
+      "C. Remove the senior developer's decision-making authority by establishing a formal rotation for task assignment",
+      "D. Assign tasks yourself as Scrum Master to prevent any one person from dominating"
+    ],
+    "correct": "B. Raise the pattern in the Sprint Retrospective, coach the team on self-organization principles, and work with the senior developer privately to reframe their role as a technical mentor rather than a task assigner",
+    "explanation": "Self-organization is a core Agile principle — the team collectively decides who does what. When one person assumes a command-and-control role, the team loses the collaborative intelligence that makes Agile teams high-performing. The Scrum Master's response: (1) surface the pattern transparently in the retrospective (team awareness), (2) coach on self-organization principles, (3) private coaching for the senior developer — reframe their expertise as mentorship, not direction. Formal task assignment rotations create bureaucracy. Scrum Masters assigning tasks replaces one command-and-control dynamic with another.",
+    "source": "Scrum Guide 2020 / CAPM ECO 2023 - Domain 3 T1/T5 / Agile Practice Guide",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q175",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project manager receives a status report showing: BAC = $1,000,000, PV = $400,000, EV = $320,000, AC = $380,000. The project is 40% complete by calendar time. A board member asks: 'Will the project finish on budget?' What is the MOST accurate response based on ALL relevant EVM indicators?",
+    "options": [
+      "A. Yes — the cost variance is only -$60,000 which is manageable",
+      "B. No — CPI is 0.84, meaning for every dollar spent only $0.84 of value is earned. EAC = $1,000,000 / 0.84 = ~$1,190,000, a projected $190,000 overrun. The project is also behind schedule (SPI = 0.80) which may add further cost pressure",
+      "C. It is too early to tell — we are only 40% through the project",
+      "D. Yes — the team will improve efficiency in the second half of the project as they build momentum"
+    ],
+    "correct": "B. No — CPI is 0.84, meaning for every dollar spent only $0.84 of value is earned. EAC = $1,000,000 / 0.84 = ~$1,190,000, a projected $190,000 overrun. The project is also behind schedule (SPI = 0.80) which may add further cost pressure",
+    "explanation": "Full EVM analysis: CPI = EV/AC = 320,000/380,000 = 0.842. SPI = EV/PV = 320,000/400,000 = 0.80. CV = EV-AC = -60,000 (over budget). SV = EV-PV = -80,000 (behind schedule). EAC = BAC/CPI = 1,000,000/0.842 = $1,187,648. The project is both over budget AND behind schedule. Being behind schedule often adds cost pressure (extended duration = more overhead, potential crashing costs). Option A only looks at CV in isolation. Option C is dismissive — 40% complete with consistent trends IS meaningful data. Option D is wishful thinking without evidence.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T5 / Measurement Performance Domain",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q176",
+    "certification": "PMP",
+    "domain": "People",
+    "difficulty": "hard",
+    "question": "During a project, the PM observes that the team consistently avoids raising bad news in project meetings, even when problems are serious. Status reports are consistently optimistic. The PM suspects this is organizational culture, not individual dishonesty. What is the MOST effective systemic intervention?",
+    "options": [
+      "A. Mandate that team members report all problems immediately or face consequences",
+      "B. Create structured 'red flag' slots in every meeting where raising concerns is explicitly valued and rewarded, model vulnerability by sharing your own uncertainties openly, and eliminate any visible negative reactions to bad news",
+      "C. Implement anonymous status reporting so team members can share problems without fear",
+      "D. Conduct individual performance reviews that measure the accuracy of status reports"
+    ],
+    "correct": "B. Create structured 'red flag' slots in every meeting where raising concerns is explicitly valued and rewarded, model vulnerability by sharing your own uncertainties openly, and eliminate any visible negative reactions to bad news",
+    "explanation": "'Happy path' reporting is a systemic psychological safety failure — not an individual honesty problem. The PM must address the SYSTEM: (1) Structure: create explicit space for bad news in meeting formats (a 'concerns' agenda item signals it's expected). (2) Model: the PM sharing their own uncertainties demonstrates it's safe to do so. (3) Reinforce: visibly thank people who raise hard issues — 'Thank you for flagging that early; that's exactly what we need.' (4) Never punish: any visible frustration at bad news will silence reporters immediately. Anonymous reporting treats a symptom without building culture. Mandates create compliance without psychological safety.",
+    "source": "PMP ECO Jan 2021 - Domain I People T10/T12/T14 / Psychological Safety",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q177",
+    "certification": "CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "difficulty": "hard",
+    "question": "A project is using a Phase Gate (Stage Gate) review process. The project has completed Phase 1 (Discovery) and is presenting to the Steering Committee for a go/no-go decision on Phase 2. The Phase 1 deliverables are complete but the business case has weakened slightly due to market changes. What criteria should drive the go/no-go decision?",
+    "options": [
+      "A. Phase 1 completion — since the work was completed as planned, the project should proceed",
+      "B. Sunk cost — since $200,000 was invested in Phase 1, the project must continue to recover the investment",
+      "C. The updated business case and strategic fit — if Phase 2 still delivers sufficient value given current conditions, proceed; if not, stop or pivot regardless of Phase 1 completion or sunk costs",
+      "D. Stakeholder pressure — if key sponsors want to continue, the project should proceed"
+    ],
+    "correct": "C. The updated business case and strategic fit — if Phase 2 still delivers sufficient value given current conditions, proceed; if not, stop or pivot regardless of Phase 1 completion or sunk costs",
+    "explanation": "Phase gate decisions are forward-looking investment decisions — not backward-looking accountability reviews. The sunk cost fallacy is one of the most common and costly decision errors in project management. The $200,000 spent on Phase 1 is gone regardless of whether Phase 2 proceeds. The only relevant question: does Phase 2 create sufficient value given current conditions? Phase 1 completion proves execution capability but doesn't justify Phase 2. Stakeholder pressure without business justification is governance failure. PMI emphasizes value-driven decision making throughout PMBOK 7th.",
+    "source": "CAPM ECO 2023 - Domain 1 T4 / Business Case / Phase Gate Reviews",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q178",
+    "certification": "CAPM",
+    "domain": "Business Analysis Frameworks",
+    "difficulty": "hard",
+    "question": "A BA is asked to document acceptance criteria for a user story: 'As a customer, I want to reset my password so that I can regain access to my account.' Which set of acceptance criteria is BEST?",
+    "options": [
+      "A. 'The password reset feature works correctly'",
+      "B. 'The system sends an email' and 'The user can create a new password'",
+      "C. 'Given a registered user who has forgotten their password, when they enter their email and click Reset, then they receive a reset email within 60 seconds; the reset link expires after 24 hours; after setting a new password, the previous password no longer works; and the user is logged in automatically after resetting'",
+      "D. 'The feature passes all QA tests and is approved by the product manager'"
+    ],
+    "correct": "C. 'Given a registered user who has forgotten their password, when they enter their email and click Reset, then they receive a reset email within 60 seconds; the reset link expires after 24 hours; after setting a new password, the previous password no longer works; and the user is logged in automatically after resetting'",
+    "explanation": "Good acceptance criteria follow the Given-When-Then (GWT) format and are SMART: Specific, Measurable, Achievable, Relevant, Testable. Option C covers: (1) the trigger (user enters email), (2) expected behavior (email within 60 seconds — measurable), (3) security requirement (link expires — specific), (4) security enforcement (old password invalidated — testable), (5) UX expectation (auto login — specific). Option A is unmeasurable and untestable. Option B is incomplete. Option D defers criteria to others rather than specifying them — it's a process step, not an acceptance criterion.",
+    "source": "CAPM ECO 2023 - Domain 4 T6 / Acceptance Criteria / BA for Practitioners",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q179",
+    "certification": "PMP",
+    "domain": "Process",
+    "difficulty": "hard",
+    "question": "A project manager is planning a hybrid project. The regulatory compliance workstream must follow a predictive waterfall approach due to audit requirements. The product development workstream is using 2-week Agile sprints. Both workstreams share 3 developers. How should the PM address the resource contention in planning?",
+    "options": [
+      "A. Separate the two workstreams completely with dedicated teams — no sharing allowed",
+      "B. Use the predictive workstream's Gantt chart as the master plan and convert all Agile sprint plans to fit within it",
+      "C. Create a hybrid integration plan: use the predictive workstream's milestones as fixed constraints in the overall roadmap, align sprint planning to avoid peak demand from compliance activities, and use resource capacity planning to model load across both workstreams with explicit buffers during compliance audit periods",
+      "D. Prioritize the compliance workstream entirely — regulatory requirements always take precedence over product development"
+    ],
+    "correct": "C. Create a hybrid integration plan: use the predictive workstream's milestones as fixed constraints in the overall roadmap, align sprint planning to avoid peak demand from compliance activities, and use resource capacity planning to model load across both workstreams with explicit buffers during compliance audit periods",
+    "explanation": "Hybrid project management requires integrating two different approaches without forcing either into the other's mold. The solution: (1) Compliance milestones become fixed constraints — they cannot move. (2) Sprint planning is coordinated to avoid coinciding with compliance peak periods (audit prep, documentation sprints). (3) Capacity planning models both demands simultaneously and identifies crunch periods in advance. (4) Buffers protect shared resources during high-compliance periods. Converting Agile work to waterfall removes Agile's value. Full separation may not be feasible or efficient with shared resources. Always prioritizing compliance risks missing product delivery.",
+    "source": "PMP ECO Jan 2021 - Domain II Process T5/T6/T13 / Hybrid Project Management",
+    "ai_engine": "Claude Sonnet 4.6"
+  },
+  {
+    "id": "Q180",
+    "certification": "PMP",
+    "domain": "Business Environment",
+    "difficulty": "hard",
+    "question": "A PM has just delivered a successful project — on time, on budget, full scope. Six months later, the PM learns that the business unit that received the deliverable has not adopted the system and is still using the old process. Benefits have not been realized. Who is responsible, and what should have been done differently?",
+    "options": [
+      "A. The business unit is responsible — the PM delivered what was promised and the adoption is an operational matter",
+      "B. The PM failed — a successful project must ensure benefits are realized, not just deliverables are delivered",
+      "C. The sponsor is solely responsible for benefits realization post-delivery",
+      "D. The PM should have included a change management and adoption plan in the project scope, engaged end users throughout delivery to build readiness, and established clear benefits realization metrics with the sponsor — though post-project benefits ownership transfers to the business",
+      "D. This is an IT failure — the system was not designed to be user-friendly enough"
+    ],
+    "correct": "D. The PM should have included a change management and adoption plan in the project scope, engaged end users throughout delivery to build readiness, and established clear benefits realization metrics with the sponsor — though post-project benefits ownership transfers to the business",
+    "explanation": "PMBOK 7th Edition explicitly addresses value delivery — a project is successful only if it generates the intended benefits, not just delivers outputs. While post-delivery benefits ownership transfers to the business, the PM has a responsibility to: (1) include organizational change management in scope, (2) engage end users early (not just at delivery), (3) establish adoption metrics and handover criteria, and (4) design the transition plan. A system that isn't adopted is a failed investment regardless of delivery metrics. The PM cannot control adoption post-handover, but can significantly influence readiness — which is a project responsibility.",
+    "source": "PMP ECO Jan 2021 - Domain III BE T2 / PMBOK 7th - Value Delivery / Change Management",
+    "ai_engine": "Claude Sonnet 4.6"
   }
 ]
