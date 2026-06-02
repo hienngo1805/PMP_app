@@ -21,15 +21,25 @@ st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", l
 # ==========================================
 st.markdown("""
     <style>
-    /* ========================================================================= */
-    /* HIDE SYSTEM UI - ẨN CÁC GIAO DIỆN HỆ THỐNG CỦA STREAMLIT                  */
-    /* ========================================================================= */
-    /* Ẩn nút Deploy góc trên bên phải */
-    .stAppDeployButton {
+    /* HIDE SYSTEM UI - CHỈ GIỮ LẠI NÚT 3 CHẤM CỦA STREAMLIT                      */
+   
+    /* 1. KHÔNG ẩn toàn bộ header nữa để giữ lại không gian cho nút 3 chấm */
+    header {
+        visibility: visible !important;
+        background-color: transparent !important;
+    }
+
+    /* 2. Ẩn các nút dạng đường link (Logo GitHub, nút hình cây bút Edit) */
+    header a {
         display: none !important;
     }
 
-    /* Ẩn dòng chữ Made with Streamlit ở dưới chân trang */
+    /* 3. Ẩn các nút bấm khác (Share, Star) nhưng CHỪA LẠI nút 3 chấm hệ thống */
+    header button:not([data-testid="stMainMenu"]) {
+        display: none !important;
+    }
+    
+    /* 4. Ẩn dòng chữ Made with Streamlit ở dưới chân trang */
     footer {
         visibility: hidden !important;
     }
