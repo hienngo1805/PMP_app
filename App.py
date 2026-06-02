@@ -382,6 +382,7 @@ elif menu_choice == "⏱️ Exam Simulator":
                 st.session_state.test_current_idx = 0 
                 st.session_state.test_mode = True
                 st.session_state.test_summary_mode = False
+                st.session_state.test_history_saved = False # 🌟 THÊM DÒNG NÀY: Reset trạng thái lưu cho bài thi mới
                 st.rerun()
                 
             # --- PHẦN BẢNG LỊCH SỬ ĐA CHỌN & XÓA HÀNG LOẠT ---
@@ -459,15 +460,57 @@ elif menu_choice == "⏱️ Exam Simulator":
     elif st.session_state.get("test_mode", False) and not st.session_state.get("test_summary_mode", False):
         elapsed_time = time.time() - st.session_state.test_start_time
         remaining_seconds = st.session_state.test_total_seconds - elapsed_time
+        
+        # Kiểm tra hết giờ chặn trước khi render
         if remaining_seconds <= 0:
             st.error("🚨 **TIME IS UP!**")
             st.session_state.test_mode = False
             st.session_state.test_summary_mode = True
             st.rerun()
             
-        rem_min, rem_sec = int(remaining_seconds // 60), int(remaining_seconds % 60)
-        st.title(f"✍️ Live Mock Exam | ⏱️ {rem_min:02d}:{rem_sec:02d}")
+        # 🛠️ GIẢI PHÁP: Chia cột hàng ngang song song để gom gọn giao diện vào 1 màn hình
+        col_title, col_timer = st.columns([1.8, 1.2], vertical_alignment="center")
         
+        with col_title:
+            # Sử dụng thẻ h2 HTML ép margin về 0 để đẩy sát chữ lên trên đầu
+            st.markdown("<h2 style='margin: 0; padding: 0;'>✍️ Live Mock Exam</h2>", unsafe_allow_html=True)
+            
+        with col_timer:
+            # ⏱️ ĐỊNH NGHĨA FRAGMENT: Chạy ngầm cập nhật riêng widget đồng hồ mỗi 1 giây
+            @st.fragment(run_every="1s")
+            def live_countdown_timer():
+                cur_elapsed = time.time() - st.session_state.test_start_time
+                cur_remaining = st.session_state.test_total_seconds - cur_elapsed
+                
+                if cur_remaining <= 0:
+                    st.session_state.test_mode = False
+                    st.session_state.test_summary_mode = True
+                    st.rerun()
+                    
+                rem_min, rem_sec = int(cur_remaining // 60), int(cur_remaining % 60)
+                
+                # Đổi màu cảnh báo trực quan
+                if cur_remaining < 60:
+                    bg_color, text_color, border_color = "#FFEBEE", "#C62828", "#FFCDD2"
+                else:
+                    bg_color, text_color, border_color = "#E8F5E9", "#2E7D32", "#C8E6C9"
+                    
+                # Hộp hiển thị bo góc siêu nhỏ gọn (giảm padding từ 12px xuống 8px, font-size 1.15rem)
+                st.markdown(f"""
+                    <div style="background-color: {bg_color}; border: 1px solid {border_color}; 
+                                padding: 8px 12px; border-radius: 8px; text-align: center; margin: 0;">
+                        <span style="color: {text_color}; font-size: 1.15rem; font-weight: bold;">
+                            ⏱️ TIME: {rem_min:02d}:{rem_sec:02d}
+                        </span>
+                    </div>
+                """, unsafe_allow_html=True)
+
+            # Gọi đồng hồ chạy thực tế bên trong cột bên phải
+            live_countdown_timer()
+            
+        # Đường kẻ mờ phân cách tinh tế với khoảng cách rất hẹp (margin 10px)
+        st.markdown("<hr style='margin: 10px 0 15px 0;'>", unsafe_allow_html=True)
+                
         idx = st.session_state.test_current_idx
         selected_q = st.session_state.test_questions[idx]
         q_id = selected_q["id"]
@@ -532,7 +575,9 @@ elif menu_choice == "⏱️ Exam Simulator":
         pct = (correct_ans / total_q) * 100
         
         exam_details = [{"id": q["id"], "question": q["question"], "options": q["options"], "correct": q["correct"], "explanation": q["explanation"], "source": q.get("source", "N/A"), "certification": q.get("certification", "N/A"), "domain": q.get("domain", "N/A"), "user_answer": st.session_state.test_user_answers.get(q["id"], "No Answer")} for q in st.session_state.test_questions]
-        save_quiz_history(f"{correct_ans} / {total_q}", f"{pct:.2f}%", f"{int((time.time() - st.session_state.test_start_time)//60)}m", exam_details)
+        if not st.session_state.get("test_history_saved", False):
+            save_quiz_history(f"{correct_ans} / {total_q}", f"{pct:.2f}%", f"{int((time.time() - st.session_state.test_start_time)//60)}m", exam_details)
+            st.session_state.test_history_saved = True # 🌟 Đánh dấu đã lưu thành công để chặn các lượt rerun sau
         
         st.success(f"### Score: {correct_ans} / {total_q} ({pct:.2f}%)")
         
