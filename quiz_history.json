@@ -176,5 +176,128 @@
                 "user_answer": "B. A document that justifies the project's necessity and expected benefits"
             }
         ]
+    },
+    {
+        "exam_id": "20260602_122230",
+        "Date/Time": "2026-06-02 12:22:30",
+        "Score": "2 / 2",
+        "Percentage (%)": "100.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q67",
+                "question": "Which planning tool visually represents project tasks over time on a bar chart?",
+                "options": [
+                    "A. Network Diagram",
+                    "B. Gantt Chart",
+                    "C. WBS",
+                    "D. RACI Matrix"
+                ],
+                "correct": "B. Gantt Chart",
+                "explanation": "A Gantt Chart is a horizontal bar chart that displays project tasks or activities against a timeline. It shows start and end dates, durations, and dependencies. It is one of the most widely used scheduling tools in predictive project management.",
+                "source": "Process Groups: A Practice Guide (PMI) - Schedule Management",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "B. Gantt Chart"
+            },
+            {
+                "id": "Q93",
+                "question": "What is the difference between a risk and an issue?",
+                "options": [
+                    "A. Risks are positive; issues are negative",
+                    "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                    "C. Issues are managed by the team; risks by the sponsor",
+                    "D. There is no difference"
+                ],
+                "correct": "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                "explanation": "A risk is an uncertain event that may or may not occur in the future. An issue is a risk that has already materialized — a current problem that needs immediate attention. Risks are tracked in the Risk Register; issues in the Issue Log.",
+                "source": "PMBOK® Guide 7th Edition - Uncertainty Performance Domain",
+                "certification": "CAPM",
+                "domain": "Project Management Fundamentals",
+                "user_answer": "B. Risks are uncertain future events; issues are current problems that have already occurred"
+            }
+        ]
+    },
+    {
+        "exam_id": "20260602_122247",
+        "Date/Time": "2026-06-02 12:22:47",
+        "Score": "2 / 2",
+        "Percentage (%)": "100.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q67",
+                "question": "Which planning tool visually represents project tasks over time on a bar chart?",
+                "options": [
+                    "A. Network Diagram",
+                    "B. Gantt Chart",
+                    "C. WBS",
+                    "D. RACI Matrix"
+                ],
+                "correct": "B. Gantt Chart",
+                "explanation": "A Gantt Chart is a horizontal bar chart that displays project tasks or activities against a timeline. It shows start and end dates, durations, and dependencies. It is one of the most widely used scheduling tools in predictive project management.",
+                "source": "Process Groups: A Practice Guide (PMI) - Schedule Management",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "B. Gantt Chart"
+            },
+            {
+                "id": "Q93",
+                "question": "What is the difference between a risk and an issue?",
+                "options": [
+                    "A. Risks are positive; issues are negative",
+                    "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                    "C. Issues are managed by the team; risks by the sponsor",
+                    "D. There is no difference"
+                ],
+                "correct": "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                "explanation": "A risk is an uncertain event that may or may not occur in the future. An issue is a risk that has already materialized — a current problem that needs immediate attention. Risks are tracked in the Risk Register; issues in the Issue Log.",
+                "source": "PMBOK® Guide 7th Edition - Uncertainty Performance Domain",
+                "certification": "CAPM",
+                "domain": "Project Management Fundamentals",
+                "user_answer": "B. Risks are uncertain future events; issues are current problems that have already occurred"
+            }
+        ]
+    },
+    {
+        "exam_id": "20260602_122248",
+        "Date/Time": "2026-06-02 12:22:48",
+        "Score": "2 / 2",
+        "Percentage (%)": "100.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q67",
+                "question": "Which planning tool visually represents project tasks over time on a bar chart?",
+                "options": [
+                    "A. Network Diagram",
+                    "B. Gantt Chart",
+                    "C. WBS",
+                    "D. RACI Matrix"
+                ],
+                "correct": "B. Gantt Chart",
+                "explanation": "A Gantt Chart is a horizontal bar chart that displays project tasks or activities against a timeline. It shows start and end dates, durations, and dependencies. It is one of the most widely used scheduling tools in predictive project management.",
+                "source": "Process Groups: A Practice Guide (PMI) - Schedule Management",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "B. Gantt Chart"
+            },
+            {
+                "id": "Q93",
+                "question": "What is the difference between a risk and an issue?",
+                "options": [
+                    "A. Risks are positive; issues are negative",
+                    "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                    "C. Issues are managed by the team; risks by the sponsor",
+                    "D. There is no difference"
+                ],
+                "correct": "B. Risks are uncertain future events; issues are current problems that have already occurred",
+                "explanation": "A risk is an uncertain event that may or may not occur in the future. An issue is a risk that has already materialized — a current problem that needs immediate attention. Risks are tracked in the Risk Register; issues in the Issue Log.",
+                "source": "PMBOK® Guide 7th Edition - Uncertainty Performance Domain",
+                "certification": "CAPM",
+                "domain": "Project Management Fundamentals",
+                "user_answer": "B. Risks are uncertain future events; issues are current problems that have already occurred"
+            }
+        ]
     }
 ]
