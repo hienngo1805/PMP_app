@@ -222,8 +222,7 @@ elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
     if chosen_test_idx != st.session_state.test_current_idx:
         st.session_state.test_current_idx = chosen_test_idx
         st.rerun()
-
-st.sidebar.markdown("---")
+        
 with st.sidebar:
     st.markdown("---")
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
