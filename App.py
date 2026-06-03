@@ -197,7 +197,7 @@ st.sidebar.title("🎯 PMP/CAPM Learning Hub")
 # 1. Khởi tạo thanh chọn Menu điều hướng chính
 menu_choice = st.sidebar.radio(
     "Choose a feature:",
-    ["🏠 Cover Page", "📚 Knowledge Hub", "📝 Question Bank", "⏱️ Exam Simulator", "📊 Performance Dashboard", "🤖 AI Tutor Chat"]
+    ["🏠 Homepage", "📚 Knowledge Hub", "📝 Question Bank", "⏱️ Exam Simulator", "📊 Performance Dashboard", "🤖 AI Tutor Chat"]
 )
 
 st.sidebar.markdown("---")
