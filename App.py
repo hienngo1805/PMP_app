@@ -31,7 +31,7 @@ st.markdown("""
 
 .task-card {
 
-    border-radius: 12px;
+    border-radius: 1px;
 
     padding: 20px;
 
@@ -189,14 +189,15 @@ if "chat_history" not in st.session_state:
     ]
 
 
-# ==========================================
-# 🧭 PHẦN 1: THANH ĐIỀU HƯỚNG & CẤU HÌNH API MULTI-LLM
-# ==========================================
+# ==========================================================
+# 🧭 PHẦN 1: THANH ĐIỀU HƯỚNG & CẤU HÌNH API MULTI-LLM (PURE SIDEBAR)
+# ==========================================================
 st.sidebar.title("🎯 PMP/CAPM Learning Hub")
 
+# 1. Khởi tạo thanh chọn Menu điều hướng chính
 menu_choice = st.sidebar.radio(
     "Choose a feature:",
-    ["📚 Knowledge Hub", "📝 Question Bank", "⏱️ Exam Simulator", "📊 Performance Dashboard", "🤖 AI Tutor Chat"]
+    ["🏠 Cover Page", "📚 Knowledge Hub", "📝 Question Bank", "⏱️ Exam Simulator", "📊 Performance Dashboard", "🤖 AI Tutor Chat"]
 )
 
 st.sidebar.markdown("---")
@@ -204,6 +205,7 @@ st.sidebar.subheader("🔑 Live AI Engine Settings")
 api_provider = st.sidebar.selectbox("AI Provider:", ["Google Gemini", "OpenAI", "Anthropic Claude"])
 api_key = st.sidebar.text_input("Enter your API Key:", type="password", help="Key chỉ lưu tạm trong RAM phiên làm việc của trình duyệt.")
 
+# 2. Các bộ điều hướng phụ (Navigators) hiển thị động trên Sidebar tùy theo trang chọn
 if menu_choice == "📝 Question Bank" and not st.session_state.bank_finished:
     st.sidebar.markdown("---")
     st.sidebar.subheader("🗂️ Bank Navigator")
@@ -222,9 +224,77 @@ elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
         st.session_state.test_current_idx = chosen_test_idx
         st.rerun()
 
+# 3. Footer của Sidebar
 with st.sidebar:
     st.markdown("---")
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
+
+# ==========================================================
+# 🖥️ PHẦN 1.2: ĐIỀU HƯỚNG HIỂN THỊ NỘI DUNG CHÍNH (MAIN BODY MAIN LOOP)
+# --- TRANG 1: COVERS PAGE (ĐÃ NÂNG CẤP LÊN GIAO DIỆN THẺ CARD ĐỒNG BỘ) ---
+if menu_choice == "🏠 Cover Page":
+    # Tiêu đề lớn trung tâm
+    st.title("🚀 Project Management Knowledge Hub")
+    st.markdown("##### *A self-built website to support you on achieving your PMP® and CAPM® goals*")
+    st.markdown("---")
+    
+    # Đoạn giới thiệu tổng quan
+    st.markdown("""
+    Welcome to the **PMP/CAPM Learning Hub**! This system is designed to provide an optimized learning experience, offering a structured approach to studying project management concepts, visual learning tools, and integrated AI assistance for instant clarification of doubts.
+    
+    👉 **Instructions:** Please select the desired features from the **left sidebar (Sidebar)** to begin your learning journey✒️.
+    """)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader("💡 Discover System Features")
+    
+    # Thiết kế bố cục các tính năng dạng thẻ lồng trong 2 Cột
+    col1, col2 = st.columns(2, gap="large")
+    
+    with col1:
+        # Card 1: Knowledge Hub
+        st.markdown("""
+        <div class="task-card">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">📚 Knowledge Hub</h3>
+            <p style="margin-bottom: 0;">Systematize all the <b>Tasks</b>, <b>Domains (People, Process, Business Environment)</b> according to the latest PMI syllabus. Helps you master the core theories and exam tips.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Card 2: Question Bank
+        st.markdown("""
+        <div class="task-card">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">📝 Question Bank</h3>
+            <p style="margin-bottom: 0;">A rich repository of multiple-choice questions, categorized by topic. You can practice daily and view detailed explanations for each answer immediately.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Card 3: AI Tutor Chat
+        st.markdown("""
+        <div class="task-card">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">🤖 AI Tutor Chat</h3>
+            <p style="margin-bottom: 0;">Your dedicated PMP expert AI assistant is available 24/7 to answer questions, analyze complex project management scenarios, and resolve any doubts you may have.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col2:
+        # Card 4: Exam Simulator
+        st.markdown("""
+        <div class="task-card">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">⏱️ Exam Simulator</h3>
+            <p style="margin-bottom: 0;">Experience the real exam environment with full-length Mock Tests and time pressure. Helps you practice time management and build exam confidence.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Card 5: Performance Dashboard
+        st.markdown("""
+        <div class="task-card">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">📊 Performance Dashboard</h3>
+            <p style="margin-bottom: 0;">Visualize your learning progress. Track scores across practice tests and analyze weak areas to create an effective improvement plan.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    st.markdown("---")
+    st.caption("Wishing you a wonderful study journey and success in achieving your certification goals! 🎯")
 
 # ==========================================
 # 📚PHẦN 2: KNOWLEDGE HUB (MINIMALIST STYLE - VERSION 12.0)
@@ -292,15 +362,15 @@ if menu_choice == "📚 Knowledge Hub":
                 # Render Card hoàn thiện kết hợp Badge HTML động vào vị trí cũ
                 st.markdown(f"""
                     <div class="task-card">
-                        <div style="font-weight: bold; font-size: 1.2em; color: #1E88E5; margin-bottom: 10px;">
+                        <div style="font-weight: bold; font-size: 1.2em; color: #2799C7; margin-bottom: 10px;">
                             Task {t_data.get('task_number', '')}: {t_data.get('task', 'Untitled')}
                         </div>
-                        <div style="line-height: 1.6;">
+                        <div style="line-height: 1.8;font-size:1.1em;">
                             <b>Approach:</b> {approach_badge_html}<br>
                             <div style="margin-top: 6px;"><b>Summary:</b> {t_data.get('summary', 'N/A')}</div>
                             <b>Key Concepts:</b> {', '.join(t_data.get('key_concepts', []))}
                         </div>
-                        <div style="background-color: #F5F5F5; color: #555; padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.9em;">
+                        <div style="background-color: #F5F5F5; color: #555; padding: 10px; border-radius: 8px; margin-top: 15px; font-size:0.9em;">
                             💡 <b>Exam Tip:</b> {t_data.get('exam_tips', 'N/A')}
                         </div>
                     </div>
@@ -368,7 +438,6 @@ elif menu_choice == "📝 Question Bank":
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
-                # st.rerun() # Bỏ comment nếu muốn tự động làm mới
         
         st.markdown("---")
         c1, c2, c3 = st.columns([1, 1, 1])
