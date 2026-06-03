@@ -203,7 +203,29 @@ menu_choice = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.subheader("🔑 Live AI Engine Settings")
 api_provider = st.sidebar.selectbox("AI Provider:", ["Google Gemini", "OpenAI", "Anthropic Claude"])
-api_key = st.sidebar.text_input("Enter your API Key:", type="password", help="Key chỉ lưu tạm trong RAM phiên làm việc của trình duyệt.")
+# 1. Lấy dữ liệu từ ô nhập của người dùng
+user_api_key = st.sidebar.text_input(
+    "Enter your API Key:", 
+    type="password", 
+    help="Key chỉ lưu tạm trong RAM phiên làm việc của trình duyệt."
+)
+# 2. KHAI BÁO VÀ ĐỊNH NGHĨA BIẾN active_api_key NGAY LẬP TỨC (Viết thường toàn bộ)
+active_api_key = user_api_key.strip() 
+using_fallback = False
+
+# 3. Logic xử lý Fallback tự động bốc key hệ thống nếu người dùng để trống
+if api_provider == "Google Gemini" and not active_api_key:
+    if "GEMINI_API_KEY" in st.secrets:
+        active_api_key = st.secrets["GEMINI_API_KEY"]  # Gán key hệ thống vào biến active_api_key
+        using_fallback = True
+
+# 4. Hiển thị thông báo trạng thái trên Sidebar
+if using_fallback:
+    st.sidebar.info("💡If you have API Key, please input it. Otherwise, auto select system's Gemini Free Tier. No API key required! ")
+elif active_api_key:
+    st.sidebar.success(f"✅ Personal {api_provider} Key loaded.")
+else:
+    st.sidebar.warning(f"⚠️ Please enter your {api_provider} API Key to chat.")
 
 # 2. Các bộ điều hướng phụ (Navigators) hiển thị động trên Sidebar tùy theo trang chọn
 if menu_choice == "📝 Question Bank" and not st.session_state.bank_finished:
@@ -825,109 +847,150 @@ elif menu_choice == "📊 Performance Dashboard":
                 
             st.markdown("<hr style='margin: 6px 0;'>", unsafe_allow_html=True)
 
-# ==========================================
-# 🤖 PHẦN 6: AI TUTOR CHAT (HỖ TRỢ TRỰC TIẾP GEMINI / OPENAI / CLAUDE)
-# ==========================================
+# ==========================================================
+# 🤖 PHẦN 6: AI TUTOR CHAT (HỖ TRỢ ONLINE GEMINI & OFFLINE ENGINE)
+# ==========================================================
 elif menu_choice == "🤖 AI Tutor Chat":
-    st.title("🤖 Chat with PMP/CAPM AI Tutor")
-    st.markdown("Hệ thống giải đáp học thuật đa mô hình. Toàn bộ phản hồi từ AI sẽ bắt buộc xuất ra bằng **Tiếng Anh**.")
+    st.title("🤖 AI Tutor Chat Expert")
+    st.markdown("##### *Your 24/7 Project Management Assistant for PMP® & CAPM® Success*")
     st.markdown("---")
-    
-    # Hiển thị lịch sử chat
+
+    # 1. Khởi tạo lịch sử chat trong session_state nếu chưa có
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
+
+    # 2. Định nghĩa bộ từ điển dữ liệu PMP để chạy Offline Match Engine phòng hờ
+    offline_pmp_data = {
+        "predictive planning": (
+            "**[Offline Tutor Insights]**\n\n"
+            "* **Predictive Approach (Waterfall):** Scope, Time, and Cost are frozen during Planning phase.\n"
+            "* **Control:** Future modifications must undergo a formal change control process via the CCB."
+        ),
+        "agile": (
+            "**[Offline Tutor Insights]**\n\n"
+            "* **Agile Approach (Adaptive):** Iterative and incremental delivery. Scope is decomposed into a Product Backlog.\n"
+            "* **Roles:** Product Owner manages backlog, Scrum Master removes impediments, Team delivers value."
+        ),
+        "hybrid": (
+            "**[Offline Tutor Insights]**\n\n"
+            "* **Hybrid Approach:** A combination of predictive and adaptive strategies.\n"
+            "* **Execution:** Often uses predictive for clear requirements (e.g., hardware) and Agile for uncertain components (e.g., software)."
+        )
+    }
+
+    # 3. Hiển thị lịch sử các câu thoại trước đó (nếu có)
     for message in st.session_state.chat_history:
         with st.chat_message(message["role"]):
-            st.write(message["content"])
-            
-    # Ô nhập câu hỏi chuẩn chat_input
-    if user_prompt := st.chat_input("Ask any project management question here..."):
-        with st.chat_message("user"):
-            st.write(user_prompt)
-        st.session_state.chat_history.append({"role": "user", "content": user_prompt})
+            st.markdown(message["content"])
+
+    # 4. Nhận câu hỏi đầu vào từ người dùng thông qua khung chat st.chat_input
+    if user_prompt := st.chat_input("Ask me any PMP situation, formulas, or process concepts..."):
         
+        # Hiển thị câu hỏi của người dùng ngay lập tức lên màn hình
+        with st.chat_message("user"):
+            st.markdown(user_prompt)
+        
+        # Lưu câu hỏi vào lịch sử chat
+        st.session_state.chat_history.append({"role": "user", "content": user_prompt})
+
+        # XỬ LÝ PHẢN HỒI TỪ AI TUTOR
         with st.chat_message("assistant"):
-            with st.spinner(f"AI Tutor ({api_provider}) is analyzing..."):
-                
-                # Khởi tạo Prompt hệ thống chuẩn hóa
-                system_content = (
-                    "You are an elite PMP and CAPM exam tutor. Answer the user's questions strictly "
-                    "following the PMBOK Guide (both 6th and 7th editions) and Process Groups Practice Guide. "
-                    "Keep explanations highly structured, professional, and actionable. Use bullet points. "
-                    "CRITICAL REQUIREMENT: You must always respond in English, regardless of the language "
-                    "used by the user (even if the user asks in Vietnamese or any other language)."
-                )
-                
-                # TRƯỜNG HỢP 1: Có API Key đầy đủ
-                if api_key:
+            # KỊCH BẢN A: GỌI API TRỰC TUYẾN (Dựa theo nhà cung cấp được chọn)
+            if active_api_key:
+                # ---- 1. CẤU HÌNH & GỌI GOOGLE GEMINI ----
+                if api_provider == "Google Gemini":
                     try:
-                        # 🌟 NHÁNH MỚI: Xử lý Anthropic Claude (Giao tiếp REST API nguyên bản)
-                        if api_provider == "Anthropic Claude":
-                            claude_messages = []
-                            for msg in st.session_state.chat_history:
-                                if msg["role"] in ["user", "assistant"]:
-                                    claude_messages.append({"role": msg["role"], "content": msg["content"]})
-                            
-                            headers = {
-                                "x-api-key": api_key,
-                                "anthropic-version": "2023-06-01",
-                                "content-type": "application/json"
-                            }
-                            payload = {
-                                "model": "claude-3-5-sonnet-20241022",
-                                "max_tokens": 2048,
-                                "system": system_content,
-                                "messages": claude_messages,
-                                "temperature": 0.3
-                            }
-                            res = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=payload)
-                            if res.status_code == 200:
-                                ai_response = res.json()["content"][0]["text"]
-                            else:
-                                err_msg = res.json().get("error", {}).get("message", res.text)
-                                ai_response = f"❌ **Claude API Error:** {err_msg}"
+                        import google.generativeai as genai
+                        genai.configure(api_key=active_api_key)
+                        model = genai.GenerativeModel('models/gemini-2.5-flash')
                         
-                        # 🌟 NHÁNH CŨ: Xử lý OpenAI & Google Gemini (Thông qua thư viện SDK)
-                        elif OPENAI_AVAILABLE:
-                            if api_provider == "Google Gemini":
-                                client = OpenAI(
-                                    api_key=api_key,
-                                    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-                                )
-                                model_engine = "gemini-2.5-flash"
-                            else:
-                                client = OpenAI(api_key=api_key)
-                                model_engine = "gpt-4o-mini"
-                            
-                            messages_payload = [{"role": "system", "content": system_content}]
-                            for msg in st.session_state.chat_history:
-                                messages_payload.append({"role": msg["role"], "content": msg["content"]})
-                                
-                            api_call = client.chat.completions.create(
-                                model=model_engine,
-                                messages=messages_payload,
-                                temperature=0.3
+                        system_context = (
+                            "You are an expert PMP and CAPM Tutor. Answer the user's question professionally, "
+                            "referencing PMBOK Guide 7th Edition, Agile Practice Guide, or Process Groups Practice Guide. "
+                            "Provide structured, clear, and easy-to-understand explanations. "
+                        )
+                        with st.spinner("Gemini is thinking..."):
+                            response = model.generate_content(f"{system_context}\n\nUser Question: {user_prompt}")
+                            ai_response = response.text
+                        st.markdown(ai_response)
+                        st.session_state.chat_history.append({"role": "assistant", "content": ai_response})
+                    except Exception as e:
+                        st.error(f"❌ Gemini API Error: {str(e)}")
+
+                # ---- 2. CẤU HÌNH & GỌI OPENAI (Kích hoạt khi người dùng nhập Key chính xác) ----
+                elif api_provider == "OpenAI":
+                    try:
+                        from openai import OpenAI
+                        # Khởi tạo client với key người dùng cung cấp
+                        client = OpenAI(api_key=active_api_key)
+                        
+                        with st.spinner("ChatGPT is thinking..."):
+                            response = client.chat.completions.create(
+                                model="gpt-4o-mini", # Sử dụng dòng model gpt-4o-mini tối ưu, tiết kiệm chi phí cho user
+                                messages=[
+                                    {"role": "system", "content": "You are an expert PMP and CAPM Tutor. Answer professionally, referencing PMBOK Guide 7th Edition."},
+                                    {"role": "user", "content": user_prompt}
+                                ]
                             )
-                            ai_response = api_call.choices[0].message.content
-                        else:
-                            ai_response = "❌ **Library Error:** `openai` package is missing. Cannot route request to OpenAI/Gemini."
-                            
-                    except Exception as err:
-                        ai_response = f"❌ **API Connection Error:** {str(err)}.\nPlease check your API Key and Provider settings."
-                
-                # TRƯỜNG HỢP 2: Chế độ Offline cứu hộ khi chưa điền Key
-                else:
-                    time.sleep(0.5)
-                    low_prompt = user_prompt.lower()
-                    offline_warning = "*(💡 API Key is missing. Please enter your key in the sidebar. Falling back to offline match engine)*\n\n"
+                            ai_response = response.choices[0].message.content
+                        st.markdown(ai_response)
+                        st.session_state.chat_history.append({"role": "assistant", "content": ai_response})
+                    except Exception as e:
+                        st.error(f"❌ OpenAI API Error: {str(e)}")
+
+                # ---- 3. CẤU HÌNH & GỌI ANTHROPIC CLAUDE (Kích hoạt khi người dùng nhập Key chính xác) ----
+                elif api_provider == "Anthropic Claude":
+                    try:
+                        from anthropic import Anthropic
+                        # Khởi tạo client Anthropic với key người dùng cung cấp
+                        client = Anthropic(api_key=active_api_key)
                         
-                    if "agile" in low_prompt or "linh hoạt" in low_prompt:
-                        ai_response = offline_warning + """**[Offline Tutor Insights]** \n* **Agile Approach:** Focuses on adaptive, iterative lifecycles (Sprints usually lasting 1-4 weeks). \n* **Key Frameworks:** Scrum, Kanban, XP.\n* **Exam Tip:** Choose Agile/Hybrid options when requirements are volatile."""
-                    elif "waterfall" in low_prompt or "thác nước" in low_prompt or "predictive" in low_prompt:
-                        ai_response = offline_warning + """**[Offline Tutor Insights]** \n* **Predictive Approach (Waterfall):** Scope, Time, and Cost are frozen during Planning phase.\n* **Control:** Future modifications must undergo a formal change control process via the CCB."""
-                    else:
-                        ai_response = offline_warning + f"**[Offline Tutor Insights]** Received: *\"{user_prompt}\"*.\n\nPlease configure your **{api_provider} API Key** in the sidebar to fetch a direct online explanation in English!"
+                        with st.spinner("Claude is thinking..."):
+                            response = client.messages.create(
+                                model="claude-3-5-haiku-20241022", # Sử dụng model Haiku tốc độ cao và tối ưu chi phí
+                                max_tokens=1024,
+                                system="You are an expert PMP and CAPM Tutor. Answer professionally, referencing PMBOK Guide 7th Edition.",
+                                messages=[
+                                    {"role": "user", "content": user_prompt}
+                                ]
+                            )
+                            ai_response = response.content[0].text
+                        st.markdown(ai_response)
+                        st.session_state.chat_history.append({"role": "assistant", "content": ai_response})
+                    except Exception as e:
+                        st.error(f"❌ Anthropic API Error: {str(e)}")
+            
+            # KỊCH BẢN B: CHẠY ENGINE OFFLINE DỰ PHÒNG KHI KHÔNG CÓ KEY
+            else:
+                st.markdown("*(💡 API Key is missing. Please enter your key in the sidebar. Falling back to offline match engine)*")
                 
-                # In kết quả lên màn hình và lưu vào bộ nhớ
-                st.write(ai_response)
-                st.session_state.chat_history.append({"role": "assistant", "content": ai_response})
+                # Biến đổi câu hỏi thành chữ thường để khớp từ khóa chính xác hơn
+                search_query = user_prompt.lower()
+                matched_content = None
                 
-        st.rerun()
+                # Quét xem từ khóa trong câu hỏi có nằm trong bộ từ điển cứu cánh không
+                for keyword, insight in offline_pmp_data.items():
+                    if keyword in search_query:
+                        matched_content = insight
+                        break
+                
+                if matched_content:
+                    st.markdown(matched_content)
+                    st.session_state.chat_history.append({"role": "assistant", "content": matched_content})
+                else:
+                    no_key_warning = (
+                        "**[Offline Tutor Insights]**\n\n"
+                        "Hệ thống chưa tìm thấy từ khóa tương ứng trong bộ nhớ offline.\n\n"
+                        "⚠️ **Để nhận được câu trả lời thông minh, chuyên sâu và linh hoạt cho mọi tình huống PMP**, "
+                        "bạn hãy chuyển cấu hình **AI Provider sang Google Gemini** ở Sidebar bên trái "
+                        "để kích hoạt gói API Free chạy tự động nhé!"
+                    )
+                    st.markdown(no_key_warning)
+                    st.session_state.chat_history.append({"role": "assistant", "content": no_key_warning})
+
+    # Nút bấm tiện ích xóa sạch lịch sử hội thoại để chat lại từ đầu
+    if st.session_state.chat_history:
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("🗑️ Clear Chat History"):
+            st.session_state.chat_history = []
+            st.rerun()
