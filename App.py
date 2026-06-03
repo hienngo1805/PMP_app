@@ -907,7 +907,7 @@ elif menu_choice == "🤖 AI Tutor Chat":
                         system_context = (
                             "You are an expert PMP and CAPM Tutor. Answer the user's question professionally, "
                             "referencing PMBOK Guide 7th Edition, Agile Practice Guide, or Process Groups Practice Guide. "
-                            "Provide structured, clear, and easy-to-understand explanations. "
+                            "Provide structured, clear, and easy-to-understand explanations. You must define reliable sources for your answers, ideally citing specific sections from any materials when relevant. "
                         )
                         with st.spinner("Gemini is thinking..."):
                             response = model.generate_content(f"{system_context}\n\nUser Question: {user_prompt}")
@@ -928,7 +928,7 @@ elif menu_choice == "🤖 AI Tutor Chat":
                             response = client.chat.completions.create(
                                 model="gpt-4o-mini", # Sử dụng dòng model gpt-4o-mini tối ưu, tiết kiệm chi phí cho user
                                 messages=[
-                                    {"role": "system", "content": "You are an expert PMP and CAPM Tutor. Answer professionally, referencing PMBOK Guide 7th Edition."},
+                                    {"role": "system", "content": "You are an expert PMP and CAPM Tutor. Answer the user's question professionally,referencing PMBOK Guide 7th Edition, Agile Practice Guide, or Process Groups Practice Guide, Provide structured, clear, and easy-to-understand explanations. You must define reliable sources for your answers, ideally citing specific sections from any materials when relevant."},
                                     {"role": "user", "content": user_prompt}
                                 ]
                             )
@@ -949,7 +949,7 @@ elif menu_choice == "🤖 AI Tutor Chat":
                             response = client.messages.create(
                                 model="claude-3-5-haiku-20241022", # Sử dụng model Haiku tốc độ cao và tối ưu chi phí
                                 max_tokens=1024,
-                                system="You are an expert PMP and CAPM Tutor. Answer professionally, referencing PMBOK Guide 7th Edition.",
+                                system="You are an expert PMP and CAPM Tutor. Answer the user's question professionally,referencing PMBOK Guide 7th Edition, Agile Practice Guide, or Process Groups Practice Guide, Provide structured, clear, and easy-to-understand explanations. You must define reliable sources for your answers, ideally citing specific sections from any materials when relevant.",
                                 messages=[
                                     {"role": "user", "content": user_prompt}
                                 ]
