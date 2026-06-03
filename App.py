@@ -232,7 +232,7 @@ st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 # ==========================================================
 # 🖥️ PHẦN 1.2: ĐIỀU HƯỚNG HIỂN THỊ NỘI DUNG CHÍNH (MAIN BODY MAIN LOOP)
 # --- TRANG 1: COVERS PAGE (ĐÃ NÂNG CẤP LÊN GIAO DIỆN THẺ CARD ĐỒNG BỘ) ---
-if menu_choice == "🏠 Cover Page":
+if menu_choice == "🏠 Homepage":
     # Tiêu đề lớn trung tâm
     st.title("🚀 Project Management Knowledge Hub")
     st.markdown("##### *A self-built website to support you on achieving your PMP® and CAPM® goals*")
