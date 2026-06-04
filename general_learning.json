@@ -50,7 +50,7 @@
     "exam_tips": "Project = tactical execution. Program = benefits. Portfolio = strategy alignment. Always distinguish clearly in exam questions."
   },
 
-  {
+{
     "id": "PM-FUNDAMENTAL-2",
     "type": "concept",
     "certification": "PMP/CAPM",
@@ -96,7 +96,6 @@
     ],
     "exam_tips": "If objective is unclear → project risk increases. PMP prefers clear, measurable objectives linked to business value."
   },
-
 
 {
   "id": "PM-FUNDAMENTAL-3",
@@ -289,5 +288,258 @@
     "Governance oversight"
   ],
   "exam_tips": "If a scenario involves unethical behavior, ALWAYS choose transparency, accountability, and professional integrity. PMI strongly favors honesty and escalation over hiding issues."
-}
+},
+  {
+  "id": "PM-FUNDAMENTAL-CONSTRAINTS-ASSUMPTIONS-RISKS",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Constraints, Assumptions, and Risks",
+  "approach": "both",
+  "summary": "Constraints, assumptions, and risks are key elements that influence project planning, execution, and uncertainty management.",
+  "key_concepts": [
+    "Constraints limit project execution",
+    "Assumptions are treated as true without proof",
+    "Risks represent uncertainty (positive or negative)",
+    "All three impact planning and decision-making"
+  ],
+  "details": {
+    "constraints": {
+      "definition": "Limiting factors that affect the execution of a project",
+      "types": [
+        "Scope constraint",
+        "Schedule constraint",
+        "Cost constraint",
+        "Resource constraint",
+        "Quality constraint"
+      ],
+      "examples": [
+        "Fixed deadline",
+        "Limited budget",
+        "Regulatory requirements"
+      ],
+      "impact": [
+        "Reduce flexibility",
+        "Require trade-offs",
+        "Affect project decisions"
+      ]
+    },
+    "assumptions": {
+      "definition": "Factors considered to be true without proof for planning purposes",
+      "examples": [
+        "Resources will be available",
+        "Stakeholders will approve on time",
+        "Technology will work as expected"
+      ],
+      "risks_associated": [
+        "If assumption is wrong → becomes a risk",
+        "High uncertainty assumptions = high risk"
+      ],
+      "tools": [
+        "Assumption Log",
+        "Assumption Analysis"
+      ]
+    },
+    "risks": {
+      "definition": "An uncertain event or condition that can have a positive or negative effect on project objectives",
+      "types": [
+        "Threat (negative risk)",
+        "Opportunity (positive risk)"
+      ],
+      "examples": [
+        "Supplier delay (threat)",
+        "New technology increases productivity (opportunity)"
+      ],
+      "impact": [
+        "Schedule delay",
+        "Cost increase",
+        "Quality impact"
+      ],
+      "tools": [
+        "Risk Register",
+        "Risk Analysis",
+        "Risk Response Planning"
+      ]
+    }
+  },
+  "inputs": [
+    "Business case",
+    "Project charter",
+    "Stakeholder input"
+  ],
+  "outputs": [
+    "Assumption log",
+    "Risk register",
+    "Project constraints documentation"
+  ],
+  "methods_tools": [
+    "Assumption analysis",
+    "Risk identification techniques",
+    "Expert judgment",
+    "Brainstorming"
+  ],
+  "exam_tips": "Assumptions create risk. Constraints limit options. Risks must be actively managed throughout the project lifecycle."
+},
+{
+  "id": "PM-FUNDAMENTAL-LIFECYCLES",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Product, Product Life Cycle, and Project Life Cycle",
+  "approach": "both",
+  "summary": "Products and projects operate on different lifecycles. Projects create products, while products evolve over a longer product life cycle.",
+  "key_concepts": [
+    "Project creates product",
+    "Project life cycle is temporary",
+    "Product life cycle is long-term",
+    "Multiple projects can exist within one product life cycle"
+  ],
+  "details": {
+    "product": {
+      "definition": "A product is a tangible or intangible output that delivers value to customers or users.",
+      "characteristics": [
+        "Can be physical or digital",
+        "Delivers business value",
+        "Exists beyond project completion"
+      ],
+      "examples": [
+        "Mobile app",
+        "Logistics platform",
+        "Warehouse system"
+      ]
+    },
+    "product_lifecycle": {
+      "definition": "The full life span of a product from idea to retirement.",
+      "phases": [
+        "Concept / Idea",
+        "Development",
+        "Growth",
+        "Maturity",
+        "Decline / Retirement"
+      ],
+      "characteristics": [
+        "Long-term lifecycle",
+        "Focused on value delivery and market performance",
+        "Includes continuous improvement and enhancements"
+      ],
+      "examples": [
+        "A SaaS product evolving over years",
+        "Retail product from launch to phase-out"
+      ]
+    },
+    "project_lifecycle": {
+      "definition": "The series of phases that a project passes through from initiation to closure.",
+      "phases": [
+        "Initiation",
+        "Planning",
+        "Execution",
+        "Monitoring and Controlling",
+        "Closing"
+      ],
+      "characteristics": [
+        "Temporary",
+        "Creates a unique deliverable",
+        "Ends once objectives are achieved"
+      ],
+      "examples": [
+        "Build version 1 of a mobile app",
+        "Implement ERP system"
+      ]
+    }
+  },
+  "relationships": [
+    "Projects create or enhance products",
+    "Multiple projects can exist within one product life cycle",
+    "Product life cycle continues after project ends",
+    "Programs may manage multiple projects contributing to a product"
+  ],
+  "inputs": [
+    "Business case",
+    "Product vision",
+    "Organizational strategy"
+  ],
+  "outputs": [
+    "Product deliverables",
+    "Product increments",
+    "Operational product"
+  ],
+  "methods_tools": [
+    "Lifecycle models (Predictive, Agile, Hybrid)",
+    "Product roadmap",
+    "Release planning",
+    "Lifecycle management"
+  ],
+  "exam_tips": "Project life cycle is temporary. Product life cycle is long-term. A project delivers a product, but the product continues after the project ends."
+  },
+  {
+  "id": "PM-FUNDAMENTAL-OPA-EEF-ADVANCED",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Working with OPAs and EEFs",
+  "approach": "both",
+  "summary": "EEFs are environmental conditions that constrain or influence the project and cannot be controlled, while OPAs are internal organizational assets that can be used to support project work.",
+  "key_concepts": [
+    "EEFs must be accepted and adapted to",
+    "OPAs can be used, reused, and sometimes updated",
+    "EEFs can be internal or external",
+    "OPAs are always internal"
+  ],
+  "details": {
+    "EEFs": {
+      "definition": "Conditions outside the direct control of the project manager that influence or constrain project execution.",
+      "internal_examples": [
+        "Organizational culture and hierarchy",
+        "Resource availability",
+        "Employee capability",
+        "Infrastructure (IT systems, facilities)",
+        "Geographic distribution of teams"
+      ],
+      "external_examples": [
+        "Market conditions and competition",
+        "Legal and regulatory requirements",
+        "Social and cultural influences",
+        "Financial environment (inflation, exchange rate)",
+        "Industry standards",
+        "Physical environment (weather, location constraints)"
+      ],
+      "characteristics": [
+        "Cannot be controlled",
+        "Must be adapted to",
+        "Can positively or negatively impact project"
+      ]
+    },
+    "OPAs": {
+      "definition": "Organizational assets such as processes, templates, and knowledge repositories that support project execution.",
+      "examples": {
+        "processes_policies_procedures": [
+          "template",
+          "policy",
+          "procedure",
+          "lesson learned",
+          "historical data",
+          "repository",
+          "form",
+          "methodology"
+        ],
+        "knowledge_repositories": [
+          "Lessons learned",
+          "Historical project data",
+          "Issue and defect logs",
+          "Metrics databases",
+          "Configuration management knowledge"
+        ]
+      },
+      "characteristics": [
+        "Internal to organization",
+        "Reusable",
+        "Support efficiency",
+        "May be updated (especially knowledge repositories)"
+      ]
+    }
+  },
+  "exam_tips": "EEFs = conditions you cannot control. OPAs = assets you can use. Policies are OPAs even if you must follow them."
+  }
 ]
+
+

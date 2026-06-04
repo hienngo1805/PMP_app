@@ -478,11 +478,11 @@ if menu_choice == "📚 Knowledge Hub":
                 # ------------------------------------------------------
                 if selected_domain_gen == glossary_domain_title:
                     st.subheader("🔤 Project Management Glossary")
-                    st.markdown("*Tra cứu nhanh toàn bộ thuật ngữ, viết tắt, khái niệm theo sát chuẩn PMI và Agile/Scrum*")
+                    st.markdown("*Quickly search for  project management terms, acronyms, terminology and concepts aligned with PMI and Agile/Scrum standards*")
                     st.markdown("---")
                     
                     if not glossary_data:
-                        st.warning("⚠️ Không tìm thấy tệp dữ liệu Glossary.json hoặc định dạng tệp chưa hợp lệ.")
+                        st.warning("⚠️ Do not find Glossary.json file or the file format is invalid.")
                     else:
                         # Chia làm 2 cột: Cột 1 nhập từ khóa tìm kiếm, Cột 2 lọc theo Category (General, Agile, Cost, Schedule,...)
                         col_search, col_filter = st.columns([2, 1])
@@ -540,129 +540,231 @@ if menu_choice == "📚 Knowledge Hub":
                             st.info(f"💡 Đang hiển thị {display_limit} kết quả đầu tiên. Vui lòng nhập từ khóa cụ thể hơn để thu hẹp phạm vi tra cứu!")
 
                 # ------------------------------------------------------
-                # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (XỬ LÝ DỮ LIỆU TỪ general_learning.json)
+                # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (GIẢM THIỂU CUỘN CHUỘT)
                 # ------------------------------------------------------
                 else:
-                    st.subheader(f"📖 {selected_domain_gen}")
                     domain_concepts = [c for c in general_data if str(c.get("domain")) == selected_domain_gen]
                     
                     if not domain_concepts:
                         st.info("No content found for this general learning domain.")
                     else:
-                        for concept in domain_concepts:
-                            raw_approach = str(concept.get('approach', '')).upper().strip()
-                            color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
-                            approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
-                            
-                            # ĐÃ SỬA: Thay thế "color: #555" (xám xịt) bằng "opacity: 0.85" giúp chữ tự thích nghi chế độ Dark/Light mượt mà
-                            st.markdown(f"""
-                                <div class="task-card" style="margin-bottom: 25px;">
-                                    <div style="font-weight: bold; font-size: 1.3em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                                        <span>🧠 {concept.get('title', 'Untitled Concept')}</span>
-                                        {approach_badge_html}
-                                    </div>
-                                    <div style="font-size: 1.1em; line-height: 1.6; margin-bottom: 12px; font-style: italic; opacity: 0.85;">
-                                        {concept.get('summary', 'No summary available.')}
-                                    </div>
+                        # TRÁNH SCROLL CHUỘT NHIỀU: Tạo Dropdown liệt kê tất cả các bài học trong Domain hiện tại
+                        concept_titles = [c.get("title", "Untitled Concept") for c in domain_concepts]
+                        
+                        selected_concept_title = st.selectbox(
+                            "📚 Choose a Topic to Study:",
+                            options=concept_titles,
+                            key="concept_selector_dropdown"
+                        )
+                        
+                        st.markdown("---")
+                        
+                        # Lấy đúng concept được chọn để hiển thị nội dung
+                        concept = next((c for c in domain_concepts if c.get("title") == selected_concept_title), domain_concepts[0])
+                        
+                        # 1. Hiển thị Card Tổng quan khái niệm (Có Badge Approach đồng bộ)
+                        raw_approach = str(concept.get('approach', '')).upper().strip()
+                        color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
+                        approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
+                        
+                        st.markdown(f"""
+                            <div class="task-card" style="margin-bottom: 20px;">
+                                <div style="font-weight: bold; font-size: 1.4em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>🧠 {concept.get('title', 'Untitled Concept')}</span>
+                                    {approach_badge_html}
                                 </div>
-                            """, unsafe_allow_html=True)
-                            
-                            if concept.get("key_concepts"):
-                                st.markdown("##### 📌 Key Concepts")
+                                <div style="font-size: 1.1em; line-height: 1.6; font-style: italic; opacity: 0.85;">
+                                    {concept.get('summary', 'No summary available.')}
+                                </div>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        
+                        # 2. Key Concepts (Sử dụng Expander bọc lại để tiết kiệm diện tích)
+                        if concept.get("key_concepts"):
+                            with st.expander("📌 Key Concepts Summary", expanded=True):
                                 for kc in concept.get("key_concepts", []):
                                     st.markdown(f"- {kc}")
-                                st.write("")
 
-                            details = concept.get("details")
-                            if details and isinstance(details, dict):
-                                st.markdown("##### 🔍 Detailed Breakdown")
+                        # 3. Details Breakdown (Hỗ trợ cấu trúc chi tiết cực kỳ đa dạng & thông minh)
+                        details = concept.get("details")
+                        if details and isinstance(details, dict):
+                            with st.expander("🔍 Detailed Breakdown & Comparisons", expanded=False):
                                 det_cols = st.columns(len(details))
                                 for idx, (sub_title, sub_data) in enumerate(details.items()):
                                     with det_cols[idx]:
-                                        st.markdown(f"<div style='background-color: #FAFAFA; border-left: 3px solid #2799C7; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
+                                        st.markdown(f"<div style='border-left: 3px solid #2799C7; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
                                         st.markdown(f"**{sub_title.upper()}**")
+                                        
                                         if isinstance(sub_data, dict):
-                                            if "definition" in sub_data:
-                                                st.markdown(f"*{sub_data['definition']}*")
-                                            if "characteristics" in sub_data and isinstance(sub_data["characteristics"], list):
+                                            # A. Hiển thị mô tả / định nghĩa chính
+                                            for def_key in ["definition", "description"]:
+                                                if def_key in sub_data:
+                                                    st.markdown(f"*{sub_data[def_key]}*")
+                                            
+                                            # B. Hiển thị các trường danh sách đặc thù (characteristics, phases, impact, risks_associated)
+                                            # LƯU Ý: Đã tách "internal_examples" & "external_examples" ra khỏi phần Breakdown này
+                                            for list_key in ["characteristics", "phases", "impact", "risks_associated"]:
+                                                if list_key in sub_data and isinstance(sub_data[list_key], list):
+                                                    title_clean = list_key.replace("_", " ").title()
+                                                    st.markdown(f"**{title_clean}:**")
+                                                    for item in sub_data[list_key]:
+                                                        st.markdown(f"• {item}")
+                                            
+                                            # D. Cơ chế Fallback thông minh cho các cặp Key-Value tùy biến khác (ví dụ: SMART)
+                                            # Đã thêm các trường ví dụ vào processed_keys để tránh việc hiển thị trùng lặp tại đây
+                                            processed_keys = ["definition", "description", "characteristics", "phases", "impact", "risks_associated", "internal_examples", "external_examples", "example", "examples", "tools"]
+                                            other_keys = [k for k in sub_data.keys() if k not in processed_keys]
+                                            if other_keys:
                                                 st.write("")
-                                                for char in sub_data["characteristics"]:
-                                                    st.markdown(f"• {char}")
-                                            if "example" in sub_data:
-                                                st.markdown(f"💡 *Example:* {sub_data['example']}")
+                                                for k in other_keys:
+                                                    k_clean = k.replace("_", " ").title()
+                                                    val = sub_data[k]
+                                                    if isinstance(val, list):
+                                                        st.markdown(f"**{k_clean}:**")
+                                                        for item in val:
+                                                            st.markdown(f"• {item}")
+                                                    elif isinstance(val, dict):
+                                                        st.markdown(f"**{k_clean}:**")
+                                                        for sk, sv in val.items():
+                                                            sk_clean = sk.replace("_", " ").title()
+                                                            st.markdown(f"  * **{sk_clean}**: {sv}")
+                                                    else:
+                                                        st.markdown(f"**{k_clean}**: {val}")
+                                                    
+                                        elif isinstance(sub_data, list):
+                                            # Trường hợp sub_data là mảng phẳng (ví dụ: types)
+                                            st.write("")
+                                            for item in sub_data:
+                                                st.markdown(f"• {item}")
+                                                
                                         elif isinstance(sub_data, str):
                                             st.write(sub_data)
+                                            
                                         st.markdown("</div>", unsafe_allow_html=True)
-                                st.write("")
 
-                            core_values = concept.get("core_values")
-                            if core_values and isinstance(core_values, list):
-                                st.markdown("##### 🛡️ Core Values & Ethical Guidance")
+                        # 3.5. Real-World Examples & Applications (Được tách biệt hoàn toàn để tránh quá tải thông tin)
+                        has_any_example = False
+                        if details and isinstance(details, dict):
+                            for sub_title, sub_data in details.items():
+                                if isinstance(sub_data, dict):
+                                    if any(k in sub_data for k in ["example", "examples", "internal_examples", "external_examples"]):
+                                        has_any_example = True
+                                        break
+
+                        if has_any_example:
+                            with st.expander("💡 Real-world Examples & Applications", expanded=False):
+                                ex_cols = st.columns(len(details))
+                                for idx, (sub_title, sub_data) in enumerate(details.items()):
+                                    with ex_cols[idx]:
+                                        st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
+                                        st.markdown(f"**{sub_title.upper()} EXAMPLES**")
+                                        
+                                        if isinstance(sub_data, dict):
+                                            # A. Hiển thị "example" dạng chuỗi đơn giản
+                                            if "example" in sub_data:
+                                                st.markdown(f"• {sub_data['example']}")
+                                                
+                                            # B. Hiển thị "examples" dạng list, dict hoặc string
+                                            if "examples" in sub_data:
+                                                exs = sub_data["examples"]
+                                                if isinstance(exs, list):
+                                                    for ex in exs:
+                                                        st.markdown(f"• {ex}")
+                                                elif isinstance(exs, dict):
+                                                    for ex_group_name, ex_list in exs.items():
+                                                        group_clean = ex_group_name.replace("_", " ").title()
+                                                        st.markdown(f"  * **{group_clean}:**")
+                                                        if isinstance(ex_list, list):
+                                                            for item in ex_list:
+                                                                st.markdown(f"    • {item}")
+                                                        else:
+                                                            st.markdown(f"    • {ex_list}")
+                                                elif isinstance(exs, str):
+                                                    st.markdown(f"• {exs}")
+                                            
+                                            # C. Hiển thị "internal_examples" & "external_examples" của EEFs
+                                            if "internal_examples" in sub_data and isinstance(sub_data["internal_examples"], list):
+                                                st.markdown("**Internal Examples:**")
+                                                for item in sub_data["internal_examples"]:
+                                                    st.markdown(f"  • {item}")
+                                            if "external_examples" in sub_data and isinstance(sub_data["external_examples"], list):
+                                                st.markdown("**External Examples:**")
+                                                for item in sub_data["external_examples"]:
+                                                    st.markdown(f"  • {item}")
+                                                    
+                                        st.markdown("</div>", unsafe_allow_html=True)
+
+                        # 4. Core Values (PMI Code of Ethics)
+                        core_values = concept.get("core_values")
+                        if core_values and isinstance(core_values, list):
+                            with st.expander("🛡️ PMI Core Values & Ethical Conduct Guidelines", expanded=False):
                                 for val in core_values:
-                                    with st.expander(f"⭐ {val.get('name', 'Value')} - {val.get('definition', '')}"):
-                                        col_v1, col_v2 = st.columns(2)
-                                        with col_v1:
-                                            st.markdown("**Expected Behaviors:**")
-                                            for behavior in val.get("behaviors", []):
-                                                st.markdown(f"✅ {behavior}")
-                                        with col_v2:
-                                            st.markdown("**PM Application:**")
-                                            for app in val.get("pm_application", []):
-                                                st.markdown(f"📋 {app}")
-                                st.write("")
+                                    st.markdown(f"**⭐ {val.get('name', 'Value')}**: *{val.get('definition', '')}*")
+                                    col_v1, col_v2 = st.columns(2)
+                                    with col_v1:
+                                        st.markdown("**Expected Behaviors:**")
+                                        for behavior in val.get("behaviors", []):
+                                            st.markdown(f"✅ {behavior}")
+                                    with col_v2:
+                                        st.markdown("**PM Application:**")
+                                        for app in val.get("pm_application", []):
+                                            st.markdown(f"📋 {app}")
+                                    st.markdown("---")
 
-                            ethical_scenarios = concept.get("ethical_scenarios")
-                            if ethical_scenarios and isinstance(ethical_scenarios, list):
-                                st.markdown("##### 💼 Real-world Ethical Scenarios")
+                        # 5. Ethical Scenarios (Kịch bản tình huống thực tế)
+                        ethical_scenarios = concept.get("ethical_scenarios")
+                        if ethical_scenarios and isinstance(ethical_scenarios, list):
+                            with st.expander("💼 Real-world Ethical Scenarios & Solutions", expanded=False):
                                 for idx, sc in enumerate(ethical_scenarios):
                                     st.markdown(f"""
-                                    <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                    <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px; color: #212121;">
                                         <b>Scenario {idx+1}:</b> {sc.get('scenario', '')}<br>
                                         ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{sc.get('violation', '')}</span><br>
                                         ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{sc.get('correct_action', '')}</span>
                                     </div>
                                     """, unsafe_allow_html=True)
-                                st.write("")
 
-                            dep_types = concept.get("dependency_types")
-                            if dep_types and isinstance(dep_types, list):
-                                st.markdown("##### 🔗 Key Dependency Types")
+                        # 6. Dependency Types
+                        dep_types = concept.get("dependency_types")
+                        if dep_types and isinstance(dep_types, list):
+                            with st.expander("🔗 Dependency Types Explained", expanded=False):
                                 dep_cols = st.columns(len(dep_types))
                                 for idx, dep in enumerate(dep_types):
                                     with dep_cols[idx]:
                                         st.markdown(f"""
-                                        <div style="background-color: #ECEFF1; padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
+                                        <div style="padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
                                             <b>{dep.get('type', '')}</b><br>
-                                            <span style="font-size: 0.9em; color: #555;">{dep.get('description', '')}</span>
+                                            <span style="font-size: 0.9em; opacity: 0.8;">{dep.get('description', '')}</span>
                                         </div>
                                         """, unsafe_allow_html=True)
-                                st.write("")
 
-                            col_in, col_out, col_mt = st.columns(3)
-                            with col_in:
-                                if concept.get("inputs"):
-                                    st.markdown("**📥 Inputs:**")
-                                    for inp in concept.get("inputs", []):
-                                        st.markdown(f"- {inp}")
-                            with col_out:
-                                if concept.get("outputs"):
-                                    st.markdown("**📤 Outputs:**")
-                                    for outp in concept.get("outputs", []):
-                                        st.markdown(f"- {outp}")
-                            with col_mt:
-                                if concept.get("methods_tools"):
-                                    st.markdown("**🛠️ Methods & Tools:**")
-                                    for mt in concept.get("methods_tools", []):
-                                        st.markdown(f"- {mt}")
+                        # 7. Inputs, Outputs, Methods & Tools (Dạng luồng quy trình ITTOs)
+                        if any(concept.get(key) for key in ["inputs", "outputs", "methods_tools"]):
+                            with st.expander("📊 Inputs, Tools & Outputs (ITTOs)", expanded=False):
+                                col_in, col_out, col_mt = st.columns(3)
+                                with col_in:
+                                    if concept.get("inputs"):
+                                        st.markdown("**📥 Inputs:**")
+                                        for inp in concept.get("inputs", []):
+                                            st.markdown(f"- {inp}")
+                                with col_out:
+                                    if concept.get("outputs"):
+                                        st.markdown("**📤 Outputs:**")
+                                        for outp in concept.get("outputs", []):
+                                            st.markdown(f"- {outp}")
+                                with col_mt:
+                                    if concept.get("methods_tools"):
+                                        st.markdown("**🛠️ Methods & Tools:**")
+                                        for mt in concept.get("methods_tools", []):
+                                            st.markdown(f"- {mt}")
 
-                            if concept.get("exam_tips"):
-                                st.markdown(f"""
-                                    <div style="background-color: #F5F5F5; color: #333; padding: 10px; border-radius: 8px; margin-top: 12px; font-size:0.95em; border-left: 4px solid #FF9800;">
-                                        💡 <b>Exam Tip:</b> {concept.get('exam_tips', 'N/A')}
-                                    </div>
-                                """, unsafe_allow_html=True)
-                            
-                            st.markdown("<hr style='margin: 30px 0; border: 1px dashed #DDD;'>", unsafe_allow_html=True)
+                        # 8. Mẹo phòng thi (Exam Tips) - Luôn hiển thị nổi bật ở dưới cùng
+                        if concept.get("exam_tips"):
+                            st.markdown(f"""
+                                <div style="background-color: #F5F5F5; color: #333; padding: 12px; border-radius: 8px; margin-top: 15px; font-size:0.95em; border-left: 5px solid #FF9800;">
+                                    💡 <b>Exam Tip:</b> {concept.get('exam_tips', 'N/A')}
+                                </div>
+                            """, unsafe_allow_html=True)
 
 # ==========================================
 # 📝 PHẦN 3: QUESTION BANK
