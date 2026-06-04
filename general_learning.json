@@ -1,0 +1,293 @@
+[
+  {
+    "id": "PM-FUNDAMENTAL-1",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "title": "Project vs Program vs Portfolio",
+    "approach": "both",
+    "summary": "Projects, programs, and portfolios represent different levels of organizational work management, from individual initiatives to strategic alignment.",
+    "key_concepts": [
+      "Project = temporary, unique deliverable",
+      "Program = group of related projects managed together",
+      "Portfolio = collection of projects/programs aligned with strategy",
+      "Operations = ongoing, repetitive work"
+    ],
+    "details": {
+      "project": {
+        "definition": "A temporary endeavor undertaken to create a unique product, service, or result",
+        "characteristics": [
+          "Has a defined start and end",
+          "Produces unique output",
+          "Subject to constraints (scope, time, cost)"
+        ],
+        "example": "Build a warehouse system for a client"
+      },
+      "program": {
+        "definition": "A group of related projects managed in a coordinated way",
+        "characteristics": [
+          "Focus on benefits realization",
+          "Manage interdependencies between projects",
+          "Deliver value not achievable individually"
+        ],
+        "example": "Digital transformation (multiple IT projects)"
+      },
+      "portfolio": {
+        "definition": "A collection of projects/programs managed to achieve strategic goals",
+        "characteristics": [
+          "Aligned with business strategy",
+          "Prioritizes investments",
+          "Balances risk vs return"
+        ],
+        "example": "Company-wide investment portfolio"
+      }
+    },
+    "methods_tools": [
+      "Portfolio prioritization (NPV, ROI)",
+      "Program governance",
+      "Project lifecycle management"
+    ],
+    "exam_tips": "Project = tactical execution. Program = benefits. Portfolio = strategy alignment. Always distinguish clearly in exam questions."
+  },
+
+  {
+    "id": "PM-FUNDAMENTAL-2",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Project Management Fundamentals and Core Concepts",
+    "title": "Project Objective",
+    "approach": "both",
+    "summary": "Project objectives define what the project aims to achieve in measurable and specific terms.",
+    "key_concepts": [
+      "Objectives must be SMART",
+      "Linked to business value",
+      "Defined early (charter phase)",
+      "Guide scope and success criteria"
+    ],
+    "details": {
+      "SMART": {
+        "specific": "Clearly defined",
+        "measurable": "Quantifiable success criteria",
+        "achievable": "Realistic based on constraints",
+        "relevant": "Aligned with business goals",
+        "time_bound": "Has deadline"
+      },
+      "types": [
+        "Time objective (deadline)",
+        "Cost objective (budget)",
+        "Scope objective (deliverables)",
+        "Quality objective (standards)"
+      ]
+    },
+    "inputs": [
+      "Business case",
+      "Stakeholder requirements",
+      "Organizational strategy"
+    ],
+    "outputs": [
+      "Project objectives statement",
+      "Project charter",
+      "Success criteria"
+    ],
+    "methods_tools": [
+      "SMART framework",
+      "Stakeholder interviews",
+      "Requirements analysis"
+    ],
+    "exam_tips": "If objective is unclear → project risk increases. PMP prefers clear, measurable objectives linked to business value."
+  },
+
+
+{
+  "id": "PM-FUNDAMENTAL-3",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Strategic Dependencies (Project – Program – Portfolio)",
+  "approach": "both",
+  "summary": "Dependencies at project, program, and portfolio levels define how initiatives rely on each other to deliver value, benefits, and strategic alignment.",
+  "key_concepts": [
+    "Projects can depend on other projects",
+    "Programs manage interdependencies between projects",
+    "Portfolios manage dependencies to optimize strategic value",
+    "Dependencies impact sequencing, risk, and resource allocation"
+  ],
+  "details": {
+    "project_level_dependency": {
+      "definition": "A project may rely on outputs, resources, or timing of another project",
+      "examples": [
+        "Project B depends on Project A delivering a system first",
+        "Infrastructure project must complete before application rollout"
+      ],
+      "impact": [
+        "Schedule delays",
+        "Resource conflicts",
+        "Risk propagation"
+      ]
+    },
+    "program_level_dependency": {
+      "definition": "Program coordinates multiple related projects with strong interdependencies",
+      "examples": [
+        "ERP implementation program: finance module depends on core system",
+        "Digital transformation with multiple integrated systems"
+      ],
+      "impact": [
+        "Benefit realization depends on coordination",
+        "Delays in one project affect the entire program",
+        "Requires centralized governance"
+      ]
+    },
+    "portfolio_level_dependency": {
+      "definition": "Portfolio manages dependencies across projects/programs to align with strategy",
+      "examples": [
+        "Investment prioritization based on dependency and ROI",
+        "Delay of one program impacts strategic roadmap"
+      ],
+      "impact": [
+        "Strategic misalignment risk",
+        "Budget prioritization changes",
+        "Opportunity cost"
+      ]
+    }
+  },
+  "dependency_types": [
+    {
+      "type": "Deliverable Dependency",
+      "description": "One initiative requires output of another"
+    },
+    {
+      "type": "Resource Dependency",
+      "description": "Shared resources across projects/programs"
+    },
+    {
+      "type": "Capability Dependency",
+      "description": "A capability must exist before another initiative starts"
+    },
+    {
+      "type": "Strategic Dependency",
+      "description": "Alignment or sequencing driven by business strategy"
+    }
+  ],
+  "inputs": [
+    "Organizational strategy",
+    "Portfolio roadmap",
+    "Business case",
+    "Program structure"
+  ],
+  "outputs": [
+    "Dependency map",
+    "Portfolio roadmap",
+    "Program plan alignment",
+    "Integrated delivery schedule"
+  ],
+  "methods_tools": [
+    "Dependency mapping",
+    "Portfolio prioritization (ROI, NPV)",
+    "Roadmapping",
+    "Program governance",
+    "Integrated planning workshops"
+  ],
+  "exam_tips": "Projects have dependencies. Programs MANAGE dependencies. Portfolios OPTIMIZE dependencies aligned with strategy."
+},
+{
+  "id": "PM-FUNDAMENTAL-ETHICS",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "PMI Code of Ethics and Professional Conduct",
+  "approach": "both",
+  "summary": "The PMI Code of Ethics defines the expected behavior of project management professionals through four core values: Responsibility, Respect, Fairness, and Honesty.",
+  "key_concepts": [
+    "4 Core Values: Responsibility, Respect, Fairness, Honesty",
+    "Applies to all PMI members and practitioners",
+    "Guides ethical decision-making",
+    "Important for exam situational questions"
+  ],
+  "core_values": [
+    {
+      "name": "Responsibility",
+      "definition": "Take ownership of decisions and actions",
+      "behaviors": [
+        "Accept accountability for outcomes",
+        "Follow laws and regulations",
+        "Report unethical behavior",
+        "Protect project integrity"
+      ],
+      "pm_application": [
+        "Escalate issues instead of hiding them",
+        "Take responsibility for project failures",
+        "Ensure compliance"
+      ]
+    },
+    {
+      "name": "Respect",
+      "definition": "Show consideration for people and culture",
+      "behaviors": [
+        "Listen to others’ opinions",
+        "Respect cultural differences",
+        "Avoid abusive behavior",
+        "Promote collaboration"
+      ],
+      "pm_application": [
+        "Respect stakeholder views",
+        "Handle conflict professionally",
+        "Encourage inclusive communication"
+      ]
+    },
+    {
+      "name": "Fairness",
+      "definition": "Make impartial and objective decisions",
+      "behaviors": [
+        "Avoid conflicts of interest",
+        "Disclose real or perceived conflicts",
+        "Ensure equal opportunity",
+        "Make decisions based on merit"
+      ],
+      "pm_application": [
+        "Vendor selection must be unbiased",
+        "No favoritism in team decisions",
+        "Transparent evaluation process"
+      ]
+    },
+    {
+      "name": "Honesty",
+      "definition": "Be truthful and transparent",
+      "behaviors": [
+        "Provide accurate information",
+        "Avoid deception",
+        "Disclose risks honestly",
+        "Do not mislead stakeholders"
+      ],
+      "pm_application": [
+        "Report real project status",
+        "Do not hide delays or issues",
+        "Communicate risks clearly"
+      ]
+    }
+  ],
+  "ethical_scenarios": [
+    {
+      "scenario": "Project delay but PM hides it",
+      "violation": "Honesty and Responsibility",
+      "correct_action": "Report truthfully and escalate"
+    },
+    {
+      "scenario": "Selecting vendor based on personal relationship",
+      "violation": "Fairness",
+      "correct_action": "Use objective selection criteria"
+    },
+    {
+      "scenario": "Ignoring stakeholder feedback",
+      "violation": "Respect",
+      "correct_action": "Engage and listen actively"
+    }
+  ],
+  "methods_tools": [
+    "Ethical decision-making frameworks",
+    "Conflict of interest disclosure",
+    "Stakeholder communication plan",
+    "Governance oversight"
+  ],
+  "exam_tips": "If a scenario involves unethical behavior, ALWAYS choose transparency, accountability, and professional integrity. PMI strongly favors honesty and escalation over hiding issues."
+}
+]

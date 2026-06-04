@@ -155,7 +155,32 @@ def load_knowledge_from_json():
         except Exception:
             return []
     return []
-
+def load_general_learning_data():
+    file_path = "general_learning.json"
+    if os.path.exists(file_path):
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            st.error(f"❌ Lỗi đọc file JSON: {str(e)}")
+            return {}
+    else:
+        st.error("⚠️ Không tìm thấy file general_learning.json!")
+        return {}
+def load_glossary_data():
+    file_path = "Glossary.json"
+    if os.path.exists(file_path):
+        try:
+            # Kiểm tra nếu file trống rỗng
+            if os.path.getsize(file_path) == 0:
+                return []
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data.get("glossary", [])
+        except Exception:
+            return []
+    return []
+    
 # Nạp ngân hàng câu hỏi gốc
 questions_bank = load_questions_from_json()
 # ==========================================
@@ -318,86 +343,326 @@ if menu_choice == "🏠 Homepage":
     st.markdown("---")
     st.caption("Wishing you a wonderful study journey and success in achieving your certification goals! 🎯")
 
-# ==========================================
-# 📚PHẦN 2: KNOWLEDGE HUB (MINIMALIST STYLE - VERSION 12.0)
-# ==========================================
+# ==========================================================
+# 📚 PHẦN 2: KNOWLEDGE HUB (TABBED SYSTEM - FIXED UI)
+# ==========================================================
 if menu_choice == "📚 Knowledge Hub":
     st.title("📚 Professional Certification Knowledge Hub")
 
-    eco_data = load_knowledge_from_json()
+    # 1. Nạp dữ liệu từ các file JSON
+    eco_data = load_knowledge_from_json()          # PMP/CAPM
+    general_data = load_general_learning_data()    # General Learning
+    glossary_data = load_glossary_data()          # Bảng thuật ngữ
 
-    cert_structure = {
-        "PMP": ["People", "Process", "Business Environment"],
-        "CAPM": ["Project Management Fundamentals and Core Concepts", 
-                 "Predictive, Plan-Based Methodologies", 
-                 "Agile Frameworks/Methodologies", 
-                 "Business Analysis Frameworks"]
+    # 2. Tạo 3 thanh Tab ngang ở trên cùng đúng theo thiết kế của bạn
+    tab_pmp, tab_capm, tab_general = st.tabs(["🏆 PMP®", "🎓 CAPM® Core", "📖 General Learning"])
+
+    # Định nghĩa sẵn bảng màu Pastel cho thẻ Task (Dùng chung cho PMP/CAPM)
+    approach_colors = {
+        "PREDICTIVE": {"bg": "#E3F2FD", "text": "#0D47A1"},
+        "AGILE": {"bg": "#E8F5E9", "text": "#41B67C"},
+        "BOTH": {"bg": "#F3E5F5", "text": "#4A148C"}
     }
 
-    # Chọn Chứng chỉ
-    st.write("") # Tạo khoảng trống nhỏ
-    cert_select = st.radio("Select Certification:", list(cert_structure.keys()), horizontal=True)
-    
-    # Layout sidebar giả lập (Vertical Menu)
-    col_menu, col_content = st.columns([1, 3])
-    
-    with col_menu:
-        selected_domain = st.radio("Select Domain:", cert_structure[cert_select])
-
-    with col_content:
-        st.subheader(f"📖 {selected_domain}")
-        tasks = [t for t in eco_data if t.get("domain") == selected_domain]
+    # ==========================================================
+    # KHỐI 1: TỰ ĐỘNG XỬ LÝ CHO TAB PMP
+    # ==========================================================
+    with tab_pmp:
+        pmp_domains = ["People", "Process", "Business Environment"]
         
-        if not tasks:
-            st.info("No tasks found for this domain.")
+        # Chia cột sidebar giả lập bên trong Tab PMP
+        col_menu_pmp, col_content_pmp = st.columns([1, 3])
+        
+        with col_menu_pmp:
+            # key="pmp_radio" giúp sửa dứt điểm lỗi Duplicate ID
+            selected_domain = st.radio("Select Domain:", pmp_domains, key="pmp_radio")
+
+        with col_content_pmp:
+            st.subheader(f"📖 {selected_domain}")
+            tasks = [t for t in eco_data if t.get("domain") == selected_domain]
+            
+            if not tasks:
+                st.info("No tasks found for this domain.")
+            else:
+                for t_data in tasks:
+                    raw_approach = str(t_data.get('approach', '')).upper().strip()
+                    color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
+                    approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.85em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
+                    
+                    st.markdown(f"""
+                        <div class="task-card">
+                            <div style="font-weight: bold; font-size: 1.2em; color: #2799C7; margin-bottom: 10px;">
+                                Task {t_data.get('task_number', '')}: {t_data.get('task', 'Untitled')}
+                            </div>
+                            <div style="line-height: 1.8;font-size:1.1em;">
+                                <b>Approach:</b> {approach_badge_html}<br>
+                                <div style="margin-top: 6px;"><b>Summary:</b> {t_data.get('summary', 'N/A')}</div>
+                                <b>Key Concepts:</b> {', '.join(t_data.get('key_concepts', []))}
+                            </div>
+                            <div style="background-color: #F5F5F5; color: #555; padding: 10px; border-radius: 8px; margin-top: 15px; font-size:0.9em;">
+                                💡 <b>Exam Tip:</b> {t_data.get('exam_tips', 'N/A')}
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+
+    # ==========================================================
+    # KHỐI 2: TỰ ĐỘNG XỬ LÝ CHO TAB CAPM
+    # ==========================================================
+    with tab_capm:
+        capm_domains = [
+            "Project Management Fundamentals and Core Concepts", 
+            "Predictive, Plan-Based Methodologies", 
+            "Agile Frameworks/Methodologies", 
+            "Business Analysis Frameworks"
+        ]
+        
+        # Chia cột sidebar giả lập bên trong Tab CAPM
+        col_menu_capm, col_content_capm = st.columns([1, 3])
+        
+        with col_menu_capm:
+            selected_domain = st.radio("Select Domain:", capm_domains, key="capm_radio")
+
+        with col_content_capm:
+            st.subheader(f"📖 {selected_domain}")
+            tasks = [t for t in eco_data if t.get("domain") == selected_domain]
+            
+            if not tasks:
+                st.info("No tasks found for this domain.")
+            else:
+                for t_data in tasks:
+                    raw_approach = str(t_data.get('approach', '')).upper().strip()
+                    color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
+                    approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.85em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
+                    
+                    st.markdown(f"""
+                        <div class="task-card">
+                            <div style="font-weight: bold; font-size: 1.2em; color: #2799C7; margin-bottom: 10px;">
+                                Task {t_data.get('task_number', '')}: {t_data.get('task', 'Untitled')}
+                            </div>
+                            <div style="line-height: 1.8;font-size:1.1em;">
+                                <b>Approach:</b> {approach_badge_html}<br>
+                                <div style="margin-top: 6px;"><b>Summary:</b> {t_data.get('summary', 'N/A')}</div>
+                                <b>Key Concepts:</b> {', '.join(t_data.get('key_concepts', []))}
+                            </div>
+                            <div style="background-color: #F5F5F5; color: #555; padding: 10px; border-radius: 8px; margin-top: 15px; font-size:0.9em;">
+                                💡 <b>Exam Tip:</b> {t_data.get('exam_tips', 'N/A')}
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+
+    # ==========================================================
+    # KHỐI 3: TỰ ĐỘNG XỬ LÝ CHO TAB GENERAL LEARNING (GỒM GLOSSARY SEARCH)
+    # ==========================================================
+    with tab_general:
+        # Nạp các Domain lớn từ general_learning.json
+        general_domains = []
+        if general_data and isinstance(general_data, list):
+            general_domains = sorted(list(set(str(item.get("domain", "General Knowledge")) for item in general_data if item.get("domain"))))
+        
+        # CHÈN THÊM GLOSSARY VÀO LÀM MỘT DOMAIN RIÊNG BIỆT DƯỚI BẢNG ĐIỀU HƯỚNG DỌC
+        glossary_domain_title = "🔤 Glossary & Terminology"
+        general_domains.append(glossary_domain_title)
+
+        if not general_domains:
+            st.info("💡 Chưa có danh mục kiến thức General Learning nào được tìm thấy.")
         else:
-            # Từ điển định nghĩa bảng màu Pastel cho từng loại Approach
-            approach_colors = {
-                "PREDICTIVE": {"bg": "#E3F2FD", "text": "#0D47A1"},  # Xanh dương nhẹ
-                "AGILE": {"bg": "#E8F5E9", "text": "#41B67C"},    # Xanh lá nhẹ
-                "BOTH": {"bg": "#F3E5F5", "text": "#4A148C"}        # Tím nhạt
-            }
+            # Layout sidebar giả lập bên trong Tab General Learning
+            col_menu_gen, col_content_gen = st.columns([1, 3])
+            
+            with col_menu_gen:
+                selected_domain_gen = st.radio("Select Domain:", general_domains, key="general_radio")
 
-            for t_data in tasks:
-                # Chuẩn hóa chuỗi dữ liệu approach đầu vào
-                raw_approach = str(t_data.get('approach', '')).upper().strip()
-                
-                # Lấy cấu hình màu tương ứng (Mặc định dùng cấu hình BOTH nếu không khớp)
-                color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
-                
-                # Tạo chuỗi thẻ Span HTML chứa style Badge Pastel tạo điểm nhấn
-                approach_badge_html = f"""
-                <span style="
-                    background-color: {color_cfg['bg']}; 
-                    color: {color_cfg['text']}; 
-                    padding: 2px 10px; 
-                    border-radius: 6px; 
-                    font-weight: bold; 
-                    font-size: 0.85em;
-                    display: inline-block;
-                    border: 1px solid {color_cfg['text']}20;
-                ">
-                    {raw_approach}
-                </span>
-                """
+            with col_content_gen:
+                # ------------------------------------------------------
+                # KỊCH BẢN 3.1: NẾU USER CHỌN DOMAIN GLOSSARY (XỬ LÝ DỮ LIỆU TỪ Glossary.json)
+                # ------------------------------------------------------
+                if selected_domain_gen == glossary_domain_title:
+                    st.subheader("🔤 Project Management Glossary")
+                    st.markdown("*Tra cứu nhanh toàn bộ thuật ngữ, viết tắt, khái niệm theo sát chuẩn PMI và Agile/Scrum*")
+                    st.markdown("---")
+                    
+                    if not glossary_data:
+                        st.warning("⚠️ Không tìm thấy tệp dữ liệu Glossary.json hoặc định dạng tệp chưa hợp lệ.")
+                    else:
+                        # Chia làm 2 cột: Cột 1 nhập từ khóa tìm kiếm, Cột 2 lọc theo Category (General, Agile, Cost, Schedule,...)
+                        col_search, col_filter = st.columns([2, 1])
+                        
+                        with col_search:
+                            search_query = st.text_input("🔍 Search term or definition:", placeholder="Type to search (e.g. WBS, Agile, AC, Baseline)...", key="glossary_main_search_bar")
+                        
+                        with col_filter:
+                            # Tự động lấy danh sách Category xuất hiện trong Glossary để lọc
+                            categories_list = sorted(list(set(str(item.get("category", "General")) for item in glossary_data if item.get("category"))))
+                            selected_category = st.selectbox("🗂️ Filter by Category:", ["All Categories"] + categories_list, key="glossary_cat_selectbox")
+                        
+                        # LOGIC LỌC TÌM KIẾM ĐỘNG
+                        filtered_glossary = glossary_data
+                        
+                        # 1. Lọc theo Category
+                        if selected_category != "All Categories":
+                            filtered_glossary = [item for item in filtered_glossary if str(item.get("category")) == selected_category]
+                        
+                        # 2. Lọc theo Từ khóa tìm kiếm (Không phân biệt hoa thường)
+                        if search_query.strip():
+                            q = search_query.lower().strip()
+                            filtered_glossary = [
+                                item for item in filtered_glossary
+                                if q in str(item.get("term", "")).lower() or q in str(item.get("definition", "")).lower()
+                            ]
+                        
+                        # Hiển thị số lượng kết quả
+                        st.caption(f"Showing {len(filtered_glossary)} of {len(glossary_data)} terms found.")
+                        st.write("")
+                        
+                        # Render danh sách kết quả (Giới hạn tối đa 80 thẻ đầu tiên để tránh làm lag trình duyệt khi tải quá nặng)
+                        display_limit = 80
+                        for idx, item in enumerate(filtered_glossary[:display_limit]):
+                            term_name = item.get("term", "N/A")
+                            term_def = item.get("definition", "No definition provided.")
+                            term_cat = item.get("category", "General")
+                            
+                            # Tô đậm từ khóa tìm kiếm trong định nghĩa và thuật ngữ nếu có
+                            st.markdown(f"""
+                                <div class="task-card" style="margin-bottom: 12px; padding: 15px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <span style="font-weight: bold; font-size: 1.15em; color: #2799C7;">🏷️ {term_name}</span>
+                                        <span style="background-color: #E0F2F1; color: #00796B; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold;">
+                                            {term_cat.upper()}
+                                        </span>
+                                    </div>
+                                    <div style="line-height: 1.6; font-size: 1.05em; opacity: 0.9;">
+                                        {term_def}
+                                    </div>
+                                </div>
+                            """, unsafe_allow_html=True)
+                        
+                        if len(filtered_glossary) > display_limit:
+                            st.info(f"💡 Đang hiển thị {display_limit} kết quả đầu tiên. Vui lòng nhập từ khóa cụ thể hơn để thu hẹp phạm vi tra cứu!")
 
-                # Render Card hoàn thiện kết hợp Badge HTML động vào vị trí cũ
-                st.markdown(f"""
-                    <div class="task-card">
-                        <div style="font-weight: bold; font-size: 1.2em; color: #2799C7; margin-bottom: 10px;">
-                            Task {t_data.get('task_number', '')}: {t_data.get('task', 'Untitled')}
-                        </div>
-                        <div style="line-height: 1.8;font-size:1.1em;">
-                            <b>Approach:</b> {approach_badge_html}<br>
-                            <div style="margin-top: 6px;"><b>Summary:</b> {t_data.get('summary', 'N/A')}</div>
-                            <b>Key Concepts:</b> {', '.join(t_data.get('key_concepts', []))}
-                        </div>
-                        <div style="background-color: #F5F5F5; color: #555; padding: 10px; border-radius: 8px; margin-top: 15px; font-size:0.9em;">
-                            💡 <b>Exam Tip:</b> {t_data.get('exam_tips', 'N/A')}
-                        </div>
-                    </div>
-                """, unsafe_allow_html=True)
-                
+                # ------------------------------------------------------
+                # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (XỬ LÝ DỮ LIỆU TỪ general_learning.json)
+                # ------------------------------------------------------
+                else:
+                    st.subheader(f"📖 {selected_domain_gen}")
+                    domain_concepts = [c for c in general_data if str(c.get("domain")) == selected_domain_gen]
+                    
+                    if not domain_concepts:
+                        st.info("No content found for this general learning domain.")
+                    else:
+                        for concept in domain_concepts:
+                            raw_approach = str(concept.get('approach', '')).upper().strip()
+                            color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
+                            approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
+                            
+                            # ĐÃ SỬA: Thay thế "color: #555" (xám xịt) bằng "opacity: 0.85" giúp chữ tự thích nghi chế độ Dark/Light mượt mà
+                            st.markdown(f"""
+                                <div class="task-card" style="margin-bottom: 25px;">
+                                    <div style="font-weight: bold; font-size: 1.3em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                        <span>🧠 {concept.get('title', 'Untitled Concept')}</span>
+                                        {approach_badge_html}
+                                    </div>
+                                    <div style="font-size: 1.1em; line-height: 1.6; margin-bottom: 12px; font-style: italic; opacity: 0.85;">
+                                        {concept.get('summary', 'No summary available.')}
+                                    </div>
+                                </div>
+                            """, unsafe_allow_html=True)
+                            
+                            if concept.get("key_concepts"):
+                                st.markdown("##### 📌 Key Concepts")
+                                for kc in concept.get("key_concepts", []):
+                                    st.markdown(f"- {kc}")
+                                st.write("")
+
+                            details = concept.get("details")
+                            if details and isinstance(details, dict):
+                                st.markdown("##### 🔍 Detailed Breakdown")
+                                det_cols = st.columns(len(details))
+                                for idx, (sub_title, sub_data) in enumerate(details.items()):
+                                    with det_cols[idx]:
+                                        st.markdown(f"<div style='background-color: #FAFAFA; border-left: 3px solid #2799C7; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
+                                        st.markdown(f"**{sub_title.upper()}**")
+                                        if isinstance(sub_data, dict):
+                                            if "definition" in sub_data:
+                                                st.markdown(f"*{sub_data['definition']}*")
+                                            if "characteristics" in sub_data and isinstance(sub_data["characteristics"], list):
+                                                st.write("")
+                                                for char in sub_data["characteristics"]:
+                                                    st.markdown(f"• {char}")
+                                            if "example" in sub_data:
+                                                st.markdown(f"💡 *Example:* {sub_data['example']}")
+                                        elif isinstance(sub_data, str):
+                                            st.write(sub_data)
+                                        st.markdown("</div>", unsafe_allow_html=True)
+                                st.write("")
+
+                            core_values = concept.get("core_values")
+                            if core_values and isinstance(core_values, list):
+                                st.markdown("##### 🛡️ Core Values & Ethical Guidance")
+                                for val in core_values:
+                                    with st.expander(f"⭐ {val.get('name', 'Value')} - {val.get('definition', '')}"):
+                                        col_v1, col_v2 = st.columns(2)
+                                        with col_v1:
+                                            st.markdown("**Expected Behaviors:**")
+                                            for behavior in val.get("behaviors", []):
+                                                st.markdown(f"✅ {behavior}")
+                                        with col_v2:
+                                            st.markdown("**PM Application:**")
+                                            for app in val.get("pm_application", []):
+                                                st.markdown(f"📋 {app}")
+                                st.write("")
+
+                            ethical_scenarios = concept.get("ethical_scenarios")
+                            if ethical_scenarios and isinstance(ethical_scenarios, list):
+                                st.markdown("##### 💼 Real-world Ethical Scenarios")
+                                for idx, sc in enumerate(ethical_scenarios):
+                                    st.markdown(f"""
+                                    <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                        <b>Scenario {idx+1}:</b> {sc.get('scenario', '')}<br>
+                                        ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{sc.get('violation', '')}</span><br>
+                                        ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{sc.get('correct_action', '')}</span>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                st.write("")
+
+                            dep_types = concept.get("dependency_types")
+                            if dep_types and isinstance(dep_types, list):
+                                st.markdown("##### 🔗 Key Dependency Types")
+                                dep_cols = st.columns(len(dep_types))
+                                for idx, dep in enumerate(dep_types):
+                                    with dep_cols[idx]:
+                                        st.markdown(f"""
+                                        <div style="background-color: #ECEFF1; padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
+                                            <b>{dep.get('type', '')}</b><br>
+                                            <span style="font-size: 0.9em; color: #555;">{dep.get('description', '')}</span>
+                                        </div>
+                                        """, unsafe_allow_html=True)
+                                st.write("")
+
+                            col_in, col_out, col_mt = st.columns(3)
+                            with col_in:
+                                if concept.get("inputs"):
+                                    st.markdown("**📥 Inputs:**")
+                                    for inp in concept.get("inputs", []):
+                                        st.markdown(f"- {inp}")
+                            with col_out:
+                                if concept.get("outputs"):
+                                    st.markdown("**📤 Outputs:**")
+                                    for outp in concept.get("outputs", []):
+                                        st.markdown(f"- {outp}")
+                            with col_mt:
+                                if concept.get("methods_tools"):
+                                    st.markdown("**🛠️ Methods & Tools:**")
+                                    for mt in concept.get("methods_tools", []):
+                                        st.markdown(f"- {mt}")
+
+                            if concept.get("exam_tips"):
+                                st.markdown(f"""
+                                    <div style="background-color: #F5F5F5; color: #333; padding: 10px; border-radius: 8px; margin-top: 12px; font-size:0.95em; border-left: 4px solid #FF9800;">
+                                        💡 <b>Exam Tip:</b> {concept.get('exam_tips', 'N/A')}
+                                    </div>
+                                """, unsafe_allow_html=True)
+                            
+                            st.markdown("<hr style='margin: 30px 0; border: 1px dashed #DDD;'>", unsafe_allow_html=True)
 
 # ==========================================
 # 📝 PHẦN 3: QUESTION BANK
