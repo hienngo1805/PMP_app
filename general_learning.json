@@ -539,7 +539,1469 @@
     }
   },
   "exam_tips": "EEFs = conditions you cannot control. OPAs = assets you can use. Policies are OPAs even if you must follow them."
+  },
+  
+{
+  "id": "PM-FUNDAMENTAL-DEVELOPMENT-APPROACH",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Project Development Approach",
+  "approach": "both",
+  "summary": "A project development approach defines how project work is organized, planned, and executed to deliver outcomes. The main approaches include Predictive, Agile (Adaptive), and Hybrid.",
+  "key_concepts": [
+    "Development approach determines how work is done",
+    "Three main types: Predictive, Agile, Hybrid",
+    "Choice depends on uncertainty, requirements stability, and environment",
+    "Approach influences planning, execution, and control"
+  ],
+  "details": {
+    "predictive": {
+      "definition": "A development approach where scope, schedule, and cost are defined early and changes are controlled.",
+      "characteristics": [
+        "Requirements are stable",
+        "Detailed planning upfront",
+        "Sequential phases (waterfall)",
+        "Formal change control"
+      ],
+      "when_to_use": [
+        "Requirements are clear and fixed",
+        "Low uncertainty",
+        "Regulated environment",
+        "High need for predictability"
+      ],
+      "examples": [
+        "Construction projects",
+        "Infrastructure projects",
+        "Manufacturing"
+      ]
+    },
+    "agile": {
+      "definition": "An adaptive approach that delivers value through iterative and incremental work cycles, allowing continuous feedback and improvement.",
+      "characteristics": [
+        "Flexible and adaptive",
+        "Frequent delivery of value",
+        "Continuous stakeholder feedback",
+        "Collaborative and customer-centric"
+      ],
+      "iterative": {
+        "definition": "A development technique where the product is repeatedly refined and improved through multiple cycles.",
+        "focus": "Improving and refining existing solution",
+        "characteristics": [
+          "Repeated cycles of improvement",
+          "Learning-driven",
+          "Feedback used to enhance product quality",
+          "Early versions may be incomplete"
+        ]
+      },
+      "incremental": {
+        "definition": "A development technique where the product is built and delivered in small, usable portions.",
+        "focus": "Delivering new value step by step",
+        "characteristics": [
+          "Each increment is usable",
+          "Delivers value early and continuously",
+          "Builds product in parts",
+          "Adds new functionality over time"
+        ]
+      },
+      "example": "A product is developed through multiple iterations where the team continuously improves existing features while also delivering new features in increments."
+    },
+    "hybrid": {
+      "definition": "A combination of predictive and agile approaches used together in a project.",
+      "characteristics": [
+        "Structured planning + flexible execution",
+        "Some parts fixed, some iterative",
+        "Balances control and adaptability"
+      ],
+      "when_to_use": [
+        "Partially defined requirements",
+        "Mixed environments",
+        "Need both control and flexibility"
+      ],
+      "examples": [
+        "Hardware + software project",
+        "ERP implementation"
+      ]
+    }
+  },
+  "selection_factors": [
+    "Requirements stability",
+    "Level of uncertainty",
+    "Stakeholder engagement needs",
+    "Regulatory constraints",
+    "Technology complexity"
+  ],
+  "methods_tools": [
+    "Lifecycle selection",
+    "Tailoring approach",
+    "Stakeholder analysis",
+    "Risk assessment"
+  ],
+  "exam_tips": "Predictive = stable requirements. Agile = changing requirements. Hybrid = mix both depending on project context."
+  },
+  {
+  "id": "PM-FUNDAMENTAL-TAILORING",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Tailoring in Project Management",
+  "approach": "both",
+  "summary": "Tailoring is the process of adapting project management approach, processes, and practices to fit the specific needs of a project.",
+  "key_concepts": [
+    "No one-size-fits-all approach",
+    "Tailoring adapts methods to project context",
+    "Driven by project complexity, risk, and environment",
+    "Applies to both predictive and agile approaches"
+  ],
+  "details": {
+    "definition": "The deliberate adjustment of project management processes, tools, and techniques to match the project's context and needs.",
+    "why tailoring": [
+      "Projects differ in size, complexity, and risk",
+      "Different industries require different approaches",
+      "Improves efficiency and effectiveness"
+    ],
+    "what to tailor": [
+      "Development approach (predictive, agile, hybrid)",
+      "Processes and documentation level",
+      "Tools and techniques",
+      "Governance and reporting"
+    ],
+    "factors affecting tailoring": [
+      "Project size and complexity",
+      "Regulatory requirements",
+      "Stakeholder needs",
+      "Organizational culture (EEFs)",
+      "Available processes (OPAs)"
+    ]
+  },
+  "methods_tools": [
+    "Expert judgment",
+    "Stakeholder analysis",
+    "Risk assessment",
+    "Organizational standards review"
+  ],
+  "exam_tips": "PMI always supports tailoring. The best approach is the one that fits the project, not strictly following all processes."
+  },
+  {  
+  "id": "PM-FUNDAMENTAL-UNCERTAINTY-COMPLEXITY",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Uncertainty and Complexity",
+  "approach": "both",
+  "summary": "Uncertainty and complexity influence how projects are managed, requiring adaptive thinking, risk awareness, and appropriate development approaches.",
+  "key_concepts": [
+    "Uncertainty relates to unknowns",
+    "Complexity comes from interactions and dependencies",
+    "Higher uncertainty drives agile approaches",
+    "Requires continuous assessment and adaptation"
+  ],
+  "details": {
+    "uncertainty": {
+      "definition": "A lack of clarity or predictability regarding project outcomes, requirements, or environment.",
+      "sources": [
+        "Unclear requirements",
+        "New technology",
+        "Changing stakeholder needs",
+        "Market volatility"
+      ],
+      "impact": [
+        "Increases risk",
+        "Requires flexible planning",
+        "Encourages iterative approaches"
+      ]
+    },
+    "complexity": {
+      "definition": "The degree of interrelated parts, interactions, and dependencies that make a project difficult to manage.",
+      "sources": [
+        "Multiple stakeholders",
+        "Interdependent systems",
+        "Geographic distribution",
+        "Technical integration"
+      ],
+      "impact": [
+        "Difficult coordination",
+        "Increased uncertainty",
+        "Need for strong communication and governance"
+      ]
+    },
+    "relationship": [
+      "Complexity often increases uncertainty",
+      "High uncertainty favors agile/adaptive approaches",
+      "Low uncertainty favors predictive approaches"
+    ]
+  },
+  "methods_tools": [
+    "Risk identification",
+    "Iterative development",
+    "Frequent feedback loops",
+    "Systems thinking"
+  ],
+  "exam_tips": "High uncertainty = Agile. Low uncertainty = Predictive. Complexity increases the need for collaboration and adaptability."
+  },
+  {
+  "id": "PM-FUNDAMENTAL-GOVERNANCE",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Project Management Fundamentals and Core Concepts",
+  "title": "Project Governance",
+  "approach": "both",
+  "summary": "Project governance is the framework of policies, processes, and structures that guide project decisions, ensure alignment, and provide oversight.",
+  "key concepts": [
+    "Governance provides direction and control",
+    "Ensures alignment with organizational strategy",
+    "Defines roles, responsibilities, and decision rights",
+    "Applies across project, program, and portfolio levels"
+  ],
+  "details": {
+    "definition": "A structured framework that defines how projects are directed, controlled, and monitored.",
+    "components": [
+      "Policies and procedures",
+      "Decision-making structures",
+      "Roles and responsibilities",
+      "Oversight and reporting mechanisms"
+    ],
+    "objectives": [
+      "Ensure alignment with strategy",
+      "Support decision making",
+      "Manage risk and compliance",
+      "Monitor performance"
+    ],
+    "examples": [
+      "Steering committee",
+      "Change control board (CCB)",
+      "Approval gates (phase gate)",
+      "Project reporting standards"
+    ],
+    "connection to others": [
+      "Uses OPAs (policies and procedures)",
+      "Influenced by EEFs (organizational structure)",
+      "Supports tailoring decisions"
+    ]
+  },
+  "methods_tools": [
+    "Governance frameworks",
+    "Stage gate reviews",
+    "Performance reporting",
+    "Audits and reviews"
+  ],
+  "exam_tips": "Governance ensures control and alignment. It defines who makes decisions and how the project is monitored."
+  },
+  {
+    "id": "PM-PREDICTIVE-001",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Predictive Approach — Overview",
+    "approach": "Predictive",
+    "summary": "The predictive (Waterfall) approach is a plan-driven methodology where project scope, schedule, and cost are defined upfront before execution begins. Work is performed in a sequential and structured manner.",
+    "key concepts": [
+      "Plan-driven approach with detailed upfront planning",
+      "Sequential execution through defined phases",
+      "Formal change control for all modifications",
+      "Baselines are established and controlled",
+      "High predictability of outcomes"
+    ],
+    "details": {
+      "definition": "An approach where scope, time, and cost are determined early in the project lifecycle, and changes are managed through formal control processes.",
+      "when to use": {
+        "description": "Best suited when:",
+        "conditions": [
+          "Requirements are clear and stable",
+          "Technology is well understood",
+          "Environment is highly regulated",
+          "Low uncertainty exists",
+          "Stakeholders require predictability",
+          "Fixed-price contracts are used"
+        ]
+      },
+      "when not to use": {
+        "description": "Not suitable when:",
+        "conditions": [
+          "Requirements are unclear or evolving",
+          "Technology is new or experimental",
+          "Frequent user feedback is required",
+          "Market conditions change rapidly"
+        ]
+      },
+      "real world example": "Construction of a building where all specifications, budget, and timeline must be defined before execution. Any change requires formal approval."
+    },
+    "inputs": [
+      "Business Case",
+      "Project Charter",
+      "Stakeholder requirements",
+      "Organizational Process Assets",
+      "Enterprise Environmental Factors"
+    ],
+    "outputs": [
+      "Project Management Plan",
+      "Approved baselines",
+      "Project deliverables"
+    ],
+    "methods_tools": [
+      "Work Breakdown Structure (WBS)",
+      "Gantt Chart",
+      "Critical Path Method (CPM)",
+      "Earned Value Management (EVM)",
+      "Change Control Board (CCB)"
+    ],
+    "exam_tips": "Predictive is ideal for stable requirements and low uncertainty. Common in construction, manufacturing, and regulated industries."
+  },
+  {
+  "id": "PM-PG-OVERVIEW",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Process Groups Overview",
+  "approach": "Predictive",
+  "summary": "Process Groups are logical groupings of project management activities that guide a project from initiation to closure. They are interconnected, overlapping, and iterative rather than strictly sequential.",
+  "key concepts": [
+    "Process Groups are NOT phases",
+    "They overlap and iterate throughout the project",
+    "Monitoring & Controlling is continuous",
+    "Outputs from one group feed into others"
+  ],
+  "details": {
+    "groups": [
+      {
+        "name": "Initiating",
+        "purpose": "Define and authorize the project or phase",
+        "key_focus": [
+          "Business case",
+          "Project Charter",
+          "Stakeholder identification"
+        ]
+      },
+      {
+        "name": "Planning",
+        "purpose": "Define the roadmap to achieve project objectives",
+        "key_focus": [
+          "Scope, schedule, cost definition",
+          "Risk and communication planning",
+          "Establishing baselines"
+        ]
+      },
+      {
+        "name": "Executing",
+        "purpose": "Perform the work defined in the plan",
+        "key_focus": [
+          "Deliverables creation",
+          "Team management",
+          "Stakeholder engagement"
+        ]
+      },
+      {
+        "name": "Monitoring and Controlling",
+        "purpose": "Track and regulate project performance",
+        "key_focus": [
+          "Performance measurement",
+          "Change control",
+          "Risk monitoring"
+        ]
+      },
+      {
+        "name": "Closing",
+        "purpose": "Finalize all project activities",
+        "key_focus": [
+          "Formal acceptance",
+          "Lessons learned",
+          "Project closure"
+        ]
+      }
+    ],
+    "interaction model": "Executing and Monitoring & Controlling operate in parallel while Planning may be revisited as changes occur."
+  },
+  "exam_tips": "Process Groups are overlapping and iterative. Monitoring & Controlling occurs throughout the entire project lifecycle."
+  },
+  {
+  "id": "PM-KA-OVERVIEW",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Knowledge Areas Overview",
+  "approach": "Predictive",
+  "summary": "Knowledge Areas represent specialized domains of project management expertise. Each area focuses on a specific aspect of managing a project.",
+  "key_concepts": [
+    "Knowledge Areas group related processes",
+    "Each process belongs to both a Process Group and a Knowledge Area",
+    "Together they form the foundation of predictive project management",
+    "Integration Management connects all knowledge areas"
+  ],
+  "details": {
+    "knowledge_areas": [
+      {
+        "name": "Integration Management",
+        "purpose": "Ensure all project components are properly coordinated",
+        "key_focus": [
+          "Project Charter",
+          "Project Management Plan",
+          "Change control"
+        ]
+      },
+      {
+        "name": "Scope Management",
+        "purpose": "Define and control what is included in the project",
+        "key_focus": [
+          "Requirements",
+          "Scope definition",
+          "WBS",
+          "Scope control"
+        ]
+      },
+      {
+        "name": "Schedule Management",
+        "purpose": "Plan and control project timeline",
+        "key_focus": [
+          "Activity sequencing",
+          "Duration estimation",
+          "Critical path",
+          "Schedule control"
+        ]
+      },
+      {
+        "name": "Cost Management",
+        "purpose": "Estimate, budget, and control costs",
+        "key_focus": [
+          "Cost estimation",
+          "Budgeting",
+          "Cost control",
+          "EVM"
+        ]
+      },
+      {
+        "name": "Quality Management",
+        "purpose": "Ensure deliverables meet requirements",
+        "key_focus": [
+          "Quality planning",
+          "Quality assurance",
+          "Quality control"
+        ]
+      },
+      {
+        "name": "Resource Management",
+        "purpose": "Manage project team and physical resources",
+        "key_focus": [
+          "Team development",
+          "Resource allocation",
+          "Leadership"
+        ]
+      },
+      {
+        "name": "Communications Management",
+        "purpose": "Ensure effective information flow",
+        "key_focus": [
+          "Communication planning",
+          "Information distribution",
+          "Reporting"
+        ]
+      },
+      {
+        "name": "Risk Management",
+        "purpose": "Identify and manage uncertainty",
+        "key_focus": [
+          "Risk analysis",
+          "Response planning",
+          "Monitoring risks"
+        ]
+      },
+      {
+        "name": "Procurement Management",
+        "purpose": "Acquire products and services externally",
+        "key_focus": [
+          "Contract selection",
+          "Vendor management",
+          "Procurement closure"
+        ]
+      },
+      {
+        "name": "Stakeholder Management",
+        "purpose": "Engage stakeholders effectively",
+        "key_focus": [
+          "Stakeholder identification",
+          "Engagement strategies",
+          "Expectation management"
+        ]
+      },
+      {
+        "name": "Governance & Control (Extended View)",
+        "purpose": "Provide oversight, decision-making, and alignment with strategy",
+        "key_focus": [
+          "Decision authority",
+          "Reporting structures",
+          "Alignment with organizational goals"
+        ]
+      }
+    ],
+    "relationship": "All knowledge areas are integrated through Integration Management and interact continuously throughout the project lifecycle."
+  },
+  "exam_tips": "Every process belongs to both a Process Group and a Knowledge Area. Integration Management is central and connects all others."
+  },
+  {
+  "id": "PM-49-PROCESSES-MATRIX",
+  "type": "matrix",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "approach": "Predictive",
+  "title": "Process Groups × Knowledge Areas Matrix (49 Processes)",
+  "summary": "This matrix maps all project management processes across Process Groups and Knowledge Areas, forming the foundation of predictive project management.",
+  "matrix": {
+    "Initiating": {
+      "Integration": ["Develop Project Charter"],
+      "Stakeholder": ["Identify Stakeholders"]
+    },
+    "Planning": {
+      "Integration": ["Develop Project Management Plan"],
+      "Scope": [
+        "Plan Scope Management",
+        "Collect Requirements",
+        "Define Scope",
+        "Create WBS"
+      ],
+      "Schedule": [
+        "Plan Schedule Management",
+        "Define Activities",
+        "Sequence Activities",
+        "Estimate Activity Durations",
+        "Develop Schedule"
+      ],
+      "Cost": [
+        "Plan Cost Management",
+        "Estimate Costs",
+        "Determine Budget"
+      ],
+      "Quality": ["Plan Quality Management"],
+      "Resource": ["Plan Resource Management", "Estimate Activity Resources"],
+      "Communication": ["Plan Communications Management"],
+      "Risk": [
+        "Plan Risk Management",
+        "Identify Risks",
+        "Perform Qualitative Risk Analysis",
+        "Perform Quantitative Risk Analysis",
+        "Plan Risk Responses"
+      ],
+      "Procurement": ["Plan Procurement Management"],
+      "Stakeholder": ["Plan Stakeholder Engagement"]
+    },
+    "Executing": {
+      "Integration": ["Direct and Manage Project Work", "Manage Project Knowledge"],
+      "Quality": ["Manage Quality"],
+      "Resource": ["Acquire Resources", "Develop Team", "Manage Team"],
+      "Communication": ["Manage Communications"],
+      "Risk": ["Implement Risk Responses"],
+      "Procurement": ["Conduct Procurements"],
+      "Stakeholder": ["Manage Stakeholder Engagement"]
+    },
+    "Monitoring_and_Controlling": {
+      "Integration": [
+        "Monitor and Control Project Work",
+        "Perform Integrated Change Control"
+      ],
+      "Scope": ["Validate Scope", "Control Scope"],
+      "Schedule": ["Control Schedule"],
+      "Cost": ["Control Costs"],
+      "Quality": ["Control Quality"],
+      "Resource": ["Control Resources"],
+      "Communication": ["Monitor Communications"],
+      "Risk": ["Monitor Risks"],
+      "Procurement": ["Control Procurements"],
+      "Stakeholder": ["Monitor Stakeholder Engagement"]
+    },
+    "Closing": {
+      "Integration": ["Close Project or Phase"],
+      "Procurement": ["Close Procurements"]
+    }
+  },
+  "key_insights": [
+    "Total processes = 49",
+    "Each process belongs to one Process Group and one Knowledge Area",
+    "Integration Management spans all groups",
+    "Planning contains the largest number of processes",
+    "Monitoring and Controlling is continuous"
+  ],
+  "exam_tips": "Understand where each process belongs. Integration processes appear across all groups and are central to project control."
+  },
+  
+{
+  "id": "PM-INTEGRATION-DEEP-DIVE",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Integration Management (Deep Dive)",
+  "approach": "Predictive",
+  "summary": "Integration Management ensures all project elements work together. It is the central coordination function in project management.",
+  "key_concepts": [
+    "Project Manager owns integration",
+    "All knowledge areas are connected through integration",
+    "Trade-offs are managed here",
+    "Change control is centralized"
+  ],
+  "details": {
+    "charter": {
+      "definition": "Authorizes the project",
+      "characteristics": [
+        "Provides authority to PM",
+        "Defines high-level objectives"
+      ]
+    },
+    "project management plan": {
+      "definition": "Integrates all plans",
+      "characteristics": [
+        "Combines all knowledge areas",
+        "Defines execution approach"
+      ]
+    },
+    "execution": {
+      "definition": "Directs project work",
+      "characteristics": [
+        "Transforms plan into deliverables",
+        "Coordinates across teams"
+      ]
+    },
+    "monitoring": {
+      "definition": "Tracks performance",
+      "characteristics": [
+        "Measures progress",
+        "Ensures alignment with plan"
+      ]
+    },
+    "change control": {
+      "definition": "Manages all changes",
+      "characteristics": [
+        "Centralized decision making",
+        "Prevents uncontrolled changes"
+      ]
+    },
+    "closing": {
+      "definition": "Finalizes the project",
+      "characteristics": [
+        "Formal acceptance",
+        "Documentation and closure"
+      ]
+    }
+  },
+  "examples": [
+    "Balancing schedule delay vs cost increase",
+    "Deciding whether to approve a scope change",
+    "Aligning scope, cost, and schedule"
+  ],
+  "exam_tips": "If the question involves coordination, trade-offs, or change control → Integration Management is the answer."
+  },
+  {
+    "id": "PM-PREDICTIVE-003",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Project Management Plan",
+    "approach": "Predictive",
+    "summary": "The Project Management Plan (PMP) is the comprehensive document that describes how the project will be executed, monitored, controlled, and closed.",
+    "key concepts": [
+      "Integrated document combining all subsidiary plans",
+      "Approved before execution begins",
+      "Contains scope, schedule, and cost baselines",
+      "A living document updated through change control",
+      "Central reference for managing the project"
+    ],
+    "details": {
+      "definition": "A formal document that integrates and consolidates all subsidiary plans and baselines to guide project execution and control.",
+      "subsidiary plans": [
+        "Scope Management Plan",
+        "Requirements Management Plan",
+        "Schedule Management Plan",
+        "Cost Management Plan",
+        "Quality Management Plan",
+        "Resource Management Plan",
+        "Communications Management Plan",
+        "Risk Management Plan",
+        "Procurement Management Plan",
+        "Stakeholder Engagement Plan"
+      ],
+      "baselines": [
+        "Scope Baseline (Scope Statement + WBS + WBS Dictionary)",
+        "Schedule Baseline",
+        "Cost Baseline"
+      ],
+      "important distinctions": [
+        "Charter defines WHAT and WHY; PMP defines HOW",
+        "PMP is detailed, while the Charter is high-level",
+        "Baselines are approved versions of plans"
+      ],
+      "real world example": "Like an operations manual that outlines processes, schedules, responsibilities, and controls required to run a complex system."
+    },
+    "inputs": [
+      "Project Charter",
+      "Planning outputs",
+      "Enterprise Environmental Factors",
+      "Organizational Process Assets"
+    ],
+    "outputs": [
+      "Project Management Plan"
+    ],
+    "methods tools": [
+      "Expert Judgment",
+      "Facilitation",
+      "Meetings"
+    ],
+    "exam tips": "The Project Management Plan defines how the project will be executed. It is approved before execution and updated only through change control."
+  },
+  {
+    "id": "PM-PREDICTIVE-002",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Project Charter",
+    "approach": "Predictive",
+    "summary": "The Project Charter formally authorizes the project and grants the Project Manager authority to use organizational resources.",
+    "key_concepts": [
+      "Formal authorization of the project",
+      "Grants authority to the Project Manager",
+      "Created by Sponsor or PMO",
+      "High-level document",
+      "Required before planning begins"
+    ],
+    "details": {
+      "definition": "A document issued by the project initiator or sponsor that formally authorizes the project and provides the Project Manager with authority to apply organizational resources.",
+      "content": [
+        "Business need or project purpose",
+        "High-level objectives",
+        "High-level requirements",
+        "Assumptions and constraints",
+        "Initial risks",
+        "Assigned Project Manager",
+        "Sponsor approval"
+      ],
+      "who creates it": {
+        "creator": "Project Sponsor or PMO",
+        "PM role": "The Project Manager may assist but cannot approve the charter"
+      },
+      "important notes": [
+        "The charter is created before detailed planning",
+        "Without a charter, the project should not proceed",
+        "It defines authority and direction"
+      ],
+      "real world example": "Similar to an official approval letter from executive leadership that authorizes a manager to start and lead a strategic initiative."
+    },
+    "inputs": [
+      "Business Case",
+      "Benefits Management Plan",
+      "Enterprise Environmental Factors",
+      "Organizational Process Assets"
+    ],
+    "outputs": [
+      "Project Charter",
+      "Initial Assumption Log"
+    ],
+    "methods tools": [
+      "Expert Judgment",
+      "Data Gathering",
+      "Meetings"
+    ],
+    "exam_tips": "The Project Charter authorizes the project and grants authority to the Project Manager. It is created by the Sponsor, not the Project Manager."
+  },
+  {
+    "id": "PM-PREDICTIVE-004",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Scope Management",
+    "approach": "Predictive",
+    "summary": "Scope Management ensures that the project includes all the work required—and only the work required—to complete the project successfully.",
+    "key concepts": [
+      "Product Scope defines features and functions",
+      "Project Scope defines the work required",
+      "Scope Baseline = Scope Statement + WBS + WBS Dictionary",
+      "Scope Creep = uncontrolled scope changes",
+      "Gold Plating = adding features beyond requirements",
+      "100% Rule applies to WBS"
+    ],
+    "details": {
+      "processes": [
+        "Plan Scope Management",
+        "Collect Requirements",
+        "Define Scope",
+        "Create WBS",
+        "Validate Scope",
+        "Control Scope"
+      ],
+      "wbs": {
+        "definition": "A hierarchical decomposition of the total project scope into manageable components.",
+        "rules": [
+          "Must follow the 100% Rule",
+          "Deliverable-oriented, not activity-based",
+          "Lowest level is the Work Package",
+          "All work must be included in the WBS"
+        ]
+      },
+      "scope issues": {
+        "scope creep": "Unauthorized changes to scope without formal approval",
+        "gold plating": "Adding extra features not requested by the customer"
+      },
+      "validate vs control": {
+        "validate scope": "Formal customer acceptance of deliverables",
+        "control scope": "Monitoring and managing changes to scope baseline"
+      }
+    },
+    "inputs": [
+      "Project Charter",
+      "Project Management Plan",
+      "Stakeholder Register"
+    ],
+    "outputs": [
+      "Scope Management Plan",
+      "Requirements Documentation",
+      "WBS",
+      "Scope Baseline"
+    ],
+    "methods tools": [
+      "Decomposition",
+      "Requirements Elicitation",
+      "Product Analysis",
+      "Workshops"
+    ],
+    "exam tips": "WBS is deliverable-based, not activity-based. Validate Scope = customer acceptance. Control Scope = prevent scope creep."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-005",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Schedule Management",
+    "approach": "Predictive",
+    "summary": "Schedule Management involves defining, sequencing, estimating, and controlling project activities to ensure timely completion.",
+    "key_concepts": [
+      "Activities are derived from Work Packages",
+      "Dependencies define task order",
+      "Critical Path determines project duration",
+      "Float represents scheduling flexibility",
+      "Schedule Baseline is used for performance measurement"
+    ],
+    "details": {
+      "processes": [
+        "Define Activities",
+        "Sequence Activities",
+        "Estimate Activity Durations",
+        "Develop Schedule",
+        "Control Schedule"
+      ],
+      "dependency types": [
+        "Finish-to-Start (FS)",
+        "Start-to-Start (SS)",
+        "Finish-to-Finish (FF)",
+        "Start-to-Finish (SF)"
+      ],
+      "critical path": {
+        "definition": "The longest path through the project network that determines the shortest project duration.",
+        "rules": [
+          "Activities on the critical path have zero float",
+          "Delays on critical path delay the project",
+          "There can be more than one critical path"
+        ]
+      },
+      "schedule compression": {
+        "crashing": "Adding resources to shorten duration (increases cost)",
+        "fast tracking": "Performing activities in parallel (increases risk)"
+      }
+    },
+    "inputs": [
+      "Scope Baseline",
+      "Activity List",
+      "Resource Calendars"
+    ],
+    "outputs": [
+      "Project Schedule",
+      "Schedule Baseline",
+      "Milestone List"
+    ],
+    "methods tools": [
+      "Critical Path Method (CPM)",
+      "PERT",
+      "Gantt Charts",
+      "Resource Leveling"
+    ],
+    "exam tips": "Critical Path = longest path with zero float. Crashing increases cost. Fast Tracking increases risk."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-006",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Estimating Techniques",
+    "approach": "Predictive",
+    "summary": "Estimating techniques are used to predict project duration, cost, and resource requirements with varying levels of accuracy.",
+    "key concepts": [
+      "Different techniques provide different accuracy levels",
+      "Estimates improve over time",
+      "Detailed estimates require more effort",
+      "Historical data improves reliability"
+    ],
+    "details": {
+      "techniques": {
+        "analogous": {
+          "definition": "Uses historical data from similar projects",
+          "accuracy": "Low",
+          "use_case": "Early phases with limited information"
+        },
+        "parametric": {
+          "definition": "Uses statistical relationships (unit rate × quantity)",
+          "accuracy": "Moderate"
+        },
+        "three_point": {
+          "definition": "Uses optimistic, most likely, and pessimistic estimates",
+          "formula": "(O + 4M + P) / 6"
+        },
+        "bottom_up": {
+          "definition": "Estimates at the lowest level and aggregates upward",
+          "accuracy": "High",
+          "limitation": "Time-consuming"
+        }
+      },
+      "estimate_accuracy": {
+        "rough_order_of_magnitude": "-25% to +75%",
+        "definitive": "-5% to +10%"
+      }
+    },
+    "inputs": [
+      "Scope Baseline",
+      "Historical Data",
+      "Resource Information"
+    ],
+    "outputs": [
+      "Duration Estimates",
+      "Cost Estimates",
+      "Basis of Estimates"
+    ],
+    "methods tools": [
+      "Expert Judgment",
+      "Analogous Estimating",
+      "Parametric Estimating",
+      "Three-Point Estimation",
+      "Bottom-Up Estimation"
+    ],
+    "exam tips": "PERT formula = (O + 4M + P) / 6. Bottom-Up is most accurate but time-consuming. Analogous is fastest but least accurate."
+  },
+  {
+    "id": "PM-PREDICTIVE-007",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Cost Management and Earned Value Management (EVM)",
+    "approach": "Predictive",
+    "summary": "Cost Management includes estimating, budgeting, and controlling project costs. Earned Value Management (EVM) integrates scope, schedule, and cost to measure project performance.",
+    "key concepts": [
+      "PV (Planned Value): budgeted work planned",
+      "EV (Earned Value): budgeted work completed",
+      "AC (Actual Cost): actual cost incurred",
+      "BAC: total approved budget",
+      "Cost and schedule performance can be measured quantitatively"
+    ],
+    "details": {
+      "core_metrics": {
+        "CV": "Cost Variance = EV - AC",
+        "SV": "Schedule Variance = EV - PV",
+        "CPI": "Cost Performance Index = EV / AC",
+        "SPI": "Schedule Performance Index = EV / PV"
+      },
+      "interpretation": {
+        "positive variance": "Good (under budget or ahead of schedule)",
+        "negativevariance": "Bad (over budget or behind schedule)",
+        "CPI SPI": ">1 good, <1 unfavorable"
+      },
+      "forecasting": {
+        "EAC": "Estimate at Completion = BAC / CPI (most common)",
+        "ETC": "Estimate to Complete = EAC - AC",
+        "VAC": "Variance at Completion = BAC - EAC"
+      },
+      "insight": [
+        "EVM integrates scope, schedule, and cost",
+        "Provides early warning for problems",
+        "Used heavily in predictive projects"
+      ]
+    },
+    "inputs": [
+      "Cost Baseline",
+      "Schedule Baseline",
+      "Work Performance Data"
+    ],
+    "outputs": [
+      "Work Performance Information",
+      "Forecasts",
+      "Change Requests"
+    ],
+    "methods tools": [
+      "Earned Value Analysis",
+      "Variance Analysis",
+      "Trend Analysis"
+    ],
+    "exam_tips": "CV = EV - AC, SV = EV - PV. CPI/SPI >1 is good. EAC = BAC / CPI is most common formula."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-008",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Quality Management",
+    "approach": "Predictive",
+    "summary": "Quality Management ensures that project deliverables meet requirements. It includes Quality Assurance (process-focused) and Quality Control (product-focused).",
+    "key concepts": [
+      "Quality = fitness for use and conformance to requirements",
+      "QA = proactive, process-oriented",
+      "QC = reactive, product-oriented",
+      "Cost of Quality includes prevention, appraisal, and failure",
+      "Quality must be planned, not inspected"
+    ],
+    "details": {
+      "processes": [
+        "Plan Quality Management",
+        "Manage Quality (Quality Assurance)",
+        "Control Quality"
+      ],
+      "QA vs QC": {
+        "QA": "Prevents defects through process improvement",
+        "QC": "Detects defects through inspection and testing"
+      },
+      "cost of quality": [
+        "Prevention costs (training, planning)",
+        "Appraisal costs (testing, inspections)",
+        "Internal failure costs (rework)",
+        "External failure costs (customer complaints)"
+      ],
+      "quality tools": [
+        "Cause-and-effect diagram",
+        "Pareto chart",
+        "Control chart",
+        "Histogram",
+        "Scatter diagram",
+        "Flowchart",
+        "Checklist"
+      ]
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Quality Metrics"
+    ],
+    "outputs": [
+      "Quality Reports",
+      "Verified Deliverables",
+      "Change Requests"
+    ],
+    "methods tools": [
+      "Seven Basic Quality Tools",
+      "Inspection",
+      "Audits"
+    ],
+    "exam_tips": "QA = prevent defects. QC = detect defects. QC produces Verified Deliverables; Validate Scope produces Accepted Deliverables."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-009",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Risk Management",
+    "approach": "Predictive",
+    "summary": "Risk Management is the process of identifying, analyzing, and responding to uncertainties that could affect project objectives.",
+    "key concepts": [
+      "Risk = uncertain future event",
+      "Issue = risk that has already occurred",
+      "Threats = negative risks",
+      "Opportunities = positive risks",
+      "Proactive risk management increases success"
+    ],
+    "details": {
+      "processes": [
+        "Plan Risk Management",
+        "Identify Risks",
+        "Perform Qualitative Risk Analysis",
+        "Perform Quantitative Risk Analysis",
+        "Plan Risk Responses",
+        "Implement Risk Responses",
+        "Monitor Risks"
+      ],
+      "threat responses": [
+        "Avoid",
+        "Transfer",
+        "Mitigate",
+        "Accept"
+      ],
+      "opportunity responses": [
+        "Exploit",
+        "Share",
+        "Enhance",
+        "Accept"
+      ],
+      "reserves": {
+        "contingency reserve": "For known risks, within baseline",
+        "management reserve": "For unknown risks, outside baseline"
+      },
+      "EMV": "Expected Monetary Value = Probability × Impact"
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Risk Register"
+    ],
+    "outputs": [
+      "Risk Register",
+      "Risk Reports",
+      "Change Requests"
+    ],
+    "methods_tools": [
+      "SWOT Analysis",
+      "Probability and Impact Matrix",
+      "Monte Carlo Simulation",
+      "Decision Tree Analysis"
+    ],
+    "exam_tips": "Risk = uncertain event. Threat responses: Avoid > Transfer > Mitigate > Accept. Contingency = known risks; Management reserve = unknown risks."
+  },
+  
+{
+    "id": "PM-PREDICTIVE-010",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Integrated Change Control",
+    "approach": "Predictive",
+    "summary": "Integrated Change Control is the process of reviewing, approving, or rejecting changes to the project. It ensures that all changes are managed in a structured and controlled manner.",
+    "key_concepts": [
+      "No change is implemented without formal approval",
+      "Change Control Board (CCB) reviews major changes",
+      "Baselines are updated only after approval",
+      "All approved changes must be documented",
+      "Prevents scope creep"
+    ],
+    "details": {
+      "change types": [
+        "Corrective Action",
+        "Preventive Action",
+        "Defect Repair"
+      ],
+      "process flow": [
+        "Identify change need",
+        "Submit change request",
+        "Analyze impact",
+        "Review by CCB",
+        "Approve or reject",
+        "Update documents",
+        "Implement change"
+      ],
+      "important rules": [
+        "Never implement changes based on verbal approval",
+        "All affected documents must be updated",
+        "Changes may impact scope, schedule, cost, and quality"
+      ],
+      "ccb": {
+        "definition": "A group responsible for reviewing and approving changes",
+        "members": [
+          "Sponsor",
+          "Senior management",
+          "Key stakeholders"
+        ]
+      }
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Change Requests",
+      "Work Performance Reports"
+    ],
+    "outputs": [
+      "Approved Change Requests",
+      "Project Updates",
+      "Change Log"
+    ],
+    "methods_tools": [
+      "Change Control Board",
+      "Decision Making",
+      "Expert Judgment"
+    ],
+    "exam_tips": "Never implement changes without approval. Even if a sponsor verbally agrees, formal change approval is required."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-011",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Procurement Management",
+    "approach": "Predictive",
+    "summary": "Procurement Management involves acquiring goods and services from external vendors. Choosing the right contract type is critical to managing risk.",
+    "key concepts": [
+      "Make-or-buy decisions determine sourcing strategy",
+      "Contract type defines risk allocation",
+      "Clearly defined scope improves procurement success",
+      "Formal closure of contracts is required"
+    ],
+    "details": {
+      "contract types": {
+        "fixed price": {
+          "description": "Price is fixed; seller bears most risk",
+          "types": [
+            "Firm Fixed Price (FFP)",
+            "Fixed Price Incentive Fee (FPIF)",
+            "Fixed Price Economic Price Adjustment (FP-EPA)"
+          ]
+        },
+        "cost reimbursable": {
+          "description": "Buyer pays costs; buyer bears most risk",
+          "types": [
+            "Cost Plus Fixed Fee (CPFF)",
+            "Cost Plus Incentive Fee (CPIF)",
+            "Cost Plus Award Fee (CPAF)"
+          ]
+        },
+        "time material": {
+          "description": "Hybrid model; payment based on time and materials",
+          "risk": "Shared, but often leans toward buyer risk"
+        }
+      },
+      "procurement documents": [
+        "Request for Proposal (RFP)",
+        "Request for Quotation (RFQ)",
+        "Invitation for Bid (IFB)"
+      ],
+      "key rules": [
+        "Fixed Price = seller takes risk",
+        "Cost Reimbursable = buyer takes risk",
+        "Contracts must be formally closed"
+      ]
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Procurement Documents"
+    ],
+    "outputs": [
+      "Contracts",
+      "Selected Sellers",
+      "Closed Procurements"
+    ],
+    "methods_tools": [
+      "Make-or-Buy Analysis",
+      "Bid Evaluation",
+      "Contract Negotiation"
+    ],
+    "exam_tips": "Fixed Price = seller risk. Cost Plus = buyer risk. T&M = hybrid. Always formally close contracts."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-012",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Communications Management",
+    "approach": "Predictive",
+    "summary": "Communications Management ensures that project information is created, distributed, and understood effectively among stakeholders.",
+    "key_concepts": [
+      "Project Managers spend most of their time communicating",
+      "Effective communication is critical for project success",
+      "Different stakeholders require different communication approaches",
+      "Communication must be planned and structured"
+    ],
+    "details": {
+      "communication types": {
+        "push": "Information is sent to recipients (e.g., emails, reports)",
+        "pull": "Information is accessed by stakeholders when needed",
+        "interactive": "Two-way real-time communication"
+      },
+      "channels formula": "n(n-1)/2",
+      "communication plan": [
+        "Who needs information",
+        "What information is needed",
+        "When it is needed",
+        "How it will be delivered"
+      ],
+      "communication barriers": [
+        "Language differences",
+        "Cultural differences",
+        "Information overload",
+        "Poor listening skills"
+      ]
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Stakeholder Register"
+    ],
+    "outputs": [
+      "Project Communications",
+      "Work Performance Reports",
+      "Project Updates"
+    ],
+    "methods tools": [
+      "Communication Methods",
+      "Meetings",
+      "Project Reporting"
+    ],
+    "exam_tips": "Channels = n(n-1)/2. Push = send, Pull = retrieve, Interactive = two-way. Communication must be tailored to stakeholders."
+  },
+  
+ {
+    "id": "PM-PREDICTIVE-013",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Project Closure",
+    "approach": "Predictive",
+    "summary": "Project Closure is the final phase where all project work is completed, deliverables are formally accepted, and the project is officially closed.",
+    "key_concepts": [
+      "Closure is a formal process, not automatic",
+      "Customer or sponsor acceptance is required",
+      "Lessons learned must be documented",
+      "Resources must be released",
+      "Project documents must be archived"
+    ],
+    "details": {
+      "closure types": {
+        "successful completion": "Project objectives achieved and deliverables accepted",
+        "early termination": "Project stopped before completion due to business or strategic reasons"
+      },
+      "closure steps": [
+        "Obtain formal acceptance",
+        "Conduct lessons learned",
+        "Release project resources",
+        "Archive project documents",
+        "Close contracts"
+      ],
+      "important rules": [
+        "Closure must happen even if the project is terminated early",
+        "Lessons learned should be captured before team disbanding",
+        "Archiving is the final step"
+      ],
+      "phase gate": "Project phases may include formal closure and review before proceeding"
+    },
+    "inputs": [
+      "Project Management Plan",
+      "Accepted Deliverables",
+      "Contracts"
+    ],
+    "outputs": [
+      "Final Report",
+      "Lessons Learned",
+      "Archived Documents",
+      "Closed Project"
+    ],
+    "methods_tools": [
+      "Meetings",
+      "Data Analysis",
+      "Expert Judgment"
+    ],
+    "exam_tips": "Closure sequence: Acceptance → Lessons Learned → Release Resources → Archive. Always close formally, even if terminated."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-014",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Organizational Process Assets (OPA) and Enterprise Environmental Factors (EEF)",
+    "approach": "Predictive",
+    "summary": "OPAs and EEFs are key inputs in project management. OPAs are internal assets that can be used and updated, while EEFs are environmental factors that influence the project and cannot be controlled.",
+    "key_concepts": [
+      "OPAs are internal and reusable",
+      "EEFs can be internal or external but are not controllable",
+      "OPAs support execution",
+      "EEFs influence or constrain decisions"
+    ],
+    "details": {
+      "opa": {
+        "definition": "Processes, policies, templates, and knowledge bases within the organization",
+        "examples": [
+          "Templates",
+          "Lessons learned",
+          "Historical data",
+          "Policies and procedures",
+          "Project methodologies"
+        ],
+        "characteristics": [
+          "Internal",
+          "Reusable",
+          "Can be updated"
+        ]
+      },
+      "eef": {
+        "definition": "Conditions that influence the project but are outside the control of the project team",
+        "examples": [
+          "Organizational culture",
+          "Market conditions",
+          "Regulations",
+          "Infrastructure",
+          "Resource availability"
+        ],
+        "characteristics": [
+          "Cannot be controlled",
+          "Must be adapted to",
+          "Can have positive or negative impact"
+        ]
+      },
+      "comparison": [
+        "OPA = assets you use",
+        "EEF = environment you operate in"
+      ]
+    },
+    "inputs": [
+      "OPAs",
+      "EEFs"
+    ],
+    "outputs": [
+      "Updated OPAs"
+    ],
+    "methods_tools": [
+      "Document Analysis",
+      "Expert Judgment"
+    ],
+    "exam_tips": "If it is a template or document → OPA. If it is a condition you cannot control → EEF."
+  },
+
+  {
+    "id": "PM-PREDICTIVE-015",
+    "type": "concept",
+    "certification": "PMP/CAPM",
+    "domain": "Predictive, Plan-Based Methodologies",
+    "title": "Stakeholder Management",
+    "approach": "Predictive",
+    "summary": "Stakeholder Management involves identifying, analyzing, and engaging stakeholders to ensure their needs and expectations are addressed throughout the project.",
+    "key_concepts": [
+      "Stakeholders influence project success",
+      "Must be identified early and continuously",
+      "Different stakeholders require different engagement strategies",
+      "Engagement levels must be managed actively"
+    ],
+    "details": {
+      "stakeholder types": [
+        "Internal (team, sponsor, management)",
+        "External (customers, vendors, regulators)",
+        "Positive or supportive",
+        "Negative or resistant"
+      ],
+      "power interest model": {
+        "high power high interest": "Manage closely",
+        "high power low interest": "Keep satisfied",
+        "low power high interest": "Keep informed",
+        "low power low interest": "Monitor"
+      },
+      "engagement levels": [
+        "Unaware",
+        "Resistant",
+        "Neutral",
+        "Supportive",
+        "Leading"
+      ],
+      "goal": "Move stakeholders toward supportive or leading"
+    },
+    "inputs": [
+      "Project Charter",
+      "Stakeholder Register"
+    ],
+    "outputs": [
+      "Updated Stakeholder Register",
+      "Stakeholder Engagement Plan"
+    ],
+    "methods tools": [
+      "Stakeholder Analysis",
+      "Power-Interest Grid",
+      "Meetings"
+    ],
+    "exam_tips": "High Power + High Interest = Manage closely. Stakeholders must be identified continuously, not only at the start."
   }
 ]
+
+
 
 

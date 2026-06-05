@@ -1,1 +1,59 @@
-[]
+[
+    {
+        "exam_id": "20260605_123449",
+        "Date/Time": "2026-06-05 12:34:49",
+        "Score": "2 / 3",
+        "Percentage (%)": "66.67%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q47",
+                "question": "What is 'scope creep' and how is it prevented?",
+                "options": [
+                    "A. Scope creep is when the project finishes early; prevented by adding more work",
+                    "B. Scope creep is unauthorized expansion of scope; prevented through change control processes",
+                    "C. Scope creep is when costs exceed budget; prevented by monitoring CPI",
+                    "D. Scope creep is a type of risk; prevented by a risk register"
+                ],
+                "correct": "B. Scope creep is unauthorized expansion of scope; prevented through change control processes",
+                "explanation": "Scope creep is the uncontrolled expansion of project scope without adjustments to time, cost, and resources. It is prevented by having a well-defined scope baseline, a formal change control process, and by rejecting unauthorized additions.",
+                "source": "PMBOK® Guide 7th Edition - Planning Performance Domain",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "B. Scope creep is unauthorized expansion of scope; prevented through change control processes"
+            },
+            {
+                "id": "Q152",
+                "question": "A project has the following activities: A(3 days)→B(4 days)→E(2 days), A(3 days)→C(6 days)→E(2 days), A(3 days)→D(2 days)→E(2 days). All paths start with A and end with E. What is the critical path duration and the total float of activity B?",
+                "options": [
+                    "A. Critical path = 11 days; Float of B = 0 days",
+                    "B. Critical path = 11 days (A-C-E); Float of B = 2 days",
+                    "C. Critical path = 9 days (A-B-E); Float of B = 0 days",
+                    "D. Critical path = 11 days (A-C-E); Float of B = 0 days because B is connected to the critical path"
+                ],
+                "correct": "B. Critical path = 11 days (A-C-E); Float of B = 2 days",
+                "explanation": "Calculate each path: A-B-E = 3+4+2 = 9 days. A-C-E = 3+6+2 = 11 days. A-D-E = 3+2+2 = 7 days. Critical path = A-C-E at 11 days. Float of B = Critical Path Duration - Path through B = 11 - 9 = 2 days. Activity B can be delayed up to 2 days without delaying the project. Float is path-based, not connection-based — B is not ON the critical path, so it has positive float despite sharing start/end nodes with it.",
+                "source": "CAPM ECO 2023 - Domain 2 T2 / CPM Calculation",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "B. Critical path = 11 days (A-C-E); Float of B = 2 days"
+            },
+            {
+                "id": "Q92",
+                "question": "What is 'gold plating' in project management?",
+                "options": [
+                    "A. Using expensive materials for better quality",
+                    "B. Adding extra features or work beyond the agreed scope without authorization",
+                    "C. Paying team members above market rates",
+                    "D. Creating overly detailed project documentation"
+                ],
+                "correct": "B. Adding extra features or work beyond the agreed scope without authorization",
+                "explanation": "Gold plating refers to adding extra features, functions, or enhancements not part of the agreed scope. It is considered a bad practice because it consumes resources, increases risk, and may not align with customer needs.",
+                "source": "PMBOK® Guide 7th Edition - Delivery Performance Domain",
+                "certification": "CAPM",
+                "domain": "Predictive, Plan-Based Methodologies",
+                "user_answer": "C. Paying team members above market rates"
+            }
+        ]
+    }
+]

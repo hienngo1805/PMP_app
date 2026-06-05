@@ -540,10 +540,10 @@ if menu_choice == "📚 Knowledge Hub":
                             st.info(f"💡 Đang hiển thị {display_limit} kết quả đầu tiên. Vui lòng nhập từ khóa cụ thể hơn để thu hẹp phạm vi tra cứu!")
 
                 # ------------------------------------------------------
-                # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (GIẢM THIỂU CUỘN CHUỘT)
+                # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (GIẢM THIỂU CUỘN CHUỘT & FIXED CONFIGURATION TABS)
                 # ------------------------------------------------------
                 else:
-                    domain_concepts = [c for c in general_data if str(c.get("domain")) == selected_domain_gen]
+                    domain_concepts = [c for c in general_data if str(c.get('domain')) == selected_domain_gen]
                     
                     if not domain_concepts:
                         st.info("No content found for this general learning domain.")
@@ -570,7 +570,7 @@ if menu_choice == "📚 Knowledge Hub":
                         st.markdown(f"""
                             <div class="task-card" style="margin-bottom: 20px;">
                                 <div style="font-weight: bold; font-size: 1.4em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                                    <span>🧠 {concept.get('title', 'Untitled Concept')}</span>
+                                    <span>📘 {concept.get('title', 'Untitled Concept')}</span>
                                     {approach_badge_html}
                                 </div>
                                 <div style="font-size: 1.1em; line-height: 1.6; font-style: italic; opacity: 0.85;">
@@ -585,34 +585,126 @@ if menu_choice == "📚 Knowledge Hub":
                                 for kc in concept.get("key_concepts", []):
                                     st.markdown(f"- {kc}")
 
-                        # 3. Details Breakdown (Hỗ trợ cấu trúc chi tiết cực kỳ đa dạng & thông minh)
+                        # 3. Kiểm tra điều kiện áp dụng Tabs cho 2 chủ đề cụ thể của Predictive domain (Cập nhật hỗ trợ so khớp tên chuẩn có dấu phẩy)
+                        is_predictive_overview = (
+                            concept.get("domain") in ["Predictive Plan-Based Methodologies", "Predictive, Plan-Based Methodologies"] and 
+                            concept.get("title") in [
+                                "Process Groups in Predictive Projects", 
+                                "Predictive (Plan-Based) Approach Overview", 
+                                "Process Groups Overview", 
+                                "Knowledge Areas Overview", 
+                                "Predictive Approach — Overview"
+                            ]
+                        )
+
+                        # 4. Details Breakdown (Hỗ trợ quét nâng cao cho trường hợp Agile/Predictive đặc thù)
                         details = concept.get("details")
-                        if details and isinstance(details, dict):
-                            with st.expander("🔍 Detailed Breakdown & Comparisons", expanded=False):
-                                det_cols = st.columns(len(details))
-                                for idx, (sub_title, sub_data) in enumerate(details.items()):
-                                    with det_cols[idx]:
-                                        st.markdown(f"<div style='border-left: 3px solid #2799C7; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
-                                        st.markdown(f"**{sub_title.upper()}**")
+
+                        # Sau khi đã có biến `concept`
+                        if concept.get("type") == "matrix":
+                           
+                            matrix_data = concept.get("matrix", {})
+                            
+                            for group, areas in matrix_data.items():
+                                # Dùng st.expander với tiêu đề rõ ràng
+                                with st.expander(f"🔹 {group.replace('_', ' ')}", expanded=True):
+                                    # Sử dụng HTML/CSS tùy chỉnh để giảm cỡ chữ và quản lý layout tốt hơn
+                                    # Sử dụng font-size: 0.85em giúp chữ nhỏ hơn chuẩn một chút, dễ nhìn hơn trên màn hình hẹp
+                                    st.markdown("""
+                                        <style>
+                                        .process-item {
+                                            font-size: 0.85em;
+                                            line-height: 1.4;
+                                        }
+                                        .area-title {
+                                            font-size: 0.9em;
+                                            font-weight: bold;
+                                            color: #2c3e50;
+                                            margin-top: 10px;
+                                        }
+                                        </style>
+                                    """, unsafe_allow_html=True)
+                                    
+                                    for area, processes in areas.items():
+                                        st.markdown(f'<div class="area-title">{area}</div>', unsafe_allow_html=True)
                                         
+                                        # Hiển thị danh sách process dưới dạng chip nhỏ với cỡ chữ tinh chỉnh
+                                        # Sử dụng markdown để hiển thị dạng hàng ngang
+                                        process_list = [f'<span class="process-item">`{p}`</span>' for p in processes]
+                                        st.markdown("  ".join(process_list), unsafe_allow_html=True)
+                                        st.write("") # Tạo khoảng cách nhỏ giữa các vùng kiến thức
+
+
+                        # Trích xuất toàn bộ danh sách key khả dụng cho cấu trúc detail_keys
+                        excluded_keys = ["id", "type", "certification", "domain", "title", "approach", "summary", "key_concepts", "inputs", "outputs", "methods_tools", "exam_tips", "groups", "core_values", "ethical_scenarios", "dependency_types"]
+                        detail_keys = [k for k in concept.keys() if k not in excluded_keys and concept[k]]
+                        
+                        # Xử lý riêng trường hợp đặc biệt "groups" của Predictive Process Groups
+                        if "groups" in concept:
+                            detail_keys.append("groups")
+
+                        if details and isinstance(details, dict):
+                            # Nếu đây là trường hợp cần dựng thành tabs (như Process Groups hay Knowledge Areas)
+                            if is_predictive_overview:
+                                st.markdown("---")
+                                st.markdown("### 🔍 Detailed Breakdown & Comparisons")
+                                
+                                tab_names = [k.replace('_', ' ').capitalize() for k in details.keys()]
+                                inner_tabs = st.tabs(tab_names)
+                                
+                                for idx, key in enumerate(details.keys()):
+                                    with inner_tabs[idx]:
+                                        sub_data = details[key]
                                         if isinstance(sub_data, dict):
-                                            # A. Hiển thị mô tả / định nghĩa chính
+                                            # A. Định nghĩa chính
                                             for def_key in ["definition", "description"]:
                                                 if def_key in sub_data:
                                                     st.markdown(f"*{sub_data[def_key]}*")
                                             
-                                            # B. Hiển thị các trường danh sách đặc thù (characteristics, phases, impact, risks_associated)
-                                            # LƯU Ý: Đã tách "internal_examples" & "external_examples" ra khỏi phần Breakdown này
-                                            for list_key in ["characteristics", "phases", "impact", "risks_associated"]:
-                                                if list_key in sub_data and isinstance(sub_data[list_key], list):
+                                            # B. Xử lý Characteristics tiêu chuẩn
+                                            if "characteristics" in sub_data:
+                                                st.markdown("**Characteristics:**")
+                                                chars = sub_data["characteristics"]
+                                                if isinstance(chars, list):
+                                                    for item in chars:
+                                                        st.markdown(f"• {item}")
+                                                elif isinstance(chars, str):
+                                                    for line in chars.replace("\r\n", "\n").split("\n"):
+                                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                            
+                                            # C. HỖ TRỢ ĐẶC BIỆT CHO LỖI AGILE (Gom nhóm Iterative & Incremental Characteristics)
+                                            for spec_char_key in ["iterative_characteristics", "incremental_characteristics"]:
+                                                if spec_char_key in sub_data:
+                                                    title_clean = spec_char_key.replace("_", " ").title()
+                                                    st.markdown(f"**{title_clean}:**")
+                                                    spec_val = sub_data[spec_char_key]
+                                                    if isinstance(spec_val, list):
+                                                        for item in spec_val:
+                                                            st.markdown(f"• {item}")
+                                                    elif isinstance(spec_val, str):
+                                                        for line in spec_val.replace("\r\n", "\n").split("\n"):
+                                                            if line.strip(): st.markdown(f"• {line.strip()}")
+                                            
+                                            # D. Các trường danh sách chuẩn khác
+                                            for list_key in ["phases", "impact", "risks_associated", "conditions", "sections"]:
+                                                if list_key in sub_data:
                                                     title_clean = list_key.replace("_", " ").title()
                                                     st.markdown(f"**{title_clean}:**")
-                                                    for item in sub_data[list_key]:
-                                                        st.markdown(f"• {item}")
+                                                    list_val = sub_data[list_key]
+                                                    if isinstance(list_val, list):
+                                                        for item in list_val:
+                                                            if isinstance(item, dict):
+                                                                st.markdown(f"  - **{item.get('section', item.get('name', 'N/A'))}**: {item.get('description', item.get('purpose', ''))}")
+                                                            else:
+                                                                st.markdown(f"• {item}")
                                             
-                                            # D. Cơ chế Fallback thông minh cho các cặp Key-Value tùy biến khác (ví dụ: SMART)
-                                            # Đã thêm các trường ví dụ vào processed_keys để tránh việc hiển thị trùng lặp tại đây
-                                            processed_keys = ["definition", "description", "characteristics", "phases", "impact", "risks_associated", "internal_examples", "external_examples", "example", "examples", "tools"]
+                                            # E. Fallback thông minh cho các Key tùy biến (Ví dụ: SMART)
+                                            processed_keys = [
+                                                "definition", "description", "characteristics", "phases", "impact", 
+                                                "risks_associated", "internal_examples", "external_examples", 
+                                                "example", "examples", "tools", "iterative_characteristics", 
+                                                "incremental_characteristics", "iterative_examples", "incremental_examples", "conditions", "sections"
+                                            ]
                                             other_keys = [k for k in sub_data.keys() if k not in processed_keys]
                                             if other_keys:
                                                 st.write("")
@@ -621,78 +713,264 @@ if menu_choice == "📚 Knowledge Hub":
                                                     val = sub_data[k]
                                                     if isinstance(val, list):
                                                         st.markdown(f"**{k_clean}:**")
-                                                        for item in val:
-                                                            st.markdown(f"• {item}")
+                                                        for item in val: st.markdown(f"• {item}")
                                                     elif isinstance(val, dict):
                                                         st.markdown(f"**{k_clean}:**")
                                                         for sk, sv in val.items():
-                                                            sk_clean = sk.replace("_", " ").title()
-                                                            st.markdown(f"  * **{sk_clean}**: {sv}")
+                                                            st.markdown(f"  * **{sk.replace('_', ' ').title()}**: {sv}")
                                                     else:
                                                         st.markdown(f"**{k_clean}**: {val}")
-                                                    
                                         elif isinstance(sub_data, list):
-                                            # Trường hợp sub_data là mảng phẳng (ví dụ: types)
                                             st.write("")
+                                            # ĐỘC QUYỀN SỬA LỖI IN THÔ CHO BÀI PROCESS GROUPS TRONG TABS
                                             for item in sub_data:
-                                                st.markdown(f"• {item}")
-                                                
+                                                if isinstance(item, dict):
+                                                    item_name = item.get("name") or item.get("section") or item.get("title") or "N/A"
+                                                    item_desc = item.get("purpose") or item.get("description") or ""
+                                                    st.markdown(f"**• {item_name}**")
+                                                    if item_desc:
+                                                        st.markdown(f"  * *{item_desc}*")
+                                                    if "key_focus" in item and isinstance(item["key_focus"], list):
+                                                        for kf in item["key_focus"]:
+                                                            st.markdown(f"    - {kf}")
+                                                else:
+                                                    st.markdown(f"• {item}")
                                         elif isinstance(sub_data, str):
                                             st.write(sub_data)
+                            else:
+                                # Dành cho các bài học không cần tabs, hiển thị dạng Expander phân phối 2-3 cột
+                                with st.expander("🔍 Detailed Breakdown & Comparisons", expanded=False):
+                                    det_cols = st.columns(len(details))
+                                    for idx, (sub_title, sub_data) in enumerate(details.items()):
+                                        with det_cols[idx]:
+                                            st.markdown(f"<div style='border-left: 3px solid #2799C7; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
+                                            st.markdown(f"**{sub_title.upper()}**")
                                             
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                            if isinstance(sub_data, dict):
+                                                # A. Định nghĩa chính
+                                                for def_key in ["definition", "description"]:
+                                                    if def_key in sub_data:
+                                                        st.markdown(f"*{sub_data[def_key]}*")
+                                                
+                                                # B. Xử lý Characteristics tiêu chuẩn
+                                                if "characteristics" in sub_data:
+                                                    st.markdown("**Characteristics:**")
+                                                    chars = sub_data["characteristics"]
+                                                    if isinstance(chars, list):
+                                                        for item in chars:
+                                                            st.markdown(f"• {item}")
+                                                    elif isinstance(chars, str):
+                                                        for line in chars.replace("\r\n", "\n").split("\n"):
+                                                            if line.strip(): st.markdown(f"• {line.strip()}")
+                                                
+                                                # C. HỖ TRỢ ĐẶC BIỆT CHO LỖI AGILE (Gom nhóm Iterative & Incremental Characteristics)
+                                                for spec_char_key in ["iterative_characteristics", "incremental_characteristics"]:
+                                                    if spec_char_key in sub_data:
+                                                        title_clean = spec_char_key.replace("_", " ").title()
+                                                        st.markdown(f"**{title_clean}:**")
+                                                        spec_val = sub_data[spec_char_key]
+                                                        if isinstance(spec_val, list):
+                                                            for item in spec_val:
+                                                                st.markdown(f"• {item}")
+                                                        elif isinstance(spec_val, str):
+                                                            for line in spec_val.replace("\r\n", "\n").split("\n"):
+                                                                if line.strip(): st.markdown(f"• {line.strip()}")
+                                                
+                                                # D. Các trường danh sách chuẩn khác
+                                                for list_key in ["phases", "impact", "risks_associated", "conditions"]:
+                                                    if list_key in sub_data and isinstance(sub_data[list_key], list):
+                                                        title_clean = list_key.replace("_", " ").title()
+                                                        st.markdown(f"**{title_clean}:**")
+                                                        list_val = sub_data[list_key]
+                                                        for item in list_val:
+                                                            st.markdown(f"• {item}")
+                                                
+                                                # E. Fallback thông minh cho các Key tùy biến (Ví dụ: SMART)
+                                                processed_keys = [
+                                                    "definition", "description", "characteristics", "phases", "impact", 
+                                                    "risks_associated", "internal_examples", "external_examples", 
+                                                    "example", "examples", "tools", "iterative_characteristics", 
+                                                    "incremental_characteristics", "iterative_examples", "incremental_examples", "conditions"
+                                                ]
+                                                other_keys = [k for k in sub_data.keys() if k not in processed_keys]
+                                                if other_keys:
+                                                    st.write("")
+                                                    for k in other_keys:
+                                                        k_clean = k.replace("_", " ").title()
+                                                        val = sub_data[k]
+                                                        if isinstance(val, list):
+                                                            st.markdown(f"**{k_clean}:**")
+                                                            for item in val: st.markdown(f"• {item}")
+                                                        elif isinstance(val, dict):
+                                                            st.markdown(f"**{k_clean}:**")
+                                                            for sk, sv in val.items():
+                                                                st.markdown(f"  * **{sk.replace('_', ' ').title()}**: {sv}")
+                                                        else:
+                                                            st.markdown(f"**{k_clean}**: {val}")
+                                                        
+                                            elif isinstance(sub_data, list):
+                                                st.write("")
+                                                # ĐỘC QUYỀN SỬA LỖI IN THÔ CHO BÀI PROCESS GROUPS TRONG STANDARD COLUMNS
+                                                for item in sub_data:
+                                                    if isinstance(item, dict):
+                                                        item_name = item.get("name") or item.get("section") or item.get("title") or "N/A"
+                                                        item_desc = item.get("purpose") or item.get("description") or ""
+                                                        st.markdown(f"**• {item_name}**")
+                                                        if item_desc:
+                                                            st.markdown(f"  * *{item_desc}*")
+                                                        if "key_focus" in item and isinstance(item["key_focus"], list):
+                                                            for kf in item["key_focus"]:
+                                                                st.markdown(f"    - {kf}")
+                                                    else:
+                                                        st.markdown(f"• {item}")
+                                            elif isinstance(sub_data, str):
+                                                st.write(sub_data)
+                                                
+                                            st.markdown("</div>", unsafe_allow_html=True)
 
-                        # 3.5. Real-World Examples & Applications (Được tách biệt hoàn toàn để tránh quá tải thông tin)
+                        # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL (Đặc thù như Predictive Overview) ---
+                        # A. Characteristics cấp cao nhất (Root-level)
+                        root_characteristics = concept.get("characteristics")
+                        if root_characteristics:
+                            with st.expander("📋 Characteristics", expanded=False):
+                                if isinstance(root_characteristics, list):
+                                    for char in root_characteristics:
+                                        st.markdown(f"• {char}")
+                                elif isinstance(root_characteristics, str):
+                                    for line in root_characteristics.replace("\r\n", "\n").split("\n"):
+                                        if line.strip(): st.markdown(f"• {line.strip()}")
+
+                        # B. When To Use cấp cao nhất (Root-level)
+                        root_when_to_use = concept.get("when_to_use") or concept.get("when to use")
+                        if root_when_to_use:
+                            with st.expander("🎯 When to Use & Apply", expanded=False):
+                                if isinstance(root_when_to_use, list):
+                                    for item in root_when_to_use:
+                                        st.markdown(f"• {item}")
+                                elif isinstance(root_when_to_use, str):
+                                    for line in root_when_to_use.replace("\r\n", "\n").split("\n"):
+                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                elif isinstance(root_when_to_use, dict):
+                                    if "description" in root_when_to_use:
+                                        st.markdown(f"*{root_when_to_use['description']}*")
+                                    if "conditions" in root_when_to_use and isinstance(root_when_to_use["conditions"], list):
+                                        for cond in root_when_to_use["conditions"]:
+                                            st.markdown(f"• {cond}")
+
+                        # C. When Not To Use cấp cao nhất (Root-level)
+                        root_when_not_to_use = concept.get("when_not_to_use") or concept.get("when not to use")
+                        if root_when_not_to_use:
+                            with st.expander("⚠️ When NOT to Use", expanded=False):
+                                if isinstance(root_when_not_to_use, list):
+                                    for item in root_when_not_to_use:
+                                        st.markdown(f"• {item}")
+                                elif isinstance(root_when_not_to_use, str):
+                                    for line in root_when_not_to_use.replace("\r\n", "\n").split("\n"):
+                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                elif isinstance(root_when_not_to_use, dict):
+                                    if "description" in root_when_not_to_use:
+                                        st.markdown(f"*{root_when_not_to_use['description']}*")
+                                    if "conditions" in root_when_not_to_use and isinstance(root_when_not_to_use["conditions"], list):
+                                        for cond in root_when_not_to_use["conditions"]:
+                                            st.markdown(f"• {cond}")
+
+                        # 3.5. Real-World Examples & Applications (Hỗ trợ phân rã ví dụ đa cấp và trực tiếp)
                         has_any_example = False
                         if details and isinstance(details, dict):
                             for sub_title, sub_data in details.items():
                                 if isinstance(sub_data, dict):
-                                    if any(k in sub_data for k in ["example", "examples", "internal_examples", "external_examples"]):
+                                    check_keys = ["example", "examples", "internal_examples", "external_examples", "iterative_examples", "incremental_examples"]
+                                    if any(k in sub_data for k in check_keys):
                                         has_any_example = True
                                         break
+                                    for nested_key in ["iterative", "incremental"]:
+                                        if nested_key in sub_data and isinstance(sub_data[nested_key], dict):
+                                            nested_val = sub_data[nested_key]
+                                            if "example" in nested_val or "examples" in nested_val:
+                                                has_any_example = True
+                                                break
+                                if has_any_example:
+                                    break
+                        # Kiểm tra xem có chứa ví dụ ở cấp Root hay không
+                        if any(k in concept for k in ["example", "examples", "internal_examples", "external_examples"]):
+                            has_any_example = True
 
                         if has_any_example:
                             with st.expander("💡 Real-world Examples & Applications", expanded=False):
-                                ex_cols = st.columns(len(details))
-                                for idx, (sub_title, sub_data) in enumerate(details.items()):
-                                    with ex_cols[idx]:
-                                        st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
-                                        st.markdown(f"**{sub_title.upper()} EXAMPLES**")
-                                        
-                                        if isinstance(sub_data, dict):
-                                            # A. Hiển thị "example" dạng chuỗi đơn giản
-                                            if "example" in sub_data:
-                                                st.markdown(f"• {sub_data['example']}")
-                                                
-                                            # B. Hiển thị "examples" dạng list, dict hoặc string
-                                            if "examples" in sub_data:
-                                                exs = sub_data["examples"]
-                                                if isinstance(exs, list):
-                                                    for ex in exs:
-                                                        st.markdown(f"• {ex}")
-                                                elif isinstance(exs, dict):
-                                                    for ex_group_name, ex_list in exs.items():
-                                                        group_clean = ex_group_name.replace("_", " ").title()
-                                                        st.markdown(f"  * **{group_clean}:**")
-                                                        if isinstance(ex_list, list):
-                                                            for item in ex_list:
-                                                                st.markdown(f"    • {item}")
-                                                        else:
-                                                            st.markdown(f"    • {ex_list}")
-                                                elif isinstance(exs, str):
-                                                    st.markdown(f"• {exs}")
+                                # 1. Render ví dụ của các phân mảng con (nếu có chi tiết)
+                                if details and isinstance(details, dict) and not is_predictive_overview:
+                                    ex_cols = st.columns(len(details))
+                                    for idx, (sub_title, sub_data) in enumerate(details.items()):
+                                        with ex_cols[idx]:
+                                            st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px; height: 100%;'>", unsafe_allow_html=True)
+                                            st.markdown(f"**{sub_title.upper()} EXAMPLES**")
                                             
-                                            # C. Hiển thị "internal_examples" & "external_examples" của EEFs
-                                            if "internal_examples" in sub_data and isinstance(sub_data["internal_examples"], list):
-                                                st.markdown("**Internal Examples:**")
-                                                for item in sub_data["internal_examples"]:
-                                                    st.markdown(f"  • {item}")
-                                            if "external_examples" in sub_data and isinstance(sub_data["external_examples"], list):
-                                                st.markdown("**External Examples:**")
-                                                for item in sub_data["external_examples"]:
-                                                    st.markdown(f"  • {item}")
-                                                    
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                            if isinstance(sub_data, dict):
+                                                if "example" in sub_data:
+                                                    st.markdown(f"• {sub_data['example']}")
+                                                if "examples" in sub_data:
+                                                    exs = sub_data["examples"]
+                                                    if isinstance(exs, list):
+                                                        for ex in exs: st.markdown(f"• {ex}")
+                                                    elif isinstance(exs, dict):
+                                                        for ex_group_name, ex_list in exs.items():
+                                                            st.markdown(f"  * **{ex_group_name.replace('_', ' ').title()}:**")
+                                                            if isinstance(ex_list, list):
+                                                                for item in ex_list: st.markdown(f"    • {item}")
+                                                            else: st.markdown(f"    • {ex_list}")
+                                                    elif isinstance(exs, str):
+                                                        st.markdown(f"• {exs}")
+                                                
+                                                for spec_key in ["iterative", "incremental"]:
+                                                    if spec_key in sub_data and isinstance(sub_data[spec_key], dict):
+                                                        spec_val = sub_data[spec_key]
+                                                        title_clean = spec_key.replace("_", " ").title()
+                                                        if "example" in spec_val or "examples" in spec_val:
+                                                            st.markdown(f"**{title_clean} Example:**")
+                                                            if "example" in spec_val:
+                                                                st.markdown(f"  • {spec_val['example']}")
+                                                            if "examples" in spec_val:
+                                                                exs = spec_val["examples"]
+                                                                if isinstance(exs, list):
+                                                                    for ex in exs: st.markdown(f"  • {ex}")
+                                                                elif isinstance(exs, str):
+                                                                    st.markdown(f"  • {exs}")
+
+                                                for spec_ex_key in ["iterative_examples", "incremental_examples"]:
+                                                    if spec_ex_key in sub_data:
+                                                        title_clean = spec_ex_key.replace("_", " ").title()
+                                                        st.markdown(f"**{title_clean}:**")
+                                                        spec_ex_val = sub_data[spec_ex_key]
+                                                        if isinstance(spec_ex_val, list):
+                                                            for item in spec_ex_val: st.markdown(f"  • {item}")
+                                                        elif isinstance(spec_ex_val, str):
+                                                            st.markdown(f"  • {spec_ex_val}")
+
+                                                if "internal_examples" in sub_data and isinstance(sub_data["internal_examples"], list):
+                                                    st.markdown("**Internal Examples:**")
+                                                    for item in sub_data["internal_examples"]: st.markdown(f"  • {item}")
+                                                if "external_examples" in sub_data and isinstance(sub_data["external_examples"], list):
+                                                    st.markdown("**External Examples:**")
+                                                    for item in sub_data["external_examples"]: st.markdown(f"  • {item}")
+                                                        
+                                            st.markdown("</div>", unsafe_allow_html=True)
+                                
+                                # 2. Render ví dụ nằm ở Root-level hoặc trong details của predictive overview
+                                root_exs = concept.get("examples") or concept.get("example")
+                                if not root_exs and details and isinstance(details, dict):
+                                    # Lấy ví dụ lồng trong real_world_example hoặc "when_to_use"
+                                    root_exs = details.get("real_world_example") or details.get("real world example")
+                                
+                                if root_exs:
+                                    st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px; margin-top: 10px;'>", unsafe_allow_html=True)
+                                    st.markdown(f"**EXAMPLES & APPLICATIONS**")
+                                    if isinstance(root_exs, list):
+                                        for ex in root_exs:
+                                            st.markdown(f"• {ex}")
+                                    elif isinstance(root_exs, str):
+                                        for line in root_exs.replace("\r\n", "\n").split("\n"):
+                                            if line.strip(): st.markdown(f"• {line.strip()}")
+                                    st.markdown("</div>", unsafe_allow_html=True)
 
                         # 4. Core Values (PMI Code of Ethics)
                         core_values = concept.get("core_values")
