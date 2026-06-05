@@ -593,7 +593,9 @@ if menu_choice == "📚 Knowledge Hub":
                                 "Predictive (Plan-Based) Approach Overview", 
                                 "Process Groups Overview", 
                                 "Knowledge Areas Overview", 
-                                "Predictive Approach — Overview"
+                                "Predictive Approach — Overview",
+                                "Leadership in Project Management",
+                                "Integration Management (Deep Dive)"
                             ]
                         )
 

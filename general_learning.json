@@ -862,9 +862,7 @@
     "Outputs from one group feed into others"
   ],
   "details": {
-    "groups": [
-      {
-        "name": "Initiating",
+	"Initiating": {
         "purpose": "Define and authorize the project or phase",
         "key_focus": [
           "Business case",
@@ -872,8 +870,8 @@
           "Stakeholder identification"
         ]
       },
-      {
-        "name": "Planning",
+ 
+        "Planning": {
         "purpose": "Define the roadmap to achieve project objectives",
         "key_focus": [
           "Scope, schedule, cost definition",
@@ -881,8 +879,7 @@
           "Establishing baselines"
         ]
       },
-      {
-        "name": "Executing",
+	"Executing": {
         "purpose": "Perform the work defined in the plan",
         "key_focus": [
           "Deliverables creation",
@@ -890,8 +887,7 @@
           "Stakeholder engagement"
         ]
       },
-      {
-        "name": "Monitoring and Controlling",
+	"Monitoring and Controlling": {
         "purpose": "Track and regulate project performance",
         "key_focus": [
           "Performance measurement",
@@ -899,16 +895,14 @@
           "Risk monitoring"
         ]
       },
-      {
-        "name": "Closing",
+	"Closing": {
         "purpose": "Finalize all project activities",
         "key_focus": [
           "Formal acceptance",
           "Lessons learned",
           "Project closure"
         ]
-      }
-    ],
+      },
     "interaction model": "Executing and Monitoring & Controlling operate in parallel while Planning may be revisited as changes occur."
   },
   "exam_tips": "Process Groups are overlapping and iterative. Monitoring & Controlling occurs throughout the entire project lifecycle."
@@ -1999,7 +1993,106 @@
       "Meetings"
     ],
     "exam_tips": "High Power + High Interest = Manage closely. Stakeholders must be identified continuously, not only at the start."
-  }
+  },
+  
+{
+  "id": "PM-LEADERSHIP-001",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Leadership in Project Management",
+  "approach": "BOTH",
+  "summary": "Leadership in project management is the ability to guide, influence, and motivate the team and stakeholders to achieve project objectives beyond formal authority.",
+  "key_concepts": [
+    "Leadership is different from management",
+    "Influence is more important than authority",
+    "Leadership is situational",
+    "Focus on people, not just process",
+    "Trust and communication are critical"
+  ],
+  "details": {
+    "definition": {
+      "description": "Leadership is the ability to influence individuals and teams to achieve a common goal while fostering motivation, trust, and collaboration.",
+      "characteristics": [
+        "Inspires and motivates team members",
+        "Builds trust and relationships",
+        "Encourages accountability",
+        "Facilitates collaboration",
+        "Drives alignment with goals"
+      ]
+    },
+    "leadership_vs_management": {
+      "description": "Leadership focuses on influencing people, while management focuses on controlling processes.",
+      "characteristics": [
+        "Leadership = vision, inspiration, influence",
+        "Management = planning, organizing, controlling",
+        "PM must balance both leadership and management",
+        "Leadership is critical in uncertain environments"
+      ]
+    },
+    "leadership_styles": {
+      "description": "Different leadership styles are used depending on team maturity and project context.",
+      "characteristics": [
+        "Servant Leadership – supports and empowers the team",
+        "Transformational Leadership – inspires change and innovation",
+        "Transactional Leadership – based on rewards and performance",
+        "Laissez-faire – minimal intervention",
+        "Authoritative – provides strong direction"
+      ]
+    },
+    "situational_leadership": {
+      "description": "Leadership style should be adapted based on team capability and project conditions.",
+      "characteristics": [
+        "New team → more directive leadership",
+        "Experienced team → more delegation",
+        "Crisis → more control and fast decision-making",
+        "Stable environment → more empowerment"
+      ]
+    },
+    "power_and_influence": {
+      "description": "Power is the ability to influence others in the organization.",
+      "characteristics": [
+        "Expert power – based on knowledge",
+        "Referent power – based on trust and respect",
+        "Legitimate power – based on role",
+        "Reward power – based on incentives",
+        "Coercive power – based on authority (least effective)"
+      ]
+    },
+    "team_motivation": {
+      "description": "Motivating the team is a critical leadership responsibility.",
+      "characteristics": [
+        "Understand individual needs",
+        "Provide recognition and feedback",
+        "Create a supportive environment",
+        "Align personal goals with project goals"
+      ]
+    }
+  },
+  "examples": [
+    "A Project Manager encourages the team during a tight deadline instead of pressuring them.",
+    "A leader resolves conflict by understanding both perspectives instead of imposing authority.",
+    "A PM empowers a senior team to make decisions rather than micromanaging."
+  ],
+  "inputs": [
+    "Project Management Plan",
+    "Stakeholder Register",
+    "Team Performance Data"
+  ],
+  "outputs": [
+    "Improved team performance",
+    "Higher stakeholder engagement",
+    "Stronger collaboration"
+  ],
+  "methods_tools": [
+    "Coaching",
+    "Conflict Resolution",
+    "Active Listening",
+    "Feedback Techniques",
+    "Emotional Intelligence"
+  ],
+  "exam_tips": "Leadership in PMP focuses on trust, collaboration, and influence. Avoid authoritative or aggressive approaches unless absolutely necessary. Servant leadership is the preferred mindset."
+}
 ]
 
 
