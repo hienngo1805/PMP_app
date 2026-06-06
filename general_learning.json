@@ -15,13 +15,13 @@
     ],
     "details": {
       "project": {
-        "definition": "A temporary endeavor undertaken to create a unique product, service, or result",
+        "definition": "A sequence of unique, complex, and connected activities that have one goal or purpose and that must be completed by a specific time, within budget, and according to specification.",
         "characteristics": [
           "Has a defined start and end",
           "Produces unique output",
           "Subject to constraints (scope, time, cost)"
         ],
-        "example": "Build a warehouse system for a client"
+        "real world example": "Build a warehouse system for a client"
       },
       "program": {
         "definition": "A group of related projects managed in a coordinated way",
@@ -30,7 +30,7 @@
           "Manage interdependencies between projects",
           "Deliver value not achievable individually"
         ],
-        "example": "Digital transformation (multiple IT projects)"
+        "real world example": "Digital transformation (multiple IT projects)"
       },
       "portfolio": {
         "definition": "A collection of projects/programs managed to achieve strategic goals",
@@ -39,7 +39,7 @@
           "Prioritizes investments",
           "Balances risk vs return"
         ],
-        "example": "Company-wide investment portfolio"
+        "real world example": "Company-wide investment portfolio"
       }
     },
     "methods_tools": [
@@ -747,7 +747,7 @@
   "title": "Project Governance",
   "approach": "both",
   "summary": "Project governance is the framework of policies, processes, and structures that guide project decisions, ensure alignment, and provide oversight.",
-  "key concepts": [
+  "key_concepts": [
     "Governance provides direction and control",
     "Ensures alignment with organizational strategy",
     "Defines roles, responsibilities, and decision rights",
@@ -795,7 +795,7 @@
     "title": "Predictive Approach — Overview",
     "approach": "Predictive",
     "summary": "The predictive (Waterfall) approach is a plan-driven methodology where project scope, schedule, and cost are defined upfront before execution begins. Work is performed in a sequential and structured manner.",
-    "key concepts": [
+    "key_concepts": [
       "Plan-driven approach with detailed upfront planning",
       "Sequential execution through defined phases",
       "Formal change control for all modifications",
@@ -823,9 +823,10 @@
           "Frequent user feedback is required",
           "Market conditions change rapidly"
         ]
+        }
       },
-      "real world example": "Construction of a building where all specifications, budget, and timeline must be defined before execution. Any change requires formal approval."
-    },
+      "example": "Construction of a building where all specifications, budget, and timeline must be defined before execution. Any change requires formal approval.",
+
     "inputs": [
       "Business Case",
       "Project Charter",
@@ -855,7 +856,7 @@
   "title": "Process Groups Overview",
   "approach": "Predictive",
   "summary": "Process Groups are logical groupings of project management activities that guide a project from initiation to closure. They are interconnected, overlapping, and iterative rather than strictly sequential.",
-  "key concepts": [
+  "key_concepts": [
     "Process Groups are NOT phases",
     "They overlap and iterate throughout the project",
     "Monitoring & Controlling is continuous",
@@ -1187,7 +1188,7 @@
     "title": "Project Management Plan",
     "approach": "Predictive",
     "summary": "The Project Management Plan (PMP) is the comprehensive document that describes how the project will be executed, monitored, controlled, and closed.",
-    "key concepts": [
+    "key_concepts": [
       "Integrated document combining all subsidiary plans",
       "Approved before execution begins",
       "Contains scope, schedule, and cost baselines",
@@ -1234,7 +1235,7 @@
       "Facilitation",
       "Meetings"
     ],
-    "exam tips": "The Project Management Plan defines how the project will be executed. It is approved before execution and updated only through change control."
+    "exam_tips": "The Project Management Plan defines how the project will be executed. It is approved before execution and updated only through change control."
   },
   {
     "id": "PM-PREDICTIVE-002",
@@ -1262,10 +1263,10 @@
         "Assigned Project Manager",
         "Sponsor approval"
       ],
-      "who creates it": {
-        "creator": "Project Sponsor or PMO",
-        "PM role": "The Project Manager may assist but cannot approve the charter"
-      },
+      "who creates it":[
+        "Creator: Project Sponsor or PMO",
+        "PM role: The Project Manager may assist but cannot approve the charter"
+      ],
       "important notes": [
         "The charter is created before detailed planning",
         "Without a charter, the project should not proceed",
@@ -1298,7 +1299,7 @@
     "title": "Scope Management",
     "approach": "Predictive",
     "summary": "Scope Management ensures that the project includes all the work required—and only the work required—to complete the project successfully.",
-    "key concepts": [
+    "key_concepts": [
       "Product Scope defines features and functions",
       "Project Scope defines the work required",
       "Scope Baseline = Scope Statement + WBS + WBS Dictionary",
@@ -1350,129 +1351,188 @@
       "Product Analysis",
       "Workshops"
     ],
-    "exam tips": "WBS is deliverable-based, not activity-based. Validate Scope = customer acceptance. Control Scope = prevent scope creep."
+    "exam_tips": "WBS is deliverable-based, not activity-based. Validate Scope = customer acceptance. Control Scope = prevent scope creep."
   },
 
-  {
-    "id": "PM-PREDICTIVE-005",
-    "type": "concept",
-    "certification": "PMP/CAPM",
-    "domain": "Predictive, Plan-Based Methodologies",
-    "title": "Schedule Management",
-    "approach": "Predictive",
-    "summary": "Schedule Management involves defining, sequencing, estimating, and controlling project activities to ensure timely completion.",
-    "key_concepts": [
-      "Activities are derived from Work Packages",
-      "Dependencies define task order",
-      "Critical Path determines project duration",
-      "Float represents scheduling flexibility",
-      "Schedule Baseline is used for performance measurement"
-    ],
-    "details": {
-      "processes": [
+  
+{
+  "id": "PM-PREDICTIVE-005",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Schedule Management",
+  "approach": "Predictive",
+  "summary": "Schedule Management involves defining, sequencing, estimating, and controlling project activities to ensure timely completion.",
+  "key_concepts": [
+    "Activities are derived from Work Packages",
+    "Dependencies define task order",
+    "Critical Path determines project duration",
+    "Float represents scheduling flexibility",
+    "Schedule Baseline is used for performance measurement"
+  ],
+  "details": {
+    "processes": {
+      "definition": "Defines the core processes used to develop and control the project schedule.",
+      "characteristics": [
         "Define Activities",
         "Sequence Activities",
         "Estimate Activity Durations",
         "Develop Schedule",
         "Control Schedule"
-      ],
-      "dependency types": [
-        "Finish-to-Start (FS)",
-        "Start-to-Start (SS)",
-        "Finish-to-Finish (FF)",
-        "Start-to-Finish (SF)"
-      ],
-      "critical path": {
-        "definition": "The longest path through the project network that determines the shortest project duration.",
-        "rules": [
-          "Activities on the critical path have zero float",
-          "Delays on critical path delay the project",
-          "There can be more than one critical path"
-        ]
-      },
-      "schedule compression": {
-        "crashing": "Adding resources to shorten duration (increases cost)",
-        "fast tracking": "Performing activities in parallel (increases risk)"
-      }
+      ]
     },
-    "inputs": [
-      "Scope Baseline",
-      "Activity List",
-      "Resource Calendars"
-    ],
-    "outputs": [
-      "Project Schedule",
-      "Schedule Baseline",
-      "Milestone List"
-    ],
-    "methods tools": [
-      "Critical Path Method (CPM)",
-      "PERT",
-      "Gantt Charts",
-      "Resource Leveling"
-    ],
-    "exam tips": "Critical Path = longest path with zero float. Crashing increases cost. Fast Tracking increases risk."
+    "dependency_types": {
+      "definition": "Logical relationships between project activities that determine execution sequence.",
+      "characteristics": [
+        "Finish-to-Start (FS): Activity A must finish before Activity B can start (most common). Example: Foundation must be completed before building walls.",
+        "Start-to-Start (SS): Activity A must start before Activity B can start. Example: Coding starts → testing can begin early.",
+        "Finish-to-Finish (FF): Activity A must finish before Activity B can finish. Example: Documentation must complete before review ends.",
+        "Start-to-Finish (SF): Activity A must start before Activity B can finish (rare). Example: New system must start before old system is shut down."
+      ]
+    },
+    "critical_path": {
+      "definition": "The longest path through the project network that determines the minimum project duration.",
+      "characteristics": [
+        "Activities on the critical path have zero total float",
+        "Any delay on this path delays the project",
+        "There can be multiple critical paths"
+      ]
+    },
+    "float_and_slack": {
+      "definition": "The amount of time an activity can be delayed without impacting the project schedule.",
+      "characteristics": [
+        "Float = Slack (same meaning)",
+        "Total Float: time an activity can be delayed without delaying project completion",
+        "Free Float: time an activity can be delayed without delaying the next activity",
+        "Activities on critical path have zero float"
+      ]
+    },
+    "leads_and_lags": {
+      "definition": "Adjustments applied to activity dependencies to optimize scheduling.",
+      "characteristics": [
+        "Lead: allows overlap between activities (start earlier than planned dependency)",
+        "Lag: introduces delay after a dependency condition is met",
+        "Example Lead: Start testing when coding is 70% complete",
+        "Example Lag: Wait 3 days for concrete to cure before next activity"
+      ]
+    },
+    "schedule_compression": {
+      "definition": "Techniques used to shorten project duration without reducing scope.",
+      "characteristics": [
+        "Crashing – adding more resources to shorten duration (increases cost)",
+        "Fast Tracking – performing activities in parallel (increases risk)"
+      ]
+    },
+    "resource_optimization": {
+      "definition": "Techniques used to manage resource constraints and optimize utilization.",
+      "characteristics": [
+        "Resource Leveling: adjusts schedule based on resource availability (may change critical path and extend duration)",
+        "Resource Smoothing: adjusts activities within float limits without affecting critical path"
+      ]
+    }
   },
+  "inputs": [
+    "Scope Baseline",
+    "Activity List",
+    "Resource Calendars"
+  ],
+  "outputs": [
+    "Project Schedule",
+    "Schedule Baseline",
+    "Milestone List"
+  ],
+  "methods_tools": [
+    "Critical Path Method (CPM)",
+    "Program Evaluation and Review Technique (PERT)",
+    "Gantt Chart",
+    "Resource Leveling",
+    "Schedule Network Diagram"
+  ],
+  "exam_tips": "Critical Path = longest path with zero float. Float = scheduling flexibility. Crashing increases cost, Fast Tracking increases risk. Resource Leveling may extend the schedule; Resource Smoothing does not."
+},
 
-  {
-    "id": "PM-PREDICTIVE-006",
-    "type": "concept",
-    "certification": "PMP/CAPM",
-    "domain": "Predictive, Plan-Based Methodologies",
-    "title": "Estimating Techniques",
-    "approach": "Predictive",
-    "summary": "Estimating techniques are used to predict project duration, cost, and resource requirements with varying levels of accuracy.",
-    "key concepts": [
-      "Different techniques provide different accuracy levels",
-      "Estimates improve over time",
-      "Detailed estimates require more effort",
-      "Historical data improves reliability"
-    ],
-    "details": {
-      "techniques": {
-        "analogous": {
-          "definition": "Uses historical data from similar projects",
-          "accuracy": "Low",
-          "use_case": "Early phases with limited information"
-        },
-        "parametric": {
-          "definition": "Uses statistical relationships (unit rate × quantity)",
-          "accuracy": "Moderate"
-        },
-        "three_point": {
-          "definition": "Uses optimistic, most likely, and pessimistic estimates",
-          "formula": "(O + 4M + P) / 6"
-        },
-        "bottom_up": {
-          "definition": "Estimates at the lowest level and aggregates upward",
-          "accuracy": "High",
-          "limitation": "Time-consuming"
-        }
-      },
-      "estimate_accuracy": {
-        "rough_order_of_magnitude": "-25% to +75%",
-        "definitive": "-5% to +10%"
-      }
+  
+{
+  "id": "PM-PREDICTIVE-006",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "Predictive, Plan-Based Methodologies",
+  "title": "Estimating Techniques (Predictive vs Agile)",
+  "approach": "BOTH",
+  "summary": "Estimating techniques are used to approximate effort, duration, or cost. Predictive approaches focus on time and cost accuracy, while Agile approaches focus on relative estimation and adaptability.",
+  "key_concepts": [
+    "Different approaches use different estimation methods",
+    "Predictive focuses on accuracy and detailed planning",
+    "Agile focuses on relative effort and adaptability",
+    "Accuracy improves with more information"
+  ],
+  "details": {
+    "predictive_estimating": {
+      "definition": "Estimation techniques used in plan-driven projects where scope is defined upfront.",
+      "characteristics": [
+        "Analogous Estimating – fast, based on historical data, low accuracy",
+        "Parametric Estimating – uses mathematical models (e.g., cost per unit)",
+        "Bottom-Up Estimating – most accurate, detailed task-level estimation",
+        "Three-Point Estimating (PERT) – reduces uncertainty using O, M, P values",
+        "Single-Point Estimating – quick best-guess estimate with higher risk",
+        "Function Point Analysis – estimates based on system functionality"
+      ]
     },
-    "inputs": [
-      "Scope Baseline",
-      "Historical Data",
-      "Resource Information"
-    ],
-    "outputs": [
-      "Duration Estimates",
-      "Cost Estimates",
-      "Basis of Estimates"
-    ],
-    "methods tools": [
-      "Expert Judgment",
-      "Analogous Estimating",
-      "Parametric Estimating",
-      "Three-Point Estimation",
-      "Bottom-Up Estimation"
-    ],
-    "exam tips": "PERT formula = (O + 4M + P) / 6. Bottom-Up is most accurate but time-consuming. Analogous is fastest but least accurate."
+    "agile_estimating": {
+      "definition": "Estimation techniques used in adaptive environments focusing on relative size and effort.",
+      "characteristics": [
+        "Story Points – measure effort, complexity, and risk (not time)",
+        "T-shirt Sizing – rough size categories (XS, S, M, L, XL)",
+        "Relative Estimating – compares tasks instead of using absolute units",
+        "Affinity Estimation – groups similar work items for quick estimation"
+      ]
+    },
+    "expert_and_consensus_based": {
+      "definition": "Estimation approaches based on expert input and team consensus.",
+      "characteristics": [
+        "Wideband Delphi – multiple estimation rounds to reach consensus",
+        "Planning Poker – Agile adaptation of Delphi",
+        "Experts refine estimates through discussion"
+      ]
+    },
+    "multi_point_estimating": {
+      "definition": "Uses multiple values to account for uncertainty in estimates.",
+      "characteristics": [
+        "PERT formula: (O + 4M + P) / 6",
+        "Provides weighted average estimate",
+        "More reliable than single-point estimates"
+      ]
+    },
+    "accuracy_levels": {
+      "definition": "Estimate accuracy improves throughout the project lifecycle.",
+      "characteristics": [
+        "Rough Order of Magnitude (ROM): -25% to +75%",
+        "Budget Estimate: -10% to +25%",
+        "Definitive Estimate: -5% to +10%"
+      ]
+    }
   },
+  "examples": [
+    "Predictive: Using historical project data to estimate duration (Analogous)",
+    "Predictive: Estimating cost per square meter (Parametric)",
+    "Agile: Using story points to estimate user stories",
+    "Agile: Using Planning Poker to reach consensus",
+    "Hybrid: Using PERT for uncertain activities"
+  ],
+  "methods_tools": [
+    "Analogous Estimating",
+    "Parametric Estimating",
+    "Bottom-Up Estimating",
+    "Three-Point (PERT)",
+    "Wideband Delphi",
+    "Planning Poker",
+    "Story Points",
+    "T-shirt Sizing",
+    "Affinity Estimation",
+    "Function Point Analysis"
+  ],
+  "exam_tips": "Predictive uses time/cost-based estimation (Bottom-Up, Analogous). Agile uses relative estimation (Story Points). PERT = (O + 4M + P) / 6. Bottom-Up = most accurate; Analogous = fastest."
+},
   {
     "id": "PM-PREDICTIVE-007",
     "type": "concept",
@@ -1481,7 +1541,7 @@
     "title": "Cost Management and Earned Value Management (EVM)",
     "approach": "Predictive",
     "summary": "Cost Management includes estimating, budgeting, and controlling project costs. Earned Value Management (EVM) integrates scope, schedule, and cost to measure project performance.",
-    "key concepts": [
+    "key_concepts": [
       "PV (Planned Value): budgeted work planned",
       "EV (Earned Value): budgeted work completed",
       "AC (Actual Cost): actual cost incurred",
@@ -1537,7 +1597,7 @@
     "title": "Quality Management",
     "approach": "Predictive",
     "summary": "Quality Management ensures that project deliverables meet requirements. It includes Quality Assurance (process-focused) and Quality Control (product-focused).",
-    "key concepts": [
+    "key_concepts": [
       "Quality = fitness for use and conformance to requirements",
       "QA = proactive, process-oriented",
       "QC = reactive, product-oriented",
@@ -1595,7 +1655,7 @@
     "title": "Risk Management",
     "approach": "Predictive",
     "summary": "Risk Management is the process of identifying, analyzing, and responding to uncertainties that could affect project objectives.",
-    "key concepts": [
+    "key_concepts": [
       "Risk = uncertain future event",
       "Issue = risk that has already occurred",
       "Threats = negative risks",
@@ -1639,7 +1699,7 @@
       "Risk Reports",
       "Change Requests"
     ],
-    "methods_tools": [
+    "methods tools": [
       "SWOT Analysis",
       "Probability and Impact Matrix",
       "Monte Carlo Simulation",
@@ -1702,7 +1762,7 @@
       "Project Updates",
       "Change Log"
     ],
-    "methods_tools": [
+    "methods tools": [
       "Change Control Board",
       "Decision Making",
       "Expert Judgment"
@@ -1718,7 +1778,7 @@
     "title": "Procurement Management",
     "approach": "Predictive",
     "summary": "Procurement Management involves acquiring goods and services from external vendors. Choosing the right contract type is critical to managing risk.",
-    "key concepts": [
+    "key_concepts": [
       "Make-or-buy decisions determine sourcing strategy",
       "Contract type defines risk allocation",
       "Clearly defined scope improves procurement success",
@@ -1767,7 +1827,7 @@
       "Selected Sellers",
       "Closed Procurements"
     ],
-    "methods_tools": [
+    "methods tools": [
       "Make-or-Buy Analysis",
       "Bid Evaluation",
       "Contract Negotiation"
@@ -1871,7 +1931,7 @@
       "Archived Documents",
       "Closed Project"
     ],
-    "methods_tools": [
+    "methods tools": [
       "Meetings",
       "Data Analysis",
       "Expert Judgment"
@@ -1936,7 +1996,7 @@
     "outputs": [
       "Updated OPAs"
     ],
-    "methods_tools": [
+    "methods tools": [
       "Document Analysis",
       "Expert Judgment"
     ],
@@ -1996,76 +2056,73 @@
   },
   
 {
-  "id": "PM-LEADERSHIP-001",
+  "id": "PM-LEADERSHIP-STYLES-002",
   "type": "concept",
   "certification": "PMP/CAPM",
-  "domain": "Predictive, Plan-Based Methodologies",
-  "title": "Leadership in Project Management",
+  "domain": "General leadership and interpersonal skills",
+  "title": "Leadership Styles in Project Management",
   "approach": "BOTH",
-  "summary": "Leadership in project management is the ability to guide, influence, and motivate the team and stakeholders to achieve project objectives beyond formal authority.",
+  "summary": "Project leadership is situational. Effective Project Managers adapt their leadership style based on team maturity, project phase, and the surrounding organizational culture.",
   "key_concepts": [
-    "Leadership is different from management",
-    "Influence is more important than authority",
-    "Leadership is situational",
-    "Focus on people, not just process",
-    "Trust and communication are critical"
+    "No single 'best' style; depends on context",
+    "Adaptability is a core leadership competency",
+    "Servant leadership is highly emphasized in modern/Agile PM",
+    "Styles range from directive to delegative",
+    "Balance between people-focus and task-focus"
   ],
   "details": {
-    "definition": {
-      "description": "Leadership is the ability to influence individuals and teams to achieve a common goal while fostering motivation, trust, and collaboration.",
-      "characteristics": [
-        "Inspires and motivates team members",
-        "Builds trust and relationships",
-        "Encourages accountability",
-        "Facilitates collaboration",
-        "Drives alignment with goals"
-      ]
+    "servant_leadership": {
+      "definition": "Focuses on the needs of the team members, removing obstacles, and providing resources to ensure their success.",
+      "characteristics": {
+        "Shielding": "Protects the team from external distractions, corporate politics, and interruptions.",
+        "Removing_Impediments": "Actively clears roadblocks, technical debts, or administrative bottlenecks.",
+        "Empowering": "Decentralizes decision-making power, giving ownership of the sprint or tasks to the team."
+      },
+      "best_for": "Agile teams, self-organizing environments, and long-term project success."
     },
-    "leadership_vs_management": {
-      "description": "Leadership focuses on influencing people, while management focuses on controlling processes.",
-      "characteristics": [
-        "Leadership = vision, inspiration, influence",
-        "Management = planning, organizing, controlling",
-        "PM must balance both leadership and management",
-        "Leadership is critical in uncertain environments"
-      ]
+    "transformational_leadership": {
+      "definition": "Inspires and motivates the team by creating a shared vision and fostering innovation.",
+      "characteristics": {
+        "Visionary": "Articulates a compelling, clear future state and maps out the 'Why' behind project activities.",
+        "Intellectual_Stimulation": "Challenges assumptions, takes calculated risks, and encourages creative problem-solving.",
+        "Individual_Consideration": "Acts as a mentor or coach, attending to each member's unique growth and needs."
+      },
+      "best_for": "Innovation projects, digital transformation, and navigating high ambiguity."
     },
-    "leadership_styles": {
-      "description": "Different leadership styles are used depending on team maturity and project context.",
-      "characteristics": [
-        "Servant Leadership – supports and empowers the team",
-        "Transformational Leadership – inspires change and innovation",
-        "Transactional Leadership – based on rewards and performance",
-        "Laissez-faire – minimal intervention",
-        "Authoritative – provides strong direction"
-      ]
+    "transactional_leadership": {
+      "definition": "Operates on a reward-and-punishment basis, emphasizing clear expectations, compliance, and task completion.",
+      "characteristics": {
+        "Contingent_Reward": "Links project objectives to specific incentives, bonuses, or professional recognition.",
+        "Management_by_Exception": "Intervenes only when performance metrics deviate from established baselines or SLAs."
+      },
+      "best_for": "Highly structured, repetitive, fixed-price, or compliance-heavy projects."
     },
     "situational_leadership": {
-      "description": "Leadership style should be adapted based on team capability and project conditions.",
-      "characteristics": [
-        "New team → more directive leadership",
-        "Experienced team → more delegation",
-        "Crisis → more control and fast decision-making",
-        "Stable environment → more empowerment"
-      ]
+      "definition": "A flexible approach where the project manager adjusts their behavior based on the readiness and competence of team members.",
+      "characteristics": {
+        "S1_Directing": "High directive, low supportive; provides explicit instructions and close supervision for new members.",
+        "S2_Coaching": "High directive, high supportive; explains decisions, solicits suggestions, and supports motivation.",
+        "S3_Supporting": "Low directive, high supportive; shares decision-making authority and facilitates autonomous execution.",
+        "S4_Delegating": "Low directive, low supportive; turns over responsibility for decisions and implementation to experts."
+      },
+      "best_for": "Dynamic environments with mixed team experience and changing task requirements."
     },
-    "power_and_influence": {
-      "description": "Power is the ability to influence others in the organization.",
+    "laissez_faire": {
+      "definition": "A 'hands-off' approach where the leader provides guidance only when requested and empowers the team to work autonomously.",
+      "characteristics": {
+        "Autonomous_Delegation": "Gives complete freedom for team members to set goals and make operational choices.",
+        "Passive_Oversight": "Maintains minimal intervention, acting purely as a resource provider or point of escalation."
+      },
+      "best_for": "Highly skilled, self-motivated, expert-level research or development teams."
+    },
+      "power_and_influence": {
+      "definition": "Power is the ability to influence others in the organization.",
       "characteristics": [
         "Expert power – based on knowledge",
         "Referent power – based on trust and respect",
         "Legitimate power – based on role",
         "Reward power – based on incentives",
         "Coercive power – based on authority (least effective)"
-      ]
-    },
-    "team_motivation": {
-      "description": "Motivating the team is a critical leadership responsibility.",
-      "characteristics": [
-        "Understand individual needs",
-        "Provide recognition and feedback",
-        "Create a supportive environment",
-        "Align personal goals with project goals"
       ]
     }
   },
@@ -2084,7 +2141,7 @@
     "Higher stakeholder engagement",
     "Stronger collaboration"
   ],
-  "methods_tools": [
+  "methods tools": [
     "Coaching",
     "Conflict Resolution",
     "Active Listening",
