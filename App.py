@@ -167,6 +167,9 @@ def load_general_learning_data():
     else:
         st.error("⚠️ Không tìm thấy file general_learning.json!")
         return {}
+
+
+#Load tiếp các file dữ liệu json khác
 def load_glossary_data():
     file_path = "Glossary.json"
     if os.path.exists(file_path):
@@ -746,24 +749,59 @@ if menu_choice == "📚 Knowledge Hub":
     # ==========================================================
     # KHỐI 3: TỰ ĐỘNG XỬ LÝ CHO TAB GENERAL LEARNING (GỒM GLOSSARY SEARCH)
     # ==========================================================
+    
+    
     with tab_general:
-        # Nạp các Domain lớn từ general_learning.json
+
+        # ✅ 1. DEFINE ORDER
+        domain_order = {
+            "Project Management Fundamentals and Core Concepts": 1,
+            "Predictive, Plan-Based Methodologies": 2,
+            "Agile Frameworks/Methodologies": 3,
+            "Business Analysis Frameworks": 4,
+            "General leadership and interpersonal skills": 5,
+            "Reference & Books": 6
+        }
+        # ✅ 2. LOAD + EXTRACT DOMAIN (PHẢI NẰM TRONG TAB)
         general_domains = []
+
         if general_data and isinstance(general_data, list):
-            general_domains = sorted(list(set(str(item.get("domain", "General Knowledge")) for item in general_data if item.get("domain"))))
-        
+            for item in general_data:
+                d = str(item.get("domain", "")).strip()
+                if d and d not in general_domains:
+                    general_domains.append(d)
+
+        # ✅ 3. SORT (PHẢI NẰM TRONG TAB)
+        general_domains = sorted(
+            general_domains,
+            key=lambda x: domain_order.get(x, 999)
+        )
+                
         # CHÈN THÊM GLOSSARY VÀO LÀM MỘT DOMAIN RIÊNG BIỆT DƯỚI BẢNG ĐIỀU HƯỚNG DỌC
         glossary_domain_title = "🔤 Glossary & Terminology"
         general_domains.append(glossary_domain_title)
+            
 
         if not general_domains:
             st.info("💡 Chưa có danh mục kiến thức General Learning nào được tìm thấy.")
         else:
             # Layout sidebar giả lập bên trong Tab General Learning
             col_menu_gen, col_content_gen = st.columns([1, 3])
-            
+             
             with col_menu_gen:
                 selected_domain_gen = st.radio("Select Domain:", general_domains, key="general_radio")
+            
+                # ✅ highlight (đặt NGAY SAU radio)
+                if selected_domain_gen:
+                    st.markdown(f"""
+                    <div style="background-color:#C3E0F5;
+                                padding:8px;
+                                border-radius:6px;
+                                margin-top:10px;">
+                        ✅ <b>Selecting Domain:</b> {selected_domain_gen}
+                    </div>
+                    """, unsafe_allow_html=True)
+
 
             with col_content_gen:
                 # ------------------------------------------------------
@@ -889,6 +927,18 @@ if menu_choice == "📚 Knowledge Hub":
                             "Integration Management (Deep Dive)",
                             "Process Groups Overview",
                             "Knowledge Areas Overview",
+                            "Agile Mindset — The Foundation of All Agile Approaches",
+                            "Scrum Framework — Roles, Events, and Artifacts",
+                            "Kanban — Visualizing Flow and Managing Work-in-Progress",
+                            "Extreme Programming (XP) — Technical Excellence in Agile",
+                            "Agile Planning — From Vision to Iteration",
+                            "Agile Teams — Self-Organization, Cross-Functionality, and High Performance",
+                            "Agile Metrics — Measuring Progress and Performance",
+                            "Scaled Agile — Coordinating Multiple Agile Teams",
+                            "Hybrid Approaches — Combining Predictive and Agile",
+                            "Agile in the Organization — Adoption, Change, and Culture",
+                            "Agile Requirements — User Stories, Epics, and the Product Backlog",
+                            "Agile Quality — Building Quality In from the Start",
                             "Business Analysis — Overview, Role, and Value",
                             "Needs Assessment — Defining the Real Business Problem",
                             "Stakeholder Engagement in Business Analysis",
