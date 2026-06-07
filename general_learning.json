@@ -6128,7 +6128,307 @@
       "Applying elicitation techniques in Agile teams"
     ],
     "exam_tips": "Think practical: how to gather, analyze, and validate requirements with stakeholders. Strong link to communication and People domain."
+  },
+  
+{
+  "id": "PM-LEADERSHIP-STYLES-002",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "General leadership and interpersonal skills",
+  "title": "Team Development & Performance",
+  "approach": "BOTH",
+  "summary": "Team development focuses on building high-performing teams through trust, collaboration, motivation, and effective role alignment.",
+  "key_concepts": [
+    "Teams evolve over time",
+    "Motivation drives performance",
+    "Clear roles and alignment are critical",
+    "Different models explain team behavior and structure"
+  ],
+  "details": {
+    "tuckman_model": {
+      "definition": "Describes team development stages over time.",
+      "characteristics": [
+        "Forming – team is newly created",
+        "Storming – conflict arises",
+        "Norming – collaboration improves",
+        "Performing – high productivity",
+        "Adjourning – team disbands"
+      ]
+    },
+
+    "belbin_team_roles": {
+      "definition": "Defines different roles individuals play in a team.",
+      "characteristics": [
+        "Plant – creative problem solver",
+        "Shaper – drives progress and challenges team",
+        "Coordinator – organizes and aligns team",
+        "Implementer – turns ideas into action",
+        "Completer-Finisher – ensures quality and detail",
+        "Resource Investigator – explores external opportunities",
+        "Teamworker – builds relationships and harmony",
+        "Monitor Evaluator – analyzes decisions objectively",
+        "Specialist – provides expert knowledge"
+      ]
+    },
+
+    "high_performing_team": {
+      "definition": "Characteristics of effective, high-performing teams.",
+      "characteristics": [
+        "Clear goals and shared vision",
+        "Strong trust among team members",
+        "Open communication",
+        "High accountability",
+        "Continuous improvement mindset"
+      ]
+    },
+
+    "motivation_theories": {
+      "definition": "Theories explaining what drives team motivation.",
+      "characteristics": [
+        "Maslow’s Hierarchy – needs progress from basic to self-actualization",
+        "Herzberg Theory – hygiene factors vs motivators",
+        "McGregor Theory X – people need control",
+        "McGregor Theory Y – people are self-motivated (preferred in PMP)",
+        "David McClellan's Theory Z"
+      ]
+    },
+
+    "maslow_hierarchy": {
+      "definition": "People are motivated by a hierarchy of needs.",
+      "characteristics": [
+        "Physiological – basic survival needs",
+        "Safety – job security",
+        "Social – belonging and relationships",
+        "Esteem – recognition and respect",
+        "Self-actualization – personal growth"
+      ]
+    },
+
+    "herzberg_theory": {
+      "definition": "Two-factor theory of motivation and satisfaction.",
+      "characteristics": [
+        "Hygiene factors – salary, work conditions (prevent dissatisfaction)",
+        "Motivators – recognition, achievement (create satisfaction)"
+      ]
+    },
+
+    "mcgregor_theory": {
+      "definition": "Two management assumptions about people.",
+      "characteristics": [
+        "Theory X – People avoid work, require control, higher level usually top down, micro manage, not trusted",
+        "Theory Y – People are motivated and responsible (preferred)",
+        "Theory Z (by Abraham Maslow) – Individuals are motivated by self-realization, values, and a higher calling. The optimal management style in this situation is one that cultivates insight and meaning.",
+        "Theory Z (by William Ouchi's) – Motivating employees by creating a job focusing on the well-being of employees and their families. This style of management seeks to promote high productivity, morale, and satisfaction."
+      ]
+    },
+    "David McClellan's Theories of Needs": {
+      "definition": "All people are driven by needs of achievement, power, and affiliation.",
+      "characteristics": [
+        "Achievement:  People who are motivated by achievement, such as reaching a goal, are motivated by activities and work that is challenging, but reasonable.",
+        "Power: People who are motivated by power, such as influence and control, are motivated by activities and work that allows them to lead and make decisions.They are motivated by increased responsibility",
+        "Affiliation:  People who are motivated by affiliation, such as social connections and acceptance, are motivated by activities and work that allows them to interact with others and build relationships."
+      ]
+    },
+      "drexler_sibbet_model": {
+      "definition": "Focuses on team performance through alignment, clarity, and execution readiness.",
+      "characteristics": [
+        "Orientation – Why we gather as a team, whats the project goal and members' goal",
+        "Trust Building – Get to know each other and build trust",
+        "Goal Clarification – Vision, goal and objectives are clear and shared",
+        "Commitment – Plans are made, resources are allocated, schedules are established",
+        "Implementation – Executing plan, following process and making adjustments",
+        "High Performance – High performance team is operating at its best",
+        "Renewal – Continue or change the team, celebrate success and learn from experience"
+      ]
+    },
+      
+    "change_management_adkar": {
+    "definition": "A model describing how individuals transition through change.",
+    "characteristics": [
+      "Awareness – understanding why change is needed",
+      "Desire – willingness to support change",
+      "Knowledge – knowing how to change",
+      "Ability –  knowledge is supported with hands-on practice and access to expertise and help as needed",
+      "Reinforcement – sustaining the change. This can include rewards, recognition, feedback, and measurement."
+    ]
+  },
+  
+  "oscar_coaching_model": {
+    "definition": "A coaching framework used to improve team performance and problem-solving.",
+    "characteristics": [
+      "Outcome – define the desired result",
+      "Situation – understand current state",
+      "Choices / Consequences – explore options",
+      "Actions – define steps to take",
+      "Review – evaluate progress"
+    ]
+    },
+    
+  "stacey_matrix": {
+    "definition": "A framework used to determine project complexity based on requirement clarity and solution clarity.",
+    "characteristics": [
+      "Evaluates uncertainty in requirements and technology",
+      "Helps choose appropriate project management approach",
+      "Bridges Predictive and Agile decision-making"
+    ],
+    "zones": {
+      "simple": {
+        "description": "Requirements and solutions are well-defined.",
+        "approach": "Predictive",
+        "team_style": "Process-driven execution"
+      },
+      "complicated": {
+        "description": "Requirements are clear but require expert knowledge.",
+        "approach": "Predictive with expert input",
+        "team_style": "Expert-led decision-making"
+      },
+      "complex": {
+        "description": "Requirements and solutions are unclear and evolving.",
+        "approach": "Agile",
+        "team_style": "Collaborative and adaptive"
+      },
+      "chaos": {
+        "description": "No clarity in requirements or solution.",
+        "approach": "Act first, then stabilize",
+        "team_style": "Directive leadership required"
+      }
+      }
+  },
+    "model_comparison": {
+      "definition": "Differences between Tuckman and Drexler-Sibbet models.",
+      "characteristics": [
+        "Tuckman focuses on emotional/behavioral stages",
+        "Drexler-Sibbet focuses on alignment and execution clarity",
+        "Tuckman explains conflict evolution",
+        "Drexler-Sibbet explains performance readiness",
+        "Both models are complementary in practice"
+      ],
+       "example": [
+    "Using Tuckman to identify team conflict phase",
+    "Using Drexler-Sibbet to clarify roles and alignment",
+    "Assigning roles based on Belbin strengths",
+    "Improving motivation using Herzberg principles"
+  ]
   }
+  },
+  "methods_tools": [
+    "Team Assessment",
+    "Workshops",
+    "Coaching",
+    "Feedback Sessions"
+  ],
+  "exam_tips": "Tuckman explains team behavior stages. Drexler-Sibbet focuses on alignment and performance. Use Theory Y and collaboration to build high-performing teams."
+},
+
+{
+  "id": "PM-LEADERSHIP-STYLES-002",
+  "type": "concept",
+  "certification": "PMP/CAPM",
+  "domain": "General leadership and interpersonal skills",
+  "title": "Conflict Management & Negotiation",
+  "approach": "BOTH",
+  "summary": "Conflict is inevitable in projects. Effective conflict management focuses on resolving issues constructively while maintaining team relationships and achieving project goals.",
+  "key_concepts": [
+    "Conflict is natural and can be beneficial",
+    "Focus on problem, not people",
+    "Collaboration is the most effective technique",
+    "Conflict should be resolved early"
+  ],
+  "details": {
+
+    "conflict_sources": {
+      "definition": "Common causes of conflict in projects.",
+      "characteristics": [
+        "Scarce resources",
+        "Schedule conflicts (deadlines)",
+        "Resource constraints",
+        "Technical disagreements",
+        "Priorities mismatch",
+        "Personality differences",
+        "Communication issues"
+      ]
+    },
+
+    "conflict_levels": {
+      "definition": "Different levels at which conflict can occur.",
+      "characteristics": [
+        "Task conflict – related to work or deliverables (can be positive)",
+        "Process conflict – related to how work is done",
+        "Relationship conflict – personal issues (negative, must be minimized)"
+      ]
+    },
+
+    "resolution_techniques": {
+      "definition": " Thomas Kilmann Model Techniques used to resolve conflict situations.",
+      "characteristics": [
+        "Collaborate / Problem Solve – win-win (best approach)",
+        "Compromise / Reconcile – partial win-win",
+        "Accommodate / Smooth – give in to others (preserve relationship)",
+        "Force / Direct / Compete – impose decision (use only if necessary)",
+        "Avoid / Withdraw – delay resolution (temporary)"
+      ]
+    },
+
+    "when_to_use_techniques": {
+      "definition": "Guidance on selecting appropriate conflict resolution techniques.",
+      "characteristics": [
+        "Collaborate → when both sides need long-term solution",
+        "Compromise → when time is limited",
+        "Accommodate → when relationship is more important",
+        "Force → during crisis or urgent decisions",
+        "Avoid → when issue is minor or cooling-off period needed"
+      ]
+    },
+
+    "negotiation": {
+      "definition": "Process of reaching agreement between parties.",
+      "Type of negotiation result": [
+        "Win-win (preferred approach): Optimal outcome, where each person is satisfied with the outcome.",
+        "Win-lose/lose-win: One party wins at the expense of the other.",
+        "Lose-lose: Competition overwhelms collaboration so both parties lose."
+      ],
+        "Character of win-win perspective": [
+        "(1) Character:  The parties involved are mature, demonstrate integrity, and share the perspective that there is enough value for everybody",
+        "(2) Trust: The parties trust each other.",
+        "(3) Approach: Each party is willing to look at the situation from the other's viewpoint and work together to identify key issues and concerns"
+      ]
+    },
+
+    "communication_role": {
+      "definition": "Communication plays a central role in conflict resolution.",
+      "characteristics": [
+        "Active listening is critical",
+        "Clarify misunderstandings",
+        "Encourage open discussion",
+        "Use neutral and respectful language"
+      ]
+    },
+
+    "pm_role": {
+      "definition": "Role of Project Manager in conflict situations.",
+      "characteristics": [
+        "Act as facilitator, not dictator",
+        "Identify root cause of conflict",
+        "Encourage collaboration",
+        "Escalate only when necessary"
+      ],
+    "example": [
+    "Two team members disagree on technical approach → PM facilitates discussion (collaboration)",
+    "Resource conflict between departments → PM negotiates priorities",
+    "Urgent deadline → PM uses directive decision (force)",
+    "Minor disagreement → PM allows cooling-off period (avoid temporarily)"
+  ]
+  }
+  },
+  "methods_tools": [
+    "Conflict Resolution Frameworks",
+    "Active Listening",
+    "Negotiation Techniques",
+    "Mediation",
+    "Facilitation"
+  ],
+  "exam_tips": "Collaboration (problem-solving) is the best approach in most PMP questions. Avoid forcing or escalation unless necessary. Always address conflict early and focus on root cause, not symptoms."
+}
 ]
 
 

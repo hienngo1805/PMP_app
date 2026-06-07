@@ -282,7 +282,7 @@ st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 KEEP_UPPER = [
     "BA", "PM", "PO", "SME", "EEFs", "OPAs", "RTM", "QA", "IT", "SWOT", "MoSCoW", 
     "WBS", "UAT", "KPI", "KPIS", "CRM", "ROI", "NPV", "SLA", "SLAS", "SAAS", 
-    "PERT", "EVM", "PV", "EV", "AC", "BAC", "EAC", "ETC", "VAC", "CCB", "HR", "UX","WSJF","PMO","PMI", "RACI", "RASIC", "RFQ","RFP","SOW"
+    "PERT", "EVM", "PV", "EV", "AC", "BAC", "EAC", "ETC", "VAC", "CCB", "HR", "UX","WSJF","PMO","PMI", "RACI", "RASIC", "RFQ","RFP","SOW","OSCAR","ADKAR","Drexler/Sibbet","Tuckman","Theory Y","McGregor"
 ]
 
 def format_text(text):
@@ -908,7 +908,9 @@ if menu_choice == "📚 Knowledge Hub":
                             "Solution Evaluation — Assessing Whether the Solution Delivers Value",
                             "Product Roadmap and Backlog in BA Context",
                             "Business Analysis Communication — Adapting to Different Audiences",
-                            "BA Tools and Techniques Reference Guide"
+                            "BA Tools and Techniques Reference Guide",
+                            "Team Development & Performance",
+                            "Conflict Management & Negotiation"
                         ]
                         # So khớp thông minh không phân biệt hoa thường
                         use_tabs = any(concept.get("title", "").strip().lower() == t.strip().lower() for t in tab_titles)

@@ -4447,6 +4447,24 @@
       "definition": "The uncontrolled expansion to product or project scope without adjustments to time, cost, and resources"
     },
     {
+      "id": "GLS-HOPE-CREEP",
+      "term": "Hope Creep",
+      "category": "Schedule",
+      "definition": "The team member fails behind the schedule but reports that they are on schedule, hoping to catch up later, which can lead to a project being late without the team or stakeholders realizing it until it is too late to take corrective action"
+    },
+    {
+      "id": "GLS-EFFORT-CREEP",
+      "term": "Effort Creep",
+      "category": "Resource",
+      "definition": "The team member's work is not making progress proportional to the effort expended, which can lead to a project being late without the team or stakeholders realizing it until it is too late to take corrective action"
+    },
+    {
+      "id": "GLS-FEATURE-CREEP",
+      "term": "Feature Creep",
+      "category": "Scope",
+      "definition": "The team member arbitrarily adds features to the product without considering the impact to time, cost, and resources, which can lead to a project being late without the team or stakeholders realizing it until it is too late to take corrective action"
+    },
+    {
       "id": "GLS-SCOPE-MANAGEMENT-PLAN",
       "term": "Scope Management Plan",
       "category": "Scope",
