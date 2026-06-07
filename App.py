@@ -277,70 +277,196 @@ with st.sidebar:
 st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 
 # ==========================================================
+# 📋 CẤU HÌNH TỪ VIẾT TẮT CHUYÊN NGÀNH CẦN BẢO VỆ VIẾT HOA
+# ==========================================================
+KEEP_UPPER = [
+    "BA", "PM", "PO", "SME", "EEFs", "OPAs", "RTM", "QA", "IT", "SWOT", "MoSCoW", 
+    "WBS", "UAT", "KPI", "KPIS", "CRM", "ROI", "NPV", "SLA", "SLAS", "SAAS", 
+    "PERT", "EVM", "PV", "EV", "AC", "BAC", "EAC", "ETC", "VAC", "CCB", "HR", "UX","WSJF","PMO","PMI", "RACI", "RASIC", "RFQ","RFP","SOW"
+]
+
+def format_text(text):
+    """Xử lý văn bản: Viết hoa chữ cái đầu tiên của dòng, giữ nguyên từ khóa chuyên ngành."""
+    if not text or not isinstance(text, str):
+        return text
+    words = text.split()
+    if not words:
+        return text
+    
+    formatted_words = []
+    for i, word in enumerate(words):
+        # Loại bỏ các dấu câu bọc quanh từ để kiểm tra trong danh sách viết tắt
+        clean_word = word.strip(".,;:!?()\"'`[]{}*-")
+        if clean_word.upper() in KEEP_UPPER:
+            upper_clean = clean_word.upper()
+            # Xử lý trường hợp đặc biệt viết thường xen kẽ (ví dụ: SaaS)
+            if upper_clean == "SAAS":
+                upper_clean = "SaaS"
+            formatted_word = word.replace(clean_word, upper_clean)
+            formatted_words.append(formatted_word)
+        elif i == 0:
+            # Viết hoa chữ cái đầu tiên khả dụng trong từ đầu tiên của dòng
+            first_letter_idx = -1
+            for idx, char in enumerate(word):
+                if char.isalpha():
+                    first_letter_idx = idx
+                    break
+            if first_letter_idx != -1:
+                capitalized = word[:first_letter_idx] + word[first_letter_idx].upper() + word[first_letter_idx+1:]
+                formatted_words.append(capitalized)
+            else:
+                formatted_words.append(word.capitalize())
+        else:
+            formatted_words.append(word)
+            
+    return " ".join(formatted_words)
+
+def render_list_item(item, has_icon=False):
+    """Hiển thị mục danh sách: Tự động bỏ chấm tròn đầu dòng nếu có icon."""
+    if isinstance(item, str):
+        formatted = format_text(item)
+        if has_icon:
+            st.markdown(f"{formatted}")
+        else:
+            st.markdown(f"• {formatted}")
+    else:
+        st.write(item)
+
+def display_content_section(title, data_list, use_icons=False):
+    """Hàm chuẩn hiển thị danh sách cho Inputs, Outputs, Tools & Techniques."""
+    if data_list:
+        st.markdown(f"**{title}**")
+        for item in data_list:
+            render_list_item(item, has_icon=use_icons)
+
+# ==========================================================
 # 🛡️ HÀM TRỢ GIÚP KẾT XUẤT DỮ LIỆU ĐỘNG (SMART DETAIL RENDERER)
 # ==========================================================
+def render_nested_data(val, indent_level=1):
+    """Hàm đệ quy thông minh giúp bóc tách mọi kiểu list/dict lồng nhau ở bất kỳ cấp độ nào, tránh in thô."""
+    indent = "&nbsp;&nbsp;&nbsp;&nbsp;" * indent_level
+    if isinstance(val, dict):
+        # 1. Phát hiện và format các cặp key đặc thù
+        if any(k in val for k in ["stated", "real_need", "ba_response"]):
+            item_lines = []
+            if "stated" in val:
+                item_lines.append(f"🗣️ **Stated**: {format_text(val['stated'])}")
+            if "real_need" in val:
+                item_lines.append(f"🎯 **Real Need**: {format_text(val['real_need'])}")
+            if "ba_response" in val:
+                item_lines.append(f"🧠 **BA Response**: {format_text(val['ba_response'])}")
+            for line in item_lines:
+                st.markdown(f"{indent}{line}")
+            return
+            
+        if "left" in val and "right" in val:
+            st.markdown(f"{indent}👉 **{format_text(val['left'])}** over *{format_text(val['right'])}*")
+            return
+            
+        icon_map = {
+            "stated": "🗣️ Stated", "real_need": "🎯 Real Need", "ba_response": "🧠 BA Response",
+            "left": "👈 Left", "right": "👉 Right", "step": "👟 Step",
+            "definition": "📖 Definition", "description": "📝 Description",
+            "purpose": "🎯 Purpose", "focus": "🎯 Focus", "area": "🗂️ Area",
+            "creator": "👤 Creator", "PM role": "👔 PM Role", "pm_application": "📋 PM Application",
+            "symptom": "⚠️ Symptom", "type": "🏷️ Type", "quadrant": "📊 Quadrant",
+            "strategy": "🎯 Strategy", "engagement": "🤝 Engagement", "example": "💡 Example",
+            "examples": "💡 Examples", "attitude": "🎭 Attitude", "technique": "🛠️ Technique",
+            "key_output": "📤 Key Output", "group": "🔄 Group"
+        }
+        
+        for k, v in val.items():
+            label = icon_map.get(k, k.replace('_', ' '))
+            bullet = "" if k in icon_map else "• "
+            
+            if isinstance(v, (dict, list)):
+                st.markdown(f"{indent}{bullet}**{format_text(label)}**:")
+                render_nested_data(v, indent_level + 1)
+            else:
+                st.markdown(f"{indent}{bullet}**{format_text(label)}**: {format_text(str(v)) if isinstance(v, str) else v}")
+                
+    elif isinstance(val, list):
+        for elem in val:
+            if isinstance(elem, (dict, list)):
+                render_nested_data(elem, indent_level)
+            else:
+                st.markdown(f"{indent}• {format_text(str(elem)) if isinstance(elem, str) else elem}")
+    else:
+        st.markdown(f"{indent}{format_text(str(val)) if isinstance(val, str) else val}")
+
+
 def render_dict_item(item):
     """Tự động phân tích và format đẹp mắt mọi kiểu phần tử dictionary lồng nhau trong mảng, tránh in thô."""
     if not isinstance(item, dict):
-        st.markdown(f"• {item}")
+        render_list_item(str(item), has_icon=False)
         return
 
-    # 1. Phát hiện và format cặp key đặc thù (Stated / Real Need / BA Response)
-    if any(k in item for k in ["stated", "real_need", "ba_response"]):
-        item_lines = []
-        if "stated" in item:
-            item_lines.append(f"🗣️ **Stated**: {item['stated']}")
-        if "real_need" in item:
-            item_lines.append(f"🎯 **Real Need**: {item['real_need']}")
-        if "ba_response" in item:
-            item_lines.append(f"🧠 **BA Response**: {item['ba_response']}")
-        # In ra dòng đầu tiên kèm chấm tròn, các dòng tiếp theo thụt lề gạch đầu dòng phụ
-        st.markdown("  \n".join([f"• {line}" if idx == 0 else f"&nbsp;&nbsp;&nbsp;&nbsp;{line}" for idx, line in enumerate(item_lines)]))
-        return
+    # 1. Định nghĩa các cặp icon cho các khóa thông dụng để hiển thị chuyên nghiệp
+    icon_map = {
+        "stated": "🗣️ Stated",
+        "real_need": "🎯 Real Need",
+        "ba_response": "🧠 BA Response",
+        "left": "👈 Left",
+        "right": "👉 Right",
+        "step": "👟 Step",
+        "definition": "📖 Definition",
+        "description": "📝 Description",
+        "purpose": "🎯 Purpose",
+        "focus": "🎯 Focus",
+        "area": "🗂️ Area",
+        "creator": "👤 Creator",
+        "PM role": "👔 PM Role",
+        "pm_application": "📋 PM Application",
+        "symptom": "⚠️ Symptom",
+        "type": "🏷️ Type",
+        "quadrant": "📊 Quadrant",
+        "strategy": "🎯 Strategy",
+        "engagement": "🤝 Engagement",
+        "example": "💡 Example",
+        "examples": "💡 Examples",
+        "attitude": "🎭 Attitude",
+        "technique": "🛠️ Technique",
+        "key_output": "📤 Key Output",
+        "group": "🔄 Group"
+    }
 
-    # 2. Phát hiện và format Agile Values (left / right)
+    # 2. Phát hiện và format Agile Values (left / right) - BỎ dấu chấm tròn đầu dòng vì đã có icon 👉
     if "left" in item and "right" in item:
-        st.markdown(f"• 👉 **{item['left']}** over *{item['right']}*")
+        st.markdown(f"👉 **{format_text(item['left'])}** over *{format_text(item['right'])}*")
         return
 
-    # 3. Phát hiện các trường định danh thông dụng (name / section / title / statement)
-    item_name = (
-        item.get("name") or 
-        item.get("section") or 
-        item.get("title") or 
-        item.get("statement") or
-        item.get("header") or
-        item.get("value")
-    )
-    item_desc = (
-        item.get("purpose") or 
-        item.get("description") or 
-        item.get("definition") or
-        item.get("text") or
-        ""
-    )
-
-    # 4. Trình phân giải thông minh dự phòng cho mọi dictionary có cấu trúc tùy biến khác
-    if not item_name:
-        kv_pairs = []
+    # 3. Trích xuất thuộc tính chính để làm tiêu đề nếu có
+    main_key = next((k for k in ["name", "section", "title", "step", "type", "attitude", "dimension", "area"] if k in item), None)
+    
+    if main_key:
+        title_val = item[main_key]
+        st.markdown(f"**• {format_text(str(title_val))}**")
+        indent = "&nbsp;&nbsp;&nbsp;&nbsp;"
         for k, v in item.items():
-            if isinstance(v, list):
-                # Bóc tách list bên trong dict
-                li_str = ", ".join([str(x) for x in v])
-                kv_pairs.append(f"**{k.replace('_', ' ').title()}**: [{li_str}]")
+            if k == main_key:
+                continue
+            has_icon = k in icon_map
+            label = icon_map.get(k, k.replace('_', ' '))
+            bullet = "" if has_icon else "- "
+            
+            if isinstance(v, (dict, list)):
+                st.markdown(f"{indent}{bullet}**{format_text(label)}**:")
+                render_nested_data(v, indent_level=2)
             else:
-                kv_pairs.append(f"**{k.replace('_', ' ').title()}**: {v}")
-        if kv_pairs:
-            st.markdown(f"• " + " | ".join(kv_pairs))
+                st.markdown(f"{indent}{bullet}**{format_text(label)}**: {format_text(str(v)) if isinstance(v, str) else v}")
+        return
+
+    # 4. Trình phân giải chung cho mọi dictionary không có khóa chính chuẩn
+    for k, v in item.items():
+        has_icon = k in icon_map
+        label = icon_map.get(k, k.replace('_', ' '))
+        bullet = "" if has_icon else "• "
+        
+        if isinstance(v, (dict, list)):
+            st.markdown(f"{bullet}**{format_text(label)}**:")
+            render_nested_data(v, indent_level=1)
         else:
-            st.write(item)
-    else:
-        st.markdown(f"**• {item_name}**")
-        if item_desc:
-            st.markdown(f"  * *{item_desc}*")
-        if "key_focus" in item and isinstance(item["key_focus"], list):
-            for kf in item["key_focus"]:
-                st.markdown(f"    - {kf}")
+            st.markdown(f"{bullet}**{format_text(label)}**: {format_text(str(v)) if isinstance(v, str) else v}")
 
 
 def render_sub_data(sub_data):
@@ -349,7 +475,7 @@ def render_sub_data(sub_data):
         # 1. Định nghĩa chính
         for def_key in ["definition", "description"]:
             if def_key in sub_data:
-                st.markdown(f"*{sub_data[def_key]}*")
+                st.markdown(f"*{format_text(sub_data[def_key])}*")
 
         # 2. Đặc trưng (Characteristics)
         if "characteristics" in sub_data:
@@ -361,21 +487,21 @@ def render_sub_data(sub_data):
             elif isinstance(chars, dict):
                 for k, v in chars.items():
                     if isinstance(v, list):
-                        st.markdown(f"• **{k.replace('_', ' ').capitalize()}**:")
+                        st.markdown(f"• **{format_text(k.replace('_', ' '))}**:")
                         for li in v:
-                            st.markdown(f"  - {li}")
+                            st.markdown(f"  - {format_text(str(li))}")
                     else:
-                        st.markdown(f"• **{k.replace('_', ' ').capitalize()}**: {v}")
+                        st.markdown(f"• **{format_text(k.replace('_', ' '))}**: {format_text(str(v)) if isinstance(v, str) else v}")
             elif isinstance(chars, str):
                 for line in chars.replace("\r\n", "\n").split("\n"):
                     if line.strip():
-                        st.markdown(f"• {line.strip()}")
+                        st.markdown(f"• {format_text(line.strip())}")
 
         # 3. Hỗ trợ đặc thù Agile (Iterative & Incremental Characteristics)
         for spec_char_key in ["iterative_characteristics", "incremental_characteristics"]:
             if spec_char_key in sub_data:
-                title_clean = spec_char_key.replace("_", " ").title()
-                st.markdown(f"**{title_clean}:**")
+                title_clean = spec_char_key.replace("_", " ")
+                st.markdown(f"**{format_text(title_clean)}:**")
                 spec_val = sub_data[spec_char_key]
                 if isinstance(spec_val, list):
                     for item in spec_val:
@@ -383,45 +509,45 @@ def render_sub_data(sub_data):
                 elif isinstance(spec_val, str):
                     for line in spec_val.replace("\r\n", "\n").split("\n"):
                         if line.strip():
-                            st.markdown(f"• {line.strip()}")
+                            st.markdown(f"• {format_text(line.strip())}")
 
         # 4. Các danh sách tiêu chuẩn khác (phases, impact, risks_associated, conditions, sections, rules)
         for list_key in ["phases", "impact", "risks_associated", "conditions", "sections", "rules"]:
             if list_key in sub_data:
-                title_clean = list_key.replace("_", " ").title()
-                st.markdown(f"**{title_clean}:**")
+                title_clean = list_key.replace("_", " ")
+                st.markdown(f"**{format_text(title_clean)}:**")
                 list_val = sub_data[list_key]
                 if isinstance(list_val, list):
                     for item in list_val:
                         render_dict_item(item)
                 elif isinstance(list_val, str):
-                    st.markdown(f"• {list_val}")
+                    st.markdown(f"• {format_text(list_val)}")
 
-        # 5. CÁC LOẠI VÍ DỤ CHUYÊN SÂU (BỔ SUNG UNPACK DANH SÁCH LỒNG DICT VÀ GIẢI QUYẾT TRIỆT ĐỂ LỖI STRING LIST TRONG EEFs/OPAs)
+        # 5. CÁC LOẠI VÍ DỤ CHUYÊN SÂU
         for ex_key in ["internal_examples", "external_examples", "examples", "example", "iterative_examples", "incremental_examples"]:
             if ex_key in sub_data:
-                title_clean = ex_key.replace("_", " ").title()
-                st.markdown(f"**{title_clean}:**")
+                title_clean = ex_key.replace("_", " ")
+                st.markdown(f"**{format_text(title_clean)}:**")
                 ex_val = sub_data[ex_key]
                 if isinstance(ex_val, list):
                     for item in ex_val:
                         render_dict_item(item)
                 elif isinstance(ex_val, dict):
                     for group_name, group_list in ex_val.items():
-                        st.markdown(f"  * **{group_name.replace('_', ' ').title()}:**")
+                        st.markdown(f"  * **{format_text(group_name.replace('_', ' '))}:**")
                         if isinstance(group_list, list):
                             for item in group_list:
-                                st.markdown(f"    • {item}")
-                            else:
-                                st.markdown(f"    • {group_list}")
+                                st.markdown(f"    • {format_text(str(item))}")
+                        else:
+                            st.markdown(f"    • {format_text(str(group_list))}")
                 elif isinstance(ex_val, str):
-                    st.markdown(f"• {ex_val}")
+                    st.markdown(f"• {format_text(ex_val)}")
 
         # 6. Phù hợp nhất cho (Best For)
         if "best_for" in sub_data:
-            st.success(f"🎯 **Best for:** {sub_data['best_for']}")
+            st.success(f"🎯 **Best for:** {format_text(sub_data['best_for'])}")
 
-        # 7. Fallback thông minh cho các Custom Key khác (Ngăn hiển thị raw string list của Behaviors, Stakeholders)
+        # 7. Fallback thông minh cho các Custom Key khác
         processed_keys = [
             "definition", "description", "characteristics", "phases", "impact", 
             "risks_associated", "internal_examples", "external_examples", 
@@ -432,31 +558,20 @@ def render_sub_data(sub_data):
         if other_keys:
             st.write("")
             for k in other_keys:
-                k_clean = k.replace("_", " ").title()
+                k_clean = k.replace("_", " ")
                 val = sub_data[k]
-                if isinstance(val, list):
-                    st.markdown(f"**{k_clean}:**")
-                    for item in val:
-                        render_dict_item(item)
-                elif isinstance(val, dict):
-                    st.markdown(f"**{k_clean}:**")
-                    for sk, sv in val.items():
-                        if isinstance(sv, list):
-                            st.markdown(f"  * **{sk.replace('_', ' ').title()}:**")
-                            for item in sv:
-                                st.markdown(f"    - {item}")
-                        else:
-                            st.markdown(f"  * **{sk.replace('_', ' ').title()}**: {sv}")
+                if isinstance(val, (dict, list)):
+                    st.markdown(f"**{format_text(k_clean)}**:")
+                    render_nested_data(val, indent_level=1)
                 else:
-                    st.markdown(f"**{k_clean}**: {val}")
+                    st.markdown(f"**{format_text(k_clean)}**: {format_text(str(val)) if isinstance(val, str) else val}")
                     
     elif isinstance(sub_data, list):
         st.write("")
         for item in sub_data:
             render_dict_item(item)
     elif isinstance(sub_data, str):
-        st.write(sub_data)
-
+        st.write(format_text(sub_data))
 
 # ==========================================================
 # 🖥️ PHẦN 1.2: ĐIỀU HƯỚNG HIỂN THỊ NỘI DUNG CHÍNH (MAIN BODY MAIN LOOP)
@@ -726,7 +841,6 @@ if menu_choice == "📚 Knowledge Hub":
                     if not domain_concepts:
                         st.info("No content found for this general learning domain.")
                     else:
-                        # TRÁNH SCROLL CHUỘT NHIỀU: Tạo Dropdown liệt kê tất cả các bài học trong Domain hiện tại
                         concept_titles = [c.get("title", "Untitled Concept") for c in domain_concepts]
                         
                         selected_concept_title = st.selectbox(
@@ -737,10 +851,8 @@ if menu_choice == "📚 Knowledge Hub":
                         
                         st.markdown("---")
                         
-                        # Lấy đúng concept được chọn để hiển thị nội dung
                         concept = next((c for c in domain_concepts if c.get("title") == selected_concept_title), domain_concepts[0])
                         
-                        # 1. Hiển thị Card Tổng quan khái niệm (Có Badge Approach đồng bộ)
                         raw_approach = str(concept.get('approach', '')).upper().strip()
                         color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
                         approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
@@ -748,28 +860,24 @@ if menu_choice == "📚 Knowledge Hub":
                         st.markdown(f"""
                             <div class="task-card" style="margin-bottom: 20px;">
                                 <div style="font-weight: bold; font-size: 1.4em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                                    <span>📘 {concept.get('title', 'Untitled Concept')}</span>
+                                    <span>📘 {format_text(concept.get('title', 'Untitled Concept'))}</span>
                                     {approach_badge_html}
                                 </div>
                                 <div style="font-size: 1.1em; line-height: 1.6; font-style: italic; opacity: 0.85;">
-                                    {concept.get('summary', 'No summary available.')}
+                                    {format_text(concept.get('summary', 'No summary available.'))}
                                 </div>
                             </div>
                         """, unsafe_allow_html=True)
                         
-                        # 2. Key Concepts (Sử dụng Expander bọc lại để tiết kiệm diện tích)
                         if concept.get("key_concepts"):
                             with st.expander("📌 Key Concepts Summary", expanded=True):
                                 for kc in concept.get("key_concepts", []):
-                                    st.markdown(f"- {kc}")
+                                    st.markdown(f"- {format_text(kc)}")
 
-                        # 🛠️ KHÓA AN TOÀN CHỐNG LỖI CRASH TRONG DETAILS:
-                        # Đảm bảo details luôn là một dict hợp lệ (rỗng {} thay vì None) để phòng ngừa TypeError/NameError
                         details = concept.get("details", {})
                         if details is None:
                             details = {}
 
-                        # 3. Định nghĩa các cờ kiểm soát thủ công để chia Tab (Predictive / General / Fundamentals)
                         tab_titles = [
                             "Project vs Program vs Portfolio",
                             "Strategic Dependencies (Project – Program – Portfolio)",
@@ -780,21 +888,30 @@ if menu_choice == "📚 Knowledge Hub":
                             "Leadership Styles in Project Management",
                             "Integration Management (Deep Dive)",
                             "Process Groups Overview",
-                            "Stakeholder Management",
-                            "Risk Management",
-                            "Agile Mindset — The Foundation of All Agile Approaches",
-                            "Scrum Framework — Roles, Events, and Artifacts",
-                            "Kanban — Visualizing Flow and Managing Work-in-Progress",
-                            "Extreme Programming (XP) — Technical Excellence in Agile",
-                            "Agile Planning — From Vision to Iteration",
-                            "Agile Teams — Self-Organization, Cross-Functionality, and High Performance",
-                            "Agile Metrics — Measuring Progress and Performance",
-                            "Scaled Agile — Coordinating Multiple Agile Teams",
-                            "Agile Requirements — User Stories, Epics, and the Product Backlog",
-                            "Agile Quality — Building Quality In from the Start",
-                            "Knowledge Areas Overview"
+                            "Knowledge Areas Overview",
+                            "Business Analysis — Overview, Role, and Value",
+                            "Needs Assessment — Defining the Real Business Problem",
+                            "Stakeholder Engagement in Business Analysis",
+                            "Elicitation — Drawing Out Requirements from Stakeholders",
+                            "Requirements Analysis — Modeling, Validating, and Prioritizing",
+                            "Requirements Traceability — Tracking Requirements Through the Lifecycle",
+                            "Solution Evaluation — Assessing Whether the Solution Delivers Value",
+                            "Product Roadmap and Backlog in BA Context",
+                            "Business Analysis Communication — Adapting to Different Audiences",
+                            "BA Tools and Techniques Reference Guide",
+                            "Business Analysis — Overview, Role, and Value",
+                            "Needs Assessment — Defining the Real Business Problem",
+                            "Stakeholder Engagement in Business Analysis",
+                            "Elicitation — Drawing Out Requirements from Stakeholders",
+                            "Requirements Analysis — Modeling, Validating, and Prioritizing",
+                            "Requirements Traceability — Tracking Requirements Through the Lifecycle",
+                            "Solution Evaluation — Assessing Whether the Solution Delivers Value",
+                            "Product Roadmap and Backlog in BA Context",
+                            "Business Analysis Communication — Adapting to Different Audiences",
+                            "BA Tools and Techniques Reference Guide"
                         ]
-                        use_tabs = concept.get("title") in tab_titles
+                        # So khớp thông minh không phân biệt hoa thường
+                        use_tabs = any(concept.get("title", "").strip().lower() == t.strip().lower() for t in tab_titles)
 
                         # ------------------------------------------------------
                         # XỬ LÝ KHỐI 4.1: NẾU LÀ BÀI TOÁN MA TRẬN TIẾN TRÌNH (type == "matrix" hoặc có key matrix)
@@ -802,8 +919,7 @@ if menu_choice == "📚 Knowledge Hub":
                         if concept.get("type") == "matrix" or "matrix" in concept or concept.get("id") == "PM-49-PROCESSES-MATRIX":
                             matrix_data = concept.get("matrix", {})
                             for group, areas in matrix_data.items():
-                                with st.expander(f"🔹 {group.replace('_', ' ')}", expanded=True):
-                                    # Sử dụng cấu trúc HTML Flexbox Grid cực kỳ chuyên nghiệp và responsive
+                                with st.expander(f"🔹 {format_text(group.replace('_', ' '))}", expanded=True):
                                     html_code = """
                                     <style>
                                     .matrix-grid {
@@ -839,9 +955,9 @@ if menu_choice == "📚 Knowledge Hub":
                                     <div class="matrix-grid">
                                     """
                                     for area, processes in areas.items():
-                                        html_code += f'<div class="matrix-card"><div class="matrix-card-title">{area}</div>'
+                                        html_code += f'<div class="matrix-card"><div class="matrix-card-title">{format_text(area)}</div>'
                                         for p in processes:
-                                            html_code += f'<div class="matrix-process">• {p}</div>'
+                                            html_code += f'<div class="matrix-process">• {format_text(p)}</div>'
                                         html_code += '</div>'
                                     html_code += '</div>'
                                     st.markdown(html_code, unsafe_allow_html=True)
@@ -850,78 +966,71 @@ if menu_choice == "📚 Knowledge Hub":
                         # XỬ LÝ KHỐI 4.2: DẠNG LÝ THUYẾT TRUYỀN THỐNG (Có chứa details hợp lệ)
                         # ------------------------------------------------------
                         elif isinstance(details, dict) and details:
-                            # A. NẾU CẦN DỰNG TABS ĐỂ GOM GỌN NỘI DUNG CHUYÊN SÂU
                             if use_tabs:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
                                 
-                                tab_names = [k.replace('_', ' ').capitalize() for k in details.keys()]
+                                # ĐẢM BẢO VIẾT HOA Chữ cái đầu dòng của các nhãn tab nhưng giữ nguyên từ khóa chuyên ngành
+                                tab_names = [format_text(k.replace('_', ' ')) for k in details.keys()]
                                 inner_tabs = st.tabs(tab_names)
                                 
                                 for idx, key in enumerate(details.keys()):
                                     with inner_tabs[idx]:
                                         sub_data = details[key]
-                                        # Gọi bộ kết xuất dữ liệu động đã được nâng cấp ví dụ
                                         render_sub_data(sub_data)
                             
-                            # B. HIỂN THỊ DẠNG TRUYỀN THỐNG (HIỂN THỊ DỌC ĐỂ CHỮ KHÔNG BỊ ÉP NHỎ)
                             else:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
                                 
-                                # Lặp qua từng phần trong details và in theo khối dọc thay vì dùng cột hẹp
                                 for sub_title, sub_data in details.items():
-                                    st.markdown(f"<div style='border-left: 4px solid #2799C7; padding-left: 15px; margin-top: 20px; margin-bottom: 10px;'><span style='font-size: 1.15em; font-weight: bold; color: #1E3A8A;'>{sub_title.replace('_', ' ').upper()}</span></div>", unsafe_allow_html=True)
-                                    # Gọi bộ kết xuất dữ liệu động, tự động quét và in ra internal/external examples
+                                    st.markdown(f"<div style='border-left: 4px solid #2799C7; padding-left: 15px; margin-top: 20px; margin-bottom: 10px;'><span style='font-size: 1.15em; font-weight: bold; color: #1E3A8A;'>{format_text(sub_title.replace('_', ' ')).upper()}</span></div>", unsafe_allow_html=True)
                                     render_sub_data(sub_data)
 
                         # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL ---
-                        # A. Characteristics cấp cao nhất
                         root_characteristics = concept.get("characteristics")
                         if root_characteristics:
                             with st.expander("📋 Characteristics", expanded=False):
                                 if isinstance(root_characteristics, list):
                                     for char in root_characteristics:
-                                        st.markdown(f"• {char}")
+                                        render_list_item(char)
                                 elif isinstance(root_characteristics, str):
                                     for line in root_characteristics.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                        if line.strip(): render_list_item(line.strip())
 
-                        # B. When To Use cấp cao nhất
                         root_when_to_use = concept.get("when_to_use") or concept.get("when to use")
                         if root_when_to_use:
                             with st.expander("🎯 When to Use & Apply", expanded=False):
                                 if isinstance(root_when_to_use, list):
                                     for item in root_when_to_use:
-                                        st.markdown(f"• {item}")
+                                        render_list_item(item)
                                 elif isinstance(root_when_to_use, str):
                                     for line in root_when_to_use.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                        if line.strip(): render_list_item(line.strip())
                                 elif isinstance(root_when_to_use, dict):
                                     if "description" in root_when_to_use:
-                                        st.markdown(f"*{root_when_to_use['description']}*")
+                                        st.markdown(f"*{format_text(root_when_to_use['description'])}*")
                                     if "conditions" in root_when_to_use and isinstance(root_when_to_use["conditions"], list):
                                         for cond in root_when_to_use["conditions"]:
-                                            st.markdown(f"• {cond}")
+                                            render_list_item(cond)
 
-                        # C. When Not To Use cấp cao nhất
                         root_when_not_to_use = concept.get("when_not_to_use") or concept.get("when not to use")
                         if root_when_not_to_use:
                             with st.expander("⚠️ When NOT to Use", expanded=False):
                                 if isinstance(root_when_not_to_use, list):
                                     for item in root_when_not_to_use:
-                                        st.markdown(f"• {item}")
+                                        render_list_item(item)
                                 elif isinstance(root_when_not_to_use, str):
                                     for line in root_when_not_to_use.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): st.markdown(f"• {line.strip()}")
+                                        if line.strip(): render_list_item(line.strip())
                                 elif isinstance(root_when_not_to_use, dict):
                                     if "description" in root_when_not_to_use:
-                                        st.markdown(f"*{root_when_not_to_use['description']}*")
+                                        st.markdown(f"*{format_text(root_when_not_to_use['description'])}*")
                                     if "conditions" in root_when_not_to_use and isinstance(root_when_not_to_use["conditions"], list):
                                         for cond in root_when_not_to_use["conditions"]:
-                                            st.markdown(f"• {cond}")
+                                            render_list_item(cond)
 
-                        # 3.5. Real-World Examples & Applications (Bậc Root nếu có ví dụ ngoài detail)
+                        # 3.5. Real-World Examples & Applications
                         has_any_example = False
                         details_safe = concept.get("details", {})
                         if isinstance(details_safe, dict):
@@ -937,7 +1046,6 @@ if menu_choice == "📚 Knowledge Hub":
                             has_any_example = True
 
                         if has_any_example:
-                            # Chỉ hiện expander ví dụ bậc Root nếu không sử dụng Tabs
                             if not use_tabs:
                                 root_exs = concept.get("examples") or concept.get("example")
                                 if not root_exs and isinstance(details_safe, dict):
@@ -948,10 +1056,10 @@ if menu_choice == "📚 Knowledge Hub":
                                         st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px;'>", unsafe_allow_html=True)
                                         if isinstance(root_exs, list):
                                             for ex in root_exs:
-                                                st.markdown(f"• {ex}")
+                                                render_list_item(ex)
                                         elif isinstance(root_exs, str):
                                             for line in root_exs.replace("\r\n", "\n").split("\n"):
-                                                if line.strip(): st.markdown(f"• {line.strip()}")
+                                                if line.strip(): render_list_item(line.strip())
                                         st.markdown("</div>", unsafe_allow_html=True)
 
                         # 4. Core Values (PMI Code of Ethics)
@@ -959,16 +1067,16 @@ if menu_choice == "📚 Knowledge Hub":
                         if core_values and isinstance(core_values, list):
                             with st.expander("🛡️ PMI Core Values & Ethical Conduct Guidelines", expanded=False):
                                 for val in core_values:
-                                    st.markdown(f"**⭐ {val.get('name', 'Value')}**: *{val.get('definition', '')}*")
+                                    st.markdown(f"**⭐ {format_text(val.get('name', 'Value'))}**: *{format_text(val.get('definition', ''))}*")
                                     col_v1, col_v2 = st.columns(2)
                                     with col_v1:
                                         st.markdown("**Expected Behaviors:**")
                                         for behavior in val.get("behaviors", []):
-                                            st.markdown(f"✅ {behavior}")
+                                            st.markdown(f"✅ {format_text(behavior)}")
                                     with col_v2:
                                         st.markdown("**PM Application:**")
                                         for app in val.get("pm_application", []):
-                                            st.markdown(f"📋 {app}")
+                                            st.markdown(f"📋 {format_text(app)}")
                                     st.markdown("---")
 
                         # 5. Ethical Scenarios
@@ -978,9 +1086,9 @@ if menu_choice == "📚 Knowledge Hub":
                                 for idx, sc in enumerate(ethical_scenarios):
                                     st.markdown(f"""
                                     <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px; color: #212121;">
-                                        <b>Scenario {idx+1}:</b> {sc.get('scenario', '')}<br>
-                                        ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{sc.get('violation', '')}</span><br>
-                                        ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{sc.get('correct_action', '')}</span>
+                                        <b>Scenario {idx+1}:</b> {format_text(sc.get('scenario', ''))}<br>
+                                        ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{format_text(sc.get('violation', ''))}</span><br>
+                                        ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{format_text(sc.get('correct_action', ''))}</span>
                                     </div>
                                     """, unsafe_allow_html=True)
 
@@ -993,8 +1101,8 @@ if menu_choice == "📚 Knowledge Hub":
                                     with dep_cols[idx]:
                                         st.markdown(f"""
                                         <div style="padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
-                                            <b>{dep.get('type', '')}</b><br>
-                                            <span style="font-size: 0.9em; opacity: 0.8;">{dep.get('description', '')}</span>
+                                            <b>{format_text(dep.get('type', ''))}</b><br>
+                                            <span style="font-size: 0.9em; opacity: 0.8;">{format_text(dep.get('description', ''))}</span>
                                         </div>
                                         """, unsafe_allow_html=True)
 
@@ -1003,29 +1111,19 @@ if menu_choice == "📚 Knowledge Hub":
                             with st.expander("📊 Inputs, Tools & Outputs (ITTOs)", expanded=False):
                                 col_in, col_out, col_mt = st.columns(3)
                                 with col_in:
-                                    if concept.get("inputs"):
-                                        st.markdown("**📥 Inputs:**")
-                                        for inp in concept.get("inputs", []):
-                                            st.markdown(f"- {inp}")
+                                    display_content_section("📥 Inputs:", concept.get("inputs", []), use_icons=False)
                                 with col_out:
-                                    if concept.get("outputs"):
-                                        st.markdown("**📤 Outputs:**")
-                                        for outp in concept.get("outputs", []):
-                                            st.markdown(f"- {outp}")
+                                    display_content_section("📤 Outputs:", concept.get("outputs", []), use_icons=False)
                                 with col_mt:
-                                    if concept.get("methods_tools"):
-                                        st.markdown("**🛠️ Methods & Tools:**")
-                                        for mt in concept.get("methods_tools", []):
-                                            st.markdown(f"- {mt}")
+                                    display_content_section("🛠️ Methods & Tools:", concept.get("methods_tools", []), use_icons=False)
 
                         # 8. Mẹo phòng thi (Exam Tips)
                         if concept.get("exam_tips"):
                             st.markdown(f"""
                                 <div style="background-color: #F5F5F5; color: #333; padding: 12px; border-radius: 8px; margin-top: 15px; font-size:0.95em; border-left: 5px solid #FF9800;">
-                                    💡 <b>Exam Tip:</b> {concept.get('exam_tips', 'N/A')}
+                                    💡 <b>Exam Tip:</b> {format_text(concept.get('exam_tips', 'N/A'))}
                                 </div>
                             """, unsafe_allow_html=True)
-
 
 # ==========================================
 # 📝 PHẦN 3: QUESTION BANK

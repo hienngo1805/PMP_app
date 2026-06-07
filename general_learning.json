@@ -4088,14 +4088,14 @@
     ],
     "details": {
       "definition": "According to the PMI Guide to Business Analysis, business analysis is the application of knowledge, skills, tools, and techniques to determine problems and opportunities, identify business needs, and recommend viable solutions for meeting those needs and for delivering value to stakeholders.",
-      "why_ba_matters": {
+      "why_BA_matters": {
         "the_problem": "The Standish Group Chaos Report consistently shows that a leading cause of project failure is poor requirements — building the wrong thing, building too much, or building without understanding the real need.",
         "statistics": [
           "~39% of projects succeed (on time, budget, scope)",
           "Poor requirements account for a significant portion of failures",
           "Cost of fixing a requirement error in production can be 100x the cost of finding it in requirements phase"
         ],
-        "ba_prevents": [
+        "BA_prevents": [
           "Solving the wrong problem (symptom vs root cause confusion)",
           "Building unnecessary features (gold plating, over-engineering)",
           "Missing stakeholder needs (incomplete elicitation)",
@@ -4103,28 +4103,28 @@
           "Scope creep from poorly defined boundaries"
         ]
       },
-      "ba_roles_in_different_contexts": {
-        "dedicated_ba_role": {
+      "BA_roles_in_different_contexts": {
+        "dedicated_BA_role": {
           "description": "A separate practitioner focused entirely on requirements and business analysis",
           "typical_activities": ["Stakeholder interviews", "Requirements documentation", "Process modeling", "Use case development", "Requirements traceability"],
           "common_in": "Large enterprises, complex system implementations, regulated industries"
         },
-        "pm_performing_ba": {
+        "pm_performing_BA": {
           "description": "Project Manager performing BA activities in addition to project management",
           "common_in": "Small projects, organizations without dedicated BAs",
           "risk": "Conflict of interest — PM may rush requirements to begin execution"
         },
-        "product_owner_as_ba": {
+        "product_owner_as_BA": {
           "description": "In Agile contexts, the Product Owner performs many BA activities",
-          "ba_activities_performed": ["Product Backlog management", "User story creation", "Acceptance criteria definition", "Stakeholder communication"],
+          "BA_activities_performed": ["Product Backlog management", "User story creation", "Acceptance criteria definition", "Stakeholder communication"],
           "common_in": "Scrum teams, agile organizations"
         },
-        "sme_as_ba": {
+        "sme_as_BA": {
           "description": "Subject Matter Experts contributing their domain knowledge to requirements",
           "limitation": "SMEs know the domain but may not know BA techniques — facilitation by a skilled BA improves outcomes"
         }
       },
-      "ba_knowledge_areas_pmi_guide": {
+      "BA_knowledge_areas_pmi_guide": {
         "description": "The PMI Guide to Business Analysis organizes BA work into the following knowledge areas:",
         "areas": [
           {
@@ -4153,7 +4153,7 @@
           }
         ]
       },
-      "ba_in_predictive_vs_agile": {
+      "BA_in_predictive_vs_agile": {
         "predictive": {
           "timing": "Requirements are elicited and documented comprehensively upfront — before development begins",
           "artifacts": ["Business Requirements Document (BRD)", "Functional Specification", "Use Cases", "Requirements Traceability Matrix"],
@@ -4163,7 +4163,7 @@
           "timing": "Requirements are elicited just-in-time, progressively elaborated as the team learns",
           "artifacts": ["Product Backlog", "User Stories", "Acceptance Criteria", "Story Maps"],
           "advantage": "Requirements evolve with customer learning — reduces risk of building the wrong thing",
-          "ba_role": "Product Owner or embedded BA refines backlog continuously"
+          "BA_role": "Product Owner or embedded BA refines backlog continuously"
         },
         "hybrid": {
           "approach": "High-level requirements upfront (themes, epics) + detailed requirements just-in-time per iteration"
@@ -4294,25 +4294,25 @@
           {
             "stated": "'We need a new CRM system'",
             "real_need": "'We need to improve customer retention by tracking all touchpoints consistently'",
-            "ba_response": "Investigate whether a new CRM is the right solution, or whether the current system configured properly would suffice"
+            "BA_response": "Investigate whether a new CRM is the right solution, or whether the current system configured properly would suffice"
           },
           {
             "stated": "'We need to hire 10 more customer service agents'",
             "real_need": "'We need to reduce average handle time so existing agents can service more customers'",
-            "ba_response": "Process analysis revealed 60% of calls were about order status — a self-service portal reduced call volume by 40%, eliminating the need for more agents"
+            "BA_response": "Process analysis revealed 60% of calls were about order status — a self-service portal reduced call volume by 40%, eliminating the need for more agents"
           }
         ]
       },
       "business_case_support": {
         "definition": "The BA supports business case development by quantifying the problem, sizing the opportunity, and providing analysis that justifies the investment",
-        "ba_contributions": [
+        "BA_contributions": [
           "Quantified problem statement (cost of the problem per year)",
           "Multiple solution options with cost/benefit estimates",
           "Recommended solution with justification",
           "Risk assessment",
           "Success metrics"
         ],
-        "ba_does_not": "Make the go/no-go decision — that is the Sponsor/steering committee based on BA's analysis"
+        "BA_does_not": "Make the go/no-go decision — that is the Sponsor/steering committee based on BA's analysis"
       },
       "real_world_example": "An insurance company wants to build a mobile app for claims submission. Before any development, the BA conducts 30 customer interviews and analyzes 6 months of claims data. Findings: 78% of customers submit claims via phone, with 45-minute average call time. The #1 complaint is 'I don't know the status of my claim.' Root cause: no self-service status tracking exists. The BA recommends: (1) SMS status notifications — 4 weeks, $30K. (2) Web portal — 12 weeks, $200K. (3) Native mobile app — 24 weeks, $800K. The business case analysis shows option 1 addresses 80% of complaints at 4% of the cost of option 3. The BA's analysis saves the company $770K."
     },
@@ -4468,7 +4468,7 @@
         ],
         "handling_conflict_between_stakeholders": {
           "common_scenario": "Two department heads have directly conflicting requirements for the same feature",
-          "ba_approach": [
+          "BA_approach": [
             "1. Listen to both perspectives separately to understand underlying interests (not just stated positions)",
             "2. Find if requirements conflict at the feature level but are compatible at the goal level",
             "3. Facilitate a joint session to surface the shared business goal",
@@ -4477,7 +4477,7 @@
           "hippo_problem": {
             "definition": "HiPPO = Highest Paid Person's Opinion. When an executive's preference overrides user research and stakeholder input in requirements decisions.",
             "risk": "Produces solutions that satisfy the executive but not the end users — often fails in adoption",
-            "ba_response": "Use data, user research, and objective analysis to support decisions over pure authority. Present options with trade-offs rather than arguing directly."
+            "BA_response": "Use data, user research, and objective analysis to support decisions over pure authority. Present options with trade-offs rather than arguing directly."
           }
         }
       },
@@ -4647,7 +4647,7 @@
         "brainstorming": {
           "definition": "Facilitated group technique to generate a large volume of ideas rapidly without evaluation",
           "rules": ["No criticism during idea generation", "Quantity over quality initially", "Build on others' ideas", "All ideas are recorded"],
-          "use_in_ba": "Generating solution options; identifying risks; surfacing requirements in early discovery",
+          "use_in_BA": "Generating solution options; identifying risks; surfacing requirements in early discovery",
           "best_for": "Early-stage discovery; creative problem solving; generating options for evaluation"
         },
         "interface_analysis": {
@@ -5184,7 +5184,7 @@
             "Low user adoption rate — training was insufficient",
             "Solution technically works but underlying business process was not changed"
           ],
-          "ba_action": "Document limitations, quantify their impact, and recommend additional interventions"
+          "BA_action": "Document limitations, quantify their impact, and recommend additional interventions"
         }
       },
       "post_implementation_review": {
@@ -5250,9 +5250,9 @@
       "Definition of Ready: criteria a story must meet before entering a Sprint"
     ],
     "details": {
-      "product_roadmap_in_ba": {
+      "product_roadmap_in_BA": {
         "definition": "A high-level visual plan that shows how the product will evolve over time — connecting business strategy to delivery milestones",
-        "purpose_for_ba": [
+        "purpose_for_BA": [
           "Provides context for all elicitation and analysis activities",
           "Enables stakeholders to see where their requirements fit in the overall plan",
           "Facilitates prioritization conversations by showing trade-offs",
@@ -5275,7 +5275,7 @@
             "example": "Q1 Goal: Enable self-service for top 5 customer request types. Q2 Goal: Reduce average handle time by 30%."
           }
         },
-        "ba_activities_for_roadmap": [
+        "BA_activities_for_roadmap": [
           "Facilitate strategy alignment sessions to capture business objectives",
           "Translate objectives into themes and epics",
           "Support prioritization conversations using value/effort/risk analysis",
@@ -5283,8 +5283,8 @@
           "Update roadmap as business priorities shift"
         ]
       },
-      "product_backlog_ba_perspective": {
-        "ba_role_in_backlog_management": [
+      "product_backlog_BA_perspective": {
+        "BA_role_in_backlog_management": [
           "Translate business requirements into user stories",
           "Write clear acceptance criteria for each story",
           "Facilitate backlog refinement sessions",
@@ -5475,7 +5475,7 @@
           "when_each": "Low-fi for early exploration; medium for requirements review; high-fi for UAT preparation"
         }
       },
-      "active_listening_in_ba": {
+      "active_listening_in_BA": {
         "definition": "Fully concentrating on what is being said, understanding the meaning, and responding thoughtfully",
         "techniques": [
           {
@@ -5585,7 +5585,7 @@
           "purpose": "Strategic assessment of Strengths, Weaknesses, Opportunities, Threats",
           "internal": "Strengths (what we do well) and Weaknesses (where we fall short)",
           "external": "Opportunities (market/technology advantages) and Threats (competitive/regulatory risks)",
-          "use_in_ba": "Needs assessment; solution option evaluation; organizational change analysis",
+          "use_in_BA": "Needs assessment; solution option evaluation; organizational change analysis",
           "example": "Evaluating whether to build vs buy a CRM: Strength = IT capability. Weakness = no CRM expertise. Opportunity = market-ready solutions exist. Threat = competitors using AI-powered CRM."
         }
       },
@@ -5593,18 +5593,18 @@
         "swimlane_diagram": {
           "purpose": "Show process steps organized by responsible party (who does what)",
           "structure": "Horizontal or vertical lanes = different roles/systems; steps flow across lanes showing handoffs",
-          "use_in_ba": "As-Is process documentation; To-Be process design; identifying handoff delays",
+          "use_in_BA": "As-Is process documentation; To-Be process design; identifying handoff delays",
           "example": "Order process: Customer lane → places order. System lane → validates payment. Warehouse lane → picks items. Carrier lane → ships. Customer lane → receives."
         },
         "value_stream_map": {
           "purpose": "Lean technique to visualize the full flow of value delivery and identify waste",
           "shows": "Each step in a process + time spent at each step + wait time between steps",
           "insight": "In most processes, value-add time is only 5-10% of total lead time — the rest is waiting",
-          "use_in_ba": "Process improvement projects; identifying where automation would have most impact"
+          "use_in_BA": "Process improvement projects; identifying where automation would have most impact"
         },
         "context_diagram": {
           "purpose": "Show the system boundary and all external entities (users, systems) that interact with it",
-          "use_in_ba": "Scope definition at project initiation; interface requirements identification",
+          "use_in_BA": "Scope definition at project initiation; interface requirements identification",
           "what_it_shows": "The system (box in center) + External entities (surrounding boxes) + Data flows (arrows)",
           "value": "Immediately clarifies what is IN scope (inside the box) and what is outside"
         }
@@ -5643,17 +5643,17 @@
         "story_mapping": {
           "purpose": "Visualize user journey across the product to organize backlog and plan releases",
           "structure": "Backbone (user activities left-to-right) × Depth (increasing detail top-to-bottom)",
-          "use_in_ba": "Release planning — horizontal slices through the map define releases",
+          "use_in_BA": "Release planning — horizontal slices through the map define releases",
           "reference": "Jeff Patton, User Story Mapping (O'Reilly, 2014)"
         },
         "kano_analysis": {
           "basic": "Expected features — absence causes dissatisfaction",
           "performance": "More of this = more satisfaction (linear)",
           "delighter": "Unexpected feature — creates strong positive reaction",
-          "use_in_ba": "Product differentiation; strategic feature decisions; investment allocation"
+          "use_in_BA": "Product differentiation; strategic feature decisions; investment allocation"
         }
       },
-      "agile_ba_tools": {
+      "agile_BA_tools": {
         "user_story_format": {
           "template": "As a [user type], I want [goal] so that [benefit]",
           "three_cs": "Card (brief statement) + Conversation (discussion) + Confirmation (acceptance criteria)",
