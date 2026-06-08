@@ -259,12 +259,79 @@ else:
 if menu_choice == "📝 Question Bank" and not st.session_state.bank_finished:
     st.sidebar.markdown("---")
     st.sidebar.subheader("🗂️ Bank Navigator")
-    bank_labels = [f"Question {i+1} {'✅' if q['id'] in st.session_state.bank_scores and st.session_state.bank_scores[q['id']] else '❌' if q['id'] in st.session_state.bank_scores else '⏳'}" for i, q in enumerate(questions_bank)]
-    chosen_bank_idx = st.sidebar.radio("Jump to any question:", options=range(len(questions_bank)), format_func=lambda x: bank_labels[x], index=st.session_state.bank_current_idx)
-    if chosen_bank_idx != st.session_state.bank_current_idx:
-        st.session_state.bank_current_idx = chosen_bank_idx
-        st.rerun()
+    
+    # --- ĐOẠN CSS ĐỂ ĐỔI MÀU NỀN VÀ TỰ ĐỘNG CO GIÃN THEO SIDEBAR ---
 
+    st.sidebar.markdown("""
+            <style>
+            /* 1. Nhắm thẳng vào thẻ chứa chữ/số bên trong button để hạ size xuống 7px */
+            div[data-testid="stSidebar"] button p, 
+            div[data-testid="stSidebar"] button span,
+            div[data-testid="stSidebar"] button {
+                font-size: 5px !important;
+                line-height: 1 !important;
+            }
+            
+            /* 2. Thu nhỏ độ cao (padding) của ô nút để cân đối với chữ 7px, tránh nút quá to chữ quá nhỏ */
+            div[data-testid="stSidebar"] button {
+                padding: 1px 1px !important;
+                min-height: 18px !important; /* Hạ chiều cao tối thiểu của nút xuống để vừa vặn */
+                max-height: 22px !important;
+                margin: 0px !important;
+                border-radius: 3px !important;
+                width: 100% !important;
+            }
+            
+            /* 3. Giữ khoảng cách giữa các ô thật khít để cố định 6 cột mượt mà */
+            div[data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] {
+                gap: 3px !important;
+                margin-bottom: 3px !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+            
+    # Cố định đúng 6 cột trên một hàng theo yêu cầu của bạn
+    NUM_COLS = 5 
+    
+    # Chia danh sách câu hỏi thành từng nhóm nhỏ 6 câu
+    for i in range(0, len(questions_bank), NUM_COLS):
+        cols = st.sidebar.columns(NUM_COLS)
+        
+        for j in range(NUM_COLS):
+            idx = i + j
+            if idx < len(questions_bank):
+                q = questions_bank[idx]
+                
+                # Xác định trạng thái câu hỏi để hiển thị trong tooltip (help)
+                if q['id'] in st.session_state.bank_scores:
+                    status_icon = "✅" if st.session_state.bank_scores[q['id']] else "❌"
+                else:
+                    status_icon = "⏳"
+                
+                # Kiểm tra xem ô này có phải là câu hỏi hiện tại không
+                is_current = (idx == st.session_state.bank_current_idx)
+                
+                # Label bây giờ hoàn toàn là số thuần túy, không bị dính ký tự [ ]
+                button_label = f"{idx+1}"
+                
+                # Hiển thị nút bấm
+                with cols[j]:
+                    # Sử dụng st.button thông thường, nếu là câu hiện tại (is_current=True), 
+                    # ta dùng loại nút `type="primary"` của Streamlit để nó tự động đổi thành màu xanh đậm đặc trưng.
+                    btn_type = "primary" if is_current else "secondary"
+                    
+                    if st.button(
+                        button_label, 
+                        key=f"btn_nav_{idx}", 
+                        help=f"Question {idx+1} ({status_icon})", 
+                        use_container_width=True,
+                        type=btn_type
+                    ):
+                        if st.session_state.bank_current_idx != idx:
+                            st.session_state.bank_current_idx = idx
+                            st.rerun()
+                            
+#------Update sidebar for Exam simulator-----
 elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
     st.sidebar.markdown("---")
     st.sidebar.subheader("🧩 Exam Navigator")
