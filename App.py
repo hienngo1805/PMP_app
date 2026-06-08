@@ -14,6 +14,8 @@ try:
 except ImportError:
     OPENAI_AVAILABLE = False
 
+
+
 # Cấu hình giao diện rộng (wide) - Bắt buộc phải nằm ở đầu file Streamlit
 st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", layout="wide")
 # =========================================================================
@@ -101,11 +103,10 @@ body[class*="dark"] [data-testid="stSidebar"] * {
 
 """, unsafe_allow_html=True) 
 
-
-
 # ==========================================
 # 🔌 ĐỌC/GHI DỮ LIỆU TỪ FILE JSON NGOÀI
 # ==========================================
+@st.cache_data
 def load_questions_from_json():
     file_name = "question_bank.json"
     if os.path.exists(file_name):
@@ -117,6 +118,7 @@ def load_questions_from_json():
             "options": ["N/A"], "correct": "N/A", "explanation": "", "source": "", "ai_engine": ""
         }]
 
+@st.cache_data
 def load_quiz_history():
     file_name = "quiz_history.json"
     if os.path.exists(file_name):
@@ -124,6 +126,7 @@ def load_quiz_history():
             return json.load(f)
     return []
 
+@st.cache_data
 def save_quiz_history(score_str, percentage, time_taken_str, exam_details):
     file_name = "quiz_history.json"
     history = load_quiz_history()
@@ -138,6 +141,8 @@ def save_quiz_history(score_str, percentage, time_taken_str, exam_details):
     history.append(new_record)
     with open(file_name, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=4)
+
+@st.cache_data
 def save_quiz_history_raw(updated_list):
     """Hàm ghi đè danh sách lịch sử mới sau khi đã xóa dòng vào file JSON"""
     import json
@@ -146,6 +151,7 @@ def save_quiz_history_raw(updated_list):
         json.dump(updated_list, f, ensure_ascii=False, indent=4)
 
 # 💡 ĐÂY LÀ HÀM BẠN ĐANG BỊ THIẾU - HÃY THÊM NÓ VÀO ĐÂY:
+@st.cache_data
 def load_knowledge_from_json():
     file_name = "knowledge_hub.json"
     if os.path.exists(file_name):
@@ -155,6 +161,8 @@ def load_knowledge_from_json():
         except Exception:
             return []
     return []
+
+@st.cache_data
 def load_general_learning_data():
     file_path = "general_learning.json"
     if os.path.exists(file_path):
@@ -184,6 +192,59 @@ def load_glossary_data():
             return []
     return []
     
+
+
+def render_agile_manifesto(manifesto_data: dict):
+    """Render bảng Agile Manifesto 4 Values dạng HTML table."""
+
+    st.info(f"💬 {manifesto_data.get('description', '')}")
+
+    rows_html = ""
+    for val in manifesto_data.get("values", []):
+        # Đẩy sát các thẻ HTML ra lề trái để tránh bị Markdown hiểu là Code Block
+        rows_html += f"""<tr style="border-bottom: 0.5px solid #E0E0E0;">
+    <td style="padding:14px 12px; font-weight:600; color:#1565C0; font-size:1em; vertical-align:top; width:28%;">
+        {val.get('left_side', '')}
+    </td>
+    <td style="padding:14px 6px; text-align:center; vertical-align:top; width:8%;">
+        <span style="background:#F0F0F0; color:#888; font-size:0.72em; font-weight:bold; padding:3px 8px; border-radius:99px; text-transform:uppercase; letter-spacing:.05em;">
+            over
+        </span>
+    </td>
+    <td style="padding:14px 12px; color:#9E9E9E; font-size:1em; text-decoration-color:#ccc; vertical-align:top; width:24%;">
+        {val.get('right_side', '')}
+    </td>
+    <td style="padding:14px 12px; font-size:0.88em; color:#555; line-height:1.6; vertical-align:top; border-left:1px solid #eee; width:40%;">
+        {val.get('meaning', '')}
+    </td>
+</tr>"""
+
+    # Tương tự với thẻ table
+    table_html = f"""<table style="width:100%; border-collapse:collapse; margin-top:8px; border:1px solid #E0E0E0; border-radius:8px; overflow:hidden;">
+    <thead>
+        <tr style="border-bottom:1.5px solid #E0E0E0; background:#F8FAFF;">
+            <th style="text-align:left; padding:10px 12px; font-size:0.78em; color:#1565C0; text-transform:uppercase;">
+                ✅ More value
+            </th>
+            <th></th>
+            <th style="text-align:left; padding:10px 12px; font-size:0.78em; color:#9E9E9E; text-transform:uppercase;">
+                Over
+            </th>
+            <th style="text-align:left; padding:10px 12px; font-size:0.78em; color:#555; text-transform:uppercase;">
+                Why it matters
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {rows_html}
+    </tbody>
+</table>"""
+
+    st.markdown(table_html, unsafe_allow_html=True)
+
+    if "critical_nuance" in manifesto_data:
+        st.warning(f"⚠️ **Exam note:** {manifesto_data['critical_nuance']}")
+
 # Nạp ngân hàng câu hỏi gốc
 questions_bank = load_questions_from_json()
 # ==========================================
@@ -330,7 +391,7 @@ if menu_choice == "📝 Question Bank" and not st.session_state.bank_finished:
                         if st.session_state.bank_current_idx != idx:
                             st.session_state.bank_current_idx = idx
                             st.rerun()
-                            
+                    
 #------Update sidebar for Exam simulator-----
 elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
     st.sidebar.markdown("---")
@@ -352,7 +413,7 @@ st.sidebar.caption("Version 7.3 | Multi-LLM (Gemini / OpenAI / Claude)")
 KEEP_UPPER = [
     "BA", "PM", "PO", "SME", "EEFs", "OPAs", "RTM", "QA", "IT", "SWOT", "MoSCoW", 
     "WBS", "UAT", "KPI", "KPIS", "CRM", "ROI", "NPV", "SLA", "SLAS", "SAAS", 
-    "PERT", "EVM", "PV", "EV", "AC", "BAC", "EAC", "ETC", "VAC", "CCB", "HR", "UX","WSJF","PMO","PMI", "RACI", "RASIC", "RFQ","RFP","SOW","OSCAR","ADKAR","Drexler/Sibbet","Tuckman","Theory Y","McGregor"
+    "PERT", "EVM", "PV", "EV", "AC", "BAC", "EAC", "ETC", "VAC", "CCB", "HR", "UX","WSJF","PMO","PMI", "RACI", "RASIC", "RFQ","RFP","SOW","OSCAR","ADKAR","Drexler/Sibbet","Tuckman","Theory Y","McGregor", "XP","Scrum","Agile"
 ]
 
 def format_text(text):
@@ -499,12 +560,6 @@ def render_dict_item(item):
         "key_output": "📤 Key Output",
         "group": "🔄 Group"
     }
-
-    # 2. Phát hiện và format Agile Values (left / right) - BỎ dấu chấm tròn đầu dòng vì đã có icon 👉
-    if "left" in item and "right" in item:
-        st.markdown(f"👉 **{format_text(item['left'])}** over *{format_text(item['right'])}*")
-        return
-
     # 3. Trích xuất thuộc tính chính để làm tiêu đề nếu có
     main_key = next((k for k in ["name", "section", "title", "step", "type", "attitude", "dimension", "area"] if k in item), None)
     
@@ -871,6 +926,7 @@ if menu_choice == "📚 Knowledge Hub":
 
 
             with col_content_gen:
+
                 # ------------------------------------------------------
                 # KỊCH BẢN 3.1: NẾU USER CHỌN DOMAIN GLOSSARY (XỬ LÝ DỮ LIỆU TỪ Glossary.json)
                 # ------------------------------------------------------
@@ -935,7 +991,8 @@ if menu_choice == "📚 Knowledge Hub":
                             """, unsafe_allow_html=True)
                         
                         if len(filtered_glossary) > display_limit:
-                            st.info(f"💡 Đang hiển thị {display_limit} kết quả đầu tiên. Vui lòng nhập từ khóa cụ thể hơn để thu hẹp phạm vi tra cứu!")
+                            st.info(f"💡 Showing {display_limit} first answers. Please input more specific keywords to narrow down searching area!")
+
 
                 # ------------------------------------------------------
                 # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (GIẢM THIỂU CUỘN CHUỘT & FIXED CONFIGURATION TABS)
@@ -958,6 +1015,7 @@ if menu_choice == "📚 Knowledge Hub":
                         
                         concept = next((c for c in domain_concepts if c.get("title") == selected_concept_title), domain_concepts[0])
                         
+                
                         raw_approach = str(concept.get('approach', '')).upper().strip()
                         color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
                         approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
@@ -1006,7 +1064,6 @@ if menu_choice == "📚 Knowledge Hub":
                             "Agile in the Organization — Adoption, Change, and Culture",
                             "Agile Requirements — User Stories, Epics, and the Product Backlog",
                             "Agile Quality — Building Quality In from the Start",
-                            "Business Analysis — Overview, Role, and Value",
                             "Needs Assessment — Defining the Real Business Problem",
                             "Stakeholder Engagement in Business Analysis",
                             "Elicitation — Drawing Out Requirements from Stakeholders",
@@ -1014,16 +1071,7 @@ if menu_choice == "📚 Knowledge Hub":
                             "Requirements Traceability — Tracking Requirements Through the Lifecycle",
                             "Solution Evaluation — Assessing Whether the Solution Delivers Value",
                             "Product Roadmap and Backlog in BA Context",
-                            "Business Analysis Communication — Adapting to Different Audiences",
-                            "BA Tools and Techniques Reference Guide",
                             "Business Analysis — Overview, Role, and Value",
-                            "Needs Assessment — Defining the Real Business Problem",
-                            "Stakeholder Engagement in Business Analysis",
-                            "Elicitation — Drawing Out Requirements from Stakeholders",
-                            "Requirements Analysis — Modeling, Validating, and Prioritizing",
-                            "Requirements Traceability — Tracking Requirements Through the Lifecycle",
-                            "Solution Evaluation — Assessing Whether the Solution Delivers Value",
-                            "Product Roadmap and Backlog in BA Context",
                             "Business Analysis Communication — Adapting to Different Audiences",
                             "BA Tools and Techniques Reference Guide",
                             "Team Development & Performance",
@@ -1082,30 +1130,71 @@ if menu_choice == "📚 Knowledge Hub":
                                     st.markdown(html_code, unsafe_allow_html=True)
 
                         # ------------------------------------------------------
-                        # XỬ LÝ KHỐI 4.2: DẠNG LÝ THUYẾT TRUYỀN THỐNG (Có chứa details hợp lệ)
+                        # XỬ LÝ KHỐI 4.2: DẠNG LÝ THUYẾT TRUYỀN THỐNG
                         # ------------------------------------------------------
                         elif isinstance(details, dict) and details:
+                            
+                            # Tách riêng các key đặc biệt cần custom render
+                            SPECIAL_KEYS = {"agile_manifesto_four_values", "twelve_principles", "agile_vs_predictive_mindset"}
+                            
                             if use_tabs:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
-                                
-                                # ĐẢM BẢO VIẾT HOA Chữ cái đầu dòng của các nhãn tab nhưng giữ nguyên từ khóa chuyên ngành
                                 tab_names = [format_text(k.replace('_', ' ')) for k in details.keys()]
                                 inner_tabs = st.tabs(tab_names)
                                 
                                 for idx, key in enumerate(details.keys()):
                                     with inner_tabs[idx]:
                                         sub_data = details[key]
-                                        render_sub_data(sub_data)
-                            
+                                        if key == "agile_manifesto_four_values":
+                                            render_agile_manifesto(sub_data)   # ← hàm riêng bên dưới
+                                        else:
+                                            render_sub_data(sub_data)
                             else:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
                                 
-                                for sub_title, sub_data in details.items():
-                                    st.markdown(f"<div style='border-left: 4px solid #2799C7; padding-left: 15px; margin-top: 20px; margin-bottom: 10px;'><span style='font-size: 1.15em; font-weight: bold; color: #1E3A8A;'>{format_text(sub_title.replace('_', ' ')).upper()}</span></div>", unsafe_allow_html=True)
-                                    render_sub_data(sub_data)
+                                # ── Agile Manifesto block (render đặc biệt, KHÔNG qua render_sub_data) ──
+                                if "agile_manifesto_four_values" in details:
+                                    render_agile_manifesto(details["agile_manifesto_four_values"])
+                                    
+                                    if "twelve_principles" in details:
+                                        st.markdown("<br>", unsafe_allow_html=True)
+                                        st.markdown("#### 📜 12 Agile Principles")
+                                        p_data = details["twelve_principles"]
+                                        st.caption(p_data.get("description", ""))
+                                        for i, p in enumerate(p_data.get("principles", []), 1):
+                                            st.markdown(f"**{i}.** {p}")
 
+                                    if "agile_vs_predictive_mindset" in details:
+                                        st.markdown("<br>", unsafe_allow_html=True)
+                                        st.markdown("#### 🔄 Predictive vs Agile Mindset")
+                                        m_data = details["agile_vs_predictive_mindset"]
+                                        col1, col2 = st.columns(2)
+                                        with col1:
+                                            st.markdown("**🏗️ Predictive**")
+                                            st.info(m_data.get("predictive_mindset", ""))
+                                        with col2:
+                                            st.markdown("**⚡ Agile**")
+                                            st.success(m_data.get("agile_mindset", ""))
+                                        st.markdown(f"💡 **Key Shift:** {m_data.get('key_shift', '')}")
+
+                                # ── Các key còn lại render bình thường ──
+                                
+                                    for sub_title, sub_data in details.items():
+
+                                        if sub_title in SPECIAL_KEYS:
+                                            continue   # ✅ vẫn giữ
+
+                                    st.markdown(
+                                        f"<div style='border-left:4px solid #2799C7; padding-left:15px;"
+                                        f"margin-top:20px; margin-bottom:10px;'>"
+                                        f"<span style='font-size:1.15em; font-weight:bold; color:#1E3A8A;'>"
+                                        f"{format_text(sub_title.replace('_', ' ')).upper()}</span></div>",
+                                        unsafe_allow_html=True
+                                    )
+                                    render_sub_data(sub_data)
+                                
                         # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL ---
                         root_characteristics = concept.get("characteristics")
                         if root_characteristics:
@@ -1180,7 +1269,7 @@ if menu_choice == "📚 Knowledge Hub":
                                             for line in root_exs.replace("\r\n", "\n").split("\n"):
                                                 if line.strip(): render_list_item(line.strip())
                                         st.markdown("</div>", unsafe_allow_html=True)
-
+                        
                         # 4. Core Values (PMI Code of Ethics)
                         core_values = concept.get("core_values")
                         if core_values and isinstance(core_values, list):
