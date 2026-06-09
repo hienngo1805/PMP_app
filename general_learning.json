@@ -65,13 +65,13 @@
       "Guide scope and success criteria"
     ],
     "details": {
-      "SMART": {
-        "specific": "Clearly defined",
-        "measurable": "Quantifiable success criteria",
-        "achievable": "Realistic based on constraints",
-        "relevant": "Aligned with business goals",
-        "time_bound": "Has deadline"
-      },
+      "SMART": [
+        "Specific: Clearly defined",
+        "Measurable: Quantifiable success criteria",
+        "Achievable: Realistic based on constraints",
+        "Relevant: Aligned with business goals",
+        "Time bound: Has deadline"
+      ],
       "types": [
         "Time objective (deadline)",
         "Cost objective (budget)",

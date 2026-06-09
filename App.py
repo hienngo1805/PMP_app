@@ -473,25 +473,19 @@ def display_content_section(title, data_list, use_icons=False):
 # ==========================================================
 # 🛡️ HÀM TRỢ GIÚP KẾT XUẤT DỮ LIỆU ĐỘNG (SMART DETAIL RENDERER)
 # ==========================================================
+# ==========================================================
+# 🛡️ HÀM TRỢ GIÚP KẾT XUẤT DỮ LIỆU ĐỘNG (TỪ OLDCODE)
+# ==========================================================
 def render_nested_data(val, indent_level=1):
     """Hàm đệ quy thông minh giúp bóc tách mọi kiểu list/dict lồng nhau ở bất kỳ cấp độ nào, tránh in thô."""
     indent = "&nbsp;&nbsp;&nbsp;&nbsp;" * indent_level
     if isinstance(val, dict):
-        # 1. Phát hiện và format các cặp key đặc thù
         if any(k in val for k in ["stated", "real_need", "ba_response"]):
             item_lines = []
-            if "stated" in val:
-                item_lines.append(f"🗣️ **Stated**: {format_text(val['stated'])}")
-            if "real_need" in val:
-                item_lines.append(f"🎯 **Real Need**: {format_text(val['real_need'])}")
-            if "ba_response" in val:
-                item_lines.append(f"🧠 **BA Response**: {format_text(val['ba_response'])}")
-            for line in item_lines:
-                st.markdown(f"{indent}{line}")
-            return
-            
-        if "left" in val and "right" in val:
-            st.markdown(f"{indent}👉 **{format_text(val['left'])}** over *{format_text(val['right'])}*")
+            if "stated" in val: item_lines.append(f"🗣️ **Stated**: {format_text(val['stated'])}")
+            if "real_need" in val: item_lines.append(f"🎯 **Real Need**: {format_text(val['real_need'])}")
+            if "ba_response" in val: item_lines.append(f"🧠 **BA Response**: {format_text(val['ba_response'])}")
+            for line in item_lines: st.markdown(f"{indent}{line}")
             return
             
         icon_map = {
@@ -509,7 +503,6 @@ def render_nested_data(val, indent_level=1):
         for k, v in val.items():
             label = icon_map.get(k, k.replace('_', ' '))
             bullet = "" if k in icon_map else "• "
-            
             if isinstance(v, (dict, list)):
                 st.markdown(f"{indent}{bullet}**{format_text(label)}**:")
                 render_nested_data(v, indent_level + 1)
@@ -527,40 +520,17 @@ def render_nested_data(val, indent_level=1):
 
 
 def render_dict_item(item):
-    """Tự động phân tích và format đẹp mắt mọi kiểu phần tử dictionary lồng nhau trong mảng, tránh in thô."""
+    """Tự động phân tích và format đẹp mắt mọi kiểu phần tử dictionary lồng nhau trong mảng."""
     if not isinstance(item, dict):
         render_list_item(str(item), has_icon=False)
         return
 
-    # 1. Định nghĩa các cặp icon cho các khóa thông dụng để hiển thị chuyên nghiệp
-    icon_map = {
-        "stated": "🗣️ Stated",
-        "real_need": "🎯 Real Need",
-        "ba_response": "🧠 BA Response",
-        "left": "👈 Left",
-        "right": "👉 Right",
-        "step": "👟 Step",
-        "definition": "📖 Definition",
-        "description": "📝 Description",
-        "purpose": "🎯 Purpose",
-        "focus": "🎯 Focus",
-        "area": "🗂️ Area",
-        "creator": "👤 Creator",
-        "PM role": "👔 PM Role",
-        "pm_application": "📋 PM Application",
-        "symptom": "⚠️ Symptom",
-        "type": "🏷️ Type",
-        "quadrant": "📊 Quadrant",
-        "strategy": "🎯 Strategy",
-        "engagement": "🤝 Engagement",
-        "example": "💡 Example",
-        "examples": "💡 Examples",
-        "attitude": "🎭 Attitude",
-        "technique": "🛠️ Technique",
-        "key_output": "📤 Key Output",
-        "group": "🔄 Group"
+    icon_map = { # ... (Giữ nguyên icon map như trên)
+        "stated": "🗣️ Stated", "real_need": "🎯 Real Need", "ba_response": "🧠 BA Response",
+        "definition": "📖 Definition", "description": "📝 Description", "purpose": "🎯 Purpose",
+        "focus": "🎯 Focus", "example": "💡 Example", "examples": "💡 Examples"
     }
-    # 3. Trích xuất thuộc tính chính để làm tiêu đề nếu có
+    
     main_key = next((k for k in ["name", "section", "title", "step", "type", "attitude", "dimension", "area"] if k in item), None)
     
     if main_key:
@@ -568,8 +538,7 @@ def render_dict_item(item):
         st.markdown(f"**• {format_text(str(title_val))}**")
         indent = "&nbsp;&nbsp;&nbsp;&nbsp;"
         for k, v in item.items():
-            if k == main_key:
-                continue
+            if k == main_key: continue
             has_icon = k in icon_map
             label = icon_map.get(k, k.replace('_', ' '))
             bullet = "" if has_icon else "- "
@@ -581,12 +550,10 @@ def render_dict_item(item):
                 st.markdown(f"{indent}{bullet}**{format_text(label)}**: {format_text(str(v)) if isinstance(v, str) else v}")
         return
 
-    # 4. Trình phân giải chung cho mọi dictionary không có khóa chính chuẩn
     for k, v in item.items():
         has_icon = k in icon_map
         label = icon_map.get(k, k.replace('_', ' '))
         bullet = "" if has_icon else "• "
-        
         if isinstance(v, (dict, list)):
             st.markdown(f"{bullet}**{format_text(label)}**:")
             render_nested_data(v, indent_level=1)
@@ -595,7 +562,7 @@ def render_dict_item(item):
 
 
 def render_sub_data(sub_data):
-    """Tự động phân tích cấu trúc dữ liệu chi tiết của từng khóa để in ra đẹp mắt nhất."""
+    """Hàm gốc mạnh mẽ từ oldcode.json để phân tích chi tiết từng block dữ liệu"""
     if isinstance(sub_data, dict):
         # 1. Định nghĩa chính
         for def_key in ["definition", "description"]:
@@ -607,20 +574,17 @@ def render_sub_data(sub_data):
             st.markdown("**Characteristics:**")
             chars = sub_data["characteristics"]
             if isinstance(chars, list):
-                for item in chars:
-                    render_dict_item(item)
+                for item in chars: render_dict_item(item)
             elif isinstance(chars, dict):
                 for k, v in chars.items():
                     if isinstance(v, list):
                         st.markdown(f"• **{format_text(k.replace('_', ' '))}**:")
-                        for li in v:
-                            st.markdown(f"  - {format_text(str(li))}")
+                        for li in v: st.markdown(f"  - {format_text(str(li))}")
                     else:
                         st.markdown(f"• **{format_text(k.replace('_', ' '))}**: {format_text(str(v)) if isinstance(v, str) else v}")
             elif isinstance(chars, str):
                 for line in chars.replace("\r\n", "\n").split("\n"):
-                    if line.strip():
-                        st.markdown(f"• {format_text(line.strip())}")
+                    if line.strip(): st.markdown(f"• {format_text(line.strip())}")
 
         # 3. Hỗ trợ đặc thù Agile (Iterative & Incremental Characteristics)
         for spec_char_key in ["iterative_characteristics", "incremental_characteristics"]:
@@ -1129,63 +1093,63 @@ if menu_choice == "📚 Knowledge Hub":
                                     html_code += '</div>'
                                     st.markdown(html_code, unsafe_allow_html=True)
 
-                        # ------------------------------------------------------
-                        # XỬ LÝ KHỐI 4.2: DẠNG LÝ THUYẾT TRUYỀN THỐNG
-                        # ------------------------------------------------------
+                        # ==========================================================
+                        # KHỐI 4.2: TÍCH HỢP GIAO DIỆN MỚI CỦA BẠN (Tabs + Agile Table)
+                        # ==========================================================
                         elif isinstance(details, dict) and details:
                             
-                            # Tách riêng các key đặc biệt cần custom render
+                            # Tách riêng các key đặc biệt cần HTML tùy biến
                             SPECIAL_KEYS = {"agile_manifesto_four_values", "twelve_principles", "agile_vs_predictive_mindset"}
                             
                             if use_tabs:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
-                                tab_names = [format_text(k.replace('_', ' ')) for k in details.keys()]
+                                tab_names = [format_text(k.replace('_', ' ')).upper() for k in details.keys()]
                                 inner_tabs = st.tabs(tab_names)
                                 
                                 for idx, key in enumerate(details.keys()):
                                     with inner_tabs[idx]:
                                         sub_data = details[key]
                                         if key == "agile_manifesto_four_values":
-                                            render_agile_manifesto(sub_data)   # ← hàm riêng bên dưới
+                                            render_agile_manifesto(sub_data) # Bảng HTML từ code mới
                                         else:
-                                            render_sub_data(sub_data)
+                                            render_sub_data(sub_data) # Hàm đệ quy chống in thô từ code cũ
                             else:
                                 st.markdown("---")
                                 st.markdown("### 🔍 Detailed Breakdown & Comparisons")
                                 
-                                # ── Agile Manifesto block (render đặc biệt, KHÔNG qua render_sub_data) ──
+                                # Render trước các khối đặc biệt
                                 if "agile_manifesto_four_values" in details:
                                     render_agile_manifesto(details["agile_manifesto_four_values"])
                                     
-                                    if "twelve_principles" in details:
-                                        st.markdown("<br>", unsafe_allow_html=True)
-                                        st.markdown("#### 📜 12 Agile Principles")
-                                        p_data = details["twelve_principles"]
-                                        st.caption(p_data.get("description", ""))
-                                        for i, p in enumerate(p_data.get("principles", []), 1):
-                                            st.markdown(f"**{i}.** {p}")
+                                if "twelve_principles" in details:
+                                    st.markdown("<br>", unsafe_allow_html=True)
+                                    st.markdown("#### 📜 12 Agile Principles")
+                                    p_data = details["twelve_principles"]
+                                    st.caption(p_data.get("description", ""))
+                                    for i, p in enumerate(p_data.get("principles", []), 1):
+                                        st.markdown(f"**{i}.** {p}")
 
-                                    if "agile_vs_predictive_mindset" in details:
-                                        st.markdown("<br>", unsafe_allow_html=True)
-                                        st.markdown("#### 🔄 Predictive vs Agile Mindset")
-                                        m_data = details["agile_vs_predictive_mindset"]
-                                        col1, col2 = st.columns(2)
-                                        with col1:
-                                            st.markdown("**🏗️ Predictive**")
-                                            st.info(m_data.get("predictive_mindset", ""))
-                                        with col2:
-                                            st.markdown("**⚡ Agile**")
-                                            st.success(m_data.get("agile_mindset", ""))
-                                        st.markdown(f"💡 **Key Shift:** {m_data.get('key_shift', '')}")
+                                if "agile_vs_predictive_mindset" in details:
+                                    st.markdown("<br>", unsafe_allow_html=True)
+                                    st.markdown("#### 🔄 Predictive vs Agile Mindset")
+                                    m_data = details["agile_vs_predictive_mindset"]
+                                    col1, col2 = st.columns(2)
+                                    with col1:
+                                        st.markdown("**🏗️ Predictive**")
+                                        st.info(m_data.get("predictive_mindset", ""))
+                                    with col2:
+                                        st.markdown("**⚡ Agile**")
+                                        st.success(m_data.get("agile_mindset", ""))
+                                    st.markdown(f"💡 **Key Shift:** {m_data.get('key_shift', '')}")
 
-                                # ── Các key còn lại render bình thường ──
-                                
-                                    for sub_title, sub_data in details.items():
+                                # ── 2. Vòng lặp duyệt tự động qua các key còn lại (như SMART, types) ──
+                                # Đã xử lý chuẩn lùi lề (indentation) để không bị lỗi nuốt dữ liệu
+                                for sub_title, sub_data in details.items():
+                                    if sub_title in SPECIAL_KEYS:
+                                        continue
 
-                                        if sub_title in SPECIAL_KEYS:
-                                            continue   # ✅ vẫn giữ
-
+                                    # Tạo block tiêu đề xanh
                                     st.markdown(
                                         f"<div style='border-left:4px solid #2799C7; padding-left:15px;"
                                         f"margin-top:20px; margin-bottom:10px;'>"
@@ -1193,7 +1157,7 @@ if menu_choice == "📚 Knowledge Hub":
                                         f"{format_text(sub_title.replace('_', ' ')).upper()}</span></div>",
                                         unsafe_allow_html=True
                                     )
-                                    render_sub_data(sub_data)
+                                    render_sub_data(sub_data) # Quét sâu mọi list/dict lồng nhau!
                                 
                         # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL ---
                         root_characteristics = concept.get("characteristics")
