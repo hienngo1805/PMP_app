@@ -497,7 +497,7 @@ def render_nested_data(val, indent_level=1):
             "symptom": "⚠️ Symptom", "type": "🏷️ Type", "quadrant": "📊 Quadrant",
             "strategy": "🎯 Strategy", "engagement": "🤝 Engagement", "example": "💡 Example",
             "examples": "💡 Examples", "attitude": "🎭 Attitude", "technique": "🛠️ Technique",
-            "key_output": "📤 Key Output", "group": "🔄 Group"
+            "key_output": "📤 Key Output", "group": "🔄 Group","prevention":"❗Prevention","bad_example": "❌Bad Example","good_example":"✅Good Example"
         }
         
         for k, v in val.items():
@@ -526,9 +526,14 @@ def render_dict_item(item):
         return
 
     icon_map = { # ... (Giữ nguyên icon map như trên)
-        "stated": "🗣️ Stated", "real_need": "🎯 Real Need", "ba_response": "🧠 BA Response",
-        "definition": "📖 Definition", "description": "📝 Description", "purpose": "🎯 Purpose",
-        "focus": "🎯 Focus", "example": "💡 Example", "examples": "💡 Examples"
+         "stated": "🗣️ Stated", "real_need": "🎯 Real Need", "ba_response": "💬 BA Response", "step": "👟 Step",
+            "definition": "📖 Definition", "description": "📝 Description",
+            "purpose": "🎯 Purpose", "focus": "🎯 Focus", "area": "🗂️ Area",
+            "creator": "👤 Creator", "PM role": "👔 PM Role", "pm_application": "📋 PM Application",
+            "symptom": "⚠️ Symptom", "type": "🏷️ Type", "quadrant": "📊 Quadrant",
+            "strategy": "🎯 Strategy", "engagement": "🤝 Engagement", "example": "💡 Example",
+            "examples": "💡 Examples", "attitude": "🎭 Attitude", "technique": "🛠️ Technique",
+            "key_output": "📤 Key Output", "group": "🔄 Group","prevention":"❗Prevention","bad_example": "❌Bad Example","good_example":"✅Good Example"
     }
     
     main_key = next((k for k in ["name", "section", "title", "step", "type", "attitude", "dimension", "area"] if k in item), None)
