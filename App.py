@@ -1308,6 +1308,21 @@ if menu_choice == "📚 Knowledge Hub":
 elif menu_choice == "📝 Question Bank":
     st.title("📝 Question Bank Practice")
     st.markdown("---")
+    # 🌟 CSS GIỚI HẠN PHẠM VI: Chỉ phóng to chữ và giãn dòng đáp án tại vùng nội dung chính
+    st.markdown("""
+        <style>
+            /* Nhắm trực tiếp vào phần văn bản của đáp án (Radio) ở màn hình chính */
+            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] label p {
+                font-size: 1.15rem !important; /* Tăng kích cỡ chữ đáp án */
+                line-height: 1.6 !important;    /* Giãn khoảng cách các dòng trong một đáp án dài */
+            }
+            
+            /* Tạo khoảng cách dọc thoáng hơn giữa các câu lựa chọn A, B, C, D */
+            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
+                gap: 12px !important;           
+            }
+        </style>
+    """, unsafe_allow_html=True)
     
     if st.session_state.bank_finished:
         st.header("🏁 Practice Session Finished")
@@ -1378,6 +1393,19 @@ elif menu_choice == "📝 Question Bank":
 # ⏱️ PHẦN 4: EXAM SIMULATOR
 # ==========================================
 elif menu_choice == "⏱️ Exam Simulator":
+    st.markdown("""
+        <style>
+            /* Chỉ tìm các div stRadio nằm bên trong vùng Main Content */
+            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] label p {
+                font-size: 1.15rem !important; /* Tăng cỡ chữ đáp án */
+                line-height: 1.6 !important;    /* Giãn dòng văn bản */
+            }
+            
+            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
+                gap: 12px !important;           /* Giãn khoảng cách dọc giữa câu A, B, C, D */
+            }
+        </style>
+    """, unsafe_allow_html=True)
     # ----------------------------------------------------
     # MÀN HÌNH CHÍNH (DASHBOARD KHI CHƯA VÀO THI)
     # ----------------------------------------------------

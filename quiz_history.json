@@ -1,1 +1,43 @@
-[]
+[
+    {
+        "exam_id": "20260618_231302",
+        "Date/Time": "2026-06-18 23:13:02",
+        "Score": "2 / 2",
+        "Percentage (%)": "100.00%",
+        "Duration": "0m",
+        "details": [
+            {
+                "id": "Q58",
+                "question": "Which PMI ethical principle requires project managers to disclose conflicts of interest?",
+                "options": [
+                    "A. Respect",
+                    "B. Fairness",
+                    "C. Honesty",
+                    "D. Responsibility"
+                ],
+                "correct": "B. Fairness",
+                "explanation": "The PMI Code of Ethics and Professional Conduct identifies Fairness as the ethical standard that requires project managers to proactively disclose conflicts of interest. Fairness means making decisions impartially and without favoritism or discrimination.",
+                "source": "PMI Code of Ethics and Professional Conduct",
+                "certification": "PMP",
+                "domain": "People",
+                "user_answer": "B. Fairness"
+            },
+            {
+                "id": "Q72",
+                "question": "What is the Agile Manifesto's stance on responding to change vs. following a plan?",
+                "options": [
+                    "A. Following a plan is more important",
+                    "B. Responding to change is valued over following a plan",
+                    "C. Both are equally important",
+                    "D. Change should be avoided after planning is complete"
+                ],
+                "correct": "B. Responding to change is valued over following a plan",
+                "explanation": "One of the four values of the Agile Manifesto is: 'Responding to change over following a plan.' While planning has value, Agile teams prioritize the ability to adapt to new information and changing requirements to deliver better outcomes.",
+                "source": "Agile Manifesto (agilemanifesto.org)",
+                "certification": "CAPM",
+                "domain": "Agile Frameworks / Methodologies",
+                "user_answer": "B. Responding to change is valued over following a plan"
+            }
+        ]
+    }
+]
