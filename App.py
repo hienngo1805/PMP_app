@@ -70,6 +70,14 @@ body[class*="light"] [data-testid="stSidebar"] * {
     color: #333333 !important;
     border: 1px solid #D1D9E0 !important;
 }
+
+[data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] label p {
+    font-size: 1.00rem !important;
+    line-height: 1.4 !important;
+}
+[data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
+    gap: 10px !important;
+}
 /* =========================================================================
    II. DARK MODE
    ========================================================================= */
@@ -178,6 +186,7 @@ def load_general_learning_data():
 
 
 #Load tiếp các file dữ liệu json khác
+@st.cache_data  
 def load_glossary_data():
     file_path = "Glossary.json"
     if os.path.exists(file_path):
@@ -246,7 +255,10 @@ def render_agile_manifesto(manifesto_data: dict):
         st.warning(f"⚠️ **Exam note:** {manifesto_data['critical_nuance']}")
 
 # Nạp ngân hàng câu hỏi gốc
-questions_bank = load_questions_from_json()
+if "questions_bank" not in st.session_state:
+    st.session_state.questions_bank = load_questions_from_json()
+questions_bank = st.session_state.questions_bank
+
 # ==========================================
 # 📑 KHỞI TẠO CÁC BIẾN BỘ NHỚ (SESSION STATE)
 # ==========================================
@@ -256,7 +268,6 @@ if "bank_scores" not in st.session_state:
     st.session_state.bank_scores = {}
 if "bank_finished" not in st.session_state:
     st.session_state.bank_finished = False
-
 if "test_current_idx" not in st.session_state:
     st.session_state.test_current_idx = 0
 if "test_mode" not in st.session_state:
@@ -321,77 +332,22 @@ if menu_choice == "📝 Question Bank" and not st.session_state.bank_finished:
     st.sidebar.markdown("---")
     st.sidebar.subheader("🗂️ Bank Navigator")
     
-    # --- ĐOẠN CSS ĐỂ ĐỔI MÀU NỀN VÀ TỰ ĐỘNG CO GIÃN THEO SIDEBAR ---
-
-    st.sidebar.markdown("""
-            <style>
-            /* 1. Nhắm thẳng vào thẻ chứa chữ/số bên trong button để hạ size xuống 7px */
-            div[data-testid="stSidebar"] button p, 
-            div[data-testid="stSidebar"] button span,
-            div[data-testid="stSidebar"] button {
-                font-size: 5px !important;
-                line-height: 1 !important;
-            }
-            
-            /* 2. Thu nhỏ độ cao (padding) của ô nút để cân đối với chữ 7px, tránh nút quá to chữ quá nhỏ */
-            div[data-testid="stSidebar"] button {
-                padding: 1px 1px !important;
-                min-height: 18px !important; /* Hạ chiều cao tối thiểu của nút xuống để vừa vặn */
-                max-height: 22px !important;
-                margin: 0px !important;
-                border-radius: 3px !important;
-                width: 100% !important;
-            }
-            
-            /* 3. Giữ khoảng cách giữa các ô thật khít để cố định 6 cột mượt mà */
-            div[data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] {
-                gap: 3px !important;
-                margin-bottom: 3px !important;
-            }
-            </style>
-        """, unsafe_allow_html=True)
-            
-    # Cố định đúng 6 cột trên một hàng theo yêu cầu của bạn
-    NUM_COLS = 5 
-    
-    # Chia danh sách câu hỏi thành từng nhóm nhỏ 6 câu
-    for i in range(0, len(questions_bank), NUM_COLS):
-        cols = st.sidebar.columns(NUM_COLS)
-        
-        for j in range(NUM_COLS):
-            idx = i + j
-            if idx < len(questions_bank):
-                q = questions_bank[idx]
-                
-                # Xác định trạng thái câu hỏi để hiển thị trong tooltip (help)
-                if q['id'] in st.session_state.bank_scores:
-                    status_icon = "✅" if st.session_state.bank_scores[q['id']] else "❌"
-                else:
-                    status_icon = "⏳"
-                
-                # Kiểm tra xem ô này có phải là câu hỏi hiện tại không
-                is_current = (idx == st.session_state.bank_current_idx)
-                
-                # Label bây giờ hoàn toàn là số thuần túy, không bị dính ký tự [ ]
-                button_label = f"{idx+1}"
-                
-                # Hiển thị nút bấm
-                with cols[j]:
-                    # Sử dụng st.button thông thường, nếu là câu hiện tại (is_current=True), 
-                    # ta dùng loại nút `type="primary"` của Streamlit để nó tự động đổi thành màu xanh đậm đặc trưng.
-                    btn_type = "primary" if is_current else "secondary"
-                    
-                    if st.button(
-                        button_label, 
-                        key=f"btn_nav_{idx}", 
-                        help=f"Question {idx+1} ({status_icon})", 
-                        use_container_width=True,
-                        type=btn_type
-                    ):
-                        if st.session_state.bank_current_idx != idx:
-                            st.session_state.bank_current_idx = idx
-                            st.rerun()
-                    
+    # 1. Bỏ tham số key=..., gán trực tiếp vào biến chosen_bank_idx
+    chosen_bank_idx = st.sidebar.selectbox(
+        "Jump to question:",
+        options=range(len(questions_bank)),
+        format_func=lambda i: (
+            f"Q{i+1} ✅" if st.session_state.bank_scores.get(questions_bank[i]['id']) is True
+            else f"Q{i+1} ❌" if questions_bank[i]['id'] in st.session_state.bank_scores
+            else f"Q{i+1} ⏳"
+        ),
+        index=st.session_state.bank_current_idx
+    )
+    # 2. So sánh biến hứng với index hiện tại để đồng bộ hai chiều mượt mà
+    if chosen_bank_idx != st.session_state.bank_current_idx:
+        st.session_state.bank_current_idx = chosen_bank_idx
+        st.rerun()
+                   
 #------Update sidebar for Exam simulator-----
 elif menu_choice == "⏱️ Exam Simulator" and st.session_state.test_mode:
     st.sidebar.markdown("---")
@@ -473,9 +429,7 @@ def display_content_section(title, data_list, use_icons=False):
 # ==========================================================
 # 🛡️ HÀM TRỢ GIÚP KẾT XUẤT DỮ LIỆU ĐỘNG (SMART DETAIL RENDERER)
 # ==========================================================
-# ==========================================================
-# 🛡️ HÀM TRỢ GIÚP KẾT XUẤT DỮ LIỆU ĐỘNG (TỪ OLDCODE)
-# ==========================================================
+
 def render_nested_data(val, indent_level=1):
     """Hàm đệ quy thông minh giúp bóc tách mọi kiểu list/dict lồng nhau ở bất kỳ cấp độ nào, tránh in thô."""
     indent = "&nbsp;&nbsp;&nbsp;&nbsp;" * indent_level
@@ -900,6 +854,7 @@ if menu_choice == "📚 Knowledge Hub":
                 # KỊCH BẢN 3.1: NẾU USER CHỌN DOMAIN GLOSSARY (XỬ LÝ DỮ LIỆU TỪ Glossary.json)
                 # ------------------------------------------------------
                 if selected_domain_gen == glossary_domain_title:
+                    glossary_data = load_glossary_data()
                     st.subheader("🔤 Project Management Glossary")
                     st.markdown("*Quickly search for  project management terms, acronyms, terminology and concepts aligned with PMI and Agile/Scrum standards*")
                     st.markdown("---")
@@ -1308,21 +1263,6 @@ if menu_choice == "📚 Knowledge Hub":
 elif menu_choice == "📝 Question Bank":
     st.title("📝 Question Bank Practice")
     st.markdown("---")
-    # 🌟 CSS GIỚI HẠN PHẠM VI: Chỉ phóng to chữ và giãn dòng đáp án tại vùng nội dung chính
-    st.markdown("""
-        <style>
-            /* Nhắm trực tiếp vào phần văn bản của đáp án (Radio) ở màn hình chính */
-            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] label p {
-                font-size: 1.15rem !important; /* Tăng kích cỡ chữ đáp án */
-                line-height: 1.6 !important;    /* Giãn khoảng cách các dòng trong một đáp án dài */
-            }
-            
-            /* Tạo khoảng cách dọc thoáng hơn giữa các câu lựa chọn A, B, C, D */
-            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
-                gap: 12px !important;           
-            }
-        </style>
-    """, unsafe_allow_html=True)
     
     if st.session_state.bank_finished:
         st.header("🏁 Practice Session Finished")
@@ -1336,6 +1276,7 @@ elif menu_choice == "📝 Question Bank":
             st.session_state.bank_current_idx = 0
             st.session_state.bank_scores = {}
             st.session_state.bank_finished = False
+            st.session_state.bank_last_result = {}  # ← thêm dòng này
             st.rerun()
     else:
         idx = st.session_state.bank_current_idx
@@ -1343,14 +1284,12 @@ elif menu_choice == "📝 Question Bank":
         st.write(f"**Question {idx + 1} of {len(questions_bank)}**")
         st.subheader(selected_q["question"])
         
-        ans = st.radio("Select your option:", selected_q["options"], key=f"bank_{selected_q['id']}")
+        ans = st.radio("Select your option:", selected_q["options"], key=f"bank_{selected_q['id']}", index=0)
         
         if st.button("Submit Answer", key=f"btn_bank_{selected_q['id']}"):
             if ans == selected_q["correct"]:
                 st.success("🎉 CORRECT!")
                 st.session_state.bank_scores[selected_q["id"]] = True
-                
-                # --- HIỂN THỊ MAPPING NGAY CẢ KHI ĐÚNG ---
                 st.markdown(f"""
                 <div style="background-color: #E8F5E9; padding: 12px; border-radius: 10px; border-left: 5px solid #4CAF50; margin-top: 10px;">
                     <p style="margin: 0; color: #2E7D32;">
@@ -1360,15 +1299,12 @@ elif menu_choice == "📝 Question Bank":
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
-                
                 with st.expander("🔍 View AI Explanation & Source"):
                     st.write(selected_q["explanation"])
                     st.caption(f"Source: {selected_q['source']} | AI: {selected_q['ai_engine']}")
             else:
                 st.error("❌ INCORRECT! Please try again.")
                 st.session_state.bank_scores[selected_q["id"]] = False
-                
-                # --- HIỂN THỊ MAPPING KHI SAI (Giữ nguyên hoặc dùng màu xanh dương) ---
                 st.markdown(f"""
                 <div style="background-color: #E3F2FD; padding: 12px; border-radius: 10px; border-left: 5px solid #1E88E5; margin-top: 10px;">
                     <p style="margin: 0; color: #333;">
@@ -1379,34 +1315,29 @@ elif menu_choice == "📝 Question Bank":
                 </div>
                 """, unsafe_allow_html=True)
         
+        # ← NAVIGATION NẰM Ở ĐÂY — ngang hàng với if st.button("Submit"), KHÔNG nằm trong đó
         st.markdown("---")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c1:
-            if st.button("⬅️ Previous") and idx > 0: st.session_state.bank_current_idx -= 1; st.rerun()
+            if st.button("⬅️ Previous"):
+                if idx > 0:
+                    st.session_state.bank_current_idx -= 1
+                    st.rerun()
         with c2:
             if idx < len(questions_bank) - 1:
-                if st.button("Next ➡️"): st.session_state.bank_current_idx += 1; st.rerun()
+                if st.button("Next ➡️"):
+                    st.session_state.bank_current_idx += 1
+                    st.rerun()
         with c3:
-            if st.button("🏁 Finish Practice", type="primary"): st.session_state.bank_finished = True; st.rerun()
+            if st.button("🏁 Finish Practice", type="primary"):
+                st.session_state.bank_finished = True
+                st.rerun()
 
 # ==========================================
 # ⏱️ PHẦN 4: EXAM SIMULATOR
 # ==========================================
 elif menu_choice == "⏱️ Exam Simulator":
-    st.markdown("""
-        <style>
-            /* Chỉ tìm các div stRadio nằm bên trong vùng Main Content */
-            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] label p {
-                font-size: 1.15rem !important; /* Tăng cỡ chữ đáp án */
-                line-height: 1.6 !important;    /* Giãn dòng văn bản */
-            }
-            
-            [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
-                gap: 12px !important;           /* Giãn khoảng cách dọc giữa câu A, B, C, D */
-            }
-        </style>
-    """, unsafe_allow_html=True)
-    # ----------------------------------------------------
+
     # MÀN HÌNH CHÍNH (DASHBOARD KHI CHƯA VÀO THI)
     # ----------------------------------------------------
     if not st.session_state.get("test_mode", False) and not st.session_state.get("test_summary_mode", False):
