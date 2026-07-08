@@ -1925,3 +1925,4 @@ elif menu_choice == "🤖 AI Tutor Chat":
         if st.button("🗑️ Clear Chat History"):
             st.session_state.chat_history = []
             st.rerun()
+            
