@@ -763,11 +763,11 @@ if menu_choice == "📚 Knowledge Hub":
         col_menu_pmp, col_content_pmp = st.columns([1, 3])
         
         with col_menu_pmp:
-            selected_domain = st.radio("Select Domain:", pmp_domains, key="pmp_radio")
+            selected_domain_pmp = st.radio("Select Domain:", pmp_domains, key="pmp_radio")
 
         with col_content_pmp:
             st.subheader(f"📖 {selected_domain}")
-            tasks = [t for t in eco_data if t.get("domain") == selected_domain]
+            tasks = [t for t in eco_data if t.get("domain") == selected_domain_pmp]
             
             if not tasks:
                 st.info("No tasks found for this domain.")
@@ -807,11 +807,11 @@ if menu_choice == "📚 Knowledge Hub":
         col_menu_capm, col_content_capm = st.columns([1, 3])
         
         with col_menu_capm:
-            selected_domain = st.radio("Select Domain:", capm_domains, key="capm_radio")
+            selected_domain_capm = st.radio("Select Domain:", capm_domains, key="capm_radio")
 
         with col_content_capm:
             st.subheader(f"📖 {selected_domain}")
-            tasks = [t for t in eco_data if t.get("domain") == selected_domain]
+            tasks = [t for t in eco_data if t.get("domain") == selected_domain_capm]
             
             if not tasks:
                 st.info("No tasks found for this domain.")
@@ -977,7 +977,7 @@ if menu_choice == "📚 Knowledge Hub":
                         selected_concept_title = st.selectbox(
                             "📚 Choose a Topic to Study:",
                             options=concept_titles,
-                            key="concept_selector_dropdown"
+                            key="gen_concept_selector"
                         )
                         
                         st.markdown("---")
@@ -1925,4 +1925,3 @@ elif menu_choice == "🤖 AI Tutor Chat":
         if st.button("🗑️ Clear Chat History"):
             st.session_state.chat_history = []
             st.rerun()
-            
