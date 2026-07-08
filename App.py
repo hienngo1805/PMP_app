@@ -268,6 +268,10 @@ if "bank_scores" not in st.session_state:
     st.session_state.bank_scores = {}
 if "bank_finished" not in st.session_state:
     st.session_state.bank_finished = False
+if "bank_last_result" not in st.session_state:
+    st.session_state.bank_last_result = {}   # lưu đúng/sai
+if "bank_user_answers" not in st.session_state:
+    st.session_state.bank_user_answers = {}  # lưu đáp án user đã chọn
 if "test_current_idx" not in st.session_state:
     st.session_state.test_current_idx = 0
 if "test_mode" not in st.session_state:
@@ -1276,20 +1280,36 @@ elif menu_choice == "📝 Question Bank":
             st.session_state.bank_current_idx = 0
             st.session_state.bank_scores = {}
             st.session_state.bank_finished = False
-            st.session_state.bank_last_result = {}  # ← thêm dòng này
+            st.session_state.bank_last_result = {}
+            st.session_state.bank_user_answers = {}
             st.rerun()
     else:
         idx = st.session_state.bank_current_idx
         selected_q = questions_bank[idx]
         st.write(f"**Question {idx + 1} of {len(questions_bank)}**")
         st.subheader(selected_q["question"])
-        
-        ans = st.radio("Select your option:", selected_q["options"], key=f"bank_{selected_q['id']}", index=0)
-        
+
+        # Lấy đáp án cũ nếu câu này đã làm rồi
+        saved_ans = st.session_state.bank_user_answers.get(selected_q["id"])
+        default_idx = selected_q["options"].index(saved_ans) if saved_ans in selected_q["options"] else 0
+
+        ans = st.radio(
+            "Select your option:",
+            selected_q["options"],
+            key=f"bank_{selected_q['id']}",
+            index=default_idx
+        )
+
         if st.button("Submit Answer", key=f"btn_bank_{selected_q['id']}"):
-            if ans == selected_q["correct"]:
+            is_correct = (ans == selected_q["correct"])
+            st.session_state.bank_scores[selected_q["id"]] = is_correct
+            st.session_state.bank_last_result[selected_q["id"]] = is_correct
+            st.session_state.bank_user_answers[selected_q["id"]] = ans
+
+        # Render kết quả nếu câu này đã submit (kể cả khi back lại)
+        if selected_q["id"] in st.session_state.bank_last_result:
+            if st.session_state.bank_last_result[selected_q["id"]]:
                 st.success("🎉 CORRECT!")
-                st.session_state.bank_scores[selected_q["id"]] = True
                 st.markdown(f"""
                 <div style="background-color: #E8F5E9; padding: 12px; border-radius: 10px; border-left: 5px solid #4CAF50; margin-top: 10px;">
                     <p style="margin: 0; color: #2E7D32;">
@@ -1304,7 +1324,6 @@ elif menu_choice == "📝 Question Bank":
                     st.caption(f"Source: {selected_q['source']} | AI: {selected_q['ai_engine']}")
             else:
                 st.error("❌ INCORRECT! Please try again.")
-                st.session_state.bank_scores[selected_q["id"]] = False
                 st.markdown(f"""
                 <div style="background-color: #E3F2FD; padding: 12px; border-radius: 10px; border-left: 5px solid #1E88E5; margin-top: 10px;">
                     <p style="margin: 0; color: #333;">
@@ -1314,8 +1333,7 @@ elif menu_choice == "📝 Question Bank":
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
-        
-        # ← NAVIGATION NẰM Ở ĐÂY — ngang hàng với if st.button("Submit"), KHÔNG nằm trong đó
+
         st.markdown("---")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c1:
