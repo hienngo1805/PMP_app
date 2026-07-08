@@ -186,7 +186,7 @@ def load_general_learning_data():
 
 
 #Load tiếp các file dữ liệu json khác
-@st.cache_data  
+@st.cache_data(ttl="1h")
 def load_glossary_data():
     file_path = "Glossary.json"
     if os.path.exists(file_path):
@@ -201,7 +201,59 @@ def load_glossary_data():
             return []
     return []
     
-
+# 1. FRAGMENT CHO PHẦN TRA CỨU THUẬT NGỮ (GLOSSARY)
+@st.fragment
+def render_glossary_fragment(glossary_data):
+    col_search, col_filter = st.columns([2, 1])
+    
+    with col_search:
+        search_query = st.text_input(
+            "🔍 Search term or definition:", 
+            placeholder="Type to search (e.g. WBS, Agile, AC, Baseline)...", 
+            key="glossary_main_search_bar"
+        )
+    
+    with col_filter:
+        categories_list = sorted(list(set(str(item.get("category", "General")) for item in glossary_data if item.get("category"))))
+        selected_category = st.selectbox("🗂️ Filter by Category:", ["All Categories"] + categories_list, key="glossary_cat_selectbox")
+    
+    # Logic lọc động (Giữ nguyên logic cũ của bạn)
+    filtered_glossary = glossary_data
+    if selected_category != "All Categories":
+        filtered_glossary = [item for item in filtered_glossary if str(item.get("category")) == selected_category]
+    
+    if search_query.strip():
+        q = search_query.lower().strip()
+        filtered_glossary = [
+            item for item in filtered_glossary
+            if q in str(item.get("term", "")).lower() or q in str(item.get("definition", "")).lower()
+        ]
+    
+    st.caption(f"Showing {len(filtered_glossary)} of {len(glossary_data)} terms found.")
+    st.write("")
+    
+    display_limit = 80
+    for item in filtered_glossary[:display_limit]:
+        term_name = item.get("term", "N/A")
+        term_def = item.get("definition", "No definition provided.")
+        term_cat = item.get("category", "General")
+        
+        st.markdown(f"""
+            <div class="task-card" style="margin-bottom: 12px; padding: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: bold; font-size: 1.15em; color: #2799C7;">🏷️ {term_name}</span>
+                    <span style="background-color: #E0F2F1; color: #00796B; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold;">
+                        {term_cat.upper()}
+                    </span>
+                </div>
+                <div style="line-height: 1.6; font-size: 1.05em; opacity: 0.9;">
+                    {term_def}
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    if len(filtered_glossary) > display_limit:
+        st.info("💡 Showing 80 first answers. Please input more specific keywords to narrow down searching area!")
 
 def render_agile_manifesto(manifesto_data: dict):
     """Render bảng Agile Manifesto 4 Values dạng HTML table."""
@@ -253,6 +305,337 @@ def render_agile_manifesto(manifesto_data: dict):
 
     if "critical_nuance" in manifesto_data:
         st.warning(f"⚠️ **Exam note:** {manifesto_data['critical_nuance']}")
+
+@st.fragment
+def render_topic_selector_fragment(domain_concepts, approach_colors):
+    concept_titles = [c.get("title", "Untitled Concept") for c in domain_concepts] 
+    selected_concept_title = st.selectbox(
+        "📚 Choose a Topic to Study:",
+        options=concept_titles,
+        key="gen_concept_selector"
+    )
+    
+    st.markdown("---")
+    
+    concept = next((c for c in domain_concepts if c.get("title") == selected_concept_title), domain_concepts[0])
+    
+
+    raw_approach = str(concept.get('approach', '')).upper().strip()
+    color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
+    approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
+    
+    st.markdown(f"""
+        <div class="task-card" style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 1.4em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                <span>📘 {format_text(concept.get('title', 'Untitled Concept'))}</span>
+                {approach_badge_html}
+            </div>
+            <div style="font-size: 1.1em; line-height: 1.6; font-style: italic; opacity: 0.85;">
+                {format_text(concept.get('summary', 'No summary available.'))}
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    if concept.get("key_concepts"):
+        with st.expander("📌 Key Concepts Summary", expanded=True):
+            for kc in concept.get("key_concepts", []):
+                st.markdown(f"- {format_text(kc)}")
+
+    details = concept.get("details", {})
+    if details is None:
+        details = {}
+
+    tab_titles = [
+        "Project vs Program vs Portfolio",
+        "Strategic Dependencies (Project – Program – Portfolio)",
+        "Constraints, Assumptions, and Risks",
+        "Product, Product Life Cycle, and Project Life Cycle",
+        "Working with OPAs and EEFs",
+        "Project Development Approach",
+        "Leadership Styles in Project Management",
+        "Integration Management (Deep Dive)",
+        "Process Groups Overview",
+        "Knowledge Areas Overview",
+        "Agile Mindset — The Foundation of All Agile Approaches",
+        "Scrum Framework — Roles, Events, and Artifacts",
+        "Kanban — Visualizing Flow and Managing Work-in-Progress",
+        "Extreme Programming (XP) — Technical Excellence in Agile",
+        "Agile Planning — From Vision to Iteration",
+        "Agile Teams — Self-Organization, Cross-Functionality, and High Performance",
+        "Agile Metrics — Measuring Progress and Performance",
+        "Scaled Agile — Coordinating Multiple Agile Teams",
+        "Hybrid Approaches — Combining Predictive and Agile",
+        "Agile in the Organization — Adoption, Change, and Culture",
+        "Agile Requirements — User Stories, Epics, and the Product Backlog",
+        "Agile Quality — Building Quality In from the Start",
+        "Needs Assessment — Defining the Real Business Problem",
+        "Stakeholder Engagement in Business Analysis",
+        "Elicitation — Drawing Out Requirements from Stakeholders",
+        "Requirements Analysis — Modeling, Validating, and Prioritizing",
+        "Requirements Traceability — Tracking Requirements Through the Lifecycle",
+        "Solution Evaluation — Assessing Whether the Solution Delivers Value",
+        "Product Roadmap and Backlog in BA Context",
+        "Business Analysis — Overview, Role, and Value",
+        "Business Analysis Communication — Adapting to Different Audiences",
+        "BA Tools and Techniques Reference Guide",
+        "Team Development & Performance",
+        "Conflict Management & Negotiation"
+    ]
+    # So khớp thông minh không phân biệt hoa thường
+    use_tabs = any(concept.get("title", "").strip().lower() == t.strip().lower() for t in tab_titles)
+
+    # ------------------------------------------------------
+    # XỬ LÝ KHỐI 4.1: NẾU LÀ BÀI TOÁN MA TRẬN TIẾN TRÌNH (type == "matrix" hoặc có key matrix)
+    # ------------------------------------------------------
+    if concept.get("type") == "matrix" or "matrix" in concept or concept.get("id") == "PM-49-PROCESSES-MATRIX":
+        matrix_data = concept.get("matrix", {})
+        for group, areas in matrix_data.items():
+            with st.expander(f"🔹 {format_text(group.replace('_', ' '))}", expanded=True):
+                html_code = """
+                <style>
+                .matrix-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 12px;
+                    margin-top: 10px;
+                    width: 100%;
+                }
+                .matrix-card {
+                    flex: 1 1 200px;
+                    min-width: 160px;
+                    background-color: rgba(39, 153, 199, 0.05);
+                    border-left: 3px solid #2799C7;
+                    border-radius: 4px;
+                    padding: 10px;
+                }
+                .matrix-card-title {
+                    font-weight: bold;
+                    font-size: 0.9em;
+                    color: #1E3A8A;
+                    margin-bottom: 6px;
+                    border-bottom: 1px dashed rgba(30, 58, 138, 0.2);
+                    padding-bottom: 4px;
+                }
+                .matrix-process {
+                    font-size: 0.82em;
+                    line-height: 1.4;
+                    margin-bottom: 4px;
+                    color: #333333;
+                }
+                </style>
+                <div class="matrix-grid">
+                """
+                for area, processes in areas.items():
+                    html_code += f'<div class="matrix-card"><div class="matrix-card-title">{format_text(area)}</div>'
+                    for p in processes:
+                        html_code += f'<div class="matrix-process">• {format_text(p)}</div>'
+                    html_code += '</div>'
+                html_code += '</div>'
+                st.markdown(html_code, unsafe_allow_html=True)
+
+    # ==========================================================
+    # KHỐI 4.2: TÍCH HỢP GIAO DIỆN MỚI CỦA BẠN (Tabs + Agile Table)
+    # ==========================================================
+    elif isinstance(details, dict) and details:
+        
+        # Tách riêng các key đặc biệt cần HTML tùy biến
+        SPECIAL_KEYS = {"agile_manifesto_four_values", "twelve_principles", "agile_vs_predictive_mindset"}
+        
+        if use_tabs:
+            st.markdown("---")
+            st.markdown("### 🔍 Detailed Breakdown & Comparisons")
+            tab_names = [format_text(k.replace('_', ' ')).upper() for k in details.keys()]
+            inner_tabs = st.tabs(tab_names)
+            
+            for idx, key in enumerate(details.keys()):
+                with inner_tabs[idx]:
+                    sub_data = details[key]
+                    if key == "agile_manifesto_four_values":
+                        render_agile_manifesto(sub_data) # Bảng HTML từ code mới
+                    else:
+                        render_sub_data(sub_data) # Hàm đệ quy chống in thô từ code cũ
+        else:
+            st.markdown("---")
+            st.markdown("### 🔍 Detailed Breakdown & Comparisons")
+            
+            # Render trước các khối đặc biệt
+            if "agile_manifesto_four_values" in details:
+                render_agile_manifesto(details["agile_manifesto_four_values"])
+                
+            if "twelve_principles" in details:
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.markdown("#### 📜 12 Agile Principles")
+                p_data = details["twelve_principles"]
+                st.caption(p_data.get("description", ""))
+                for i, p in enumerate(p_data.get("principles", []), 1):
+                    st.markdown(f"**{i}.** {p}")
+
+            if "agile_vs_predictive_mindset" in details:
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.markdown("#### 🔄 Predictive vs Agile Mindset")
+                m_data = details["agile_vs_predictive_mindset"]
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.markdown("**🏗️ Predictive**")
+                    st.info(m_data.get("predictive_mindset", ""))
+                with col2:
+                    st.markdown("**⚡ Agile**")
+                    st.success(m_data.get("agile_mindset", ""))
+                st.markdown(f"💡 **Key Shift:** {m_data.get('key_shift', '')}")
+
+            # ── 2. Vòng lặp duyệt tự động qua các key còn lại (như SMART, types) ──
+            # Đã xử lý chuẩn lùi lề (indentation) để không bị lỗi nuốt dữ liệu
+            for sub_title, sub_data in details.items():
+                if sub_title in SPECIAL_KEYS:
+                    continue
+
+                # Tạo block tiêu đề xanh
+                st.markdown(
+                    f"<div style='border-left:4px solid #2799C7; padding-left:15px;"
+                    f"margin-top:20px; margin-bottom:10px;'>"
+                    f"<span style='font-size:1.15em; font-weight:bold; color:#1E3A8A;'>"
+                    f"{format_text(sub_title.replace('_', ' ')).upper()}</span></div>",
+                    unsafe_allow_html=True
+                )
+                render_sub_data(sub_data) # Quét sâu mọi list/dict lồng nhau!
+            
+    # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL ---
+    root_characteristics = concept.get("characteristics")
+    if root_characteristics:
+        with st.expander("📋 Characteristics", expanded=False):
+            if isinstance(root_characteristics, list):
+                for char in root_characteristics:
+                    render_list_item(char)
+            elif isinstance(root_characteristics, str):
+                for line in root_characteristics.replace("\r\n", "\n").split("\n"):
+                    if line.strip(): render_list_item(line.strip())
+
+    root_when_to_use = concept.get("when_to_use") or concept.get("when to use")
+    if root_when_to_use:
+        with st.expander("🎯 When to Use & Apply", expanded=False):
+            if isinstance(root_when_to_use, list):
+                for item in root_when_to_use:
+                    render_list_item(item)
+            elif isinstance(root_when_to_use, str):
+                for line in root_when_to_use.replace("\r\n", "\n").split("\n"):
+                    if line.strip(): render_list_item(line.strip())
+            elif isinstance(root_when_to_use, dict):
+                if "description" in root_when_to_use:
+                    st.markdown(f"*{format_text(root_when_to_use['description'])}*")
+                if "conditions" in root_when_to_use and isinstance(root_when_to_use["conditions"], list):
+                    for cond in root_when_to_use["conditions"]:
+                        render_list_item(cond)
+
+    root_when_not_to_use = concept.get("when_not_to_use") or concept.get("when not to use")
+    if root_when_not_to_use:
+        with st.expander("⚠️ When NOT to Use", expanded=False):
+            if isinstance(root_when_not_to_use, list):
+                for item in root_when_not_to_use:
+                    render_list_item(item)
+            elif isinstance(root_when_not_to_use, str):
+                for line in root_when_not_to_use.replace("\r\n", "\n").split("\n"):
+                    if line.strip(): render_list_item(line.strip())
+            elif isinstance(root_when_not_to_use, dict):
+                if "description" in root_when_not_to_use:
+                    st.markdown(f"*{format_text(root_when_not_to_use['description'])}*")
+                if "conditions" in root_when_not_to_use and isinstance(root_when_not_to_use["conditions"], list):
+                    for cond in root_when_not_to_use["conditions"]:
+                        render_list_item(cond)
+
+    # 3.5. Real-World Examples & Applications
+    has_any_example = False
+    details_safe = concept.get("details", {})
+    if isinstance(details_safe, dict):
+        for sub_title, sub_data in details_safe.items():
+            if isinstance(sub_data, dict):
+                for check_key in ["example", "examples", "internal_examples", "external_examples", "iterative_examples", "incremental_examples"]:
+                    if check_key in sub_data:
+                        has_any_example = True
+                        break
+            if has_any_example:
+                break
+    if any(k in concept for k in ["example", "examples", "internal_examples", "external_examples"]):
+        has_any_example = True
+
+    if has_any_example:
+        if not use_tabs:
+            root_exs = concept.get("examples") or concept.get("example")
+            if not root_exs and isinstance(details_safe, dict):
+                root_exs = details_safe.get("real_world_example") or details_safe.get("real world example")
+            
+            if root_exs:
+                with st.expander("💡 Real-world Examples & Applications", expanded=False):
+                    st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px;'>", unsafe_allow_html=True)
+                    if isinstance(root_exs, list):
+                        for ex in root_exs:
+                            render_list_item(ex)
+                    elif isinstance(root_exs, str):
+                        for line in root_exs.replace("\r\n", "\n").split("\n"):
+                            if line.strip(): render_list_item(line.strip())
+                    st.markdown("</div>", unsafe_allow_html=True)
+    
+    # 4. Core Values (PMI Code of Ethics)
+    core_values = concept.get("core_values")
+    if core_values and isinstance(core_values, list):
+        with st.expander("🛡️ PMI Core Values & Ethical Conduct Guidelines", expanded=False):
+            for val in core_values:
+                st.markdown(f"**⭐ {format_text(val.get('name', 'Value'))}**: *{format_text(val.get('definition', ''))}*")
+                col_v1, col_v2 = st.columns(2)
+                with col_v1:
+                    st.markdown("**Expected Behaviors:**")
+                    for behavior in val.get("behaviors", []):
+                        st.markdown(f"✅ {format_text(behavior)}")
+                with col_v2:
+                    st.markdown("**PM Application:**")
+                    for app in val.get("pm_application", []):
+                        st.markdown(f"📋 {format_text(app)}")
+                st.markdown("---")
+
+    # 5. Ethical Scenarios
+    ethical_scenarios = concept.get("ethical_scenarios")
+    if ethical_scenarios and isinstance(ethical_scenarios, list):
+        with st.expander("💼 Real-world Ethical Scenarios & Solutions", expanded=False):
+            for idx, sc in enumerate(ethical_scenarios):
+                st.markdown(f"""
+                <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px; color: #212121;">
+                    <b>Scenario {idx+1}:</b> {format_text(sc.get('scenario', ''))}<br>
+                    ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{format_text(sc.get('violation', ''))}</span><br>
+                    ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{format_text(sc.get('correct_action', ''))}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+    # 6. Dependency Types
+    dep_types = concept.get("dependency_types")
+    if dep_types and isinstance(dep_types, list):
+        with st.expander("🔗 Dependency Types Explained", expanded=False):
+            dep_cols = st.columns(len(dep_types))
+            for idx, dep in enumerate(dep_types):
+                with dep_cols[idx]:
+                    st.markdown(f"""
+                    <div style="padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
+                        <b>{format_text(dep.get('type', ''))}</b><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;">{format_text(dep.get('description', ''))}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+    # 7. Inputs, Outputs, Methods & Tools (ITTOs)
+    if any(concept.get(key) for key in ["inputs", "outputs", "methods_tools"]):
+        with st.expander("📊 Inputs, Tools & Outputs (ITTOs)", expanded=False):
+            col_in, col_out, col_mt = st.columns(3)
+            with col_in:
+                display_content_section("📥 Inputs:", concept.get("inputs", []), use_icons=False)
+            with col_out:
+                display_content_section("📤 Outputs:", concept.get("outputs", []), use_icons=False)
+            with col_mt:
+                display_content_section("🛠️ Methods & Tools:", concept.get("methods_tools", []), use_icons=False)
+
+    # 8. Mẹo phòng thi (Exam Tips)
+    if concept.get("exam_tips"):
+        st.markdown(f"""
+            <div style="background-color: #F5F5F5; color: #333; padding: 12px; border-radius: 8px; margin-top: 15px; font-size:0.95em; border-left: 5px solid #FF9800;">
+                💡 <b>Exam Tip:</b> {format_text(concept.get('exam_tips', 'N/A'))}
+            </div>
+        """, unsafe_allow_html=True)
 
 # Nạp ngân hàng câu hỏi gốc
 if "questions_bank" not in st.session_state:
@@ -866,62 +1249,7 @@ if menu_choice == "📚 Knowledge Hub":
                     if not glossary_data:
                         st.warning("⚠️ Do not find Glossary.json file or the file format is invalid.")
                     else:
-                        # Chia làm 2 cột: Cột 1 nhập từ khóa tìm kiếm, Cột 2 lọc theo Category (General, Agile, Cost, Schedule,...)
-                        col_search, col_filter = st.columns([2, 1])
-                        
-                        with col_search:
-                            search_query = st.text_input("🔍 Search term or definition:", placeholder="Type to search (e.g. WBS, Agile, AC, Baseline)...", key="glossary_main_search_bar")
-                        
-                        with col_filter:
-                            # Tự động lấy danh sách Category xuất hiện trong Glossary để lọc
-                            categories_list = sorted(list(set(str(item.get("category", "General")) for item in glossary_data if item.get("category"))))
-                            selected_category = st.selectbox("🗂️ Filter by Category:", ["All Categories"] + categories_list, key="glossary_cat_selectbox")
-                        
-                        # LOGIC LỌC TÌM KIẾM ĐỘNG
-                        filtered_glossary = glossary_data
-                        
-                        # 1. Lọc theo Category
-                        if selected_category != "All Categories":
-                            filtered_glossary = [item for item in filtered_glossary if str(item.get("category")) == selected_category]
-                        
-                        # 2. Lọc theo Từ khóa tìm kiếm (Không phân biệt hoa thường)
-                        if search_query.strip():
-                            q = search_query.lower().strip()
-                            filtered_glossary = [
-                                item for item in filtered_glossary
-                                if q in str(item.get("term", "")).lower() or q in str(item.get("definition", "")).lower()
-                            ]
-                        
-                        # Hiển thị số lượng kết quả
-                        st.caption(f"Showing {len(filtered_glossary)} of {len(glossary_data)} terms found.")
-                        st.write("")
-                        
-                        # Render danh sách kết quả (Giới hạn tối đa 80 thẻ đầu tiên để tránh làm lag trình duyệt khi tải quá nặng)
-                        display_limit = 80
-                        for idx, item in enumerate(filtered_glossary[:display_limit]):
-                            term_name = item.get("term", "N/A")
-                            term_def = item.get("definition", "No definition provided.")
-                            term_cat = item.get("category", "General")
-                            
-                            # Tô đậm từ khóa tìm kiếm trong định nghĩa và thuật ngữ nếu có
-                            st.markdown(f"""
-                                <div class="task-card" style="margin-bottom: 12px; padding: 15px;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                        <span style="font-weight: bold; font-size: 1.15em; color: #2799C7;">🏷️ {term_name}</span>
-                                        <span style="background-color: #E0F2F1; color: #00796B; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold;">
-                                            {term_cat.upper()}
-                                        </span>
-                                    </div>
-                                    <div style="line-height: 1.6; font-size: 1.05em; opacity: 0.9;">
-                                        {term_def}
-                                    </div>
-                                </div>
-                            """, unsafe_allow_html=True)
-                        
-                        if len(filtered_glossary) > display_limit:
-                            st.info(f"💡 Showing {display_limit} first answers. Please input more specific keywords to narrow down searching area!")
-
-
+                        render_glossary_fragment(glossary_data)
                 # ------------------------------------------------------
                 # KỊCH BẢN 3.2: NẾU USER CHỌN CÁC DOMAIN CÒN LẠI (GIẢM THIỂU CUỘN CHUỘT & FIXED CONFIGURATION TABS)
                 # ------------------------------------------------------
@@ -931,335 +1259,9 @@ if menu_choice == "📚 Knowledge Hub":
                     if not domain_concepts:
                         st.info("No content found for this general learning domain.")
                     else:
-                        concept_titles = [c.get("title", "Untitled Concept") for c in domain_concepts]
-                        
-                        selected_concept_title = st.selectbox(
-                            "📚 Choose a Topic to Study:",
-                            options=concept_titles,
-                            key="gen_concept_selector"
-                        )
-                        
-                        st.markdown("---")
-                        
-                        concept = next((c for c in domain_concepts if c.get("title") == selected_concept_title), domain_concepts[0])
-                        
-                
-                        raw_approach = str(concept.get('approach', '')).upper().strip()
-                        color_cfg = approach_colors.get(raw_approach, approach_colors["BOTH"])
-                        approach_badge_html = f'<span style="background-color: {color_cfg["bg"]}; color: {color_cfg["text"]}; padding: 2px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-block; border: 1px solid {color_cfg["text"]}20;">{raw_approach}</span>'
-                        
-                        st.markdown(f"""
-                            <div class="task-card" style="margin-bottom: 20px;">
-                                <div style="font-weight: bold; font-size: 1.4em; color: #2799C7; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                                    <span>📘 {format_text(concept.get('title', 'Untitled Concept'))}</span>
-                                    {approach_badge_html}
-                                </div>
-                                <div style="font-size: 1.1em; line-height: 1.6; font-style: italic; opacity: 0.85;">
-                                    {format_text(concept.get('summary', 'No summary available.'))}
-                                </div>
-                            </div>
-                        """, unsafe_allow_html=True)
-                        
-                        if concept.get("key_concepts"):
-                            with st.expander("📌 Key Concepts Summary", expanded=True):
-                                for kc in concept.get("key_concepts", []):
-                                    st.markdown(f"- {format_text(kc)}")
-
-                        details = concept.get("details", {})
-                        if details is None:
-                            details = {}
-
-                        tab_titles = [
-                            "Project vs Program vs Portfolio",
-                            "Strategic Dependencies (Project – Program – Portfolio)",
-                            "Constraints, Assumptions, and Risks",
-                            "Product, Product Life Cycle, and Project Life Cycle",
-                            "Working with OPAs and EEFs",
-                            "Project Development Approach",
-                            "Leadership Styles in Project Management",
-                            "Integration Management (Deep Dive)",
-                            "Process Groups Overview",
-                            "Knowledge Areas Overview",
-                            "Agile Mindset — The Foundation of All Agile Approaches",
-                            "Scrum Framework — Roles, Events, and Artifacts",
-                            "Kanban — Visualizing Flow and Managing Work-in-Progress",
-                            "Extreme Programming (XP) — Technical Excellence in Agile",
-                            "Agile Planning — From Vision to Iteration",
-                            "Agile Teams — Self-Organization, Cross-Functionality, and High Performance",
-                            "Agile Metrics — Measuring Progress and Performance",
-                            "Scaled Agile — Coordinating Multiple Agile Teams",
-                            "Hybrid Approaches — Combining Predictive and Agile",
-                            "Agile in the Organization — Adoption, Change, and Culture",
-                            "Agile Requirements — User Stories, Epics, and the Product Backlog",
-                            "Agile Quality — Building Quality In from the Start",
-                            "Needs Assessment — Defining the Real Business Problem",
-                            "Stakeholder Engagement in Business Analysis",
-                            "Elicitation — Drawing Out Requirements from Stakeholders",
-                            "Requirements Analysis — Modeling, Validating, and Prioritizing",
-                            "Requirements Traceability — Tracking Requirements Through the Lifecycle",
-                            "Solution Evaluation — Assessing Whether the Solution Delivers Value",
-                            "Product Roadmap and Backlog in BA Context",
-                            "Business Analysis — Overview, Role, and Value",
-                            "Business Analysis Communication — Adapting to Different Audiences",
-                            "BA Tools and Techniques Reference Guide",
-                            "Team Development & Performance",
-                            "Conflict Management & Negotiation"
-                        ]
-                        # So khớp thông minh không phân biệt hoa thường
-                        use_tabs = any(concept.get("title", "").strip().lower() == t.strip().lower() for t in tab_titles)
-
-                        # ------------------------------------------------------
-                        # XỬ LÝ KHỐI 4.1: NẾU LÀ BÀI TOÁN MA TRẬN TIẾN TRÌNH (type == "matrix" hoặc có key matrix)
-                        # ------------------------------------------------------
-                        if concept.get("type") == "matrix" or "matrix" in concept or concept.get("id") == "PM-49-PROCESSES-MATRIX":
-                            matrix_data = concept.get("matrix", {})
-                            for group, areas in matrix_data.items():
-                                with st.expander(f"🔹 {format_text(group.replace('_', ' '))}", expanded=True):
-                                    html_code = """
-                                    <style>
-                                    .matrix-grid {
-                                        display: flex;
-                                        flex-wrap: wrap;
-                                        gap: 12px;
-                                        margin-top: 10px;
-                                        width: 100%;
-                                    }
-                                    .matrix-card {
-                                        flex: 1 1 200px;
-                                        min-width: 160px;
-                                        background-color: rgba(39, 153, 199, 0.05);
-                                        border-left: 3px solid #2799C7;
-                                        border-radius: 4px;
-                                        padding: 10px;
-                                    }
-                                    .matrix-card-title {
-                                        font-weight: bold;
-                                        font-size: 0.9em;
-                                        color: #1E3A8A;
-                                        margin-bottom: 6px;
-                                        border-bottom: 1px dashed rgba(30, 58, 138, 0.2);
-                                        padding-bottom: 4px;
-                                    }
-                                    .matrix-process {
-                                        font-size: 0.82em;
-                                        line-height: 1.4;
-                                        margin-bottom: 4px;
-                                        color: #333333;
-                                    }
-                                    </style>
-                                    <div class="matrix-grid">
-                                    """
-                                    for area, processes in areas.items():
-                                        html_code += f'<div class="matrix-card"><div class="matrix-card-title">{format_text(area)}</div>'
-                                        for p in processes:
-                                            html_code += f'<div class="matrix-process">• {format_text(p)}</div>'
-                                        html_code += '</div>'
-                                    html_code += '</div>'
-                                    st.markdown(html_code, unsafe_allow_html=True)
-
-                        # ==========================================================
-                        # KHỐI 4.2: TÍCH HỢP GIAO DIỆN MỚI CỦA BẠN (Tabs + Agile Table)
-                        # ==========================================================
-                        elif isinstance(details, dict) and details:
-                            
-                            # Tách riêng các key đặc biệt cần HTML tùy biến
-                            SPECIAL_KEYS = {"agile_manifesto_four_values", "twelve_principles", "agile_vs_predictive_mindset"}
-                            
-                            if use_tabs:
-                                st.markdown("---")
-                                st.markdown("### 🔍 Detailed Breakdown & Comparisons")
-                                tab_names = [format_text(k.replace('_', ' ')).upper() for k in details.keys()]
-                                inner_tabs = st.tabs(tab_names)
-                                
-                                for idx, key in enumerate(details.keys()):
-                                    with inner_tabs[idx]:
-                                        sub_data = details[key]
-                                        if key == "agile_manifesto_four_values":
-                                            render_agile_manifesto(sub_data) # Bảng HTML từ code mới
-                                        else:
-                                            render_sub_data(sub_data) # Hàm đệ quy chống in thô từ code cũ
-                            else:
-                                st.markdown("---")
-                                st.markdown("### 🔍 Detailed Breakdown & Comparisons")
-                                
-                                # Render trước các khối đặc biệt
-                                if "agile_manifesto_four_values" in details:
-                                    render_agile_manifesto(details["agile_manifesto_four_values"])
-                                    
-                                if "twelve_principles" in details:
-                                    st.markdown("<br>", unsafe_allow_html=True)
-                                    st.markdown("#### 📜 12 Agile Principles")
-                                    p_data = details["twelve_principles"]
-                                    st.caption(p_data.get("description", ""))
-                                    for i, p in enumerate(p_data.get("principles", []), 1):
-                                        st.markdown(f"**{i}.** {p}")
-
-                                if "agile_vs_predictive_mindset" in details:
-                                    st.markdown("<br>", unsafe_allow_html=True)
-                                    st.markdown("#### 🔄 Predictive vs Agile Mindset")
-                                    m_data = details["agile_vs_predictive_mindset"]
-                                    col1, col2 = st.columns(2)
-                                    with col1:
-                                        st.markdown("**🏗️ Predictive**")
-                                        st.info(m_data.get("predictive_mindset", ""))
-                                    with col2:
-                                        st.markdown("**⚡ Agile**")
-                                        st.success(m_data.get("agile_mindset", ""))
-                                    st.markdown(f"💡 **Key Shift:** {m_data.get('key_shift', '')}")
-
-                                # ── 2. Vòng lặp duyệt tự động qua các key còn lại (như SMART, types) ──
-                                # Đã xử lý chuẩn lùi lề (indentation) để không bị lỗi nuốt dữ liệu
-                                for sub_title, sub_data in details.items():
-                                    if sub_title in SPECIAL_KEYS:
-                                        continue
-
-                                    # Tạo block tiêu đề xanh
-                                    st.markdown(
-                                        f"<div style='border-left:4px solid #2799C7; padding-left:15px;"
-                                        f"margin-top:20px; margin-bottom:10px;'>"
-                                        f"<span style='font-size:1.15em; font-weight:bold; color:#1E3A8A;'>"
-                                        f"{format_text(sub_title.replace('_', ' ')).upper()}</span></div>",
-                                        unsafe_allow_html=True
-                                    )
-                                    render_sub_data(sub_data) # Quét sâu mọi list/dict lồng nhau!
-                                
-                        # --- HỖ TRỢ HIỂN THỊ CÁC THUỘC TÍNH ROOT-LEVEL ---
-                        root_characteristics = concept.get("characteristics")
-                        if root_characteristics:
-                            with st.expander("📋 Characteristics", expanded=False):
-                                if isinstance(root_characteristics, list):
-                                    for char in root_characteristics:
-                                        render_list_item(char)
-                                elif isinstance(root_characteristics, str):
-                                    for line in root_characteristics.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): render_list_item(line.strip())
-
-                        root_when_to_use = concept.get("when_to_use") or concept.get("when to use")
-                        if root_when_to_use:
-                            with st.expander("🎯 When to Use & Apply", expanded=False):
-                                if isinstance(root_when_to_use, list):
-                                    for item in root_when_to_use:
-                                        render_list_item(item)
-                                elif isinstance(root_when_to_use, str):
-                                    for line in root_when_to_use.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): render_list_item(line.strip())
-                                elif isinstance(root_when_to_use, dict):
-                                    if "description" in root_when_to_use:
-                                        st.markdown(f"*{format_text(root_when_to_use['description'])}*")
-                                    if "conditions" in root_when_to_use and isinstance(root_when_to_use["conditions"], list):
-                                        for cond in root_when_to_use["conditions"]:
-                                            render_list_item(cond)
-
-                        root_when_not_to_use = concept.get("when_not_to_use") or concept.get("when not to use")
-                        if root_when_not_to_use:
-                            with st.expander("⚠️ When NOT to Use", expanded=False):
-                                if isinstance(root_when_not_to_use, list):
-                                    for item in root_when_not_to_use:
-                                        render_list_item(item)
-                                elif isinstance(root_when_not_to_use, str):
-                                    for line in root_when_not_to_use.replace("\r\n", "\n").split("\n"):
-                                        if line.strip(): render_list_item(line.strip())
-                                elif isinstance(root_when_not_to_use, dict):
-                                    if "description" in root_when_not_to_use:
-                                        st.markdown(f"*{format_text(root_when_not_to_use['description'])}*")
-                                    if "conditions" in root_when_not_to_use and isinstance(root_when_not_to_use["conditions"], list):
-                                        for cond in root_when_not_to_use["conditions"]:
-                                            render_list_item(cond)
-
-                        # 3.5. Real-World Examples & Applications
-                        has_any_example = False
-                        details_safe = concept.get("details", {})
-                        if isinstance(details_safe, dict):
-                            for sub_title, sub_data in details_safe.items():
-                                if isinstance(sub_data, dict):
-                                    for check_key in ["example", "examples", "internal_examples", "external_examples", "iterative_examples", "incremental_examples"]:
-                                        if check_key in sub_data:
-                                            has_any_example = True
-                                            break
-                                if has_any_example:
-                                    break
-                        if any(k in concept for k in ["example", "examples", "internal_examples", "external_examples"]):
-                            has_any_example = True
-
-                        if has_any_example:
-                            if not use_tabs:
-                                root_exs = concept.get("examples") or concept.get("example")
-                                if not root_exs and isinstance(details_safe, dict):
-                                    root_exs = details_safe.get("real_world_example") or details_safe.get("real world example")
-                                
-                                if root_exs:
-                                    with st.expander("💡 Real-world Examples & Applications", expanded=False):
-                                        st.markdown(f"<div style='border-left: 3px solid #FF9800; padding: 10px; border-radius: 4px;'>", unsafe_allow_html=True)
-                                        if isinstance(root_exs, list):
-                                            for ex in root_exs:
-                                                render_list_item(ex)
-                                        elif isinstance(root_exs, str):
-                                            for line in root_exs.replace("\r\n", "\n").split("\n"):
-                                                if line.strip(): render_list_item(line.strip())
-                                        st.markdown("</div>", unsafe_allow_html=True)
-                        
-                        # 4. Core Values (PMI Code of Ethics)
-                        core_values = concept.get("core_values")
-                        if core_values and isinstance(core_values, list):
-                            with st.expander("🛡️ PMI Core Values & Ethical Conduct Guidelines", expanded=False):
-                                for val in core_values:
-                                    st.markdown(f"**⭐ {format_text(val.get('name', 'Value'))}**: *{format_text(val.get('definition', ''))}*")
-                                    col_v1, col_v2 = st.columns(2)
-                                    with col_v1:
-                                        st.markdown("**Expected Behaviors:**")
-                                        for behavior in val.get("behaviors", []):
-                                            st.markdown(f"✅ {format_text(behavior)}")
-                                    with col_v2:
-                                        st.markdown("**PM Application:**")
-                                        for app in val.get("pm_application", []):
-                                            st.markdown(f"📋 {format_text(app)}")
-                                    st.markdown("---")
-
-                        # 5. Ethical Scenarios
-                        ethical_scenarios = concept.get("ethical_scenarios")
-                        if ethical_scenarios and isinstance(ethical_scenarios, list):
-                            with st.expander("💼 Real-world Ethical Scenarios & Solutions", expanded=False):
-                                for idx, sc in enumerate(ethical_scenarios):
-                                    st.markdown(f"""
-                                    <div style="background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 12px; border-radius: 6px; margin-bottom: 10px; color: #212121;">
-                                        <b>Scenario {idx+1}:</b> {format_text(sc.get('scenario', ''))}<br>
-                                        ⚠️ <b>Violation:</b> <span style="color: #D32F2F; font-weight: bold;">{format_text(sc.get('violation', ''))}</span><br>
-                                        ✔️ <b>Correct Professional Action:</b> <span style="color: #388E3C; font-weight: bold;">{format_text(sc.get('correct_action', ''))}</span>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-
-                        # 6. Dependency Types
-                        dep_types = concept.get("dependency_types")
-                        if dep_types and isinstance(dep_types, list):
-                            with st.expander("🔗 Dependency Types Explained", expanded=False):
-                                dep_cols = st.columns(len(dep_types))
-                                for idx, dep in enumerate(dep_types):
-                                    with dep_cols[idx]:
-                                        st.markdown(f"""
-                                        <div style="padding: 10px; border-radius: 6px; border-top: 3px solid #607D8B; height: 100%;">
-                                            <b>{format_text(dep.get('type', ''))}</b><br>
-                                            <span style="font-size: 0.9em; opacity: 0.8;">{format_text(dep.get('description', ''))}</span>
-                                        </div>
-                                        """, unsafe_allow_html=True)
-
-                        # 7. Inputs, Outputs, Methods & Tools (ITTOs)
-                        if any(concept.get(key) for key in ["inputs", "outputs", "methods_tools"]):
-                            with st.expander("📊 Inputs, Tools & Outputs (ITTOs)", expanded=False):
-                                col_in, col_out, col_mt = st.columns(3)
-                                with col_in:
-                                    display_content_section("📥 Inputs:", concept.get("inputs", []), use_icons=False)
-                                with col_out:
-                                    display_content_section("📤 Outputs:", concept.get("outputs", []), use_icons=False)
-                                with col_mt:
-                                    display_content_section("🛠️ Methods & Tools:", concept.get("methods_tools", []), use_icons=False)
-
-                        # 8. Mẹo phòng thi (Exam Tips)
-                        if concept.get("exam_tips"):
-                            st.markdown(f"""
-                                <div style="background-color: #F5F5F5; color: #333; padding: 12px; border-radius: 8px; margin-top: 15px; font-size:0.95em; border-left: 5px solid #FF9800;">
-                                    💡 <b>Exam Tip:</b> {format_text(concept.get('exam_tips', 'N/A'))}
-                                </div>
-                            """, unsafe_allow_html=True)
+                        # KÍCH HOẠT FRAGMENT: Chọn bài học nào bung bài học đó ra ngay lập tức
+                        render_topic_selector_fragment(domain_concepts, approach_colors)
+                    
 
 # ==========================================
 # 📝 PHẦN 3: QUESTION BANK
