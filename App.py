@@ -766,7 +766,7 @@ if menu_choice == "📚 Knowledge Hub":
             selected_domain_pmp = st.radio("Select Domain:", pmp_domains, key="pmp_radio")
 
         with col_content_pmp:
-            st.subheader(f"📖 {selected_domain}")
+            st.subheader(f"📖 {selected_domain_pmp}")
             tasks = [t for t in eco_data if t.get("domain") == selected_domain_pmp]
             
             if not tasks:
@@ -810,7 +810,7 @@ if menu_choice == "📚 Knowledge Hub":
             selected_domain_capm = st.radio("Select Domain:", capm_domains, key="capm_radio")
 
         with col_content_capm:
-            st.subheader(f"📖 {selected_domain}")
+            st.subheader(f"📖 {selected_domain_capm}")
             tasks = [t for t in eco_data if t.get("domain") == selected_domain_capm]
             
             if not tasks:
