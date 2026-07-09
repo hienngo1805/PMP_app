@@ -44,7 +44,16 @@ st.markdown("""
     transition: all 0.3s ease;
 
 }
+/* Ẩn nút Fork và GitHub icon, giữ nguyên menu 3 chấm để đổi theme */
+[data-testid="stToolbar"] a,
+[data-testid="stToolbar"] button[kind="icon"]:first-of-type {
+    display: none !important;
+}
 
+/* Ẩn nút Deploy góc phải dưới */
+[data-testid="stAppDeployButton"] {
+    display: none !important;
+}
 /* =========================================================================
    I. LIGHT MODE
    ========================================================================= */
@@ -84,10 +93,6 @@ body[class*="light"] [data-testid="stSidebar"] * {
     display: none !important;
 }
 
-/* Ẩn nút Deploy góc phải dưới */
-[data-testid="stAppDeployButton"] {
-    display: none !important;
-}
 /* =========================================================================
    II. DARK MODE
    ========================================================================= */
@@ -117,6 +122,12 @@ body[class*="dark"] [data-testid="stSidebar"] * {
 
     border: 1px solid #1E40AF !important;
 }
+/* Ẩn nút Fork và GitHub icon, giữ nguyên menu 3 chấm để đổi theme */
+[data-testid="stToolbar"] a,
+[data-testid="stToolbar"] button[kind="icon"]:first-of-type {
+    display: none !important;
+}
+
 </style>
 
 """, unsafe_allow_html=True) 
