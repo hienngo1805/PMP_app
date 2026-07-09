@@ -14,7 +14,38 @@ try:
 except ImportError:
     OPENAI_AVAILABLE = False
 
+import gspread
+from google.oauth2.service_account import Credentials
 
+@st.cache_resource
+def get_gsheet_client():
+    scope = [
+        "https://spreadsheets.google.com/feeds",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    creds = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
+        scopes=scope
+    )
+    return gspread.authorize(creds)
+
+@st.cache_resource
+def get_worksheets():
+    client = get_gsheet_client()
+    sheet = client.open_by_key("1SrFeBfyGC-A4neu9bnIAlUMf2aWd-wqRUpNbZO34HKI")
+    return {
+        "users": sheet.worksheet("users"),
+        "quiz_history": sheet.worksheet("quiz_history")
+    }
+
+# --- TEST KẾT NỐI --- 
+try:
+    ws = get_worksheets()
+    st.success("✅ Kết nối Google Sheets thành công!")
+    st.write("Users headers:", ws["users"].row_values(1))
+    st.write("Quiz history headers:", ws["quiz_history"].row_values(1))
+except Exception as e:
+    st.error(f"❌ Lỗi kết nối: {e}")
 
 # Cấu hình giao diện rộng (wide) - Bắt buộc phải nằm ở đầu file Streamlit
 st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", layout="wide")

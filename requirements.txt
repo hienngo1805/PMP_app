@@ -5,4 +5,8 @@ openai
 google-generativeai
 anthropic
 streamlit==1.58.0
+gspread==5.12.0
+google-auth==2.23.4
+streamlit-authenticator==0.3.1
+bcrypt==4.0.1
 

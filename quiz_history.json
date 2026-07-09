@@ -39,5 +39,62 @@
                 "user_answer": "B. Responding to change is valued over following a plan"
             }
         ]
+    },
+    {
+        "exam_id": "20260709_204520",
+        "Date/Time": "2026-07-09 20:45:20",
+        "Score": "1 / 3",
+        "Percentage (%)": "33.33%",
+        "Duration": "1m",
+        "details": [
+            {
+                "id": "Q185",
+                "question": "A project's network diagram has activities A, B, C, D, E. Critical path is A→C→E (duration 18 days). Activity B has total float of 5 days and free float of 2 days. The PM is considering delaying Activity B by 3 days. What is the consequence?",
+                "options": [
+                    "A. No impact — B has 5 days total float so a 3-day delay is within tolerance",
+                    "B. B's successor activity is delayed by 1 day, but the project end date is unaffected since B's total float absorbs the delay",
+                    "C. The project end date is delayed by 3 days since the delay exceeds B's free float",
+                    "D. B's immediate successor is delayed by 1 day (3 days delay minus 2 days free float), but the project end date remains unchanged since the 3-day delay is within B's total float of 5 days"
+                ],
+                "correct": "D. B's immediate successor is delayed by 1 day (3 days delay minus 2 days free float), but the project end date remains unchanged since the 3-day delay is within B's total float of 5 days",
+                "explanation": "Free float (2 days) = how much B can be delayed without affecting its immediate successor. Delaying B by 3 days exceeds free float by 1 day, so B's successor is pushed 1 day later. However, total float (5 days) = how much B can be delayed without affecting the project end date. Since 3 days < 5 days total float, the project end date is unchanged. The PM must also recognize that B's remaining total float decreases from 5 to 2 days — less buffer for further delays.",
+                "source": "PMP ECO Jan 2021 - Domain II Process / CPM / Float Analysis",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "B. B's successor activity is delayed by 1 day, but the project end date is unaffected since B's total float absorbs the delay"
+            },
+            {
+                "id": "Q61",
+                "question": "Which of the following BEST defines a project?",
+                "options": [
+                    "A. Ongoing operational work performed repeatedly",
+                    "B. A temporary endeavor undertaken to create a unique product, service, or result",
+                    "C. A department's annual plan and budget",
+                    "D. A set of tasks assigned to a team leader"
+                ],
+                "correct": "B. A temporary endeavor undertaken to create a unique product, service, or result",
+                "explanation": "A project is defined as a temporary endeavor with a definite beginning and end, undertaken to create a unique product, service, or result. This distinguishes it from operations, which are ongoing and repetitive.",
+                "source": "PMBOK® Guide 7th Edition - Introduction",
+                "certification": "CAPM",
+                "domain": "Project Management Fundamentals",
+                "user_answer": "B. A temporary endeavor undertaken to create a unique product, service, or result"
+            },
+            {
+                "id": "Q198",
+                "question": "A PM's project has these activities on the critical path: Design (8 days), Development (14 days), Testing (6 days). The PM can compress by either crashing Development (adds 2 developers at $3,000 each, recovers 4 days) or fast-tracking Design and Development (overlap by 5 days, adds 30% rework risk). The project penalty for each day of delay is $2,500. The project is currently 3 days behind schedule. Which option delivers better financial outcome?",
+                "options": [
+                    "A. Crashing: cost = $6,000 to recover 4 days; but still 3 days behind — total additional cost = $6,000 + (3×$2,500) = $13,500",
+                    "B. Fast-tracking: recovers 5 days for free; if rework occurs (30% chance) costs approximately $15,000 in rework; but eliminates delay penalty — expected total cost = 0.30 × $15,000 = $4,500 expected rework vs $7,500 delay avoided = net $3,000 advantage",
+                    "C. Crashing: recovers 4 days reducing delay from 3 to 0 days (since crashing gives 4 days back on a 3-day delay). Net cost = $6,000 crash cost with $0 penalty. Fast-tracking: recovers 5 days eliminating penalty entirely; expected rework cost = 0.30 × $15,000 = $4,500. Fast-tracking is superior: $4,500 expected vs $6,000 certain",
+                    "D. Neither option — accept the $7,500 delay penalty (3 days × $2,500) as the cheapest certain cost"
+                ],
+                "correct": "C. Crashing: recovers 4 days reducing delay from 3 to 0 days (since crashing gives 4 days back on a 3-day delay). Net cost = $6,000 crash cost with $0 penalty. Fast-tracking: recovers 5 days eliminating penalty entirely; expected rework cost = 0.30 × $15,000 = $4,500. Fast-tracking is superior: $4,500 expected vs $6,000 certain",
+                "explanation": "Currently 3 days behind. Crashing: adds 4 days recovery → eliminates the 3-day delay (only need 3 of the 4 days recovered). Cost = $6,000 certain. Penalty = $0. Total: $6,000. Fast-tracking: recovers 5 days → eliminates delay. Cost = 30% × $15,000 rework = $4,500 expected. Penalty = $0. Total expected: $4,500. Fast-tracking has lower expected cost ($4,500 < $6,000) but carries risk. Accepting the penalty ($7,500) costs more than either option. The PM should present both compression options with their cost/risk profiles for stakeholder decision.",
+                "source": "PMP ECO Jan 2021 - Domain II Process / Schedule Compression Analysis",
+                "certification": "PMP",
+                "domain": "Process",
+                "user_answer": "B. Fast-tracking: recovers 5 days for free; if rework occurs (30% chance) costs approximately $15,000 in rework; but eliminates delay penalty — expected total cost = 0.30 × $15,000 = $4,500 expected rework vs $7,500 delay avoided = net $3,000 advantage"
+            }
+        ]
     }
 ]
