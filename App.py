@@ -44,14 +44,26 @@ st.markdown("""
     transition: all 0.3s ease;
 
 }
-/* Ẩn nút Fork và GitHub icon, giữ nguyên menu 3 chấm để đổi theme */
-[data-testid="stToolbar"] a,
-[data-testid="stToolbar"] button[kind="icon"]:first-of-type {
+/* Ẩn Fork button (span chứa chữ "Fork") */
+[data-testid="stToolbarActionButtonLabel"] {
     display: none !important;
 }
 
-/* Ẩn nút Deploy góc phải dưới */
-[data-testid="stAppDeployButton"] {
+/* Ẩn toàn bộ stToolbarActions (Fork + GitHub icon) nhưng giữ stMainMenu (3 chấm) */
+[data-testid="stToolbarActions"] {
+    display: none !important;
+}
+
+/* Ẩn GitHub/Streamlit viewer badge góc dưới phải */
+a[href*="streamlit.io/cloud"],
+._viewerBadge_aycw8_23,
+[class*="viewerBadge"] {
+    display: none !important;
+}
+
+/* Ẩn nút Deploy đỏ góc dưới */
+[data-testid="stAppDeployButton"],
+[class*="_profileContainer"] {
     display: none !important;
 }
 /* =========================================================================
