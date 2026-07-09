@@ -217,27 +217,58 @@ def render_glossary_fragment(glossary_data):
         categories_list = sorted(list(set(str(item.get("category", "General")) for item in glossary_data if item.get("category"))))
         selected_category = st.selectbox("🗂️ Filter by Category:", ["All Categories"] + categories_list, key="glossary_cat_selectbox")
     
-    # Logic lọc động (Giữ nguyên logic cũ của bạn)
+    # LOGIC LỌC
     filtered_glossary = glossary_data
     if selected_category != "All Categories":
         filtered_glossary = [item for item in filtered_glossary if str(item.get("category")) == selected_category]
-    
     if search_query.strip():
         q = search_query.lower().strip()
         filtered_glossary = [
             item for item in filtered_glossary
             if q in str(item.get("term", "")).lower() or q in str(item.get("definition", "")).lower()
         ]
-    
-    st.caption(f"Showing {len(filtered_glossary)} of {len(glossary_data)} terms found.")
+
+    # PAGINATION — reset về trang 1 khi filter/search thay đổi
+    PAGE_SIZE = 80
+    total_items = len(filtered_glossary)
+    total_pages = max(1, -(-total_items // PAGE_SIZE))
+
+    search_key = f"{search_query}_{selected_category}"
+    if st.session_state.get("glossary_search_key") != search_key:
+        st.session_state.glossary_search_key = search_key
+        st.session_state.glossary_page = 1
+    if "glossary_page" not in st.session_state:
+        st.session_state.glossary_page = 1
+
+    current_page = st.session_state.glossary_page
+
+    # Header: tổng kết quả + nút pagination trên
+    col_info, col_nav = st.columns([3, 1])
+    with col_info:
+        st.caption(f"Showing {total_items} of {len(glossary_data)} terms · Page {current_page}/{total_pages}")
+    with col_nav:
+        p1, p2, p3 = st.columns([1, 1, 1])
+        with p1:
+            if st.button("◀", key="glos_prev_top", disabled=(current_page <= 1)):
+                st.session_state.glossary_page -= 1
+                st.rerun(scope="fragment")
+        with p2:
+            st.markdown(f"<div style='text-align:center;padding-top:6px;font-size:0.85em;'>{current_page}/{total_pages}</div>", unsafe_allow_html=True)
+        with p3:
+            if st.button("▶", key="glos_next_top", disabled=(current_page >= total_pages)):
+                st.session_state.glossary_page += 1
+                st.rerun(scope="fragment")
+
     st.write("")
-    
-    display_limit = 80
-    for item in filtered_glossary[:display_limit]:
+
+    # RENDER ITEMS của trang hiện tại
+    start_idx = (current_page - 1) * PAGE_SIZE
+    page_items = filtered_glossary[start_idx:start_idx + PAGE_SIZE]
+
+    for item in page_items:
         term_name = item.get("term", "N/A")
-        term_def = item.get("definition", "No definition provided.")
-        term_cat = item.get("category", "General")
-        
+        term_def  = item.get("definition", "No definition provided.")
+        term_cat  = item.get("category", "General")
         st.markdown(f"""
             <div class="task-card" style="margin-bottom: 12px; padding: 15px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -251,9 +282,29 @@ def render_glossary_fragment(glossary_data):
                 </div>
             </div>
         """, unsafe_allow_html=True)
-    
-    if len(filtered_glossary) > display_limit:
-        st.info("💡 Showing 80 first answers. Please input more specific keywords to narrow down searching area!")
+
+    # Pagination bottom — chỉ hiện khi có nhiều hơn 1 trang
+    if total_pages > 1:
+        st.markdown("---")
+        b1, b2, b3, b4, b5 = st.columns([1, 1, 2, 1, 1])
+        with b1:
+            if st.button("⏮ First", key="glos_first", disabled=(current_page <= 1)):
+                st.session_state.glossary_page = 1
+                st.rerun(scope="fragment")
+        with b2:
+            if st.button("◀ Prev", key="glos_prev_bot", disabled=(current_page <= 1)):
+                st.session_state.glossary_page -= 1
+                st.rerun(scope="fragment")
+        with b3:
+            st.markdown(f"<div style='text-align:center;padding-top:6px;'>Page {current_page} of {total_pages} · {total_items} terms</div>", unsafe_allow_html=True)
+        with b4:
+            if st.button("Next ▶", key="glos_next_bot", disabled=(current_page >= total_pages)):
+                st.session_state.glossary_page += 1
+                st.rerun(scope="fragment")
+        with b5:
+            if st.button("Last ⏭", key="glos_last", disabled=(current_page >= total_pages)):
+                st.session_state.glossary_page = total_pages
+                st.rerun(scope="fragment")
 
 def render_agile_manifesto(manifesto_data: dict):
     """Render bảng Agile Manifesto 4 Values dạng HTML table."""
@@ -655,6 +706,10 @@ if "bank_last_result" not in st.session_state:
     st.session_state.bank_last_result = {}   # lưu đúng/sai
 if "bank_user_answers" not in st.session_state:
     st.session_state.bank_user_answers = {}  # lưu đáp án user đã chọn
+if "glossary_page" not in st.session_state:
+    st.session_state.glossary_page = 1
+if "glossary_search_key" not in st.session_state:
+    st.session_state.glossary_search_key = ""
 if "test_current_idx" not in st.session_state:
     st.session_state.test_current_idx = 0
 if "test_mode" not in st.session_state:
