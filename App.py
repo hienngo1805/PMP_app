@@ -78,6 +78,16 @@ body[class*="light"] [data-testid="stSidebar"] * {
 [data-testid="stMainBlockContainer"] div[data-testid="stRadio"] div[role="radiogroup"] {
     gap: 10px !important;
 }
+            /* Ẩn nút Fork và GitHub icon, giữ nguyên menu 3 chấm để đổi theme */
+[data-testid="stToolbar"] a,
+[data-testid="stToolbar"] button[kind="icon"]:first-of-type {
+    display: none !important;
+}
+
+/* Ẩn nút Deploy góc phải dưới */
+[data-testid="stAppDeployButton"] {
+    display: none !important;
+}
 /* =========================================================================
    II. DARK MODE
    ========================================================================= */
