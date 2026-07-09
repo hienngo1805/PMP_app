@@ -61,10 +61,13 @@ a[href*="streamlit.io/cloud"],
     display: none !important;
 }
 
-/* Ẩn nút Deploy đỏ góc dưới */
-[data-testid="stAppDeployButton"],
-[class*="_profileContainer"] {
+/* Ẩn "Hosted with Streamlit" banner đỏ */
+._viewerBadge_aycw8_23,
+a._container_gzau3_1._viewerBadge_aycw8_23,
+[class*="_viewerBadge"],
+[class*="_container_gzau3"] {
     display: none !important;
+    visibility: hidden !important;
 }
 /* =========================================================================
    I. LIGHT MODE
