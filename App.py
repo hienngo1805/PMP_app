@@ -5,6 +5,7 @@ import random
 import time
 import pandas as pd  
 import requests
+import bcrypt
 from datetime import datetime
 
 # Kiểm tra sự tồn tại của thư viện kết nối API để tránh crash ứng dụng
@@ -37,15 +38,49 @@ def get_worksheets():
         "users": sheet.worksheet("users"),
         "quiz_history": sheet.worksheet("quiz_history")
     }
+# ── ĐỌC / GHI USERS ──────────────────────────────────────
+def register_user(username: str, name: str, email: str, password: str, role: str = "user"):
+    ws = get_worksheets()["users"]
+    hashed_pw = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+    
+    # Đọc trực tiếp từ Sheets, KHÔNG qua cache
+    records = ws.get_all_records()
+    
+    for i, row in enumerate(records, start=2):
+        if row["username"].strip().lower() == username.strip().lower():
+            # Username đã tồn tại
+            if not row["password"].strip():
+                # Password trống → cho phép reset
+                ws.update_cell(i, 4, hashed_pw)
+                return "reset"
+            else:
+                # Password đã có → báo duplicate
+                return "duplicate"
+    
+    # Username chưa tồn tại → tạo mới
+    ws.append_row([username, name, email, hashed_pw, role])
+    return "created"
 
-# --- TEST KẾT NỐI --- 
-try:
-    ws = get_worksheets()
-    st.success("✅ Kết nối Google Sheets thành công!")
-    st.write("Users headers:", ws["users"].row_values(1))
-    st.write("Quiz history headers:", ws["quiz_history"].row_values(1))
-except Exception as e:
-    st.error(f"❌ Lỗi kết nối: {e}")
+def verify_password(username: str, password: str) -> bool:
+    user = get_user(username)
+    if not user:
+        return False
+    stored_pw = user["password"].strip()
+    if not stored_pw:  # ← dòng này có chưa?
+        return False
+    return bcrypt.checkpw(password.encode(), stored_pw.encode())
+
+def get_user(username: str):
+    """Đọc trực tiếp từ Sheets, không cache."""
+    ws = get_worksheets()["users"]
+    records = ws.get_all_records()  # ← bỏ cache ở đây
+    for u in records:
+        if u["username"].strip().lower() == username.strip().lower():
+            return u
+    return None
+def get_all_users():
+    ws = get_worksheets()["users"]
+    return ws.get_all_records()  # ← bỏ cache ở đây
 
 # Cấu hình giao diện rộng (wide) - Bắt buộc phải nằm ở đầu file Streamlit
 st.set_page_config(page_title="PMP & CAPM Exam Prep Portal", page_icon="🎯", layout="wide")
@@ -251,6 +286,14 @@ def load_general_learning_data():
         st.error("⚠️ Không tìm thấy file general_learning.json!")
         return {}
 
+def reset_password(username: str):
+    """Xóa password của user trên Sheets để họ có thể đặt lại."""
+    ws = get_worksheets()["users"]
+    records = ws.get_all_records()
+    for i, row in enumerate(records, start=2):  # start=2 vì row 1 là header
+        if row["username"].strip().lower() == username.strip().lower():
+            ws.update_cell(i, 4, "")  # cột 4 = password → xóa trắng
+            return
 
 #Load tiếp các file dữ liệu json khác
 @st.cache_data(ttl="1h")
@@ -791,13 +834,244 @@ if "test_start_time" not in st.session_state:
     st.session_state.test_start_time = 0.0
 if "test_total_seconds" not in st.session_state:
     st.session_state.test_total_seconds = 0
-
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
         {"role": "assistant", "content": "👋 Hello! I am your specialized PMP & CAPM AI Tutor. I will answer your queries strictly in English to mimic the real exam environment. Configure your favorite AI provider on the left sidebar to start!"}
     ]
+# ==========================================================
+# 🧭 PHẦN 0: MÀN HÌNH LOGIN
+# ==========================================================
+def render_login():
+    st.markdown("""
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #0a1f2e 0%, #0d2b3e 50%, #0a3d4a 100%) !important;
+    }
+    [data-testid="stMain"] { 
+        background: transparent !important;
+        padding: 2rem 3rem !important;  /* ← giảm padding để box không quá to */
+    }
 
+    /* Thu nhỏ khoảng trắng giữa 2 cột */
+    [data-testid="stHorizontalBlock"] {
+        gap: 8px !important;
+        align-items: stretch !important;
+        max-width: 860px !important;   /* ← giới hạn max width */
+        margin: 0 auto !important;     /* ← căn giữa */
+    }
 
+    .left-card {
+        background: linear-gradient(145deg, #1a8fa0 0%, #1eafc4 50%, #2799C7 100%);
+        border-radius: 16px;
+        padding: 36px 28px;
+        color: white;
+        height: 100%;
+    }
+    .left-card h1 { font-size: 22px; font-weight: 700; color: white; margin: 10px 0 8px; line-height: 1.3; }
+    .left-card p  { font-size: 13px; opacity: 0.88; line-height: 1.6; color: white; margin-bottom: 18px; }
+    .feature-row  { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; font-size: 12.5px; color: white; opacity: 0.92; }
+    .feat-icon    { width: 24px; height: 24px; background: rgba(255,255,255,0.2); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+    .badge-free   { display:inline-block; background:rgba(255,255,255,0.18); border-radius:99px; padding:3px 10px; font-size:11px; margin-top:14px; border:1px solid rgba(255,255,255,0.25); color:white; }
+
+    /* Right column styling */
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) {
+        background: #f8fdff !important;
+        border-radius: 16px !important;
+        padding: 8px 20px !important;
+    }
+
+    .right-card h2 { font-size: 20px; font-weight: 700; color: #0d2b3e; margin-bottom: 3px; }
+    .subtitle-txt  { font-size: 13px; color: #7a9aaa; margin-bottom: 16px; }
+    .info-box-teal {
+        background: #e0f5f8; border-left: 3px solid #1eafc4;
+        border-radius: 8px; padding: 9px 12px;
+        font-size: 12.5px; color: #2a6a7a; margin-bottom: 14px; line-height: 1.6;
+    }
+
+    /* Input styling */
+    div[data-testid="stTextInput"] input {
+        border: 1.5px solid #cce8f0 !important;
+        border-radius: 10px !important;
+        background: white !important;
+        color: #1a3a4a !important;
+        padding: 9px 12px !important;
+    }
+    div[data-testid="stTextInput"] input:focus {
+        border-color: #1eafc4 !important;
+        box-shadow: 0 0 0 3px rgba(30,175,196,0.12) !important;
+    }
+    /* Button teal */
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) button[kind="primary"] {
+        background: linear-gradient(135deg, #1a8fa0, #2799C7) !important;
+        border: none !important;
+        border-radius: 10px !important;
+    }
+
+    /* Ẩn sidebar trên trang login */
+    [data-testid="stSidebar"] { display: none !important; }
+    [data-testid="stSidebarCollapsedControl"] { display: none !important; }
+    </style>
+    """, unsafe_allow_html=True)
+
+    if "auth_screen" not in st.session_state:
+        st.session_state.auth_screen = "login"
+    screen = st.session_state.auth_screen
+
+    col_left, col_right = st.columns([1, 1], gap="small")
+
+    # ── LEFT PANEL ──
+    with col_left:
+        st.markdown("""
+        <div class="left-card">
+            <div style="font-size:44px;">🎯</div>
+            <h1>PMP/CAPM<br>Learning Hub</h1>
+            <p>A self-built platform to support your journey toward PMP® and CAPM® certification.</p>
+            <div class="feature-row"><div class="feat-icon">📚</div> Knowledge Hub with 5 learning domains</div>
+            <div class="feature-row"><div class="feat-icon">📝</div> Question Bank with 280+ practice questions</div>
+            <div class="feature-row"><div class="feat-icon">⏱️</div> Exam Simulator with real exam conditions</div>
+            <div class="feature-row"><div class="feat-icon">📊</div> Personal Performance Dashboard</div>
+            <div class="feature-row"><div class="feat-icon">🤖</div> AI Tutor powered by Gemini</div>
+            <div class="badge-free">✦ Free to use · No ads</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # ── RIGHT PANEL ──
+    with col_right:
+        # Thêm CSS để style trực tiếp lên column
+        st.markdown("""
+        <style>
+        /* Style column phải thành right-card */
+        [data-testid="stHorizontalBlock"] > div:nth-child(2) {
+            background: #f8fdff;
+            border-radius: 16px;
+            padding: 8px 16px !important;
+        }
+        /* Đẩy content xuống cho cân với left panel */
+        [data-testid="stHorizontalBlock"] > div:nth-child(2) > div:first-child {
+            margin-top: 20px;
+        }
+        /* Xóa background tối mặc định của Streamlit trong cột này */
+        [data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stVerticalBlock"] {
+            background: transparent !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        if screen == "login":
+            st.markdown('<h2>🔐 Welcome back!</h2><p class="subtitle-txt">Sign in to continue your learning journey</p>', unsafe_allow_html=True)
+            username = st.text_input("Username", key="login_username")
+            password = st.text_input("Password", type="password", key="login_password")
+
+            if st.button("Login", type="primary", key="btn_login", use_container_width=True):
+                if not username or not password:
+                    st.warning("⚠️ Vui lòng nhập đủ username và password.")
+                elif verify_password(username, password):
+                    user = get_user(username)
+                    st.session_state.logged_in = True
+                    st.session_state.current_user = username
+                    st.session_state.current_user_name = user["name"]
+                    st.session_state.current_user_role = user["role"]
+                    st.session_state.auth_screen = "login"
+                    st.rerun()
+                else:
+                    st.error("❌ Username hoặc password không đúng.")
+
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("📝 Create Account", key="btn_go_register", use_container_width=True):
+                    st.session_state.auth_screen = "register"
+                    st.rerun()
+            with c2:
+                if st.button("🔑 Forgot Password?", key="btn_go_forgot", use_container_width=True):
+                    st.session_state.auth_screen = "forgot"
+                    st.rerun()
+
+        elif screen == "register":
+            st.markdown('<h2>📝 Create Account</h2><p class="subtitle-txt">Join and start your PMP/CAPM prep today</p>', unsafe_allow_html=True)
+            reg_name     = st.text_input("Full Name",        key="reg_name")
+            reg_username = st.text_input("Username",         key="reg_username")
+            reg_email    = st.text_input("Email",            key="reg_email")
+            reg_password = st.text_input("Password",         type="password", key="reg_password")
+            reg_confirm  = st.text_input("Confirm Password", type="password", key="reg_confirm")
+
+            c1, c2 = st.columns([1, 2])
+            with c1:
+                if st.button("← Back", key="btn_back_reg", use_container_width=True):
+                    st.session_state.auth_screen = "login"
+                    st.rerun()
+            with c2:
+                if st.button("Register", type="primary", key="btn_register", use_container_width=True):
+                    if not all([reg_name, reg_username, reg_email, reg_password, reg_confirm]):
+                        st.warning("⚠️ Vui lòng điền đầy đủ thông tin.")
+                    elif reg_password != reg_confirm:
+                        st.error("❌ Password không khớp.")
+                    else:
+                        result = register_user(reg_username, reg_name, reg_email, reg_password)
+                        if result == "duplicate":
+                            st.error("❌ Username đã tồn tại.")
+                        elif result == "reset":
+                            st.success("✅ Đặt lại mật khẩu thành công!")
+                            st.session_state.auth_screen = "login"
+                            st.rerun()
+                        else:
+                            st.session_state.logged_in = True
+                            st.session_state.current_user = reg_username
+                            st.session_state.current_user_name = reg_name
+                            st.session_state.current_user_role = "user"
+                            st.session_state.auth_screen = "login"
+                            st.rerun()
+
+        elif screen == "forgot":
+            st.markdown('<h2>🔑 Reset Password</h2><p class="subtitle-txt">Verify your identity to reset your password</p>', unsafe_allow_html=True)
+            st.markdown('<div class="info-box-teal">💡 Enter your username and registered email. We\'ll clear your password so you can set a new one via Register.</div>', unsafe_allow_html=True)
+            forgot_username = st.text_input("Username",         key="forgot_username")
+            forgot_email    = st.text_input("Registered Email", key="forgot_email")
+
+            c1, c2 = st.columns([1, 2])
+            with c1:
+                if st.button("← Back", key="btn_back_forgot", use_container_width=True):
+                    st.session_state.auth_screen = "login"
+                    st.rerun()
+            with c2:
+                if st.button("Verify & Reset", type="primary", key="btn_forgot", use_container_width=True):
+                    if not forgot_username or not forgot_email:
+                        st.warning("⚠️ Vui lòng nhập đủ thông tin.")
+                    else:
+                        user = get_user(forgot_username)
+                        if not user:
+                            st.error("❌ Không tìm thấy username này.")
+                        elif user["email"].strip().lower() != forgot_email.strip().lower():
+                            st.error("❌ Email không khớp.")
+                        else:
+                            reset_password(forgot_username)
+                            st.success("✅ Xác minh thành công! Vào Register để đặt password mới.")
+                            st.session_state.auth_screen = "register"
+                            st.rerun()
+
+# Auth session state
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+if "current_user" not in st.session_state:
+    st.session_state.current_user = None
+if "current_user_name" not in st.session_state:
+    st.session_state.current_user_name = None
+if "current_user_role" not in st.session_state:
+    st.session_state.current_user_role = None
+
+# ── GATE: chưa login thì chỉ thấy trang login ──
+if not st.session_state.logged_in:
+    render_login()
+    st.stop()  # ← chặn toàn bộ code phía dưới
+
+# ── Đã login: hiện nút Logout trên sidebar ──
+st.sidebar.markdown("---")
+st.sidebar.markdown(f"👤 **{st.session_state.current_user}**")
+if st.sidebar.button("🚪 Logout"):
+    st.session_state.logged_in = False
+    st.session_state.current_user = None
+    st.session_state.current_user_name = None
+    st.rerun()
+    
 # ==========================================================
 # 🧭 PHẦN 1: THANH ĐIỀU HƯỚNG & CẤU HÌNH API MULTI-LLM (PURE SIDEBAR)
 # ==========================================================
