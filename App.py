@@ -847,45 +847,97 @@ def render_login():
     [data-testid="stAppViewContainer"] {
         background: linear-gradient(135deg, #0a1f2e 0%, #0d2b3e 50%, #0a3d4a 100%) !important;
     }
+    
+    /* SỬA LỖI MẤT HEADER: Trả lại layout tự nhiên để không bị đẩy tràn khung lên phía trên */
     [data-testid="stMain"] { 
         background: transparent !important;
-        padding: 0rem 1rem !important;  /* ← giảm padding để box không quá to */
+        padding: 2rem 1rem !important;
     }
 
-    /* Thu nhỏ khoảng trắng giữa 2 cột */
+    /* HỘP CHỨA LỚN NGUYÊN KHỐI: Bo tròn góc tổng thể và xóa bỏ rãnh chia cắt ở giữa */
     [data-testid="stHorizontalBlock"] {
         gap: 0px !important;
-        align-items: stretch !important;
-        max-width: 860px !important;   /* ← giới hạn max width */
-        margin: 0 auto !important;     /* ← căn giữa */
+        align-items: stretch !important; /* Ép 2 cột tự động bằng khít chiều cao của nhau */
+        max-width: 900px !important;   /* Tỉ lệ vàng giúp form có dáng thon dài */
+        margin: 60px auto !important;  /* Căn giữa màn hình bằng margin cực kỳ an toàn */
+        background: #f8fdff !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;   /* Thần chú ép các mảng màu bên trong bo theo khung lớn */
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
     }
 
+    /* Cột bên trái (Teal panel) */
+    [data-testid="stHorizontalBlock"] > div:nth-child(1) {
+        background: linear-gradient(145deg, #1a8fa0 0%, #1eafc4 50%, #2799C7 100%) !important;
+        padding: 0px !important;
+    }
     .left-card {
-        background: linear-gradient(145deg, #1a8fa0 0%, #1eafc4 50%, #2799C7 100%);
-        border-radius: 0px;
-        padding: 40px 30px;
+        padding: 45px 35px !important;
         color: white;
         height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-    .left-card h1 { font-size: 30px; font-weight: 700; color: white; margin: 10px 0 8px; line-height: 1.3; }
-    .left-card p  { font-size: 15px; opacity: 0.88; line-height: 1.6; color: white; margin-bottom: 18px; }
-    .feature-row  { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; font-size: 12.5px; color: white; opacity: 0.92; }
-    .feat-icon    { width: 24px; height: 24px; background: rgba(255,255,255,0.2); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
-    .badge-free   { display:inline-block; background:rgba(255,255,255,0.18); border-radius:99px; padding:3px 10px; font-size:11px; margin-top:14px; border:1px solid rgba(255,255,255,0.25); color:white; }
+    .left-card h1 { font-size: 30px; font-weight: 700; color: white; margin: 8px 0 10px; line-height: 1.3; }
+    .left-card p  { font-size: 15px; opacity: 0.88; line-height: 1.6; color: white; margin-bottom: 20px; }
+    .feature-row  { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 15px; color: white; opacity: 0.92; }
+    .feat-icon    { width: 26px; height: 26px; background: rgba(255,255,255,0.2); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+    .badge-free   { display:inline-block; background:rgba(255,255,255,0.18); border-radius:99px; padding:4px 12px; font-size:11.5px; margin-top: 25px; border:1px solid rgba(255,255,255,0.25); color:white; width: max-content; }
 
-    /* Right column styling */
+    /* Cột bên phải (White/Login panel) */
     [data-testid="stHorizontalBlock"] > div:nth-child(2) {
         background: #f8fdff !important;
-        border-radius: 0px !important;
-        padding: 40px 30px !important;
+        padding: 45px 40px !important; /* Giãn cách vừa vặn ôm sát lấy các ô nhập liệu */
     }
 
-    .right-card h2 { font-size: 20px; font-weight: 700; color: #0d2b3e; margin-bottom: 3px; }
-    .subtitle-txt  { font-size: 13px; color: #7a9aaa; margin-bottom: 16px; }
+    /* Đảm bảo các khối dọc của Streamlit không sinh khoảng cách thừa */
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) > div:first-child {
+        margin-top: 0px !important;
+    }
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stVerticalBlock"] {
+        background: transparent !important;
+        gap: 14px !important;
+    }
+
+    /* 🎯 SỬA LỆCH HÀNG: Reset CSS của cột con bên trong cột phải */
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stHorizontalBlock"] {
+        box-shadow: none !important;
+        margin: 10px 0 0 0 !important;
+        border-radius: 0px !important;
+    }
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stHorizontalBlock"] > div {
+        background: transparent !important;
+        padding: 0px !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+    }
+
+    /* 🎯 STYLE CHỮ CHO NÚT (BỎ Ô BAO QUANH) & CĂN THẲNG HÀNG */
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) button[kind="secondary"] {
+        background: transparent !important;
+        border: none !important;
+        color: #1eafc4 !important; /* Tone màu xanh teal */
+        box-shadow: none !important;
+        font-weight: 600 !important;
+        font-size: 13.5px !important;
+        padding: 0px !important;
+        height: auto !important;
+        min-height: unset !important;
+        text-decoration: underline !important; /* Gạch chân tạo kiểu link */
+        transition: color 0.2s ease !important;
+    }
+    [data-testid="stHorizontalBlock"] > div:nth-child(2) button[kind="secondary"]:hover {
+        color: #2799C7 !important;
+        background: transparent !important;
+        text-decoration: underline !important;
+    }
+
+    .right-card h2 { font-size: 22px; font-weight: 700; color: #0d2b3e; margin-bottom: 4px; }
+    .subtitle-txt  { font-size: 13.5px; color: #7a9aaa; margin-bottom: 16px; }
     .info-box-teal {
         background: #e0f5f8; border-left: 3px solid #1eafc4;
-        border-radius: 8px; padding: 9px 12px;
-        font-size: 12.5px; color: #2a6a7a; margin-bottom: 14px; line-height: 1.6;
+        border-radius: 8px; padding: 10px 12px;
+        font-size: 13px; color: #2a6a7a; margin-bottom: 12px; line-height: 1.6;
     }
 
     /* Input styling */
@@ -894,17 +946,20 @@ def render_login():
         border-radius: 10px !important;
         background: white !important;
         color: #1a3a4a !important;
-        padding: 9px 12px !important;
+        padding: 10px 14px !important;
     }
     div[data-testid="stTextInput"] input:focus {
         border-color: #1eafc4 !important;
         box-shadow: 0 0 0 3px rgba(30,175,196,0.12) !important;
     }
+    
     /* Button teal */
     [data-testid="stHorizontalBlock"] > div:nth-child(2) button[kind="primary"] {
         background: linear-gradient(135deg, #1a8fa0, #2799C7) !important;
         border: none !important;
         border-radius: 10px !important;
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
     }
 
     /* Ẩn sidebar trên trang login */
@@ -924,7 +979,7 @@ def render_login():
         st.markdown("""
         <div class="left-card">
             <div style="font-size:44px;">🎯</div>
-            <h1>PMP/CAPM<br>Learning Hub</h1>
+            <h1>Project Management<br>Learning Hub</h1>
             <p>A self-built platform to support your journey toward PMP® and CAPM® certification.</p>
             <div class="feature-row"><div class="feat-icon">📚</div> Knowledge Hub with 5 learning domains</div>
             <div class="feature-row"><div class="feat-icon">📝</div> Question Bank with 280+ practice questions</div>
@@ -937,26 +992,6 @@ def render_login():
 
     # ── RIGHT PANEL ──
     with col_right:
-        # Thêm CSS để style trực tiếp lên column
-        st.markdown("""
-        <style>
-        /* Style column phải thành right-card */
-        [data-testid="stHorizontalBlock"] > div:nth-child(2) {
-            background: #f8fdff;
-            border-radius: 8px;
-            padding: 10px 12px !important;
-        }
-        /* Đẩy content xuống cho cân với left panel */
-        [data-testid="stHorizontalBlock"] > div:nth-child(2) > div:first-child {
-            margin-top: 20px;
-        }
-        /* Xóa background tối mặc định của Streamlit trong cột này */
-        [data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stVerticalBlock"] {
-            background: transparent !important;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-
         if screen == "login":
             st.markdown('<h2>🔐 Welcome back!</h2><p class="subtitle-txt">Sign in to continue your learning journey</p>', unsafe_allow_html=True)
             username = st.text_input("Username", key="login_username")
@@ -964,7 +999,7 @@ def render_login():
 
             if st.button("Login", type="primary", key="btn_login", use_container_width=True):
                 if not username or not password:
-                    st.warning("⚠️ Please input both username and password.")
+                    st.warning("⚠️ Please fill in all fields.")
                 elif verify_password(username, password):
                     user = get_user(username)
                     st.session_state.logged_in = True
@@ -987,7 +1022,7 @@ def render_login():
                     st.rerun()
 
         elif screen == "register":
-            st.markdown('<h2>📝 Create Account</h2><p class="subtitle-txt">Join and start your Project Management learning today</p>', unsafe_allow_html=True)
+            st.markdown('<h2>📝 Create Account</h2><p class="subtitle-txt">Join and start your PMP/CAPM prep today</p>', unsafe_allow_html=True)
             reg_name     = st.text_input("Full Name",        key="reg_name")
             reg_username = st.text_input("Username",         key="reg_username")
             reg_email    = st.text_input("Email",            key="reg_email")
@@ -1010,7 +1045,7 @@ def render_login():
                         if result == "duplicate":
                             st.error("❌ Username already exists.")
                         elif result == "reset":
-                            st.success("✅ Password reset successfully!")
+                            st.success("✅ Password reset successful!")
                             st.session_state.auth_screen = "login"
                             st.rerun()
                         else:
@@ -1019,6 +1054,33 @@ def render_login():
                             st.session_state.current_user_name = reg_name
                             st.session_state.current_user_role = "user"
                             st.session_state.auth_screen = "login"
+                            st.rerun()
+
+        elif screen == "forgot":
+            st.markdown('<h2>🔑 Reset Password</h2><p class="subtitle-txt">Verify your identity to reset your password</p>', unsafe_allow_html=True)
+            st.markdown('<div class="info-box-teal">💡 Enter your username and registered email. We\'ll clear your password so you can set a new one via Register.</div>', unsafe_allow_html=True)
+            forgot_username = st.text_input("Username",         key="forgot_username")
+            forgot_email    = st.text_input("Registered Email", key="forgot_email")
+
+            c1, c2 = st.columns([1, 2])
+            with c1:
+                if st.button("← Back", key="btn_back_forgot", use_container_width=True):
+                    st.session_state.auth_screen = "login"
+                    st.rerun()
+            with c2:
+                if st.button("Verify & Reset", type="primary", key="btn_forgot", use_container_width=True):
+                    if not forgot_username or not forgot_email:
+                        st.warning("⚠️ Please fill in all fields.")
+                    else:
+                        user = get_user(forgot_username)
+                        if not user:
+                            st.error("❌ Username not found.")
+                        elif user["email"].strip().lower() != forgot_email.strip().lower():
+                            st.error("❌ Email does not match.")
+                        else:
+                            reset_password(forgot_username)
+                            st.success("✅ Verification successful! Please go to Register to set a new password.")
+                            st.session_state.auth_screen = "register"
                             st.rerun()
 
         elif screen == "forgot":
