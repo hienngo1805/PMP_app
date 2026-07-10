@@ -849,12 +849,12 @@ def render_login():
     }
     [data-testid="stMain"] { 
         background: transparent !important;
-        padding: 2rem 3rem !important;  /* ← giảm padding để box không quá to */
+        padding: 0rem 1rem !important;  /* ← giảm padding để box không quá to */
     }
 
     /* Thu nhỏ khoảng trắng giữa 2 cột */
     [data-testid="stHorizontalBlock"] {
-        gap: 8px !important;
+        gap: 0px !important;
         align-items: stretch !important;
         max-width: 860px !important;   /* ← giới hạn max width */
         margin: 0 auto !important;     /* ← căn giữa */
@@ -862,13 +862,13 @@ def render_login():
 
     .left-card {
         background: linear-gradient(145deg, #1a8fa0 0%, #1eafc4 50%, #2799C7 100%);
-        border-radius: 16px;
-        padding: 36px 28px;
+        border-radius: 0px;
+        padding: 40px 30px;
         color: white;
         height: 100%;
     }
-    .left-card h1 { font-size: 22px; font-weight: 700; color: white; margin: 10px 0 8px; line-height: 1.3; }
-    .left-card p  { font-size: 13px; opacity: 0.88; line-height: 1.6; color: white; margin-bottom: 18px; }
+    .left-card h1 { font-size: 30px; font-weight: 700; color: white; margin: 10px 0 8px; line-height: 1.3; }
+    .left-card p  { font-size: 15px; opacity: 0.88; line-height: 1.6; color: white; margin-bottom: 18px; }
     .feature-row  { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; font-size: 12.5px; color: white; opacity: 0.92; }
     .feat-icon    { width: 24px; height: 24px; background: rgba(255,255,255,0.2); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
     .badge-free   { display:inline-block; background:rgba(255,255,255,0.18); border-radius:99px; padding:3px 10px; font-size:11px; margin-top:14px; border:1px solid rgba(255,255,255,0.25); color:white; }
@@ -876,8 +876,8 @@ def render_login():
     /* Right column styling */
     [data-testid="stHorizontalBlock"] > div:nth-child(2) {
         background: #f8fdff !important;
-        border-radius: 16px !important;
-        padding: 8px 20px !important;
+        border-radius: 0px !important;
+        padding: 40px 30px !important;
     }
 
     .right-card h2 { font-size: 20px; font-weight: 700; color: #0d2b3e; margin-bottom: 3px; }
@@ -943,8 +943,8 @@ def render_login():
         /* Style column phải thành right-card */
         [data-testid="stHorizontalBlock"] > div:nth-child(2) {
             background: #f8fdff;
-            border-radius: 16px;
-            padding: 8px 16px !important;
+            border-radius: 8px;
+            padding: 10px 12px !important;
         }
         /* Đẩy content xuống cho cân với left panel */
         [data-testid="stHorizontalBlock"] > div:nth-child(2) > div:first-child {
@@ -964,7 +964,7 @@ def render_login():
 
             if st.button("Login", type="primary", key="btn_login", use_container_width=True):
                 if not username or not password:
-                    st.warning("⚠️ Vui lòng nhập đủ username và password.")
+                    st.warning("⚠️ Please input both username and password.")
                 elif verify_password(username, password):
                     user = get_user(username)
                     st.session_state.logged_in = True
@@ -974,7 +974,7 @@ def render_login():
                     st.session_state.auth_screen = "login"
                     st.rerun()
                 else:
-                    st.error("❌ Username hoặc password không đúng.")
+                    st.error("❌ Username or password is incorrect.")
 
             c1, c2 = st.columns(2)
             with c1:
@@ -987,7 +987,7 @@ def render_login():
                     st.rerun()
 
         elif screen == "register":
-            st.markdown('<h2>📝 Create Account</h2><p class="subtitle-txt">Join and start your PMP/CAPM prep today</p>', unsafe_allow_html=True)
+            st.markdown('<h2>📝 Create Account</h2><p class="subtitle-txt">Join and start your Project Management learning today</p>', unsafe_allow_html=True)
             reg_name     = st.text_input("Full Name",        key="reg_name")
             reg_username = st.text_input("Username",         key="reg_username")
             reg_email    = st.text_input("Email",            key="reg_email")
@@ -1002,15 +1002,15 @@ def render_login():
             with c2:
                 if st.button("Register", type="primary", key="btn_register", use_container_width=True):
                     if not all([reg_name, reg_username, reg_email, reg_password, reg_confirm]):
-                        st.warning("⚠️ Vui lòng điền đầy đủ thông tin.")
+                        st.warning("⚠️ Please fill in all fields.")
                     elif reg_password != reg_confirm:
-                        st.error("❌ Password không khớp.")
+                        st.error("❌ Passwords do not match.")
                     else:
                         result = register_user(reg_username, reg_name, reg_email, reg_password)
                         if result == "duplicate":
-                            st.error("❌ Username đã tồn tại.")
+                            st.error("❌ Username already exists.")
                         elif result == "reset":
-                            st.success("✅ Đặt lại mật khẩu thành công!")
+                            st.success("✅ Password reset successfully!")
                             st.session_state.auth_screen = "login"
                             st.rerun()
                         else:
@@ -1035,16 +1035,16 @@ def render_login():
             with c2:
                 if st.button("Verify & Reset", type="primary", key="btn_forgot", use_container_width=True):
                     if not forgot_username or not forgot_email:
-                        st.warning("⚠️ Vui lòng nhập đủ thông tin.")
+                        st.warning("⚠️ Please fill in all fields.")
                     else:
                         user = get_user(forgot_username)
                         if not user:
-                            st.error("❌ Không tìm thấy username này.")
+                            st.error("❌ Username not found.")
                         elif user["email"].strip().lower() != forgot_email.strip().lower():
-                            st.error("❌ Email không khớp.")
+                            st.error("❌ Email does not match.")
                         else:
                             reset_password(forgot_username)
-                            st.success("✅ Xác minh thành công! Vào Register để đặt password mới.")
+                            st.success("✅ Verification successful! Please go to Register to set a new password.")
                             st.session_state.auth_screen = "register"
                             st.rerun()
 
